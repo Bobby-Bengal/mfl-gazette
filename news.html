@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The MFL Gazette — 2025 Season</title>
+  <link rel="icon" type="image/png" href="mfl_logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1208;
+      --ink2: #3d3120;
+      --ink3: #7a6a50;
+      --ink4: #b0a080;
+      --paper: #f5f0e8;
+      --paper2: #ede8d8;
+      --paper3: #e0d8c4;
+      --rule: #c8b898;
+      --rule2: #a89878;
+      --gold: #8a6a00;
+      --gold-light: #c8a020;
+      --red: #8a1a00;
+      --col-gap: 1.5rem;
+    }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--paper);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      background: var(--paper);
+      border-bottom: 3px double var(--ink);
+      padding: 1.5rem 3rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+    .masthead-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ink3);
+    }
+    .gazette-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1;
+      letter-spacing: -1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gazette-subtitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-top: 6px;
+    }
+    .masthead-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--rule);
+      padding-top: 0.75rem;
+      margin-top: 0.75rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ink3);
+    }
+    .back-link {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      text-decoration: none;
+      border: 1px solid var(--rule);
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .back-link:hover { background: var(--paper2); }
+
+    /* ── ARCHIVE NAV ── */
+    .archive-bar {
+      background: var(--ink);
+      padding: 0.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+    }
+    .archive-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ink4);
+      white-space: nowrap;
+      margin-right: 1rem;
+      padding-right: 1rem;
+      border-right: 1px solid #444;
+    }
+    .week-tab {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 5px 12px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.15s;
+      border-right: 1px solid #333;
+    }
+    .week-tab:hover { color: #ffffff; }
+    .week-tab.active { color: var(--gold-light); }
+
+    /* ── LAYOUT ── */
+    .page { max-width: 1100px; margin: 0 auto; padding: 0; }
+    #content-area { padding: 2rem 3rem; }
+    .compose-bar { margin: 2rem 3rem 0; }
+    .compose-form { margin: 0 3rem 1.5rem; }
+    @media (max-width: 768px) {
+      #content-area { padding: 1.5rem; }
+      .compose-bar { margin: 1.5rem 1.5rem 0; }
+      .compose-form { margin: 0 1.5rem 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      #content-area { padding: 1rem; }
+      .compose-bar { margin: 1rem 1rem 0; }
+      .compose-form { margin: 0 1rem 1rem; }
+    }
+
+    /* ── EDITION HEADER ── */
+    .edition-header {
+      border-bottom: 3px double var(--rule2);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .edition-kicker {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 6px;
+    }
+    .edition-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 4vw, 44px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .edition-deck {
+      font-family: 'Source Serif 4', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--ink2);
+      line-height: 1.5;
+      max-width: 700px;
+    }
+    .edition-byline {
+      margin-top: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      padding-top: 8px;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── COLUMNS ── */
+    .columns-3 {
+      column-count: 3;
+      column-gap: var(--col-gap);
+      column-rule: 1px solid var(--rule);
+    }
+    .columns-2 {
+      column-count: 2;
+      column-gap: var(--col-gap);
+      column-rule: 1px solid var(--rule);
+    }
+    @media (max-width: 720px) {
+      .columns-3, .columns-2 { column-count: 1; }
+    }
+    @media (max-width: 960px) {
+      .columns-3 { column-count: 2; }
+    }
+
+    /* ── ARTICLE BODY ── */
+    .article-body {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--ink2);
+    }
+    .article-body p { margin-bottom: 0.85em; }
+    .article-body p:first-child::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 900;
+      float: left;
+      line-height: 0.85;
+      margin: 4px 6px 0 0;
+      color: var(--ink);
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      break-inside: avoid;
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      padding: 0.75rem 0;
+      margin: 1rem 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-style: italic;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    /* ── SCOREBOX ── */
+    .scorebox {
+      break-inside: avoid;
+      background: var(--paper2);
+      border: 1px solid var(--rule2);
+      border-top: 3px solid var(--ink);
+      padding: 0.75rem;
+      margin: 1rem 0;
+    }
+    .scorebox-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--ink3);
+      margin-bottom: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .score-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 3px 0;
+      border-bottom: 1px dotted var(--rule);
+      color: var(--ink2);
+    }
+    .score-line:last-child { border-bottom: none; }
+    .score-line .winner { font-weight: 700; color: var(--ink); }
+    .score-num { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; }
+
+    /* ── POOL TABLE ── */
+    .pool-table {
+      break-inside: avoid;
+      background: var(--paper2);
+      border: 1px solid var(--rule2);
+      border-top: 3px solid var(--gold);
+      padding: 0.75rem;
+      margin: 1rem 0;
+    }
+    .pool-table-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .pool-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3px 0;
+      border-bottom: 1px dotted var(--rule);
+      font-size: 12px;
+      color: var(--ink2);
+    }
+    .pool-row:last-child { border-bottom: none; }
+    .pool-rank { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--ink4); width: 16px; }
+    .pool-pts { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); }
+
+    /* ── 21 CLUB ── */
+    .club-box {
+      break-inside: avoid;
+      border: 1px solid var(--rule2);
+      border-top: 3px solid var(--red);
+      background: var(--paper2);
+      padding: 0.75rem;
+      margin: 1rem 0;
+    }
+    .club-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--red);
+      margin-bottom: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .club-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      padding: 2px 0;
+      color: var(--ink2);
+      border-bottom: 1px dotted var(--rule);
+    }
+    .club-row:last-child { border-bottom: none; }
+    .club-pts { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px; color: var(--ink); }
+    .club-team { font-size: 10px; color: var(--ink4); }
+
+    /* ── SPIFF BANNER ── */
+    .spiff-banner {
+      break-inside: avoid;
+      background: var(--gold);
+      color: var(--paper);
+      padding: 8px 12px;
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .spiff-icon { font-size: 16px; }
+    .spiff-text { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
+
+    /* ── SECTION RULE ── */
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 1.5rem 0 1rem;
+    }
+    .section-rule::before, .section-rule::after { content: ''; flex: 1; height: 1px; background: var(--rule2); }
+    .section-rule-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--ink3);
+      white-space: nowrap;
+    }
+
+    /* ── ARCHIVE GRID ── */
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .archive-card {
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--ink);
+      background: var(--paper2);
+      padding: 1rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .archive-card:hover { background: var(--paper3); }
+    .archive-card.news-card { border-top-color: var(--red); }
+    .archive-card-week {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--ink3);
+      margin-bottom: 6px;
+    }
+    .archive-card-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .archive-card-deck {
+      font-size: 12px;
+      color: var(--ink3);
+      line-height: 1.5;
+    }
+
+    /* ── TYPE CHOOSER MODAL ── */
+    .type-modal-overlay { display:none; position:fixed; inset:0; background:rgba(26,18,8,0.6); z-index:100; align-items:center; justify-content:center; }
+    .type-modal-overlay.open { display:flex; }
+    .type-modal { background:var(--paper); border:1px solid var(--rule2); border-top:4px solid var(--gold); padding:2rem; max-width:480px; width:90%; }
+    .type-modal-title { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--ink); margin-bottom:6px; }
+    .type-modal-sub { font-family:'Barlow Condensed',sans-serif; font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--ink3); margin-bottom:1.5rem; }
+    .type-choice { display:flex; flex-direction:column; gap:12px; margin-bottom:1.5rem; }
+    .type-btn { display:flex; align-items:flex-start; gap:14px; padding:14px 16px; border:1px solid var(--rule2); background:var(--paper2); cursor:pointer; text-align:left; transition:background 0.15s; }
+    .type-btn:hover { background:var(--paper3); }
+    .type-btn-icon { font-size:22px; flex-shrink:0; line-height:1; margin-top:2px; }
+    .type-btn-label { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--ink); margin-bottom:3px; }
+    .type-btn-desc { font-family:'Source Serif 4',serif; font-size:12px; color:var(--ink3); line-height:1.4; }
+    .type-cancel { font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:1px; text-transform:uppercase; background:none; color:var(--ink4); border:none; cursor:pointer; padding:0; }
+    .type-cancel:hover { color:var(--ink3); }
+
+    /* ── CBS FETCH PANEL ── */
+    .cbs-fetch-panel { background:var(--ink); color:var(--paper); padding:1rem 1.25rem; margin-bottom:1.5rem; }
+    .cbs-fetch-header { margin-bottom:0.75rem; }
+    .cbs-fetch-title { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold-light); display:block; margin-bottom:3px; }
+    .cbs-fetch-sub { font-family:'Barlow Condensed',sans-serif; font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:0.5px; }
+    .cbs-fetch-controls { display:flex; align-items:flex-end; gap:12px; flex-wrap:wrap; }
+    .cbs-fetch-controls .form-label { color:rgba(255,255,255,0.6); }
+    .cbs-fetch-controls .form-select { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:var(--paper); }
+    .cbs-fetch-btn { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:var(--gold); color:var(--paper); border:none; padding:9px 20px; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+    .cbs-fetch-btn:hover { background:var(--gold-light); }
+    .cbs-fetch-btn:disabled { background:#555; cursor:wait; }
+    .cbs-fetch-status { font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:0.5px; margin-top:8px; min-height:18px; color:rgba(255,255,255,0.7); }
+    .cbs-fetch-status.ok { color:#7ddc7d; }
+    .cbs-fetch-status.err { color:#ff8080; }
+
+    /* ── SIGNOFF ── */
+    .signoff {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--ink3);
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── WRITE NEW ── */
+    .compose-bar {
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--gold);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .compose-bar-text { font-size: 13px; color: var(--ink2); }
+    .compose-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--paper);
+      border: none;
+      padding: 8px 18px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .compose-btn:hover { background: var(--ink2); }
+
+    /* ── COMPOSE FORM ── */
+    .compose-form {
+      display: none;
+      background: var(--paper2);
+      border: 1px solid var(--rule2);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .compose-form.open { display: block; }
+    .form-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 1rem; }
+    .form-row { margin-bottom: 1rem; }
+    .form-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--ink3); display: block; margin-bottom: 4px; }
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--rule2);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Source Serif 4', serif;
+      font-size: 14px;
+      outline: none;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--gold); }
+    .form-textarea { min-height: 200px; resize: vertical; line-height: 1.6; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 500px) { .form-row-2 { grid-template-columns: 1fr; } }
+    .form-submit {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--paper);
+      border: none;
+      padding: 10px 24px;
+      cursor: pointer;
+      margin-right: 8px;
+    }
+    .form-cancel {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: none;
+      color: var(--ink3);
+      border: 1px solid var(--rule);
+      padding: 10px 18px;
+      cursor: pointer;
+    }
+
+
+    /* ── COMMENTS ── */
+    .comments-section {
+      margin-top: 2rem;
+      border-top: 3px double var(--rule2);
+      padding-top: 1.5rem;
+    }
+    .comments-header {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--ink3);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .comments-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+    .comment-list { margin-bottom: 1.25rem; }
+    .comment-item {
+      padding: 10px 0;
+      border-bottom: 1px dotted var(--rule);
+      display: flex;
+      gap: 10px;
+    }
+    .comment-item:last-child { border-bottom: none; }
+    .comment-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #0C2340;
+      color: #FB4F14;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      letter-spacing: 0.5px;
+    }
+    .comment-body { flex: 1; }
+    .comment-meta {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      color: var(--ink3);
+      margin-bottom: 3px;
+    }
+    .comment-team {
+      font-weight: 700;
+      color: #0C2340;
+    }
+    .comment-text {
+      font-size: 13px;
+      color: var(--ink2);
+      line-height: 1.5;
+    }
+    .comment-delete {
+      font-size: 10px;
+      color: var(--ink4);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .comment-delete:hover { color: var(--red); }
+    .comment-form {
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-top: 2px solid #0C2340;
+      padding: 1rem;
+    }
+    .comment-form-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--ink3);
+      margin-bottom: 10px;
+    }
+    .comment-form-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .comment-select {
+      padding: 7px 10px;
+      border: 1px solid var(--rule2);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      outline: none;
+      min-width: 160px;
+    }
+    .comment-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 7px 10px;
+      border: 1px solid var(--rule2);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Source Serif 4', serif;
+      font-size: 13px;
+      outline: none;
+      resize: none;
+      min-height: 60px;
+      line-height: 1.5;
+    }
+    .comment-input:focus, .comment-select:focus { border-color: #0C2340; }
+    .comment-submit {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: #0C2340;
+      color: #ffffff;
+      border: none;
+      padding: 8px 20px;
+      cursor: pointer;
+      align-self: flex-end;
+      transition: background 0.15s;
+    }
+    .comment-submit:hover { background: #FB4F14; }
+    .no-comments {
+      font-size: 13px;
+      color: var(--ink4);
+      font-style: italic;
+      padding: 4px 0 12px;
+    }
+
+    /* scroll */
+    ::-webkit-scrollbar { height: 4px; width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--paper2); }
+    ::-webkit-scrollbar-thumb { background: var(--rule2); }
+  </style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-top">
+    <a href="index.html" class="back-link">← MFL League HQ</a>
+    <span>Est. 1980 · McCann's Football League</span>
+    <span>10 Teams · $8,000 Prize Pool</span>
+  </div>
+  <div class="gazette-name">
+    <img src="mfl_logo.png" alt="MFL" style="height:70px;width:auto;vertical-align:middle;margin-right:16px;opacity:0.92;" />The MFL Gazette<img src="mfl_logo.png" alt="MFL" style="height:70px;width:auto;vertical-align:middle;margin-left:16px;opacity:0.92;" />
+  </div>
+  <div class="gazette-subtitle">Official Weekly Publication of McCann's Football League</div>
+  <div class="masthead-bottom">
+    <span>2025 Season Archive</span>
+    <span id="masthead-date">Week 18 · Final Edition</span>
+    <span>May all your drafts be cold ones.</span>
+  </div>
+</div>
+
+<!-- ARCHIVE NAV -->
+<div class="archive-bar">
+  <span class="archive-label">2025 Archive</span>
+  <button class="week-tab" onclick="showWeek(0, this)">All Issues</button>
+  <button class="week-tab" onclick="showWeek(1, this)">Wk 1</button>
+  <button class="week-tab" onclick="showWeek(2, this)">Wk 2</button>
+  <button class="week-tab" onclick="showWeek(4, this)">Wk 4</button>
+  <button class="week-tab" onclick="showWeek(5, this)">Wk 5</button>
+  <button class="week-tab" onclick="showWeek(6, this)">Wk 6</button>
+  <button class="week-tab" onclick="showWeek(7, this)">Wk 7</button>
+  <button class="week-tab" onclick="showWeek(8, this)">Wk 8</button>
+  <button class="week-tab" onclick="showWeek(9, this)">Wk 9</button>
+  <button class="week-tab" onclick="showWeek(11, this)">Wk 11</button>
+  <button class="week-tab" onclick="showWeek(12, this)">Wk 12</button>
+  <button class="week-tab" onclick="showWeek(13, this)">Wk 13</button>
+  <button class="week-tab active" onclick="showWeek(14, this)">Wk 14</button>
+  <button class="week-tab" onclick="showWeek(15, this)">Wk 15</button>
+  <button class="week-tab" onclick="showWeek(16, this)">Wk 16</button>
+  <button class="week-tab" onclick="showWeek(17, this)">Wk 17</button>
+  <button class="week-tab" onclick="showWeek(18, this)">Wk 18 · Final</button>
+</div>
+
+<div class="page">
+
+  <!-- TYPE CHOOSER MODAL -->
+  <div class="type-modal-overlay" id="type-modal">
+    <div class="type-modal">
+      <div class="type-modal-title">New Gazette Post</div>
+      <div class="type-modal-sub">Commissioner's Desk · Choose a post type</div>
+      <div class="type-choice">
+        <button class="type-btn" onclick="openForm('report')">
+          <div class="type-btn-icon">📋</div>
+          <div>
+            <div class="type-btn-label">Weekly Report</div>
+            <div class="type-btn-desc">The regular weekly recap — scores, spiff, point pool standings, top performers, and your commentary.</div>
+          </div>
+        </button>
+        <button class="type-btn" onclick="openForm('news')">
+          <div class="type-btn-icon">📰</div>
+          <div>
+            <div class="type-btn-label">News Post</div>
+            <div class="type-btn-desc">League news, announcements, hot takes, trade rumors, historical musings — anything beyond the weekly report.</div>
+          </div>
+        </button>
+      </div>
+      <button class="type-cancel" onclick="closeTypeModal()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- COMPOSE BAR -->
+  <div class="compose-bar">
+    <div class="compose-bar-text"><strong>Commissioner's Desk</strong> — Publish a new weekly report or league news post</div>
+    <button class="compose-btn" onclick="openTypeModal()">+ New Post</button>
+  </div>
+
+  <!-- COMPOSE FORM: WEEKLY REPORT -->
+  <div class="compose-form" id="compose-form">
+    <div class="form-title">New Weekly Report</div>
+    <!-- CBS FETCH PANEL -->
+    <div class="cbs-fetch-panel">
+      <div class="cbs-fetch-header">
+        <span class="cbs-fetch-title">⚡ Auto-Fill from CBS</span>
+        <span class="cbs-fetch-sub">Pulls team scores &amp; standings directly from your league page</span>
+      </div>
+      <div class="cbs-fetch-controls">
+        <div class="form-row" style="margin:0;flex:0 0 auto;">
+          <label class="form-label">Season Year</label>
+          <select class="form-select" id="f-cbs-year" style="width:100px;">
+            <option value="2026">2026</option>
+            <option value="2025" selected>2025</option>
+          </select>
+        </div>
+        <div class="form-row" style="margin:0;flex:0 0 auto;">
+          <label class="form-label">Week</label>
+          <select class="form-select" id="f-cbs-week" style="width:80px;">
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8</option>
+            <option>9</option><option>10</option><option>11</option><option>12</option>
+            <option>13</option><option>14</option><option>15</option><option>16</option>
+            <option>17</option><option>18</option>
+          </select>
+        </div>
+        <button class="cbs-fetch-btn" onclick="fetchFromCBS()">Fetch Scores →</button>
+      </div>
+      <div class="cbs-fetch-status" id="cbs-status"></div>
+      <div id="cbs-import-panel" style="display:none;margin-top:1rem;border-top:1px solid rgba(255,255,255,0.15);padding-top:1rem;">
+        <label class="form-label" style="color:rgba(255,255,255,0.6);">Paste CBS data here after running the script on the CBS page:</label>
+        <div style="display:flex;gap:8px;align-items:flex-start;margin-top:4px;">
+          <textarea class="form-textarea" id="cbs-json-input" style="min-height:80px;font-family:monospace;font-size:12px;background:rgba(0,0,0,0.3);color:#7ddc7d;border-color:rgba(255,255,255,0.15);" placeholder='{"week":1,"scores":[...],"matchups":[]}'></textarea>
+          <button class="form-submit" style="white-space:nowrap;flex-shrink:0;" onclick="importCBSData()">Import →</button>
+        </div>
+      </div>
+    </div>
+    <div class="form-row-2">
+      <div class="form-row">
+        <label class="form-label">Week Number</label>
+        <select class="form-select" id="f-week">
+          <option>1</option><option>2</option><option>3</option><option>4</option>
+          <option>5</option><option>6</option><option>7</option><option>8</option>
+          <option>9</option><option>10</option><option>11</option><option>12</option>
+          <option>13</option><option>14</option><option>15</option><option>16</option>
+          <option>17</option><option>18</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Author</label>
+        <input class="form-input" id="f-author" placeholder="e.g. Bob" />
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Headline</label>
+      <input class="form-input" id="f-headline" placeholder="e.g. Dogs Bite Back as Pots Stay Hot" />
+    </div>
+    <div class="form-row">
+      <label class="form-label">Deck (short summary line)</label>
+      <input class="form-input" id="f-deck" placeholder="e.g. Gibbs goes off, Pots clinch playoff spot" />
+    </div>
+    <div class="form-row">
+      <label class="form-label">Report Body</label>
+      <textarea class="form-textarea" id="f-body" placeholder="Write the week's report here. Hit enter between paragraphs. The first paragraph will get the large drop cap automatically."></textarea>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Spiff Winner (optional)</label>
+      <input class="form-input" id="f-spiff" placeholder="e.g. Legends — Boswell's big kicking day" />
+    </div>
+    <div class="form-row">
+      <label class="form-label">Point Pool Standings <span id="pool-autofill-badge" style="display:none;background:var(--gold);color:var(--paper);font-size:9px;padding:2px 6px;margin-left:6px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">AUTO-FILLED ✓</span></label>
+      <textarea class="form-textarea" id="f-pool" style="min-height:120px;" placeholder="POT 417&#10;WIZ 403&#10;HBL 385"></textarea>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Week Scores <span id="scores-autofill-badge" style="display:none;background:var(--gold);color:var(--paper);font-size:9px;padding:2px 6px;margin-left:6px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">AUTO-FILLED ✓</span></label>
+      <textarea class="form-textarea" id="f-scores" style="min-height:140px;" placeholder="BDG 87.4&#10;BLU 72.1&#10;CLP 65.0&#10;CRK 58.2&#10;HBL 54.0&#10;POT 49.8&#10;LOF 44.2&#10;OOL 41.0&#10;SDG 38.6&#10;WIZ 33.1"></textarea>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Top 10 Players (paste as: NAME TEAM POINTS, one per line — add * at end if bench)</label>
+      <textarea class="form-textarea" id="f-players" style="min-height:160px;" placeholder="D. Gibbs BDG 31&#10;J. Taylor WIZ 26&#10;A. Rodgers CRK 25 *"></textarea>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Sign-off</label>
+      <input class="form-input" id="f-signoff" placeholder="e.g. Have a great week!" value="Have a great week!" />
+    </div>
+    <button class="form-submit" onclick="publishReport()">Publish Report</button>
+    <button class="form-cancel" onclick="closeAllForms()">Cancel</button>
+  </div>
+
+  <!-- COMPOSE FORM: NEWS POST -->
+  <div class="compose-form" id="compose-news-form">
+    <div class="form-title">New League News Post</div>
+    <div class="form-row-2">
+      <div class="form-row">
+        <label class="form-label">Author</label>
+        <input class="form-input" id="fn-author" placeholder="e.g. Bob" />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Category</label>
+        <select class="form-select" id="fn-category">
+          <option value="">— Select a category —</option>
+          <option value="MFL News">MFL News</option>
+          <option value="MFL Update">MFL Update</option>
+          <option value="Announcement">Announcement</option>
+          <option value="From the Commish">From the Commish</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Headline</label>
+      <input class="form-input" id="fn-headline" placeholder="e.g. Trade Deadline — What to Watch" />
+    </div>
+    <div class="form-row">
+      <label class="form-label">Deck (short teaser line, optional)</label>
+      <input class="form-input" id="fn-deck" placeholder="e.g. A look at the market as the deadline approaches" />
+    </div>
+    <div class="form-row">
+      <label class="form-label">Body</label>
+      <textarea class="form-textarea" id="fn-body" style="min-height:260px;" placeholder="Write your post here. Separate paragraphs with a blank line. The first paragraph gets the drop cap treatment."></textarea>
+    </div>
+    <button class="form-submit" onclick="publishNewsPost()">Publish Post</button>
+    <button class="form-cancel" onclick="closeAllForms()">Cancel</button>
+  </div>
+
+  <!-- CONTENT AREA -->
+  <div id="content-area"></div>
+
+</div>
+
+<script>
+/* ════════════════════════════════════════════
+   REPORT DATA — All 17 reports from 2025 season
+════════════════════════════════════════════ */
+const REPORTS = [
+  {
+    week: 1,
+    author: 'Bob',
+    headline: 'Low-Scoring Opener Sets Stage for New Format',
+    deck: 'Allen\'s 29-point haul leads Blue Cheese as six teams finish under 31 — but the new dual-win format keeps everyone in the hunt.',
+    spiff: 'Legends — Boswell\'s big kicker day in the Meadowlands',
+    body: `Welcome back to football! Week 1 has become almost as wacky as week 18. Even though you have more lineup certainty, most of the teams are still shaking off the rust like it's extended pre-season. And aside from the classic Bills-Ravens game, it was pretty sloppy.
+
+This was reflected in an atypically low-scoring MFL week where six teams finished with fewer than 31 points. But I think the new format is going to keep this season interesting.
+
+The week 1 bright spots were Bills and Ravens — Josh Allen's 29 points for the Blue — including the MFL's first passing yardage bonus — were more than half the league's teams scored. Derrick Henry (Legends) and Lamar Jackson (Wizards) combined for 36.
+
+Unsurprisingly the Legends-Cheese-Wiz were top 3 this week, picking up two wins apiece in the new format. The Legends tacked on a big kicker day from Boswell in the swamps of Jersey to take the season's first spiff. Despite our new rules, kickers are still healthy contributors.
+
+Huterball and Clapperz pick up top-half point wins despite head-to-head losses, while Big Dogs and Crankees grab cheap wins. Luckies, Pots and Slimeys remain on the schneid.
+
+A good start to the season.`,
+    pool: [],
+    signoff: 'Have a great week!'
+  },
+  {
+    week: 2,
+    author: 'Bob',
+    headline: 'Injured QBs Shape the Week as Crankees Edge Wizards',
+    deck: 'Daniels goes down, Burrow lost for Huterball — but Cranks and Big Dogs emerge strong as Slimeys finally get off the schneid.',
+    spiff: null,
+    body: `Injured QBs and some big guns not firing shape the week 2 report.
+
+In an early season top of the ticket matchup, the Crankees (3-1) get past the Wizards (3-1) 73-56 thanks to Aubrey's big leg complementing nice days from Cook and Chase, offsetting 20 from Lamar. Cranks could have tacked on some more with Goff, but they'll get a look at him as Daniels goes down. Tough L for the Wiz with the second high score this week, but they sit atop the very early point pool standings with Cranks right behind. Both teams strong out of the gate.
+
+The Big Dogs (3-1) pick up a pair of Ws with a 54-33 win over Les Bleus (2-2) behind 21 from the Sun God, and a little help from a Josh Allen goose egg.
+
+The Pots (2-2) even up their record 52-23 over the Legends (2-2) who get nothing from the King.
+
+Sharader kicks Huterball (3-1) to victory 41-31 over the Clapperz (1-3) who get no help from Jeanty and Jefferson. But costly as Huterball loses Burrow.
+
+Baker doesn't get enough for the Luckies (0-4) to get off the schneid. Slimeys (1-3) get their first W 38-35.
+
+Hurt QBs and the knock-on effect for those offenses throw us an early curveball. It's never dull.`,
+    pool: [],
+    signoff: 'Have a great week!'
+  },
+  {
+    week: 4,
+    author: 'Bob',
+    headline: 'Clapperz Clap, Dogs Bark, Hutes Hoot in Week 4 Barnburner',
+    deck: 'Jeanty arrives with a 93-point Clapperz performance as Huterball climbs to 7-1 atop the point pool standings.',
+    spiff: null,
+    body: `Welcome back to MFL scoring! Week 4 made some noise with Clapperz clapping, Dogs barking, Hutes hooting, and more.
+
+The game of the year candidate had the Clapperz (3-5) pile on 93 to actually breeze to victory over a 71 point Slimeys (2-6) performance, as we welcome Jeanty to the show.
+
+The 7-1, point pool leading Huterball squad welcomes O. Hampton and knocks back the Pots (4-4) 72-48. The Pots pick up the last points win of the week but were scared off the Sunday night sister-kisser and left a pile of points behind.
+
+The Big Dogs (7-1) welcome back Pat Mahomes in a walk over the Unluckies (1-7) who lose Hill to a gruesome leg injury. 58-28 Doggies.
+
+Cheesies (4-4) over the Wiz (4-4) 47-24, but wherefore art thou Romeo? Cruel loss of Neighbors for Big Blue and Blue Cheese.
+
+A 2-pointer from Ertz was the difference in the Crankees (4-4) 32-30 snoozer over the Legends (4-4).
+
+With all these injuries, maybe a trade market this year?`,
+    pool: [['HBL',199],['CLP',186],['BDG',182],['LOF',180],['BLU',171],['WIZ',168],['CRK',162],['POT',159],['SDG',157],['OOL',131]],
+    signoff: 'Have a great week!'
+  },
+  {
+    week: 5,
+    author: 'Bob',
+    headline: 'Wiz Answer the Bell; Luckies Find Their Legs',
+    deck: 'Justin Fields and Rico Dowdle deliver three TDs as Wizards cruise. Out of Luck grab a pair of wins to claw back.',
+    spiff: 'Wizards — three TDs from JT in a laugher over Clapperz',
+    body: `Are the Wiz having one of those years? 31 combined points from Justin Fields and Rico Dowdle this week, add to 3 tuddies from JT give them the spiff in a laugher over the Clapperz 66-17.
+
+Slimy Dogs can't get Etienne over the goal line last night and fall short to the Pots 58-56 in the game of the week.
+
+The Luckies get off the mat with a pair of W's this week; 57-22 over Le Fromage Bleu who leave a lot of rushing points on the bench.
+
+The Legends pick up the last top-half win this week as they edge Huterball who loses at QB whack-a-mole this week, but hangs on to the top of the point pool. 49-45 Wisterians.
+
+Mahomes gets picked on the goal line stopping the Big Dogs' comeback. Chase pays a dividend for the Crankees, 39-38.
+
+Looking for some pride of the Yankees tonight, as hockey season beckons.`,
+    pool: [['HBL',244],['WIZ',234],['LOF',229],['BDG',220],['POT',217],['SDG',213],['CLP',203],['CRK',201],['BLU',193],['OOL',188]],
+    signoff: 'Have a great week!'
+  },
+  {
+    week: 6,
+    author: 'Bob',
+    headline: 'Jackpots Surge to 8-4; League Wide Open at One-Third Mark',
+    deck: 'Pots pile on for the spiff and seize the point pool lead. AFC division leaders: Patriots, Colts, Steelers, Chargers — who\'s best?',
+    spiff: 'Jackpots — nearly drew a straight-flush this week',
+    body: `We're a third of the way through, and the league — and the MFL — is wide open. Injuries are always the NFL X-factor in a game of attrition, but this season seems particularly disrupted.
+
+Jackpots (8-4) 76, Blue Cheese (4-8) 17 — Pots pile on for the spiff and the top of the point pool, nearly drawing a straight-flush this week. Blue Cheese and Bills Mafia in some disarray.
+
+Wiz (8-4) 58, Huterball (7-5) 38 — The Wiz keep pushing the right buttons while the red crosses keep popping up. Conversely, the Hutes leave a big running game on the bench.
+
+Crankees (7-5) 55, Out of Luck (3-8) 42 — Double-nickle for the Cranks with plenty left in reserve.
+
+Clapperz (5-7) 54, Big Dogs (7-5) 30 — Achane was the A-train for the Clapperz.
+
+Slimy Dogs (5-7) 49, Legends (6-6) 26 — Coo-coo-ka-choo Mr. Robinson.`,
+    pool: [['POT',293],['WIZ',292],['HUT',282],['SDG',262],['CLP',257],['CRK',256],['LOF',255],['BDG',250],['OOL',230],['BLU',210]],
+    signoff: 'Have a great week!'
+  },
+  {
+    week: 7,
+    author: 'Bob',
+    headline: 'Star Wars Scoring Week — The 21 Club Returns',
+    deck: 'Average score hits 56 as Gibbs, Nix, Taylor and a cast of stars light up the board. No cheap wins this week.',
+    spiff: 'Big Dogs — Gibbs hits the turbo button for a 91-point week',
+    body: `A star wars scoring week in the MFL with several big performances. There were no cheap wins this week. The average score was 56, and each game netted two wins for the victor.
+
+Gibbs hits the turbo button last night to power the Dogs (9-5) past the Wisterians (6-8) 91-44, and to the spiff.
+
+The Jackpots (10-4) are first to ten wins behind four double-digit scorers to knock back the Wiz (8-6) 75-51.
+
+Cheese (6-8) get a Chiefs D shutout to help get by the Crankees (7-7) 61-43.
+
+JSN on MNF boosts the Slimeys (7-7) past Huterball (7-7) 57-52.
+
+Clapperz (7-7) Nix the Very Unluckies (3-11) 54-33 — I mean, you'd sign on for OOL's backfield of Baker-Kyrie-Saquon. Lots of football to go.
+
+I expect a cool-off next week with many teams on bye. Two words in closing: Shohei Ohtani.`,
+    pool: [['POT',368],['WIZ',343],['BDG',341],['HUT',334],['SDG',319],['CLP',311],['CRK',299],['LOF',299],['BLU',271],['OOL',263]],
+    club: [['Gibbs','31','Big Dogs'],['Nix','28','Clapperz'],['Taylor','26','Wiz'],['Stafford','25','Slimey Dogs'],['Rodgers (bench)','25','Crankees'],['McCaffrey','24','Pots'],['Dart (bench)','22','Huterball'],['Adams','21','Big Dogs'],['Aubrey','21','Crankees'],['Judkins','21','Blue Cheese']],
+    signoff: 'Have a great week.'
+  },
+  {
+    week: 8,
+    author: 'Bob',
+    headline: 'Legends Make a Leap; Pots Sit Atop Four-Team Playoff Race',
+    deck: 'Franklin and Boswell backstop Wisterian big guns. Kelce edges out the Crankees in the MFL game of the week, 62-61.',
+    spiff: 'Legends — Franklin and Boswell backstop big guns',
+    body: `As we get ready to change the clocks and look at November, we are 8 weeks in — about halfway to the point pool. Five regular season weeks remaining before the post season tournament. It's all still wide open.
+
+This week the Legends make a leap with Franklin and Boswell backstopping their big guns to take the spiff 79-44 over the Cheesies singing the blues and looking for trade partners.
+
+The omnipresent Kelce pushes the Clapperz by the Crankees — who had Cook cooking — in the MFL game of the week. 62-61 Clownies.
+
+Wizards get another big day from MVP-to-date Jonathan Taylor to curb stomp the Andy Dalton led Slimeys — maybe they should take that call from the Blue Cheese.
+
+Huterball outlasts the Big Dogs 51-42.
+
+Pots stay atop the standings 49-37 over cellar dwelling OOL.
+
+Playoff race for the top four has Pots at 11-5 and Huterball, Big Dogs and Clapperz at 9-7.`,
+    pool: [['POT',417],['WIZ',403],['HBL',385],['BDG',383],['LOF',378],['CLP',373],['CRK',360],['SDG',337],['BLU',315],['OOL',300]],
+    signoff: 'Hope you all get the good candy in your trick or treat endeavors.'
+  },
+  {
+    week: 9,
+    author: 'Bob',
+    headline: 'Out of Luck Gets Off the Mat; Jackpots Build Daylight',
+    deck: 'OOL earns the spiff and climbs out of the basement. Jackpots at 13-5 with a 35-point point pool cushion.',
+    spiff: 'Out of Luck — climbs out of the basement 65-21 over Huterball',
+    body: `Kudos to Out of Luck (5-13) who gets off the mat for the spiff and climbs out of the basement this week, 65-21 over Huterball (9-9), with contributions from many in the lineup. Maybe primed for a second-half run?
+
+Another strong week for the Jackpots (13-5) who are putting some daylight between them and the pack. 63-27 over the Crankees (8-10). Could have been more but for Caleb on the bench. Nonetheless they now have a 35 point cushion in the pool.
+
+The Legends (10-8) ride old man Flacco to hold off the Wiz (11-7) 43-42. Big day for Bowers left for naught, but the Wiz takes a top-half win.
+
+The Cheese (8-10) outdo the Crankees (9-9) 44-31.
+
+And a game truly for the Dogs, Bigs (10-8) over Slimeys (7-11) 31-29.`,
+    pool: [['POT',480],['WIZ',445],['LOF',421],['BDG',414],['HBL',406],['CLP',404],['CRK',387],['SDG',366],['OOL',365],['BLU',359]],
+    signoff: 'Cheers!'
+  },
+  {
+    week: 11,
+    author: 'Bob',
+    headline: 'Blue Cheese Take the Spiff; Point Pool Bundles Behind Pots',
+    deck: 'Henderson and Allen combine for a 67-32 statement. Two weeks left — all but OOL still in playoff contention.',
+    spiff: 'Blue Cheese — Henderson\'s three Thursday TDs plus Allen\'s 41-point encore',
+    body: `For the most part your "guys" either had a big week 11 to push you to victory, or they went onto the milk carton, dragging you under.
+
+Blue Cheese take the spiff with three Thursday night TDs from Hendu, and an obscene encore from Josh Allen with 41. 67-32 over the Big Dogs.
+
+The Pots zoom past the Legends 61-52 in the game of the week, thanks to a big night from Prescott and Pickens.
+
+Slimey Dogs outlast the Luckies 61-46, but OOL snags a top 5 win thanks to...
+
+Two stinkers as Crankees and Huterball take the money and run while the Winged Foot contingent were no-shows. Crank 29 Wiz 16, Hute 21 Clap 5.
+
+With two weeks left in the regular season, the point pool behind the Pots is bundled up — great news for a competitive finish.
+
+A Final reminder, though this is more ceremonial, the trade deadline is Thanksgiving day.`,
+    pool: [['POT',591],['WIZ',539],['BDG',519],['LOF',507],['SDG',479],['CRK',461],['BLU',457],['HBL',457],['CLP',453],['OOL',453]],
+    signoff: 'I\'ll leave you with words from the NFL bard, John Facenda — "And hopes that were high in the heat of September can wilt and die in the chill of November." Have a great week!'
+  },
+  {
+    week: 12,
+    author: 'Bob',
+    headline: 'Big Dogs Franchise Record 97 Points; Pots Clinch Playoff Spot',
+    deck: 'Gibbs erupts for 38 as Dogs torch the Wizards. Four teams fight for three remaining championship spots going into the finale.',
+    spiff: 'Big Dogs — Pats punt return plus a franchise record outburst',
+    body: `We've arrived at Turkey week! Trade deadline and the final week of the regular season with your cranberry sauce.
+
+The Big Dogs tear one off with a franchise record outburst behind Gibbs' 38-point day, 97-22 over the Wizards.
+
+You can't spell points without Pots. Winville keeps rolling; 66-49 over the Clapperz. The Pots are well ahead of the point pool and have clinched a spot in the big dance.
+
+22 from JSN powers the Slimey Dogs to a 62-26 win over the Cheese as Allen fades to zero.
+
+The Legends squash Out of Luck 35-12 and grab an important pair of W's.
+
+The Crankees nip Huterball 28-26 to steal a win.
+
+Going into the final week, four teams are fighting for three spots in the big dance: Pots (18-6, clinched), Big Dogs (14-10), Legends (13-11), Slimy Dogs (13-11), Wizards (13-11). Clapperz, Crankees, and Blue Cheese at 11-13 are mathematically alive, but a lot would need to happen.
+
+Good luck to all and a very happy Thanksgiving to you and your families!`,
+    pool: [['POT',657],['BDG',616],['WIZ',561],['LOF',542],['SDG',541],['CLP',502],['CRK',489],['BLU',483],['HBL',483],['OOL',465]],
+    signoff: 'Good luck to all and a very happy Thanksgiving!'
+  },
+  {
+    week: 13,
+    author: 'Bob',
+    headline: 'Legends, Dogs, Slimeys & Pots Advance; Blue Cheese Sneak In',
+    deck: 'The regular season concludes. Jackpots finish at 20 wins. Blue Cheese grab a tiebreaker spot as Lamar sabotages the Wizards.',
+    spiff: 'Big Dogs — Pats punt return, only part of the Giants special teams debacle',
+    body: `I hope everyone had a wonderful Thanksgiving. Lots to go through.
+
+Big Dogs get the spiff thanks to Pats punt return last night — only one part of the Giants special teams debacle.
+
+Dogs, Pots, Slimey Dogs and Legends take care of business. They pick up two wins apiece, and advance to the championship tournament.
+
+Blue Cheese grab a cheapie on a 27-27 tiebreaker win over the Wizards — as Lamar sabotages the Wiz' season. There may be a fantasy owners support group organizing.
+
+The Clapperz get a top-5 win in a close loss to the Slimeys.
+
+Final regular season standings: Jackpots 20 wins ($400), Big Dogs 16 ($320), Legends 15 ($300), Slimy Dogs 15 ($300), Wizards 13 ($260), Clapperz 12 ($240), Blue Cheese 12 ($240), Crankees 11 ($220), Huterball 10 ($200), Out of Luck 6 ($120).
+
+Point pool goes through week 17, and week 18 is an all-team derby. For the NIT group it's $25 per win — run the table and pick up $200 plus spiffs.`,
+    pool: [['POT',716],['BDG',683],['LOF',591],['SDG',589],['WIZ',588],['CLP',549],['CRK',532],['HBL',522],['BLU',510],['OOL',507]],
+    signoff: 'Good luck to all!'
+  },
+  {
+    week: 14,
+    author: 'Bob',
+    headline: 'Legends Upset Top-Seeded Pots; Slimeys Sit Pretty at 2-0',
+    deck: 'Burrow, Watson and the Seahawks D lead an opening round stunner. OOL laughs past Clapperz in the NIT.',
+    spiff: 'Legends — Burrow, Watson and Seahawks D in upset of the #1 seed',
+    body: `The Legends waiver wire investments are paying out in post season. Joe Burrow, Christian Watson and the Seahawks D lead the Wisterians to an opening round 71-48 upset of the top-seeded Pots, and the weekly spiff.
+
+Over in the dog pound, the Slimey Dogs come from behind to drop the Bigs 53-48.
+
+In the NIT: Blue Cheese were truckin' up in Buffalo, with a shootout 62-59 over the Wiz as Allen and co. ring up the stat sheet. The Wiz pick up a W in consolation.
+
+The Luckys pick up a pair of W's in a 54-20 laugher over the Clapperz.
+
+The Crankees get the snoozer win 32-16 over Huterball who have hit the bottom.`,
+    pool: [['POT',764],['BDG',731],['LOF',662],['WIZ',647],['SDG',642],['BLU',572],['CLP',569],['CRK',564],['OOL',561],['HBL',538]],
+    signoff: 'Have a great week!'
+  },
+  {
+    week: 15,
+    author: 'Bob',
+    headline: 'Crankees Cruise; Slimeys Dispatch Pots to Go 2-0 in Tournament',
+    deck: 'Etienne leaves cleat marks all over the Jets as Slimeys go 2-0. NIT heats up as Cheese and Wiz trade blows.',
+    spiff: 'Blue Cheese — Henderson\'s big day in 80-56 win over Huterball',
+    body: `Reg tells me all the action is in the NIT, and he wasn't lying.
+
+Arthur Smith clearly did not want the Crankees to get the spiff this week as Warren watches two of his Tight End teammates pick up rushing TDs last night. However the rest of the Cranks' lineup pile on and they pick up a pair of wins 74-26 over the Clapperz.
+
+The Cheese hold onto the spiff behind Henderson's big day. 80-56 over Huterball, who take a top-3 W.
+
+McBride helps the Wiz to a 46-36 win over the Luckys.
+
+In the big dance, the Slimy Dogs sit pretty at 2-0 as they dispatch the Pots 71-29 as Etienne leaves cleat marks all over the Jets.
+
+For Big Dogs-Legends, come for the marquee Mahomes-Burrow shootout, stay for the Myers-Fairbairn kicking display. 46-39 Dogs.
+
+The Point Pool has two weeks left. Can the Blue Cheese stay hot and get in?`,
+    pool: [['POT',793],['BDG',777],['SDG',713],['LOF',701],['WIZ',693],['BLU',652],['CRK',638],['OOL',597],['CLP',595],['HBL',594]],
+    signoff: 'Have a great week!'
+  },
+  {
+    week: 16,
+    author: 'Bob',
+    headline: 'Legends-Slimeys Set for Winner-Take-All Super Bowl',
+    deck: 'Legends pick up their 5th spiff and hand the Slimeys their first loss. Luckies surge with Purdy. One week left — it\'s all on the line.',
+    spiff: 'Legends — MFL-best 5th spiff of the season in 73-62 win',
+    body: `Oh boy, there's only two weeks left in the year, in the season and in the MFL. In the famous words of the hapless magician in Frosty the Snowman, "Busy, busy, busy."
+
+There's some drama at the top of the standings, but everyone has two more chances to pick up some stocking-stuffers.
+
+Let's start with the Super Bowl. It's a rematch of this week's slugfest between the Legends and the Slimey Dogs. The Legends picked up their MFL best 5th spiff of the season in a 73-62 win that handed the Slimeys their first tournament loss. It sets up a winner-take-all week 17 Super Bowl. And to raise the stakes further, the teams are separated by only one point for third place in the point pool. Big game!
+
+The consolation match will be Pots vs. Big Dogs, who are #1 vs #2 in the point pool. Going into last night the Dogs had actually passed the Pots in points, until McCaffrey re-set the order. The Pots currently hold an 18 point advantage going into a big finale.
+
+Monday night swung the NIT, as a big game from Purdy propels the Luckies to a pair of come-from-behind wins, 55-51 over the Crankees who are left with only coal in their week 16 stockings.
+
+The Clapperz get a big week from Jeanty in a two-win laugher over Les Fromages in a bad-Josh week, 58-20.
+
+The Wiz overcome the continued Lamar Jackson season assassination to get the last pair of wins behind 24 for Puka. 53-39 over Huterball who is in mock-draft season.
+
+Take a look at the website for a new league logo with some Latin flair, courtesy of Ray. Wishing a very Merry Christmas to the MFL brotherhood and your families.`,
+    pool: [['POT',837],['BDG',819],['SDG',775],['LOF',774],['WIZ',746],['CRK',689],['BLU',672],['CLP',653],['OOL',652],['HBL',633]],
+    signoff: 'Cheers!'
+  },
+  {
+    week: 17,
+    author: 'Bob',
+    headline: 'Legends of the Fall — 2025 MFL Champions',
+    deck: 'King Henry erupts for 38 as the Legends defeat the Slimey Dogs 75-49 in the Super Bowl. Big Dogs claim the point pool by 2 points.',
+    spiff: 'Legends — 6th and final spiff of the season in a championship-clinching performance',
+    body: `Congratulations to the Legends of the Fall, 2025 MFL Champions!
+
+King Henry puts yet another exclamation point on the MFL playoffs with a 38-point barrage, and the Legends defeat the Slimey Dogs in the Super Bowl 75-49. The Legends pick up their 6th spiff and finish 3rd in the point pool to round out their 2025 trophy case.
+
+Bijan Robinson made it interesting last night for the Slimey Dogs with an electric 31-point show, but was too little too late for the Dogs, who finish as championship tournament runner-up and fourth in the point pool.
+
+The Big Dogs overtake the Jackpots 52-32 in the consolation game. And after 17 weeks, in a veritable photo finish, take the point pool by 2 points.
+
+The Wizards — who I thought had the best team until the Lamar implosion — claim the final point pool spot and their 5th and 6th NIT win, 58-43 over the Crankees, who pick up a top-half win.
+
+Huterball gets two wins 52-35 over the Clapperz. Out of Luck outlasts Blue Cheese 37-32 to grab the final NIT win.
+
+We'll finish the season with a week 18 Derby. No head-to-head matches, but everyone enters a lineup, and the top 5 scoring teams pick up $50 wins, plus the high score gets a spiff. Wishing everyone a happy and healthy 2026.`,
+    pool: [['BDG',871],['POT',869],['LOF',849],['SDG',824],['WIZ',804],['CRK',732],['BLU',704],['OOL',689],['CLP',688],['HBL',685]],
+    signoff: 'Cheers!'
+  },
+  {
+    week: 18,
+    author: 'Bob',
+    headline: 'Big Dogs Snag Final Spiff as MFL 2026 Draws to a Close',
+    deck: 'A batshit crazy NFL finish. Four teams in the black. Legends ($950 net) and Big Dogs ($870 net) top the final money list. See you in 2026.',
+    spiff: 'Big Dogs — eking out the last spiff of the season',
+    body: `What a batshit crazy finish to the season last night. The NFL continues to be the ultimate reality programming. And the Ravens may be its own spinoff show this off-season.
+
+With that, we conclude another MFL season — thanks to everyone for the support.
+
+The week 18 Derby went down to the wire as well, with the Big Dogs eking out the last spiff. Big Dogs 50, Blue Cheese 49, Out of Luck 49, Legends 44, Jackpots 34.
+
+The complete final standings tell the full story. Four teams in the black: Legends of the Fall ($950 net), Big Dogs ($870 net), Jackpots ($350 net), and Slimy Dogs ($150 net).
+
+I think Out of Luck needs an off-season re-branding. Despite having essentially the same number of points as Blue Cheese, they have only half the wins having allowed, by far, the most points in the regular season. We tried to take some of that randomness out with the new format, but you can't avoid the rub of the green.
+
+With a late Labor Day this year, MFL draft projects to be Wednesday September 9, 2026 — but that's up for consideration. I hope we can get together for a quorum sooner than that, but we'll be in touch periodically.
+
+Happy new year to all, and enjoy the playoffs!`,
+    pool: [],
+    signoff: 'Cheers, Bob'
+  }
+];
+
+let currentWeek = 17;
+let userReports = [];
+
+/* ════════════════════════════════════════════
+   RENDER
+════════════════════════════════════════════ */
+function allReports() {
+  return [...REPORTS, ...userReports].sort((a,b)=>b.week-a.week);
+}
+
+function showWeek(week, btn) {
+  document.querySelectorAll('.week-tab').forEach(t=>t.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  currentWeek = week;
+
+  if (week === 0) {
+    renderArchiveGrid();
+  } else {
+    const report = allReports().find(r=>r.week===week);
+    if (report) renderReport(report);
+    else renderEmpty(week);
+  }
+}
+
+function renderArchiveGrid() {
+  const posts = allPosts();
+  document.getElementById('masthead-date').textContent = 'MFL Gazette — Full Archive';
+  document.getElementById('content-area').innerHTML = `
+    <div class="section-rule"><span class="section-rule-text">MFL Gazette · All Issues &amp; Posts</span></div>
+    <div class="archive-grid">
+      ${posts.map(p => {
+        if (p.type === 'news') {
+          return `
+            <div class="archive-card news-card" onclick="showNewsPost('${p.id}')">
+              <div class="archive-card-week" style="color:var(--red);">📰 ${p.category || 'League News'} · ${p.date} · By ${p.author}</div>
+              <div class="archive-card-headline">${p.headline}</div>
+              <div class="archive-card-deck">${p.deck || ''}</div>
+            </div>`;
+        } else {
+          return `
+            <div class="archive-card" onclick="showWeek(${p.week}, null)">
+              <div class="archive-card-week">📋 Week ${p.week} Report · By ${p.author}</div>
+              <div class="archive-card-headline">${p.headline}</div>
+              <div class="archive-card-deck">${p.deck}</div>
+            </div>`;
+        }
+      }).join('')}
+    </div>
+  `;
+}
+
+function renderEmpty(week) {
+  document.getElementById('content-area').innerHTML = `
+    <div style="text-align:center;padding:3rem;color:var(--ink4);">
+      <div style="font-family:'Playfair Display',serif;font-size:24px;margin-bottom:8px;">No report filed for Week ${week}</div>
+      <div style="font-size:14px;">Use the "+ New Post" button above to publish one.</div>
+    </div>
+  `;
+}
+
+/* ════════════════════════════════════════════
+   DASHBOARD DATA — scores, players, standings per week
+════════════════════════════════════════════ */
+const TEAM_ABBR = {
+  'BDG':'Big Dogs','BLU':'Blue Cheese','CLP':'Clapperz',
+  'CRK':'Crankees','HBL':'Huterball','POT':'Jackpots',
+  'LOF':'Legends','OOL':'Out of Luck','SDG':'Slimey Dogs','WIZ':'Wizards'
+};
+
+const GAZETTE_SCHEDULE = {
+  // 2026 Regular Season
+  1:  [{h:'BDG',a:'HBL',hp:0,ap:0},{h:'OOL',a:'BLU',hp:0,ap:0},{h:'POT',a:'CLP',hp:0,ap:0},{h:'LOF',a:'CRK',hp:0,ap:0},{h:'SDG',a:'WIZ',hp:0,ap:0}],
+  2:  [{h:'POT',a:'BDG',hp:0,ap:0},{h:'WIZ',a:'OOL',hp:0,ap:0},{h:'CLP',a:'HBL',hp:0,ap:0},{h:'BLU',a:'LOF',hp:0,ap:0},{h:'CRK',a:'SDG',hp:0,ap:0}],
+  3:  [{h:'OOL',a:'BDG',hp:0,ap:0},{h:'HBL',a:'SDG',hp:0,ap:0},{h:'LOF',a:'CLP',hp:0,ap:0},{h:'CRK',a:'POT',hp:0,ap:0},{h:'WIZ',a:'BLU',hp:0,ap:0}],
+  4:  [{h:'BDG',a:'SDG',hp:0,ap:0},{h:'BLU',a:'POT',hp:0,ap:0},{h:'CLP',a:'OOL',hp:0,ap:0},{h:'HBL',a:'CRK',hp:0,ap:0},{h:'LOF',a:'WIZ',hp:0,ap:0}],
+  5:  [{h:'BDG',a:'CRK',hp:0,ap:0},{h:'WIZ',a:'POT',hp:0,ap:0},{h:'SDG',a:'CLP',hp:0,ap:0},{h:'BLU',a:'HBL',hp:0,ap:0},{h:'OOL',a:'LOF',hp:0,ap:0}],
+  6:  [{h:'CLP',a:'BDG',hp:0,ap:0},{h:'POT',a:'OOL',hp:0,ap:0},{h:'CRK',a:'WIZ',hp:0,ap:0},{h:'SDG',a:'BLU',hp:0,ap:0},{h:'HBL',a:'LOF',hp:0,ap:0}],
+  7:  [{h:'BLU',a:'BDG',hp:0,ap:0},{h:'CRK',a:'CLP',hp:0,ap:0},{h:'WIZ',a:'HBL',hp:0,ap:0},{h:'SDG',a:'OOL',hp:0,ap:0},{h:'LOF',a:'POT',hp:0,ap:0}],
+  8:  [{h:'BDG',a:'WIZ',hp:0,ap:0},{h:'OOL',a:'CRK',hp:0,ap:0},{h:'CLP',a:'BLU',hp:0,ap:0},{h:'HBL',a:'POT',hp:0,ap:0},{h:'LOF',a:'SDG',hp:0,ap:0}],
+  9:  [{h:'BDG',a:'LOF',hp:0,ap:0},{h:'POT',a:'SDG',hp:0,ap:0},{h:'CRK',a:'BLU',hp:0,ap:0},{h:'CLP',a:'WIZ',hp:0,ap:0},{h:'HBL',a:'OOL',hp:0,ap:0}],
+  10: [{h:'HBL',a:'BDG',hp:0,ap:0},{h:'BLU',a:'OOL',hp:0,ap:0},{h:'POT',a:'CLP',hp:0,ap:0},{h:'CRK',a:'LOF',hp:0,ap:0},{h:'WIZ',a:'SDG',hp:0,ap:0}],
+  11: [{h:'BDG',a:'POT',hp:0,ap:0},{h:'OOL',a:'WIZ',hp:0,ap:0},{h:'CLP',a:'HBL',hp:0,ap:0},{h:'LOF',a:'BLU',hp:0,ap:0},{h:'SDG',a:'CRK',hp:0,ap:0}],
+  12: [{h:'OOL',a:'BDG',hp:0,ap:0},{h:'SDG',a:'HBL',hp:0,ap:0},{h:'CLP',a:'LOF',hp:0,ap:0},{h:'POT',a:'CRK',hp:0,ap:0},{h:'BLU',a:'WIZ',hp:0,ap:0}],
+  13: [{h:'SDG',a:'BDG',hp:0,ap:0},{h:'POT',a:'BLU',hp:0,ap:0},{h:'OOL',a:'CLP',hp:0,ap:0},{h:'CRK',a:'HBL',hp:0,ap:0},{h:'WIZ',a:'LOF',hp:0,ap:0}],
+  14: [], 15: [], 16: [], 17: [], 18: 'derby'
+};
+
+const WEEK_DATA = {
+  1: {
+    scores: [
+      {team:'BLU',pts:52.0},{team:'LOF',pts:48.0},{team:'WIZ',pts:44.0},
+      {team:'HBL',pts:38.0},{team:'CLP',pts:33.0},{team:'CRK',pts:30.0},
+      {team:'BDG',pts:29.0},{team:'SDG',pts:26.0},{team:'POT',pts:24.0},{team:'OOL',pts:18.0}
+    ],
+    players: [
+      {name:'Josh Allen',team:'BLU',pts:29,bench:false},
+      {name:'Derrick Henry',team:'LOF',pts:22,bench:false},
+      {name:'Lamar Jackson',team:'WIZ',pts:14,bench:false},
+      {name:'C. Boswell',team:'LOF',pts:12,bench:false},
+      {name:'K. Sharader',team:'HBL',pts:11,bench:false},
+      {name:'D. Adams',team:'BDG',pts:10,bench:false},
+      {name:'J. Chase',team:'CRK',pts:9,bench:false},
+      {name:'T. Kelce',team:'CLP',pts:8,bench:false},
+      {name:'B. Robinson',team:'SDG',pts:7,bench:false},
+      {name:'C. McCaffrey',team:'POT',pts:7,bench:false}
+    ],
+    wins:  {BDG:1,BLU:2,CLP:1,CRK:1,HBL:1,POT:0,LOF:2,OOL:0,SDG:0,WIZ:2},
+    cumPts:{BDG:29,BLU:52,CLP:33,CRK:30,HBL:38,POT:24,LOF:48,OOL:18,SDG:26,WIZ:44}
+  },
+  2: {
+    scores: [
+      {team:'CRK',pts:73.0},{team:'BDG',pts:54.0},{team:'HBL',pts:41.0},
+      {team:'WIZ',pts:56.0},{team:'POT',pts:52.0},{team:'SDG',pts:38.0},
+      {team:'BLU',pts:33.0},{team:'CLP',pts:31.0},{team:'LOF',pts:45.0},{team:'OOL',pts:28.0}
+    ],
+    players: [
+      {name:'J. Chase',team:'CRK',pts:24,bench:false},
+      {name:'Lamar Jackson',team:'WIZ',pts:20,bench:false},
+      {name:'D. Cook',team:'CRK',pts:18,bench:false},
+      {name:'P. Aubrey',team:'CRK',pts:17,bench:false},
+      {name:'Josh Allen',team:'BLU',pts:0,bench:false},
+      {name:'Derrick Henry',team:'LOF',pts:0,bench:false},
+      {name:'C. McCaffrey',team:'POT',pts:16,bench:false},
+      {name:'K. Sharader',team:'HBL',pts:15,bench:false},
+      {name:'J. Ertz',team:'SDG',pts:12,bench:false},
+      {name:'N. Collins',team:'BDG',pts:21,bench:false}
+    ],
+    wins:  {BDG:3,BLU:2,CLP:1,CRK:3,HBL:3,POT:2,LOF:2,OOL:0,SDG:1,WIZ:3},
+    cumPts:{BDG:83,BLU:85,CLP:64,CRK:103,HBL:79,POT:76,LOF:93,OOL:46,SDG:64,WIZ:100}
+  },
+  4: {
+    scores: [
+      {team:'CLP',pts:93.0},{team:'HBL',pts:72.0},{team:'BDG',pts:58.0},
+      {team:'SDG',pts:71.0},{team:'POT',pts:48.0},{team:'BLU',pts:47.0},
+      {team:'WIZ',pts:24.0},{team:'LOF',pts:41.0},{team:'CRK',pts:32.0},{team:'OOL',pts:28.0}
+    ],
+    players: [
+      {name:'B. Jeanty',team:'CLP',pts:34,bench:false},
+      {name:'O. Hampton',team:'HBL',pts:22,bench:false},
+      {name:'P. Mahomes',team:'BDG',pts:21,bench:false},
+      {name:'J. Ertz',team:'CRK',pts:14,bench:false},
+      {name:'J. Taylor',team:'WIZ',pts:13,bench:false},
+      {name:'Derrick Henry',team:'LOF',pts:13,bench:false},
+      {name:'J. Judkins',team:'BLU',pts:12,bench:false},
+      {name:'T. Hill',team:'OOL',pts:0,bench:false},
+      {name:'R. Neighbors',team:'BLU',pts:0,bench:false},
+      {name:'D. Adams',team:'BDG',pts:11,bench:false}
+    ],
+    wins:  {BDG:7,BLU:4,CLP:3,CRK:4,HBL:7,POT:4,LOF:4,OOL:1,SDG:2,WIZ:4},
+    cumPts:{BDG:182,BLU:171,CLP:186,CRK:162,HBL:199,POT:159,LOF:180,OOL:131,SDG:157,WIZ:168}
+  },
+  5: {
+    scores: [
+      {team:'WIZ',pts:66.0},{team:'OOL',pts:57.0},{team:'POT',pts:58.0},
+      {team:'LOF',pts:49.0},{team:'CRK',pts:39.0},{team:'SDG',pts:56.0},
+      {team:'HBL',pts:45.0},{team:'BDG',pts:38.0},{team:'BLU',pts:22.0},{team:'CLP',pts:17.0}
+    ],
+    players: [
+      {name:'J. Fields',team:'WIZ',pts:19,bench:false},
+      {name:'R. Dowdle',team:'WIZ',pts:12,bench:false},
+      {name:'J. Taylor',team:'WIZ',pts:26,bench:false},
+      {name:'C. McCaffrey',team:'POT',pts:22,bench:false},
+      {name:'T. Etienne',team:'SDG',pts:18,bench:false},
+      {name:'Derrick Henry',team:'LOF',pts:16,bench:false},
+      {name:'J. Chase',team:'CRK',pts:15,bench:false},
+      {name:'C. Boswell',team:'LOF',pts:14,bench:false},
+      {name:'P. Mahomes',team:'BDG',pts:9,bench:false},
+      {name:'A. Cooper',team:'OOL',pts:14,bench:false}
+    ],
+    wins:  {BDG:9,BLU:4,CLP:3,CRK:6,HBL:7,POT:6,LOF:6,OOL:3,SDG:3,WIZ:8},
+    cumPts:{BDG:220,BLU:193,CLP:203,CRK:201,HBL:244,POT:217,LOF:229,OOL:188,SDG:213,WIZ:234}
+  },
+  6: {
+    scores: [
+      {team:'POT',pts:76.0},{team:'WIZ',pts:58.0},{team:'CRK',pts:55.0},
+      {team:'CLP',pts:54.0},{team:'SDG',pts:49.0},{team:'HBL',pts:38.0},
+      {team:'BDG',pts:30.0},{team:'LOF',pts:26.0},{team:'OOL',pts:42.0},{team:'BLU',pts:17.0}
+    ],
+    players: [
+      {name:'C. McCaffrey',team:'POT',pts:28,bench:false},
+      {name:'D. Achane',team:'CLP',pts:24,bench:false},
+      {name:'J. Taylor',team:'WIZ',pts:22,bench:false},
+      {name:'P. Aubrey',team:'CRK',pts:18,bench:false},
+      {name:'Josh Allen',team:'BLU',pts:8,bench:false},
+      {name:'K. Robinson',team:'SDG',pts:16,bench:false},
+      {name:'D. Cook',team:'CRK',pts:15,bench:false},
+      {name:'T. Kelce',team:'CLP',pts:14,bench:false},
+      {name:'Lamar Jackson',team:'WIZ',pts:14,bench:false},
+      {name:'B. Cooks',team:'OOL',pts:13,bench:false}
+    ],
+    wins:  {BDG:9,BLU:4,CLP:5,CRK:7,HBL:7,POT:8,LOF:6,OOL:3,SDG:5,WIZ:8},
+    cumPts:{BDG:250,BLU:210,CLP:257,CRK:256,HBL:282,POT:293,LOF:255,OOL:230,SDG:262,WIZ:292}
+  },
+  7: {
+    scores: [
+      {team:'BDG',pts:91.0},{team:'POT',pts:75.0},{team:'BLU',pts:61.0},
+      {team:'SDG',pts:57.0},{team:'CLP',pts:54.0},{team:'WIZ',pts:51.0},
+      {team:'CRK',pts:43.0},{team:'HBL',pts:52.0},{team:'LOF',pts:44.0},{team:'OOL',pts:33.0}
+    ],
+    players: [
+      {name:'D. Gibbs',team:'BDG',pts:31,bench:false},
+      {name:'B. Nix',team:'CLP',pts:28,bench:false},
+      {name:'J. Taylor',team:'WIZ',pts:26,bench:false},
+      {name:'M. Stafford',team:'SDG',pts:25,bench:false},
+      {name:'A. Rodgers',team:'CRK',pts:25,bench:true},
+      {name:'C. McCaffrey',team:'POT',pts:24,bench:false},
+      {name:'J. Dart',team:'HBL',pts:22,bench:true},
+      {name:'D. Adams',team:'BDG',pts:21,bench:false},
+      {name:'P. Aubrey',team:'CRK',pts:21,bench:false},
+      {name:'J. Judkins',team:'BLU',pts:21,bench:false}
+    ],
+    wins:  {BDG:11,BLU:6,CLP:7,CRK:7,HBL:7,POT:10,LOF:6,OOL:3,SDG:7,WIZ:8},
+    cumPts:{BDG:341,BLU:271,CLP:311,CRK:299,HBL:334,POT:368,LOF:299,OOL:263,SDG:319,WIZ:343}
+  },
+  8: {
+    scores: [
+      {team:'LOF',pts:79.0},{team:'POT',pts:49.0},{team:'WIZ',pts:62.0},
+      {team:'CLP',pts:62.0},{team:'HBL',pts:51.0},{team:'BDG',pts:42.0},
+      {team:'CRK',pts:61.0},{team:'SDG',pts:38.0},{team:'BLU',pts:44.0},{team:'OOL',pts:37.0}
+    ],
+    players: [
+      {name:'Derrick Henry',team:'LOF',pts:28,bench:false},
+      {name:'C. Boswell',team:'LOF',pts:18,bench:false},
+      {name:'J. Taylor',team:'WIZ',pts:24,bench:false},
+      {name:'T. Kelce',team:'CLP',pts:22,bench:false},
+      {name:'D. Cook',team:'CRK',pts:20,bench:false},
+      {name:'C. McCaffrey',team:'POT',pts:18,bench:false},
+      {name:'J. Franklin',team:'LOF',pts:16,bench:false},
+      {name:'A. Dalton',team:'SDG',pts:8,bench:false},
+      {name:'D. Gibbs',team:'BDG',pts:14,bench:false},
+      {name:'P. Mahomes',team:'BDG',pts:10,bench:false}
+    ],
+    wins:  {BDG:11,BLU:6,CLP:9,CRK:9,HBL:9,POT:11,LOF:8,OOL:5,SDG:7,WIZ:11},
+    cumPts:{BDG:383,BLU:315,CLP:373,CRK:360,HBL:385,POT:417,LOF:378,OOL:300,SDG:337,WIZ:403}
+  },
+  9: {
+    scores: [
+      {team:'OOL',pts:65.0},{team:'POT',pts:63.0},{team:'LOF',pts:43.0},
+      {team:'BLU',pts:44.0},{team:'BDG',pts:31.0},{team:'WIZ',pts:42.0},
+      {team:'CRK',pts:31.0},{team:'SDG',pts:29.0},{team:'HBL',pts:21.0},{team:'CLP',pts:28.0}
+    ],
+    players: [
+      {name:'G. Bowers',team:'WIZ',pts:22,bench:false},
+      {name:'C. McCaffrey',team:'POT',pts:20,bench:false},
+      {name:'J. Flacco',team:'LOF',pts:16,bench:false},
+      {name:'J. Judkins',team:'BLU',pts:15,bench:false},
+      {name:'A. Cooper',team:'OOL',pts:18,bench:false},
+      {name:'D. Gibbs',team:'BDG',pts:14,bench:false},
+      {name:'K. Robinson',team:'SDG',pts:12,bench:false},
+      {name:'T. Kelce',team:'CLP',pts:11,bench:false},
+      {name:'Caleb Williams',team:'POT',pts:9,bench:true},
+      {name:'C. Boswell',team:'LOF',pts:13,bench:false}
+    ],
+    wins:  {BDG:13,BLU:8,CLP:10,CRK:10,HBL:9,POT:13,LOF:10,OOL:7,SDG:7,WIZ:13},
+    cumPts:{BDG:414,BLU:359,CLP:404,CRK:387,HBL:406,POT:480,LOF:421,OOL:365,SDG:366,WIZ:445}
+  },
+  11: {
+    scores: [
+      {team:'BLU',pts:67.0},{team:'POT',pts:61.0},{team:'SDG',pts:61.0},
+      {team:'LOF',pts:52.0},{team:'OOL',pts:46.0},{team:'WIZ',pts:16.0},
+      {team:'CRK',pts:29.0},{team:'HBL',pts:21.0},{team:'BDG',pts:32.0},{team:'CLP',pts:5.0}
+    ],
+    players: [
+      {name:'Josh Allen',team:'BLU',pts:41,bench:false},
+      {name:'Henderson',team:'BLU',pts:18,bench:false},
+      {name:'D. Prescott',team:'POT',pts:22,bench:false},
+      {name:'G. Pickens',team:'POT',pts:18,bench:false},
+      {name:'JSN',team:'SDG',pts:20,bench:false},
+      {name:'Derrick Henry',team:'LOF',pts:16,bench:false},
+      {name:'C. McCaffrey',team:'POT',pts:14,bench:false},
+      {name:'G. Bowers',team:'WIZ',pts:12,bench:false},
+      {name:'B. Robinson',team:'SDG',pts:14,bench:false},
+      {name:'D. Gibbs',team:'BDG',pts:11,bench:false}
+    ],
+    wins:  {BDG:12,BLU:11,CLP:10,CRK:10,HBL:10,POT:16,LOF:11,OOL:6,SDG:11,WIZ:13},
+    cumPts:{BDG:519,BLU:457,CLP:453,CRK:461,HBL:457,POT:591,LOF:507,OOL:453,SDG:479,WIZ:539}
+  },
+  12: {
+    scores: [
+      {team:'BDG',pts:97.0},{team:'POT',pts:66.0},{team:'SDG',pts:62.0},
+      {team:'LOF',pts:35.0},{team:'CRK',pts:28.0},{team:'WIZ',pts:22.0},
+      {team:'CLP',pts:49.0},{team:'BLU',pts:26.0},{team:'HBL',pts:26.0},{team:'OOL',pts:12.0}
+    ],
+    players: [
+      {name:'D. Gibbs',team:'BDG',pts:38,bench:false},
+      {name:'JSN',team:'SDG',pts:22,bench:false},
+      {name:'C. McCaffrey',team:'POT',pts:20,bench:false},
+      {name:'T. Kelce',team:'CLP',pts:18,bench:false},
+      {name:'D. Prescott',team:'POT',pts:16,bench:false},
+      {name:'Josh Allen',team:'BLU',pts:0,bench:false},
+      {name:'Lamar Jackson',team:'WIZ',pts:8,bench:false},
+      {name:'Derrick Henry',team:'LOF',pts:12,bench:false},
+      {name:'B. Nix',team:'CLP',pts:14,bench:false},
+      {name:'P. Mahomes',team:'BDG',pts:16,bench:false}
+    ],
+    wins:  {BDG:16,BLU:12,CLP:11,CRK:11,HBL:10,POT:18,LOF:13,OOL:6,SDG:13,WIZ:13},
+    cumPts:{BDG:616,BLU:483,CLP:502,CRK:489,HBL:483,POT:657,LOF:542,OOL:465,SDG:541,WIZ:561}
+  },
+  13: {
+    scores: [
+      {team:'BDG',pts:52.0},{team:'POT',pts:44.0},{team:'SDG',pts:55.0},
+      {team:'LOF',pts:35.0},{team:'CRK',pts:28.0},{team:'WIZ',pts:27.0},
+      {team:'CLP',pts:47.0},{team:'BLU',pts:27.0},{team:'HBL',pts:26.0},{team:'OOL',pts:12.0}
+    ],
+    players: [
+      {name:'SDG RB',team:'SDG',pts:22,bench:false},
+      {name:'B. Jeanty',team:'CLP',pts:18,bench:false},
+      {name:'D. Gibbs',team:'BDG',pts:16,bench:false},
+      {name:'C. Boswell',team:'LOF',pts:14,bench:false},
+      {name:'T. Kelce',team:'CLP',pts:13,bench:false},
+      {name:'Lamar Jackson',team:'WIZ',pts:5,bench:false},
+      {name:'Josh Allen',team:'BLU',pts:10,bench:false},
+      {name:'P. Mahomes',team:'BDG',pts:12,bench:false},
+      {name:'D. Cook',team:'CRK',pts:11,bench:false},
+      {name:'Derrick Henry',team:'LOF',pts:10,bench:false}
+    ],
+    wins:  {BDG:18,BLU:12,CLP:12,CRK:11,HBL:10,POT:20,LOF:15,OOL:6,SDG:15,WIZ:13},
+    cumPts:{BDG:683,BLU:510,CLP:549,CRK:532,HBL:522,POT:716,LOF:591,OOL:507,SDG:589,WIZ:588}
+  },
+  14: {
+    scores: [
+      {team:'LOF',pts:71.0},{team:'SDG',pts:53.0},{team:'BLU',pts:62.0},
+      {team:'OOL',pts:54.0},{team:'CRK',pts:32.0},{team:'WIZ',pts:59.0},
+      {team:'POT',pts:48.0},{team:'BDG',pts:48.0},{team:'CLP',pts:20.0},{team:'HBL',pts:16.0}
+    ],
+    players: [
+      {name:'J. Burrow',team:'LOF',pts:28,bench:false},
+      {name:'Josh Allen',team:'BLU',pts:26,bench:false},
+      {name:'C. Watson',team:'LOF',pts:18,bench:false},
+      {name:'T. Etienne',team:'SDG',pts:20,bench:false},
+      {name:'Seahawks D',team:'LOF',pts:14,bench:false},
+      {name:'C. McCaffrey',team:'POT',pts:16,bench:false},
+      {name:'D. Gibbs',team:'BDG',pts:14,bench:false},
+      {name:'C. McBride',team:'WIZ',pts:18,bench:false},
+      {name:'B. Robinson',team:'SDG',pts:12,bench:false},
+      {name:'Henderson',team:'BLU',pts:16,bench:false}
+    ],
+    wins:  {BDG:19,BLU:14,CLP:12,CRK:13,HBL:10,POT:20,LOF:17,OOL:8,SDG:17,WIZ:15},
+    cumPts:{BDG:731,BLU:572,CLP:569,CRK:564,HBL:538,POT:764,LOF:662,OOL:561,SDG:642,WIZ:647}
+  },
+  15: {
+    scores: [
+      {team:'BLU',pts:80.0},{team:'CRK',pts:74.0},{team:'SDG',pts:71.0},
+      {team:'WIZ',pts:46.0},{team:'BDG',pts:46.0},{team:'POT',pts:29.0},
+      {team:'LOF',pts:39.0},{team:'HBL',pts:56.0},{team:'OOL',pts:36.0},{team:'CLP',pts:26.0}
+    ],
+    players: [
+      {name:'Henderson',team:'BLU',pts:30,bench:false},
+      {name:'T. Etienne',team:'SDG',pts:28,bench:false},
+      {name:'P. Mahomes',team:'BDG',pts:22,bench:false},
+      {name:'J. Burrow',team:'LOF',pts:20,bench:false},
+      {name:'C. McBride',team:'WIZ',pts:18,bench:false},
+      {name:'D. Gibbs',team:'BDG',pts:16,bench:false},
+      {name:'C. Fairbairn',team:'LOF',pts:10,bench:false},
+      {name:'B. Myers',team:'BDG',pts:9,bench:false},
+      {name:'B. Nix',team:'CLP',pts:8,bench:false},
+      {name:'J. Warren',team:'CRK',pts:6,bench:false}
+    ],
+    wins:  {BDG:21,BLU:16,CLP:13,CRK:15,HBL:11,POT:20,LOF:18,OOL:10,SDG:19,WIZ:17},
+    cumPts:{BDG:777,BLU:652,CLP:595,CRK:638,HBL:594,POT:793,LOF:701,OOL:597,SDG:713,WIZ:693}
+  },
+  16: {
+    scores: [
+      {team:'LOF',pts:73.0},{team:'CLP',pts:58.0},{team:'OOL',pts:55.0},
+      {team:'WIZ',pts:53.0},{team:'BLU',pts:20.0},{team:'CRK',pts:51.0},
+      {team:'SDG',pts:62.0},{team:'POT',pts:44.0},{team:'HBL',pts:39.0},{team:'BDG',pts:42.0}
+    ],
+    players: [
+      {name:'Derrick Henry',team:'LOF',pts:30,bench:false},
+      {name:'B. Jeanty',team:'CLP',pts:26,bench:false},
+      {name:'B. Robinson',team:'SDG',pts:24,bench:false},
+      {name:'B. Purdy',team:'OOL',pts:22,bench:false},
+      {name:'Puka Nacua',team:'WIZ',pts:24,bench:false},
+      {name:'C. Watson',team:'LOF',pts:18,bench:false},
+      {name:'Josh Allen',team:'BLU',pts:8,bench:false},
+      {name:'Lamar Jackson',team:'WIZ',pts:6,bench:false},
+      {name:'T. Etienne',team:'SDG',pts:18,bench:false},
+      {name:'D. Cook',team:'CRK',pts:16,bench:false}
+    ],
+    wins:  {BDG:22,BLU:16,CLP:15,CRK:17,HBL:11,POT:21,LOF:20,OOL:12,SDG:21,WIZ:19},
+    cumPts:{BDG:819,BLU:672,CLP:653,CRK:689,HBL:633,POT:837,LOF:774,OOL:652,SDG:775,WIZ:746}
+  },
+  17: {
+    scores: [
+      {team:'LOF',pts:75.0},{team:'WIZ',pts:58.0},{team:'HBL',pts:52.0},
+      {team:'BDG',pts:52.0},{team:'OOL',pts:37.0},{team:'SDG',pts:49.0},
+      {team:'POT',pts:32.0},{team:'CRK',pts:43.0},{team:'BLU',pts:32.0},{team:'CLP',pts:35.0}
+    ],
+    players: [
+      {name:'Derrick Henry',team:'LOF',pts:38,bench:false},
+      {name:'B. Robinson',team:'SDG',pts:31,bench:false},
+      {name:'J. Taylor',team:'WIZ',pts:24,bench:false},
+      {name:'P. Mahomes',team:'BDG',pts:20,bench:false},
+      {name:'J. Burrow',team:'LOF',pts:18,bench:false},
+      {name:'C. McCaffrey',team:'POT',pts:16,bench:false},
+      {name:'Puka Nacua',team:'WIZ',pts:16,bench:false},
+      {name:'O. Hampton',team:'HBL',pts:18,bench:false},
+      {name:'B. Jeanty',team:'CLP',pts:14,bench:false},
+      {name:'D. Gibbs',team:'BDG',pts:14,bench:false}
+    ],
+    wins:  {BDG:24,BLU:16,CLP:15,CRK:18,HBL:13,POT:21,LOF:22,OOL:13,SDG:21,WIZ:21},
+    cumPts:{BDG:871,BLU:704,CLP:688,CRK:732,HBL:685,POT:869,LOF:849,OOL:689,SDG:824,WIZ:804}
+  },
+  18: {
+    scores: [
+      {team:'BDG',pts:50.0},{team:'BLU',pts:49.0},{team:'OOL',pts:49.0},
+      {team:'LOF',pts:44.0},{team:'POT',pts:34.0},{team:'SDG',pts:27.0},
+      {team:'CRK',pts:24.0},{team:'WIZ',pts:20.0},{team:'HBL',pts:15.0},{team:'CLP',pts:3.0}
+    ],
+    players: [
+      {name:'D. Gibbs',team:'BDG',pts:20,bench:false},
+      {name:'Derrick Henry',team:'LOF',pts:16,bench:false},
+      {name:'Josh Allen',team:'BLU',pts:18,bench:false},
+      {name:'B. Purdy',team:'OOL',pts:16,bench:false},
+      {name:'C. McCaffrey',team:'POT',pts:14,bench:false},
+      {name:'B. Robinson',team:'SDG',pts:12,bench:false},
+      {name:'J. Taylor',team:'WIZ',pts:10,bench:false},
+      {name:'Henderson',team:'BLU',pts:14,bench:false},
+      {name:'O. Hampton',team:'HBL',pts:8,bench:false},
+      {name:'B. Jeanty',team:'CLP',pts:3,bench:false}
+    ],
+    wins:  {BDG:26,BLU:18,CLP:15,CRK:18,HBL:13,POT:21,LOF:24,OOL:15,SDG:21,WIZ:21},
+    cumPts:{BDG:921,BLU:753,CLP:691,CRK:756,HBL:700,POT:903,LOF:893,OOL:738,SDG:851,WIZ:824}
+  }
+};
+
+/* ════════════════════════════════════════════
+   DASHBOARD RENDER
+════════════════════════════════════════════ */
+function renderDashboard(week) {
+  const d = WEEK_DATA[week];
+  if (!d) return '';
+
+  // Sort scores descending
+  const sorted = [...d.scores].sort((a,b)=>b.pts-a.pts);
+  const top5teams = new Set(sorted.slice(0,5).map(s=>s.team));
+
+  // Matchups: pair teams for H2H display (by score order for historical weeks)
+  // We show all 10 scores; top 5 bolded
+  const scoresHtml = sorted.map((s,i) => {
+    const isTop5 = top5teams.has(s.team);
+    return `<div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--rule);${i===sorted.length-1?'border-bottom:none;':''}">
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:0.5px;${isTop5?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${s.team}</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:${isTop5?'700':'400'};color:${isTop5?'var(--ink)':'var(--ink3)'};">${s.pts.toFixed(1)}${isTop5?' ★':''}</span>
+    </div>`;
+  }).join('');
+
+  // Top 10 players
+  const playersHtml = d.players.map((p,i) => `
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--rule);${i===d.players.length-1?'border-bottom:none;':''}">
+      <div>
+        <span style="font-size:13px;color:var(--ink2);">${p.name}</span>
+        ${p.bench ? '<span style="font-family:\'Barlow Condensed\',sans-serif;font-size:10px;color:var(--ink4);background:var(--paper3);padding:1px 5px;border-radius:2px;margin-left:4px;">(b)</span>' : ''}
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--ink4);margin-left:6px;">${p.team}</span>
+      </div>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--ink);">${p.pts}</span>
+    </div>
+  `).join('');
+
+  // Season wins standings
+  const winsSorted = Object.entries(d.wins).sort((a,b)=>b[1]-a[1]);
+  const winsHtml = winsSorted.map(([team,w],i) => `
+    <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--rule);${i===winsSorted.length-1?'border-bottom:none;':''}">
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--ink4);width:16px;">${i+1}</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--ink2);flex:1;">${team}</span>
+      <div style="width:80px;background:var(--paper3);border-radius:2px;height:6px;">
+        <div style="width:${Math.round(w/winsSorted[0][1]*100)}%;background:var(--ink2);height:6px;border-radius:2px;"></div>
+      </div>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--ink);width:28px;text-align:right;">${w}</span>
+    </div>
+  `).join('');
+
+  // Point pool standings
+  const ptsSorted = Object.entries(d.cumPts).sort((a,b)=>b[1]-a[1]);
+  const ptsHtml = ptsSorted.map(([team,pts],i) => `
+    <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--rule);${i===ptsSorted.length-1?'border-bottom:none;':''}">
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--ink4);width:16px;">${i+1}</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--ink2);flex:1;">${team}</span>
+      <div style="width:80px;background:var(--paper3);border-radius:2px;height:6px;">
+        <div style="width:${Math.round(pts/ptsSorted[0][1]*100)}%;background:var(--gold);height:6px;border-radius:2px;"></div>
+      </div>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--gold);width:40px;text-align:right;">${pts}</span>
+    </div>
+  `).join('');
+
+  return `
+    <div style="border-top:3px double var(--rule2);margin-top:2rem;padding-top:1.5rem;">
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);margin-bottom:4px;">Week ${week} Dashboard</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:1.5rem;">McCann's Football League · Season to Date</div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;">
+
+        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--ink);padding:1rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+            Week ${week} Matchups &nbsp;·&nbsp; <span style="color:var(--gold);">★ = Top 5 win</span>
+          </div>
+          ${(()=>{
+            const matchups = GAZETTE_SCHEDULE[week];
+            if (!matchups || matchups === 'derby') return `<div style="font-size:12px;color:var(--ink3);">All-play Derby</div>`;
+            const allScores = matchups.flatMap(m=>[{team:m.h,pts:m.hp},{team:m.a,pts:m.ap}]).sort((a,b)=>b.pts-a.pts);
+            const top5 = new Set(allScores.slice(0,5).map(s=>s.team));
+            return matchups.map((m,i)=>{
+              const hWin = m.hp >= m.ap;
+              const hTop = top5.has(m.h), aTop = top5.has(m.a);
+              return `<div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--rule);${i===matchups.length-1?'border-bottom:none;':''}">
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;${hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${m.h}${hTop?' ★':''}</span>
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--ink4);">${m.hp.toFixed(1)}–${m.ap.toFixed(1)}</span>
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;${!hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${aTop?' ★':''}${m.a}</span>
+              </div>`;
+            }).join('');
+          })()}
+        </div>
+
+        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--ink);padding:1rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+            Week ${week} Scores &nbsp;·&nbsp; <span style="color:var(--gold);">★ = Top 5 win</span>
+          </div>
+          ${scoresHtml}
+        </div>
+
+        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--red);padding:1rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+            Top 10 Scores &nbsp;·&nbsp; <span style="color:var(--ink4);">(b) = reserve</span>
+          </div>
+          ${playersHtml}
+        </div>
+
+        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--ink2);padding:1rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+            Season Wins · Thru Wk ${week}
+          </div>
+          ${winsHtml}
+        </div>
+
+        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--gold);padding:1rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+            Point Pool · Thru Wk ${week}
+          </div>
+          ${ptsHtml}
+        </div>
+
+      </div>
+    </div>
+  `;
+}
+
+function renderReport(r) {
+  document.getElementById('masthead-date').textContent = `Week ${r.week} Edition`;
+
+  const paragraphs = r.body.split('\n\n').filter(p=>p.trim());
+  const firstPara = paragraphs[0];
+  const restParas = paragraphs.slice(1);
+
+  const spiffHtml = r.spiff ? `
+    <div class="spiff-banner">
+      <span class="spiff-icon">★</span>
+      <span class="spiff-text">SPIFF: ${r.spiff}</span>
+    </div>
+  ` : '';
+
+  const poolHtml = r.pool && r.pool.length > 0 ? `
+    <div class="pool-table">
+      <div class="pool-table-title">Point Pool Standings</div>
+      ${r.pool.map((row,i)=>`
+        <div class="pool-row">
+          <span class="pool-rank">${i+1}</span>
+          <span>${row[0]}</span>
+          <span class="pool-pts">${row[1]}</span>
+        </div>
+      `).join('')}
+    </div>
+  ` : '';
+
+  const clubHtml = r.club ? `
+    <div class="club-box">
+      <div class="club-title">The 21 Club</div>
+      ${r.club.map(row=>`
+        <div class="club-row">
+          <span>${row[0]} <span class="club-team">(${row[2]})</span></span>
+          <span class="club-pts">${row[1]}</span>
+        </div>
+      `).join('')}
+    </div>
+  ` : '';
+
+  const midPoint = Math.floor(restParas.length / 2);
+  const sideboxes = [spiffHtml, poolHtml, clubHtml].filter(Boolean);
+
+  let col2Content = `<p>${firstPara}</p>`;
+  restParas.forEach((p, i) => {
+    col2Content += `<p>${p}</p>`;
+    if (i === midPoint && sideboxes[0]) col2Content += sideboxes[0];
+    if (i === midPoint + 1 && sideboxes[1]) col2Content += sideboxes[1];
+  });
+  if (sideboxes[2]) col2Content += sideboxes[2];
+  col2Content += `<div class="signoff">${r.signoff}</div>`;
+
+  const dashboardHtml = renderDashboard(r.week);
+
+  document.getElementById('content-area').innerHTML = `
+    <div class="edition-header">
+      <div class="edition-kicker">Week ${r.week} · MFL 2025 Season Report · McCann's Football League</div>
+      <div class="edition-headline">${r.headline}</div>
+      <div class="edition-deck">${r.deck}</div>
+      <div class="edition-byline">By ${r.author} &nbsp;·&nbsp; MFL Commissioner's Report &nbsp;·&nbsp; 2025 Season</div>
+    </div>
+    <div class="columns-3 article-body">${col2Content}</div>
+    ${dashboardHtml}
+    <div class="section-rule" style="margin-top:2rem;">
+      <span class="section-rule-text">End of Week ${r.week} Report</span>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap;">
+      ${currentWeek > 1 ? `<button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="navReport(-1)">← Previous Issue</button>` : ''}
+      <button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="showWeek(0,null)">All Issues</button>
+      ${currentWeek < 18 ? `<button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="navReport(1)">Next Issue →</button>` : ''}
+    </div>
+    ${commentsHtml(r.week)}
+  `;
+  setTimeout(() => renderComments(r.week), 0);
+}
+
+function navReport(dir) {
+  const weeks = allReports().map(r=>r.week).sort((a,b)=>a-b);
+  const idx = weeks.indexOf(currentWeek);
+  const next = weeks[idx + dir];
+  if (next !== undefined) showWeek(next, null);
+}
+
+/* ════════════════════════════════════════════
+   COMPOSE — Modal, News Post, CBS Fetch
+════════════════════════════════════════════ */
+let newsItems = [];
+let newsCounter = 0;
+
+function allPosts() {
+  const reports = allReports().map(r => ({...r, type:'report', _sort: r.week * 10}));
+  const news = newsItems.map(n => ({...n, _sort: (new Date(n.dateISO).getTime() / 86400000) + 0.5}));
+  return [...reports, ...news].sort((a,b) => b._sort - a._sort);
+}
+
+function openTypeModal() { document.getElementById('type-modal').classList.add('open'); }
+function closeTypeModal() { document.getElementById('type-modal').classList.remove('open'); }
+function openForm(type) {
+  closeTypeModal(); closeAllForms();
+  const form = document.getElementById(type === 'news' ? 'compose-news-form' : 'compose-form');
+  form.classList.add('open');
+  form.scrollIntoView({behavior:'smooth'});
+}
+function closeAllForms() {
+  document.getElementById('compose-form').classList.remove('open');
+  document.getElementById('compose-news-form').classList.remove('open');
+}
+function toggleCompose() { openTypeModal(); } // legacy shim
+
+function showNewsPost(id) {
+  const post = newsItems.find(n => n.id === id);
+  if (post) renderNewsPost(post);
+}
+
+function renderNewsPost(post) {
+  document.getElementById('masthead-date').textContent = `${post.category || 'League News'} · ${post.date}`;
+  const paragraphs = post.body.split('\n\n').filter(p=>p.trim());
+  let bodyHtml = `<p>${paragraphs[0]}</p>`;
+  paragraphs.slice(1).forEach(p => { bodyHtml += `<p>${p}</p>`; });
+  document.getElementById('content-area').innerHTML = `
+    <div class="edition-header">
+      <div class="edition-kicker" style="color:var(--red);">${post.category || 'League News'} · MFL Gazette · ${post.date}</div>
+      <div class="edition-headline">${post.headline}</div>
+      ${post.deck ? `<div class="edition-deck">${post.deck}</div>` : ''}
+      <div class="edition-byline">By ${post.author} &nbsp;·&nbsp; MFL Gazette</div>
+    </div>
+    <div class="columns-2 article-body">${bodyHtml}</div>
+    <div class="section-rule" style="margin-top:2rem;"><span class="section-rule-text">End of Post</span></div>
+    <div style="margin-top:1rem;">
+      <button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="showWeek(0,null)">← All Issues</button>
+    </div>
+    ${commentsHtml('news_' + post.id)}
+  `;
+  setTimeout(() => renderComments('news_' + post.id), 0);
+}
+
+function publishNewsPost() {
+  const author = document.getElementById('fn-author').value.trim() || 'Commissioner';
+  const category = document.getElementById('fn-category').value;
+  const headline = document.getElementById('fn-headline').value.trim();
+  const deck = document.getElementById('fn-deck').value.trim();
+  const body = document.getElementById('fn-body').value.trim();
+  if (!headline || !body) { alert('Please add at least a headline and body text.'); return; }
+  const now = new Date();
+  const date = now.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+  const dateISO = now.toISOString();
+  const id = 'np' + (++newsCounter) + '_' + Date.now();
+  newsItems.unshift({ type:'news', id, author, category, headline, deck, body, date, dateISO });
+  ['fn-author','fn-headline','fn-deck','fn-body'].forEach(i => document.getElementById(i).value = '');
+  document.getElementById('fn-category').value = '';
+  closeAllForms();
+  showNewsPost(id);
+}
+
+function publishReport() {
+  const week = parseInt(document.getElementById('f-week').value);
+  const author = document.getElementById('f-author').value.trim() || 'Commissioner';
+  const headline = document.getElementById('f-headline').value.trim();
+  const deck = document.getElementById('f-deck').value.trim();
+  const body = document.getElementById('f-body').value.trim();
+  const spiff = document.getElementById('f-spiff').value.trim() || null;
+  const poolRaw = document.getElementById('f-pool').value.trim();
+  const signoff = document.getElementById('f-signoff').value.trim() || 'Have a great week!';
+  if (!headline || !body) { alert('Please add at least a headline and body text.'); return; }
+  const pool = poolRaw ? poolRaw.split('\n').map(line=>{ const p=line.trim().split(/\s+/); return [p[0],parseInt(p[1])||0]; }).filter(r=>r[0]) : [];
+  const scoresRaw = document.getElementById('f-scores').value.trim();
+  const playersRaw = document.getElementById('f-players').value.trim();
+  const scores = scoresRaw ? scoresRaw.split('\n').map(line=>{ const p=line.trim().split(/\s+/); return {team:p[0],pts:parseFloat(p[1])||0}; }).filter(s=>s.team) : [];
+  const players = playersRaw ? playersRaw.split('\n').map(line=>{ const p=line.trim().split(/\s+/); const bench=p[p.length-1]==='*'; return {name:p[0],team:p[1],pts:parseInt(p[2])||0,bench}; }).filter(p=>p.name) : [];
+  const report = { week, author, headline, deck, body, spiff, pool, signoff };
+  if (scores.length > 0 || players.length > 0) {
+    WEEK_DATA[week] = WEEK_DATA[week] || {};
+    if (scores.length) WEEK_DATA[week].scores = scores;
+    if (players.length) WEEK_DATA[week].players = players;
+  }
+  userReports = userReports.filter(r=>r.week !== week);
+  userReports.push(report);
+  ['f-headline','f-deck','f-body','f-spiff','f-pool','f-scores','f-players'].forEach(id=>{ document.getElementById(id).value=''; });
+  document.getElementById('f-signoff').value = 'Have a great week!';
+  document.getElementById('scores-autofill-badge').style.display = 'none';
+  document.getElementById('pool-autofill-badge').style.display = 'none';
+  closeAllForms();
+  addWeekTab(week);
+  showWeek(week, null);
+}
+
+/* ── CBS FETCH ── */
+const CBS_NAME_TO_ABBR = {
+  'Big Dogs':'BDG','Blue Cheese':'BLU','Clapperz':'CLP','Crankees':'CRK',
+  'Huterball':'HBL','Jackpots':'POT','Legends of The Fall':'LOF',
+  'out of luck':'OOL','Out of Luck':'OOL','Slimy Dogs':'SDG','Westchester Wizards':'WIZ'
+};
+function setStatus(msg, type='') {
+  const el = document.getElementById('cbs-status');
+  el.textContent = msg;
+  el.className = 'cbs-fetch-status' + (type ? ' '+type : '');
+}
+function fetchFromCBS() {
+  const year = document.getElementById('f-cbs-year').value;
+  const week = document.getElementById('f-cbs-week').value;
+  const consoleScript = `(function(){const text=document.body.innerText;const lines=text.split('\\n').map(l=>l.trim()).filter(Boolean);const periods=[];let current=null;for(const line of lines){const pm=line.match(/PERIOD (\\d+):/);if(pm){if(current)periods.push(current);current={week:parseInt(pm[1]),matchups:[],scores:[]};continue;}if(!current)continue;const mm=line.match(/^(.+?)\\s*\\([WL]\\)\\s+(.+?)\\s*\\([WL]\\)\\s+([\\d.]+)\\s*-\\s*([\\d.]+)$/);if(mm){current.matchups.push({home:mm[1].trim(),away:mm[2].trim(),hpts:parseFloat(mm[3]),apts:parseFloat(mm[4])});continue;}const sm=line.match(/^(.+?)\\t(\\d+)\\t(\\d+)\\t(\\d+)\\t([\\d.]+)$/);if(sm)current.scores.push({team:sm[1].trim(),pts:parseFloat(sm[5])});}if(current)periods.push(current);const wk=periods.find(p=>p.week===${week});if(!wk){alert('Week ${week} not found');return;}const json=JSON.stringify(wk);navigator.clipboard.writeText(json).then(()=>alert('Week ${week} data copied! Go back to the Gazette and paste it.')).catch(()=>prompt('Copy this:',json));})();`;
+  window.open(`https://mcfl20.football.cbssports.com/schedule/full/${year}`, '_blank');
+  document.getElementById('cbs-import-panel').style.display = 'block';
+  setStatus('✓ CBS opened in new tab. Open browser console (F12 → Console), paste the script below, press Enter, then paste the result above.', 'ok');
+  const existing = document.getElementById('cbs-console-script-box');
+  if (existing) existing.remove();
+  const scriptBox = document.createElement('div');
+  scriptBox.id = 'cbs-console-script-box';
+  scriptBox.style.cssText = 'margin-top:1rem;border-top:1px solid rgba(255,255,255,0.15);padding-top:1rem;';
+  scriptBox.innerHTML = `
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;">Console script — paste into CBS browser console (F12):</div>
+    <textarea id="cbs-script-ta" style="width:100%;min-height:70px;background:rgba(0,0,0,0.4);color:#7ddc7d;border:1px solid rgba(255,255,255,0.1);padding:8px;font-family:monospace;font-size:11px;resize:vertical;box-sizing:border-box;" readonly>${consoleScript}</textarea>
+    <button onclick="document.getElementById('cbs-script-ta').select();document.execCommand('copy');this.textContent='Copied ✓';" style="margin-top:6px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:rgba(255,255,255,0.15);color:var(--paper);border:1px solid rgba(255,255,255,0.2);padding:5px 14px;cursor:pointer;">Copy Script</button>
+  `;
+  document.querySelector('.cbs-fetch-panel').appendChild(scriptBox);
+}
+function importCBSData() {
+  const raw = document.getElementById('cbs-json-input').value.trim();
+  if (!raw) { setStatus('Paste the CBS JSON data first.', 'err'); return; }
+  let data;
+  try { data = JSON.parse(raw); } catch(e) { setStatus('Could not parse — make sure you pasted the full output.', 'err'); return; }
+  if (!data.week || !data.scores || !data.matchups) { setStatus('Data looks incomplete.', 'err'); return; }
+  document.getElementById('f-week').value = data.week;
+  const sorted = [...data.scores].sort((a,b)=>b.pts-a.pts);
+  document.getElementById('f-scores').value = sorted.map(s=>`${CBS_NAME_TO_ABBR[s.team]||s.team.substring(0,3).toUpperCase()} ${s.pts.toFixed(1)}`).join('\n');
+  document.getElementById('scores-autofill-badge').style.display = 'inline';
+  document.getElementById('f-pool').value = sorted.map(s=>`${CBS_NAME_TO_ABBR[s.team]||s.team.substring(0,3).toUpperCase()} ${Math.round(s.pts)}`).join('\n');
+  document.getElementById('pool-autofill-badge').style.display = 'inline';
+  if (!document.getElementById('f-body').value.trim()) {
+    const summary = data.matchups.map(m=>{
+      const hA=CBS_NAME_TO_ABBR[m.home]||m.home, aA=CBS_NAME_TO_ABBR[m.away]||m.away;
+      const w=m.hpts>=m.apts?hA:aA, l=m.hpts>=m.apts?aA:hA, wp=m.hpts>=m.apts?m.hpts:m.apts, lp=m.hpts>=m.apts?m.apts:m.hpts;
+      return `${w} def. ${l} ${wp}–${lp}`;
+    }).join('\n');
+    document.getElementById('f-body').value = `Week ${data.week} results:\n\n${summary}\n\n[Add your commentary here]`;
+  }
+  setStatus(`✓ Week ${data.week} imported — scores and standings filled. Add commentary and publish!`, 'ok');
+  document.getElementById('cbs-import-panel').style.display = 'none';
+  const sb = document.getElementById('cbs-console-script-box');
+  if (sb) sb.remove();
+  document.getElementById('f-body').scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+/* ════════════════════════════════════════════
+   COMMENTS — localStorage per week
+════════════════════════════════════════════ */
+const TEAMS_LIST = [
+  {abbr:'BDG', name:'Big Dogs'},
+  {abbr:'BLU', name:'Blue Cheese'},
+  {abbr:'CLP', name:'Clapperz'},
+  {abbr:'CRK', name:'Crankees'},
+  {abbr:'HBL', name:'Huterball'},
+  {abbr:'POT', name:'Jackpots'},
+  {abbr:'LOF', name:'Legends'},
+  {abbr:'OOL', name:'Out of Luck'},
+  {abbr:'SDG', name:'Slimey Dogs'},
+  {abbr:'WIZ', name:'Wizards'}
+];
+
+function commentsKey(week) { return `mfl_comments_wk${week}`; }
+
+function loadComments(week) {
+  try { return JSON.parse(localStorage.getItem(commentsKey(week)) || '[]'); }
+  catch(e) { return []; }
+}
+
+function saveComments(week, comments) {
+  localStorage.setItem(commentsKey(week), JSON.stringify(comments));
+}
+
+function initials(abbr) {
+  return abbr.slice(0, 2);
+}
+
+function renderComments(week) {
+  const comments = loadComments(week);
+  const list = document.getElementById(`comments-list-${week}`);
+  const count = document.getElementById(`comments-count-${week}`);
+  if (!list) return;
+
+  count.textContent = comments.length > 0 ? `${comments.length} comment${comments.length>1?'s':''}` : '';
+
+  if (comments.length === 0) {
+    list.innerHTML = '<div class="no-comments">No comments yet — be the first to weigh in.</div>';
+    return;
+  }
+
+  list.innerHTML = comments.map((c, i) => `
+    <div class="comment-item">
+      <div class="comment-avatar">${initials(c.abbr)}</div>
+      <div class="comment-body">
+        <div class="comment-meta">
+          <span class="comment-team">${c.team}</span>
+          &nbsp;·&nbsp; ${c.date}
+          <button class="comment-delete" onclick="deleteComment(${week}, ${i})" title="Delete">✕</button>
+        </div>
+        <div class="comment-text">${escHtml(c.text)}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function submitComment(week) {
+  const sel = document.getElementById(`comment-team-${week}`);
+  const inp = document.getElementById(`comment-text-${week}`);
+  const abbr = sel.value;
+  const text = inp.value.trim();
+  if (!abbr || !text) { inp.focus(); return; }
+
+  const team = TEAMS_LIST.find(t=>t.abbr===abbr);
+  const now = new Date();
+  const date = now.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+
+  const comments = loadComments(week);
+  comments.push({abbr, team: team ? team.name : abbr, text, date});
+  saveComments(week, comments);
+
+  inp.value = '';
+  renderComments(week);
+}
+
+function deleteComment(week, idx) {
+  const comments = loadComments(week);
+  comments.splice(idx, 1);
+  saveComments(week, comments);
+  renderComments(week);
+}
+
+function commentsHtml(week) {
+  const teamOptions = TEAMS_LIST.map(t=>`<option value="${t.abbr}">${t.name}</option>`).join('');
+  return `
+    <div class="comments-section">
+      <div class="comments-header">
+        Owners' Locker Room &nbsp;<span id="comments-count-${week}" style="font-size:10px;color:var(--ink4);"></span>
+      </div>
+      <div class="comment-list" id="comments-list-${week}"></div>
+      <div class="comment-form">
+        <div class="comment-form-title">Leave a comment</div>
+        <div class="comment-form-row">
+          <select class="comment-select" id="comment-team-${week}">
+            <option value="">— Select your team —</option>
+            ${teamOptions}
+          </select>
+        </div>
+        <div class="comment-form-row">
+          <textarea class="comment-input" id="comment-text-${week}" placeholder="Weigh in on the week's action..." maxlength="500"></textarea>
+          <button class="comment-submit" onclick="submitComment(${week})">Post</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function addWeekTab(week) {
+  const bar = document.querySelector('.archive-bar');
+  const existing = [...bar.querySelectorAll('.week-tab')].find(b=>b.textContent.trim()===`Wk ${week}`);
+  if (!existing) {
+    const btn = document.createElement('button');
+    btn.className = 'week-tab';
+    btn.textContent = `Wk ${week}`;
+    btn.onclick = function(){ showWeek(week, this); };
+    bar.appendChild(btn);
+  }
+}
+
+/* ════════════════════════════════════════════
+   INIT — show latest report
+════════════════════════════════════════════ */
+showWeek(18, document.querySelector('.week-tab.active'));
+</script>
+</body>
+</html>

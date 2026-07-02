@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MFL 2026 — League HQ</title>
+  <link rel="icon" type="image/png" href="mfl_logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ── LIGHT/CLEAN THEME · NAVY ACCENT ── */
+      --bg: #f0f2f5;
+      --bg2: #ffffff;
+      --bg3: #e4e8ed;
+      --surface: #ffffff;
+      --surface2: #f0f2f5;
+      --border: rgba(0,0,0,0.08);
+      --border2: rgba(0,0,0,0.15);
+      --text: #111827;
+      --text2: #4b5563;
+      --text3: #9ca3af;
+      /* Team color palette */
+      --gold: #FB4F14;
+      --gold2: #C44000;
+      --gold-bg: rgba(251,79,20,0.08);
+      --navy: #0C2340;
+      --yankees-blue: #003087;
+      --isles-blue: #00539B;
+      --yankees-gray: #C4CED3;
+      --green: #16a34a;
+      --green-bg: rgba(22,163,74,0.08);
+      --blue: #003087;
+      --blue-bg: rgba(0,48,135,0.08);
+      --red: #dc2626;
+      --red-bg: rgba(220,38,38,0.08);
+    }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: #0C2340;
+      border-bottom: 3px solid #FB4F14;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff; letter-spacing: 2px; line-height: 1.1; }
+    .week-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; background: rgba(255,255,255,0.15); color: #ffffff; border: 1px solid rgba(255,255,255,0.25); padding: 5px 14px; border-radius: 20px; }
+
+    /* ── NAV ── */
+    .nav {
+      background: #0C2340;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+    }
+    .nav-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 12px 18px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: rgba(255,255,255,0.65);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .nav-btn:hover { color: #ffffff; }
+    .nav-btn.active { color: #FB4F14; border-bottom-color: #FB4F14; }
+
+    /* Gazette header link — suppress browser visited-link coloring */
+    .gazette-link { color: #ffffff !important; text-decoration: none; }
+    .gazette-link:visited { color: #ffffff !important; }
+    .gazette-link:hover { color: rgba(255,255,255,0.75) !important; }
+
+    /* ── LAYOUT ── */
+    .content { padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .section { display: none; }
+    .section.active { display: block; }
+
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 10px; margin-bottom: 1.25rem; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ── STAT CARDS ── */
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.125rem;
+    }
+    .stat-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 6px; }
+    .stat-val { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; }
+    .stat-sub { font-size: 11px; color: var(--text3); margin-top: 4px; }
+
+    /* ── CARDS ── */
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 1.25rem; }
+    .card-header { padding: 0.875rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    .card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text); }
+
+    /* ── BADGES ── */
+    .badge { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 3px 10px; border-radius: 20px; }
+    .badge-gold { background: var(--gold-bg); color: var(--gold); border: 1px solid rgba(232,200,74,0.2); }
+    .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid rgba(74,222,128,0.2); }
+    .badge-blue { background: var(--blue-bg); color: var(--yankees-blue); border: 1px solid rgba(96,165,250,0.2); }
+    .badge-gray { background: rgba(255,255,255,0.05); color: var(--text2); border: 1px solid var(--border); }
+    .badge-red { background: var(--red-bg); color: var(--red); border: 1px solid rgba(248,113,113,0.2); }
+
+    /* ── TABLES ── */
+    table { width: 100%; border-collapse: collapse; }
+    th { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); font-weight: 600; padding: 8px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: rgba(255,255,255,0.03); }
+    .rank { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; color: var(--text3); }
+    .rank.gold { color: var(--gold); }
+    .rank.silver { color: #c0c0c0; }
+    .rank.bronze { color: #cd7f32; }
+    .team-cell .name { font-size: 14px; font-weight: 500; color: var(--text); }
+    .team-cell .owners { font-size: 11px; color: var(--text3); margin-top: 1px; }
+    .num { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 600; }
+    .money { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; color: var(--green); }
+    .money.neg { color: var(--red); }
+
+    /* ── WEEK GRID ── */
+    .week-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(56px,1fr)); gap: 6px; padding: 1rem 1.25rem; }
+    .week-pill {
+      border-radius: 8px;
+      padding: 8px 4px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .week-pill:hover { border-color: var(--border2); background: var(--surface2); }
+    .week-pill.current { border-color: var(--gold); background: var(--gold-bg); }
+    .week-pill.complete { border-color: rgba(74,222,128,0.3); background: var(--green-bg); }
+    .week-pill.post { border-color: rgba(96,165,250,0.25); }
+    .week-pill.derby { border-color: rgba(232,200,74,0.4); }
+    .week-num { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; color: var(--text2); }
+    .week-pill.current .week-num { color: var(--gold); }
+    .week-pill.complete .week-num { color: var(--green); }
+    .week-type { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text3); margin-top: 2px; }
+
+    /* ── SCORE ENTRY ── */
+    .score-entry { padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 8px; }
+    .score-row { display: flex; align-items: center; gap: 10px; }
+    .score-row label { font-size: 13px; color: var(--text2); min-width: 140px; }
+    .score-row input {
+      width: 90px; padding: 7px 10px;
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      outline: none;
+    }
+    .score-row input:focus { border-color: var(--gold); }
+    .score-row .pts-label { font-size: 11px; color: var(--text3); }
+    .action-btn {
+      margin: 0.5rem 1.25rem 1.25rem;
+      padding: 10px 24px;
+      background: var(--gold);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.15s;
+      display: inline-block;
+    }
+    .action-btn:hover { background: #e03a00; }
+    .action-btn.secondary {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border2);
+    }
+    .action-btn.secondary:hover { background: var(--bg3); }
+
+    /* ── BRACKET ── */
+    .bracket-wrap { padding: 1rem 1.25rem; display: flex; flex-wrap: wrap; gap: 10px; }
+    .match-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; min-width: 150px; }
+    .match-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 8px; }
+    .match-team { font-size: 13px; font-weight: 500; padding: 5px 0; border-bottom: 1px solid var(--border); color: var(--text); }
+    .match-team:last-child { border-bottom: none; padding-bottom: 0; }
+    .match-team.tbd { color: var(--text3); font-style: italic; }
+
+    /* ── PAYOUT ROWS ── */
+    .payout-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 1.25rem; border-bottom: 1px solid var(--border); }
+    .payout-row:last-child { border-bottom: none; }
+    .payout-label { font-size: 13px; color: var(--text2); }
+    .payout-amount { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; color: var(--green); }
+
+    /* ── FINANCES ── */
+    .fin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding: 1.25rem; }
+    @media (max-width: 500px) { .fin-grid { grid-template-columns: 1fr; } }
+    .fin-section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 10px; }
+    .fin-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .fin-row:last-child { border-bottom: none; }
+    .fin-val { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 600; }
+    .divider { height: 1px; background: var(--border2); margin: 8px 0; }
+
+    /* ── ADMIN ── */
+    .team-admin-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 1.25rem; border-bottom: 1px solid var(--border); }
+    .team-admin-row:last-child { border-bottom: none; }
+    .spiff-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 1.25rem; border-bottom: 1px solid var(--border); }
+    .spiff-row:last-child { border-bottom: none; }
+    .spiff-name { font-size: 12px; color: var(--text2); }
+    .spiff-winner { font-size: 11px; color: var(--text3); margin-top: 2px; }
+
+    /* ── PROGRESS ── */
+    .progress-wrap { background: rgba(255,255,255,0.06); border-radius: 4px; height: 5px; margin-top: 6px; }
+    .progress-bar { height: 5px; border-radius: 4px; background: var(--gold); }
+
+    /* ── RULES ── */
+    .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.25rem; padding: 1.25rem; }
+    .rules-group-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gold); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border2); }
+    .rule-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 12px; color: var(--text2); }
+    .rule-row:last-child { border-bottom: none; }
+    .rule-pts { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; color: var(--gold); }
+    .rule-new { font-size: 9px; color: var(--yankees-blue); background: var(--blue-bg); padding: 1px 5px; border-radius: 4px; margin-left: 4px; vertical-align: middle; }
+
+    /* ── FOOTER ── */
+    .footer { text-align: center; padding: 2rem; font-size: 11px; color: var(--text3); border-top: 1px solid var(--border); margin-top: 2rem; }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      background: var(--surface2); border: 1px solid var(--border2);
+      color: var(--text); padding: 10px 18px; border-radius: 8px;
+      font-size: 13px; z-index: 999;
+      opacity: 0; transform: translateY(8px);
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    /* ── WIN RESULT ── */
+    .win-result { margin: 0 1.25rem 1.25rem; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; }
+    .win-result-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 8px; }
+    .win-result-row { display: flex; justify-content: space-between; font-size: 12px; padding: 3px 0; color: var(--text2); }
+    .win-result-row.winner { color: var(--green); font-weight: 500; }
+
+    /* ── SCROLL ── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="mfl_logo.png" alt="MFL Shield" style="height:48px;width:auto;" />
+    <span class="logo" style="font-size:22px;">McCann's Football League<span style="display:block;font-size:11px;font-weight:400;letter-spacing:1px;color:rgba(255,255,255,0.5);margin-top:1px;">League HQ · 2026 Season</span></span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+    <a href="news.html" class="gazette-link" style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.4);padding:5px 12px;border-radius:6px;">Gazette</a>
+    <a href="https://mcfl20.football.cbssports.com/" target="_blank" style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.25);padding:5px 12px;border-radius:6px;text-decoration:none;">CBS Scores ↗</a>
+    <div class="week-badge" id="header-week">WEEK 1 · REG SEASON</div>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="nav-btn active" onclick="showSection('standings', this)">Standings</button>
+  <button class="nav-btn" onclick="showSection('schedule', this)">Schedule</button>
+  <button class="nav-btn" onclick="showSection('playoffs', this)">Playoffs</button>
+  <button class="nav-btn" onclick="showSection('finances', this)">Finances</button>
+  <button class="nav-btn" onclick="showSection('rules', this)">Rules</button>
+  <button class="nav-btn" onclick="showSection('admin', this)">Admin</button>
+</div>
+
+<div class="content">
+
+  <!-- ══════════════════════════════════════════════
+       STANDINGS
+  ══════════════════════════════════════════════ -->
+  <div id="standings" class="section active">
+    <div class="grid-4" id="stats-row"></div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Regular Season Standings</span>
+        <span class="badge badge-gray">Weeks 1–13 · $20/win</span>
+      </div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:36px;">#</th>
+              <th>Team</th>
+              <th title="Head-to-head wins">H2H W</th>
+              <th title="Top-5 scoring wins">Top-5 W</th>
+              <th>Total W</th>
+              <th>Pts For</th>
+              <th>Bench Pts</th>
+              <th>Earnings</th>
+            </tr>
+          </thead>
+          <tbody id="standings-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Point Pool Standings</span>
+        <span class="badge badge-gold">17-Week Cumulative · $1,900 Prize</span>
+      </div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:36px;">#</th>
+              <th>Team</th>
+              <th>Total Points</th>
+              <th>Progress</th>
+              <th>Pool Prize</th>
+            </tr>
+          </thead>
+          <tbody id="pool-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SCHEDULE
+  ══════════════════════════════════════════════ -->
+  <div id="schedule" class="section">
+
+    <div class="grid-4" style="margin-bottom:1.25rem;">
+      <div class="stat-card"><div class="stat-label">Regular Season</div><div class="stat-val">13</div><div class="stat-sub">Weeks · 5 matchups/wk</div></div>
+      <div class="stat-card"><div class="stat-label">Championship</div><div class="stat-val">Wks 14–17</div><div class="stat-sub">Top 4 · Double elim</div></div>
+      <div class="stat-card"><div class="stat-label">NIT</div><div class="stat-val">Wks 14–17</div><div class="stat-sub">Bottom 6 · $25/win</div></div>
+      <div class="stat-card"><div class="stat-label">Derby</div><div class="stat-val">Wk 18</div><div class="stat-sub">All-play · Top 5 win $50</div></div>
+    </div>
+
+    <!-- Week selector -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">2026 Season Schedule</span>
+        <span class="badge badge-gray">Select a week</span>
+      </div>
+      <div class="week-grid" id="week-grid"></div>
+    </div>
+
+    <!-- Matchup detail -->
+    <div class="card" id="week-detail" style="display:none;">
+      <div class="card-header">
+        <span class="card-title" id="week-detail-title">Week 1 Matchups</span>
+        <span class="badge badge-gray" id="week-type-badge">Regular Season</span>
+      </div>
+      <div id="matchup-display"></div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       PLAYOFFS
+  ══════════════════════════════════════════════ -->
+  <div id="playoffs" class="section">
+    <div class="two-col">
+      <div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Championship Bracket</span>
+            <span class="badge badge-gold">Top 4 Teams</span>
+          </div>
+          <div style="padding:0.75rem 1.25rem;font-size:12px;color:var(--text3);">Double elimination · Weeks 14–17 · Week 18 if needed</div>
+          <div class="bracket-wrap">
+            <div class="match-card">
+              <div class="match-label">Semifinal 1 — Wk 14</div>
+              <div class="match-team tbd">Seed 1 — TBD</div>
+              <div class="match-team tbd">Seed 4 — TBD</div>
+            </div>
+            <div class="match-card">
+              <div class="match-label">Semifinal 2 — Wk 14</div>
+              <div class="match-team tbd">Seed 2 — TBD</div>
+              <div class="match-team tbd">Seed 3 — TBD</div>
+            </div>
+          </div>
+          <div class="payout-row"><span class="payout-label">1st Place</span><span class="payout-amount">$800</span></div>
+          <div class="payout-row"><span class="payout-label">2nd Place</span><span class="payout-amount">$450</span></div>
+          <div class="payout-row"><span class="payout-label">3rd Place</span><span class="payout-amount">$300</span></div>
+          <div class="payout-row"><span class="payout-label">4th Place</span><span class="payout-amount">$200</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">NIT Bracket</span>
+            <span class="badge badge-blue">Bottom 6 Teams</span>
+          </div>
+          <div style="padding:0.75rem 1.25rem;font-size:12px;color:var(--text3);">H2H + top-3 scorer wins · $25/win · Weeks 14–17</div>
+          <div style="padding:0 1.25rem 0.5rem;">
+            <div style="font-size:13px;color:var(--text3);margin-bottom:8px;">Seeds 5–10 determined after Week 13</div>
+            <div id="nit-teams-list"></div>
+          </div>
+          <div class="payout-row"><span class="payout-label">4 wks × 6 wins × $25</span><span class="payout-amount">$600 total</span></div>
+        </div>
+        <div class="card" style="margin-top:0;">
+          <div class="card-header">
+            <span class="card-title">Week 18 Derby</span>
+            <span class="badge badge-green">All-Play</span>
+          </div>
+          <div style="padding:1rem 1.25rem;">
+            <div style="font-size:13px;color:var(--text2);line-height:1.7;">All 10 teams compete. Top 5 scoring teams each earn <strong style="color:var(--green);">$50</strong>.</div>
+            <div style="margin-top:10px;" class="payout-row" style="padding:0;"><span class="payout-label">Total payout</span><span class="payout-amount">$250</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tiebreaker rules -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Playoff Seeding Tiebreakers</span>
+        <span class="badge badge-gray">Applied in order</span>
+      </div>
+      <div style="padding:1rem 1.25rem;display:flex;flex-direction:column;gap:8px;">
+        <div class="fin-row"><span style="color:var(--text3);">1</span><span style="color:var(--text2);">Head to head record</span></div>
+        <div class="fin-row"><span style="color:var(--text3);">2</span><span style="color:var(--text2);">Net points head to head</span></div>
+        <div class="fin-row"><span style="color:var(--text3);">3</span><span style="color:var(--text2);">Strength of schedule (most points against)</span></div>
+        <div class="fin-row"><span style="color:var(--text3);">4</span><span style="color:var(--text2);">Total points for</span></div>
+        <div class="fin-row" style="border:none;"><span style="color:var(--text3);">5</span><span style="color:var(--text2);">Both teams submit lineup — coin toss for seeding</span></div>
+      </div>
+      <div style="padding:0 1.25rem 1rem;font-size:11px;color:var(--text3);">If more than two teams are tied, break the first tie then restart from #1.</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       FINANCES
+  ══════════════════════════════════════════════ -->
+  <div id="finances" class="section">
+    <div class="grid-4" id="fin-stats-row"></div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Prize Pool Breakdown</span>
+        <span class="badge badge-gold">$8,000 Total</span>
+      </div>
+      <div class="fin-grid">
+        <div>
+          <div class="fin-section-title">Regular Season</div>
+          <div class="fin-row"><span>Spiffs (18 × $50)</span><span class="fin-val" style="color:var(--green);">$900</span></div>
+          <div class="fin-row"><span>Per-win (130 × $20)</span><span class="fin-val" style="color:var(--green);">$2,600</span></div>
+          <div class="divider"></div>
+          <div class="fin-row"><span style="font-weight:500;">Subtotal</span><span class="fin-val" style="color:var(--gold);">$3,500</span></div>
+        </div>
+        <div>
+          <div class="fin-section-title">Postseason</div>
+          <div class="fin-row"><span>Championship (1st–4th)</span><span class="fin-val" style="color:var(--green);">$1,750</span></div>
+          <div class="fin-row"><span>NIT Bracket</span><span class="fin-val" style="color:var(--green);">$600</span></div>
+          <div class="fin-row"><span>Week 18 Derby</span><span class="fin-val" style="color:var(--green);">$250</span></div>
+          <div class="fin-row"><span>Point Pool (1st–5th)</span><span class="fin-val" style="color:var(--green);">$1,900</span></div>
+          <div class="divider"></div>
+          <div class="fin-row"><span style="font-weight:500;">Subtotal</span><span class="fin-val" style="color:var(--gold);">$4,500</span></div>
+        </div>
+      </div>
+      <div style="padding:1rem 1.25rem;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text);">Grand Total</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--gold);">$8,000</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Team Earnings Tracker</span>
+        <span class="badge badge-gray">Live season totals</span>
+      </div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Team</th>
+              <th>Reg Wins $</th>
+              <th>Spiffs $</th>
+              <th>Postseason $</th>
+              <th>Total Earned</th>
+              <th>Net (vs $800)</th>
+            </tr>
+          </thead>
+          <tbody id="earnings-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Point Pool Payouts</span>
+        <span class="badge badge-gold">End of season</span>
+      </div>
+      <div class="payout-row"><span class="payout-label">1st</span><span class="payout-amount">$800</span></div>
+      <div class="payout-row"><span class="payout-label">2nd</span><span class="payout-amount">$450</span></div>
+      <div class="payout-row"><span class="payout-label">3rd</span><span class="payout-amount">$300</span></div>
+      <div class="payout-row"><span class="payout-label">4th</span><span class="payout-amount">$200</span></div>
+      <div class="payout-row"><span class="payout-label">5th</span><span class="payout-amount">$150</span></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       RULES
+  ══════════════════════════════════════════════ -->
+  <div id="rules" class="section">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">2025 Scoring Rules</span>
+        <span class="badge badge-blue">New rules marked NEW</span>
+      </div>
+      <div class="rules-grid">
+        <div>
+          <div class="rules-group-title">Passing</div>
+          <div class="rule-row"><span>TD under 50 yards</span><span class="rule-pts">5 pts</span></div>
+          <div class="rule-row"><span>TD 50+ yards</span><span class="rule-pts">10 pts</span></div>
+          <div class="rule-row"><span>Two-point conversion</span><span class="rule-pts">2 pts</span></div>
+          <div class="rule-row"><span>350+ passing yards <span class="rule-new">NEW</span></span><span class="rule-pts">+5 pts</span></div>
+        </div>
+        <div>
+          <div class="rules-group-title">Rushing</div>
+          <div class="rule-row"><span>TD under 50 yards</span><span class="rule-pts">7 pts</span></div>
+          <div class="rule-row"><span>TD 50+ yards</span><span class="rule-pts">14 pts</span></div>
+          <div class="rule-row"><span>Two-point conversion</span><span class="rule-pts">2 pts</span></div>
+          <div class="rule-row"><span>125 rush/rec yards</span><span class="rule-pts">+5 pts</span></div>
+          <div class="rule-row"><span>200 rush/rec yards</span><span class="rule-pts">+5 pts</span></div>
+        </div>
+        <div>
+          <div class="rules-group-title">Receiving</div>
+          <div class="rule-row"><span>TD under 50 yards</span><span class="rule-pts">7 pts</span></div>
+          <div class="rule-row"><span>TD 50+ yards</span><span class="rule-pts">10 pts</span></div>
+          <div class="rule-row"><span>Two-point conversion</span><span class="rule-pts">2 pts</span></div>
+          <div class="rule-row"><span>Offensive fumble rec TD</span><span class="rule-pts">7 pts</span></div>
+        </div>
+        <div>
+          <div class="rules-group-title">Kicking <span class="rule-new">ALL NEW</span></div>
+          <div class="rule-row"><span>FG under 55 yards <span class="rule-new">NEW</span></span><span class="rule-pts">3 pts</span></div>
+          <div class="rule-row"><span>FG 55–59 yards <span class="rule-new">NEW</span></span><span class="rule-pts">5 pts</span></div>
+          <div class="rule-row"><span>FG 60+ yards <span class="rule-new">NEW</span></span><span class="rule-pts">7 pts</span></div>
+          <div class="rule-row"><span>Extra point</span><span class="rule-pts">1 pt</span></div>
+        </div>
+        <div>
+          <div class="rules-group-title">Defense / Special Teams</div>
+          <div class="rule-row"><span>D/ST TD under 50 yards</span><span class="rule-pts">7 pts</span></div>
+          <div class="rule-row"><span>D/ST TD 50+ yards</span><span class="rule-pts">10 pts</span></div>
+          <div class="rule-row"><span>0 points against</span><span class="rule-pts">14 pts</span></div>
+          <div class="rule-row"><span>1–9 points against</span><span class="rule-pts">10 pts</span></div>
+          <div class="rule-row"><span>10–12 points against</span><span class="rule-pts">5 pts</span></div>
+          <div class="rule-row"><span>Safety</span><span class="rule-pts">5 pts</span></div>
+          <div class="rule-row"><span>ST conversion return (2pt)</span><span class="rule-pts">2 pts</span></div>
+          <div class="rule-row"><span>ST one-point safety</span><span class="rule-pts">1 pt</span></div>
+        </div>
+        <div>
+          <div class="rules-group-title">Lineup</div>
+          <div class="rule-row"><span>QB</span><span class="rule-pts">1 slot</span></div>
+          <div class="rule-row"><span>RB</span><span class="rule-pts">1 slot</span></div>
+          <div class="rule-row"><span>WR/TE</span><span class="rule-pts">2 slots</span></div>
+          <div class="rule-row"><span>Flex RB/WR/TE</span><span class="rule-pts">1 slot</span></div>
+          <div class="rule-row"><span>K</span><span class="rule-pts">1 slot</span></div>
+          <div class="rule-row"><span>Defense</span><span class="rule-pts">1 slot</span></div>
+          <div class="rule-row"><span>Waivers</span><span class="rule-pts">Tue–Sat night</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       ADMIN
+  ══════════════════════════════════════════════ -->
+  <div id="admin" class="section">
+    <div class="two-col">
+      <div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Teams & Owners</span>
+            <span class="badge badge-gray">10 teams</span>
+          </div>
+          <div id="team-admin-list"></div>
+        </div>
+        <div class="card" style="margin-top:0;">
+          <div class="card-header">
+            <span class="card-title">Draft Order</span>
+            <span class="badge badge-gray">2025</span>
+          </div>
+          <div id="draft-order-list"></div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Spiff Ledger</span>
+            <span class="badge badge-gray">18 × $50</span>
+          </div>
+          <div id="spiff-list"></div>
+        </div>
+        <div class="card" style="margin-top:0;">
+          <div class="card-header">
+            <span class="card-title">Season Settings</span>
+          </div>
+          <div style="padding:1rem 1.25rem;display:flex;flex-direction:column;gap:6px;">
+            <div class="fin-row"><span>Current Week</span>
+              <select id="cur-week-sel" onchange="updateWeek()" style="background:var(--bg);color:var(--text);border:1px solid var(--border2);border-radius:6px;padding:4px 8px;font-family:'Barlow Condensed',sans-serif;font-size:14px;">
+                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+                <option>11</option><option>12</option><option>13</option><option>14</option><option>15</option>
+                <option>16</option><option>17</option><option>18</option>
+              </select>
+            </div>
+            <div class="fin-row"><span>Buy-in per team</span><span class="fin-val">$800</span></div>
+            <div class="fin-row"><span>Win value (reg season)</span><span class="fin-val">$20</span></div>
+            <div class="fin-row"><span>Win value (NIT)</span><span class="fin-val">$25</span></div>
+            <div class="fin-row"><span>Spiff value</span><span class="fin-val">$50</span></div>
+            <div class="fin-row" style="border:none;"><span>Derby prize per team</span><span class="fin-val">$50</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<div class="footer">
+  MFL 2026 League HQ &nbsp;·&nbsp; McCann's Football League &nbsp;·&nbsp; 10 teams · $8,000 prize pool
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ══════════════════════════════════════════════
+   DATA
+══════════════════════════════════════════════ */
+const TEAMS = [
+  { id: 'bigdogs',   name: 'Big Dogs',    owners: 'Bob H. & Chris',         h2h: 0, top5: 0, pts: 0, bench: 0, spiffs: 0, postseason: 0 },
+  { id: 'bluecheese',name: 'Blue Cheese', owners: 'Reg & John',             h2h: 0, top5: 0, pts: 0, bench: 0, spiffs: 0, postseason: 0 },
+  { id: 'clapperz',  name: 'Clapperz',   owners: 'Steve',                  h2h: 0, top5: 0, pts: 0, bench: 0, spiffs: 0, postseason: 0 },
+  { id: 'crankees',  name: 'Crankees',   owners: 'Drew & J',               h2h: 0, top5: 0, pts: 0, bench: 0, spiffs: 0, postseason: 0 },
+  { id: 'huterball', name: 'Huterball',  owners: 'Jeff',                   h2h: 0, top5: 0, pts: 0, bench: 0, spiffs: 0, postseason: 0 },
+  { id: 'jackpots',  name: 'Jackpots',   owners: 'Bill & Ray',             h2h: 0, top5: 0, pts: 0, bench: 0, spiffs: 0, postseason: 0 },
+  { id: 'legends',   name: 'Legends',    owners: 'Bobby A.',               h2h: 0, top5: 0, pts: 0, bench: 0, spiffs: 0, postseason: 0 },
+  { id: 'ool',       name: 'Out of Luck',owners: 'Rob W.',                 h2h: 0, top5: 0, pts: 0, bench: 0, spiffs: 0, postseason: 0 },
+  { id: 'slimey',    name: 'Slimey Dogs',owners: 'Don, Brendan & Kieran',  h2h: 0, top5: 0, pts: 0, bench: 0, spiffs: 0, postseason: 0 },
+  { id: 'wizards',   name: 'Wizards',    owners: 'Chip & Teddy',           h2h: 0, top5: 0, pts: 0, bench: 0, spiffs: 0, postseason: 0 }
+];
+
+const SCHEDULE = {
+  // 2026 Regular Season — scores to be filled in weekly
+  1:  [{h:'BDG',a:'HBL',hp:0,ap:0},{h:'OOL',a:'BLU',hp:0,ap:0},{h:'POT',a:'CLP',hp:0,ap:0},{h:'LOF',a:'CRK',hp:0,ap:0},{h:'SDG',a:'WIZ',hp:0,ap:0}],
+  2:  [{h:'POT',a:'BDG',hp:0,ap:0},{h:'WIZ',a:'OOL',hp:0,ap:0},{h:'CLP',a:'HBL',hp:0,ap:0},{h:'BLU',a:'LOF',hp:0,ap:0},{h:'CRK',a:'SDG',hp:0,ap:0}],
+  3:  [{h:'OOL',a:'BDG',hp:0,ap:0},{h:'HBL',a:'SDG',hp:0,ap:0},{h:'LOF',a:'CLP',hp:0,ap:0},{h:'CRK',a:'POT',hp:0,ap:0},{h:'WIZ',a:'BLU',hp:0,ap:0}],
+  4:  [{h:'BDG',a:'SDG',hp:0,ap:0},{h:'BLU',a:'POT',hp:0,ap:0},{h:'CLP',a:'OOL',hp:0,ap:0},{h:'HBL',a:'CRK',hp:0,ap:0},{h:'LOF',a:'WIZ',hp:0,ap:0}],
+  5:  [{h:'BDG',a:'CRK',hp:0,ap:0},{h:'WIZ',a:'POT',hp:0,ap:0},{h:'SDG',a:'CLP',hp:0,ap:0},{h:'BLU',a:'HBL',hp:0,ap:0},{h:'OOL',a:'LOF',hp:0,ap:0}],
+  6:  [{h:'CLP',a:'BDG',hp:0,ap:0},{h:'POT',a:'OOL',hp:0,ap:0},{h:'CRK',a:'WIZ',hp:0,ap:0},{h:'SDG',a:'BLU',hp:0,ap:0},{h:'HBL',a:'LOF',hp:0,ap:0}],
+  7:  [{h:'BLU',a:'BDG',hp:0,ap:0},{h:'CRK',a:'CLP',hp:0,ap:0},{h:'WIZ',a:'HBL',hp:0,ap:0},{h:'SDG',a:'OOL',hp:0,ap:0},{h:'LOF',a:'POT',hp:0,ap:0}],
+  8:  [{h:'BDG',a:'WIZ',hp:0,ap:0},{h:'OOL',a:'CRK',hp:0,ap:0},{h:'CLP',a:'BLU',hp:0,ap:0},{h:'HBL',a:'POT',hp:0,ap:0},{h:'LOF',a:'SDG',hp:0,ap:0}],
+  9:  [{h:'BDG',a:'LOF',hp:0,ap:0},{h:'POT',a:'SDG',hp:0,ap:0},{h:'CRK',a:'BLU',hp:0,ap:0},{h:'CLP',a:'WIZ',hp:0,ap:0},{h:'HBL',a:'OOL',hp:0,ap:0}],
+  10: [{h:'HBL',a:'BDG',hp:0,ap:0},{h:'BLU',a:'OOL',hp:0,ap:0},{h:'POT',a:'CLP',hp:0,ap:0},{h:'CRK',a:'LOF',hp:0,ap:0},{h:'WIZ',a:'SDG',hp:0,ap:0}],
+  11: [{h:'BDG',a:'POT',hp:0,ap:0},{h:'OOL',a:'WIZ',hp:0,ap:0},{h:'CLP',a:'HBL',hp:0,ap:0},{h:'LOF',a:'BLU',hp:0,ap:0},{h:'SDG',a:'CRK',hp:0,ap:0}],
+  12: [{h:'OOL',a:'BDG',hp:0,ap:0},{h:'SDG',a:'HBL',hp:0,ap:0},{h:'CLP',a:'LOF',hp:0,ap:0},{h:'POT',a:'CRK',hp:0,ap:0},{h:'BLU',a:'WIZ',hp:0,ap:0}],
+  13: [{h:'SDG',a:'BDG',hp:0,ap:0},{h:'POT',a:'BLU',hp:0,ap:0},{h:'OOL',a:'CLP',hp:0,ap:0},{h:'CRK',a:'HBL',hp:0,ap:0},{h:'WIZ',a:'LOF',hp:0,ap:0}],
+  14: [], 15: [], 16: [], 17: [], 18: 'derby'
+};
+
+const TEAM_NAMES = {
+  BDG:'Big Dogs',BLU:'Blue Cheese',CLP:'Clapperz',CRK:'Crankees',
+  HBL:'Huterball',POT:'Jackpots',LOF:'Legends',OOL:'Out of Luck',
+  SDG:'Slimey Dogs',WIZ:'Wizards'
+};
+
+const DRAFT_ORDER = ['Big Dogs','Legends','Clapperz','Crankees','Huterball','Blue Cheese','Out of Luck','Jackpots','Slimey Dogs','Wizards'];
+const POOL_PRIZES = [800,450,300,200,150,0,0,0,0,0];
+const MATCHUPS = [
+  [0,1],[2,3],[4,5],[6,7],[8,9], // wk1
+  [0,2],[1,3],[4,6],[5,7],[8,0], // wk2 — simplified example
+];
+
+let currentWeek = 1;
+let weekScores = {}; // { week: { teamId: { pts, bench } } }
+let spiffData = Array.from({length:18},(_,i)=>({id:i+1, name:`Spiff ${i+1}`, winner:'TBD', paid:false}));
+
+/* ══════════════════════════════════════════════
+   NAV
+══════════════════════════════════════════════ */
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+/* ══════════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════════ */
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2500);
+}
+
+/* ══════════════════════════════════════════════
+   WEEK HEADER
+══════════════════════════════════════════════ */
+function weekLabel(w) {
+  if (w <= 13) return `WEEK ${w} · REG SEASON`;
+  if (w === 18) return `WEEK 18 · DERBY`;
+  return `WEEK ${w} · POSTSEASON`;
+}
+function updateWeek() {
+  currentWeek = parseInt(document.getElementById('cur-week-sel').value);
+  document.getElementById('header-week').textContent = weekLabel(currentWeek);
+  renderWeekGrid();
+}
+
+/* ══════════════════════════════════════════════
+   STANDINGS
+══════════════════════════════════════════════ */
+function rankClass(i) {
+  if (i===0) return 'gold'; if (i===1) return 'silver'; if (i===2) return 'bronze'; return '';
+}
+
+function renderStandings() {
+  const sorted = [...TEAMS].sort((a,b)=>{
+    const wa = a.h2h+a.top5, wb = b.h2h+b.top5;
+    if (wb!==wa) return wb-wa;
+    if (b.pts!==a.pts) return b.pts-a.pts;
+    return b.bench-a.bench;
+  });
+  const poolSorted = [...TEAMS].sort((a,b)=>b.pts-a.pts || b.bench-a.bench);
+  const maxPts = poolSorted[0].pts || 1;
+
+  document.getElementById('standings-body').innerHTML = sorted.map((t,i)=>{
+    const tw = t.h2h+t.top5;
+    return `<tr>
+      <td><span class="rank ${rankClass(i)}">${i+1}</span></td>
+      <td><div class="team-cell"><div class="name">${t.name}</div><div class="owners">${t.owners}</div></div></td>
+      <td><span class="num">${t.h2h}</span></td>
+      <td><span class="num">${t.top5}</span></td>
+      <td><span class="num" style="color:var(--text);">${tw}</span></td>
+      <td><span class="num">${t.pts.toFixed(1)}</span></td>
+      <td><span class="num" style="color:var(--text3);">${t.bench.toFixed(1)}</span></td>
+      <td><span class="money">$${tw*20}</span></td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('pool-body').innerHTML = poolSorted.map((t,i)=>{
+    const pct = maxPts>0 ? Math.round(t.pts/maxPts*100) : 0;
+    return `<tr>
+      <td><span class="rank ${rankClass(i)}">${i+1}</span></td>
+      <td><div class="team-cell"><div class="name">${t.name}</div><div class="owners">${t.owners}</div></div></td>
+      <td><span class="num">${t.pts.toFixed(1)}</span></td>
+      <td style="min-width:100px;"><div class="progress-wrap"><div class="progress-bar" style="width:${pct}%"></div></div></td>
+      <td><span class="money">${POOL_PRIZES[i]>0?'$'+POOL_PRIZES[i]:'—'}</span></td>
+    </tr>`;
+  }).join('');
+
+  // stat cards
+  const totalWins = TEAMS.reduce((s,t)=>s+t.h2h+t.top5,0);
+  const totalPts = TEAMS.reduce((s,t)=>s+t.pts,0);
+  document.getElementById('stats-row').innerHTML = `
+    <div class="stat-card"><div class="stat-label">Current Week</div><div class="stat-val">${currentWeek}</div><div class="stat-sub">of 18</div></div>
+    <div class="stat-card"><div class="stat-label">Wins Awarded</div><div class="stat-val">${totalWins}</div><div class="stat-sub">of 130 reg season</div></div>
+    <div class="stat-card"><div class="stat-label">Prize Pool</div><div class="stat-val">$8,000</div><div class="stat-sub">10 × $800 buy-in</div></div>
+    <div class="stat-card"><div class="stat-label">Total Pts Scored</div><div class="stat-val">${totalPts.toFixed(0)}</div><div class="stat-sub">all teams combined</div></div>
+  `;
+
+  renderEarnings();
+}
+
+/* ══════════════════════════════════════════════
+   SCHEDULE
+══════════════════════════════════════════════ */
+function weekType(w) {
+  if (w<=13) return {label:'REG', cls:''};
+  if (w===18) return {label:'DERBY', cls:'derby'};
+  return {label:'POST', cls:'post'};
+}
+
+function renderWeekGrid() {
+  document.getElementById('week-grid').innerHTML = Array.from({length:18},(_,i)=>{
+    const w = i+1;
+    const wt = weekType(w);
+    const done = weekScores[w] && Object.keys(weekScores[w]).length>0;
+    const cur = w===currentWeek;
+    const cls = done?'complete':cur?'current':wt.cls;
+    return `<div class="week-pill ${cls}" onclick="openWeek(${w})">
+      <div class="week-num">W${w}</div>
+      <div class="week-type">${wt.label}</div>
+    </div>`;
+  }).join('');
+}
+
+let activeWeek = null;
+function openWeek(w) {
+  activeWeek = w;
+  const wt = weekType(w);
+  const detail = document.getElementById('week-detail');
+  const title = document.getElementById('week-detail-title');
+  const badge = document.getElementById('week-type-badge');
+  const display = document.getElementById('matchup-display');
+
+  title.textContent = `Week ${w} Matchups`;
+  badge.textContent = wt.label==='REG'?'Regular Season':wt.label==='DERBY'?'Week 18 Derby':'Postseason';
+  badge.className = 'badge ' + (wt.label==='REG'?'badge-gray':wt.label==='DERBY'?'badge-gold':'badge-blue');
+
+  const matchups = SCHEDULE[w];
+
+  if (w === 18 || matchups === 'derby') {
+    display.innerHTML = `
+      <div style="padding:1.25rem;">
+        <div style="font-size:13px;color:var(--text2);margin-bottom:1rem;">All-play format — no head-to-head matchups. All 10 teams submit lineups. Top 5 scoring teams earn <strong style="color:var(--green);">$50</strong> each.</div>
+        <table>
+          <thead><tr><th>#</th><th>Team</th><th>Score</th><th>Result</th></tr></thead>
+          <tbody>
+            ${[{t:'BDG',p:50},{t:'BLU',p:49},{t:'OOL',p:49},{t:'LOF',p:44},{t:'POT',p:34},{t:'SDG',p:27},{t:'CRK',p:24},{t:'WIZ',p:20},{t:'HBL',p:15},{t:'CLP',p:3}]
+              .map((r,i)=>`<tr>
+                <td><span class="rank ${i===0?'gold':i===1?'silver':i===2?'bronze':''}">${i+1}</span></td>
+                <td><div class="team-cell"><div class="name">${TEAM_NAMES[r.t]}</div><div class="owners">${r.t}</div></div></td>
+                <td><span class="num">${r.p.toFixed(1)}</span></td>
+                <td>${i<5?'<span class="money">+$50</span>':'<span style="color:var(--text3);">—</span>'}</td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>`;
+  } else if (!matchups) {
+    display.innerHTML = `<div style="padding:1.25rem;color:var(--text3);font-size:13px;">Schedule not available for this week.</div>`;
+  } else {
+    // Find top 5 scores across all teams this week for top-5 win indicator
+    const allScores = matchups.flatMap(m=>[{team:m.h,pts:m.hp},{team:m.a,pts:m.ap}])
+      .sort((a,b)=>b.pts-a.pts);
+    const top5 = new Set(allScores.slice(0,5).map(s=>s.team));
+
+    display.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>Home</th>
+            <th style="text-align:center;">Score</th>
+            <th style="text-align:right;">Away</th>
+            <th style="text-align:center;">Top-5</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${matchups.map(m => {
+            const hWin = m.hp > m.ap;
+            const tie  = m.hp === m.ap;
+            const hTop = top5.has(m.h);
+            const aTop = top5.has(m.a);
+            return `<tr>
+              <td>
+                <div class="team-cell">
+                  <div class="name" style="${hWin||tie?'font-weight:600;':''}">${TEAM_NAMES[m.h]}</div>
+                  <div class="owners">${m.h}</div>
+                </div>
+              </td>
+              <td style="text-align:center;">
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:${hWin?'var(--green)':'var(--text3)'};">${m.hp.toFixed(1)}</span>
+                <span style="font-size:11px;color:var(--text3);margin:0 4px;">–</span>
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:${!hWin&&!tie?'var(--green)':'var(--text3)'};">${m.ap.toFixed(1)}</span>
+              </td>
+              <td style="text-align:right;">
+                <div class="team-cell" style="align-items:flex-end;">
+                  <div class="name" style="${!hWin&&!tie?'font-weight:600;':''}">${TEAM_NAMES[m.a]}</div>
+                  <div class="owners">${m.a}</div>
+                </div>
+              </td>
+              <td style="text-align:center;">
+                ${hTop&&aTop?'<span class="badge badge-gold">Both</span>':hTop?`<span class="badge badge-green">${m.h}</span>`:aTop?`<span class="badge badge-green">${m.a}</span>`:'<span style="color:var(--text3);font-size:12px;">—</span>'}
+              </td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+      <div style="padding:0.75rem 1.25rem;border-top:0.5px solid var(--border);font-size:11px;color:var(--text3);">
+        Winners in green · Top-5 scoring teams earn an additional win · Bench points are tiebreaker
+      </div>
+    `;
+  }
+
+  detail.style.display = 'block';
+  detail.scrollIntoView({behavior:'smooth'});
+}
+
+/* ══════════════════════════════════════════════
+   FINANCES
+══════════════════════════════════════════════ */
+function renderEarnings() {
+  const totalSpiffs = spiffData.filter(s=>s.paid).length * 50;
+  const totalWinMoney = TEAMS.reduce((s,t)=>(s+(t.h2h+t.top5)*20),0);
+  const distributed = totalWinMoney + totalSpiffs;
+
+  document.getElementById('fin-stats-row').innerHTML = `
+    <div class="stat-card"><div class="stat-label">Total Pool</div><div class="stat-val">$8,000</div><div class="stat-sub">10 × $800 buy-in</div></div>
+    <div class="stat-card"><div class="stat-label">Distributed</div><div class="stat-val">$${distributed}</div><div class="stat-sub">${Math.round(distributed/80)}% paid out</div></div>
+    <div class="stat-card"><div class="stat-label">Remaining</div><div class="stat-val">$${8000-distributed}</div><div class="stat-sub">pending</div></div>
+    <div class="stat-card"><div class="stat-label">Spiffs Paid</div><div class="stat-val">${spiffData.filter(s=>s.paid).length}/18</div><div class="stat-sub">$${totalSpiffs} of $900</div></div>
+  `;
+
+  document.getElementById('earnings-body').innerHTML = TEAMS.map(t=>{
+    const winMoney = (t.h2h+t.top5)*20;
+    const spiffMoney = t.spiffs*50;
+    const total = winMoney+spiffMoney+t.postseason;
+    const net = total-800;
+    return `<tr>
+      <td><div class="team-cell"><div class="name">${t.name}</div><div class="owners">${t.owners}</div></div></td>
+      <td><span class="num">$${winMoney}</span></td>
+      <td><span class="num">$${spiffMoney}</span></td>
+      <td><span class="num">$${t.postseason}</span></td>
+      <td><span class="money">$${total}</span></td>
+      <td><span class="money ${net<0?'neg':''}">${net>=0?'+':''}$${net}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+/* ══════════════════════════════════════════════
+   ADMIN
+══════════════════════════════════════════════ */
+function renderAdmin() {
+  document.getElementById('team-admin-list').innerHTML = TEAMS.map(t=>{
+    const owners = t.owners.split(/[,&]/).length;
+    return `<div class="team-admin-row">
+      <div><div style="font-size:13px;font-weight:500;">${t.name}</div><div style="font-size:11px;color:var(--text3);">${t.owners}</div></div>
+      <span class="badge ${owners>1?'badge-blue':'badge-gray'}">${owners>1?owners+' owners':'Solo'}</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('draft-order-list').innerHTML = DRAFT_ORDER.map((name,i)=>`
+    <div class="team-admin-row">
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--text3);width:24px;">${i+1}</span>
+      <span style="font-size:13px;color:var(--text);">${name}</span>
+    </div>
+  `).join('');
+
+  document.getElementById('spiff-list').innerHTML = spiffData.map(s=>`
+    <div class="spiff-row">
+      <div><div class="spiff-name">Spiff #${s.id}${s.name!==`Spiff ${s.id}`?' — '+s.name:''}</div><div class="spiff-winner">Winner: ${s.winner}</div></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span class="badge ${s.paid?'badge-green':'badge-gray'}">${s.paid?'PAID':'$50'}</span>
+        <button onclick="toggleSpiff(${s.id})" style="background:var(--surface2);border:1px solid var(--border2);color:var(--text2);border-radius:6px;padding:3px 8px;font-size:11px;cursor:pointer;">${s.paid?'Undo':'Mark paid'}</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleSpiff(id) {
+  const s = spiffData.find(x=>x.id===id);
+  if (s) { s.paid=!s.paid; renderAdmin(); renderEarnings(); toast(s.paid?`Spiff #${id} marked paid`:`Spiff #${id} unpaid`); }
+}
+
+/* ══════════════════════════════════════════════
+   NIT PLACEHOLDER
+══════════════════════════════════════════════ */
+function renderNIT() {
+  document.getElementById('nit-teams-list').innerHTML =
+    `<div style="font-size:12px;color:var(--text3);padding:4px 0;">Seeds 5–10 will populate here after Week 13.</div>`;
+}
+
+/* ══════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════ */
+renderStandings();
+renderWeekGrid();
+renderAdmin();
+renderNIT();
+renderEarnings();
+</script>
+</body>
+</html>
