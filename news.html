@@ -1962,7 +1962,7 @@ async function publishReport() {
   closeAllForms();
   addWeekTab(week);
   showWeek(week, null);
-  await saveToDB({ type:'report', week: String(week), author, headline, deck, body, spiff: spiff||'', pool: document.getElementById('f-pool').value.trim(), scores: document.getElementById('f-scores').value.trim(), players: document.getElementById('f-players').value.trim(), signoff });
+  await saveToDB({ type:'report', week: week, author, headline, deck, body, spiff: spiff||'', pool: document.getElementById('f-pool').value.trim(), scores: document.getElementById('f-scores').value.trim(), players: document.getElementById('f-players').value.trim(), signoff });
 }
 
 /* ── CBS FETCH ── */
@@ -2212,7 +2212,7 @@ function showToast(msg, duration=2500) {
 (async function init() {
   showToast('Loading posts…', 8000);
   await loadPostsFromDB();
-  showWeek(18, document.querySelector('.week-tab.active'));
+  showWeek(0, document.querySelector('.week-tab'));
 })();
 </script>
 </body>
