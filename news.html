@@ -374,6 +374,7 @@
       gap: 1rem;
     }
     .archive-card {
+      position: relative;
       border: 1px solid var(--rule);
       border-top: 3px solid var(--ink);
       background: var(--paper2);
@@ -383,6 +384,33 @@
     }
     .archive-card:hover { background: var(--paper3); }
     .archive-card.news-card { border-top-color: var(--red); }
+    .card-delete-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid var(--rule2);
+      background: var(--paper);
+      color: var(--ink3);
+      font-size: 12px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.15s, background 0.15s, color 0.15s;
+    }
+    .archive-card:hover .card-delete-btn { opacity: 1; }
+    .card-delete-btn:hover { background: var(--red); border-color: var(--red); color: var(--paper); }
+    .delete-post-btn {
+      background: var(--paper2);
+      color: var(--red);
+      border: 1px solid var(--red);
+    }
+    .delete-post-btn:hover { background: var(--red); color: var(--paper); }
     .archive-card-week {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 10px;
@@ -1265,13 +1293,16 @@ function renderArchiveGrid() {
         if (p.type === 'news') {
           return `
             <div class="archive-card news-card" onclick="showNewsPost('${p.id}')">
+              <button class="card-delete-btn" onclick="deleteNewsPost('${p.id}', event)" title="Delete this post">✕</button>
               <div class="archive-card-week" style="color:var(--red);">📰 ${p.category || 'League News'} · ${p.date} · By ${p.author}</div>
               <div class="archive-card-headline">${p.headline}</div>
               <div class="archive-card-deck">${p.deck || ''}</div>
             </div>`;
         } else {
+          const isArchived = REPORTS.find(rr => rr.week === p.week);
           return `
             <div class="archive-card" onclick="showWeek(${p.week}, null)">
+              ${!isArchived ? `<button class="card-delete-btn" onclick="deleteReport(${p.week}, event)" title="Delete this report">✕</button>` : ''}
               <div class="archive-card-week">📋 Week ${p.week} Report · By ${p.author}</div>
               <div class="archive-card-headline">${p.headline}</div>
               <div class="archive-card-deck">${p.deck}</div>
@@ -1846,6 +1877,7 @@ function renderReport(r) {
       ${currentWeek > 1 ? `<button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="navReport(-1)">← Previous Issue</button>` : ''}
       <button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="showWeek(0,null)">All Issues</button>
       ${currentWeek < 18 ? `<button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="navReport(1)">Next Issue →</button>` : ''}
+      ${!REPORTS.find(rr => rr.week === r.week) ? `<button class="compose-btn delete-post-btn" onclick="deleteReport(${r.week}, null)">🗑 Delete This Report</button>` : ''}
     </div>
     ${commentsHtml(r.week)}
   `;
@@ -1904,8 +1936,9 @@ function renderNewsPost(post) {
     </div>
     <div class="columns-2 article-body">${bodyHtml}</div>
     <div class="section-rule" style="margin-top:2rem;"><span class="section-rule-text">End of Post</span></div>
-    <div style="margin-top:1rem;">
+    <div style="display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap;">
       <button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="showWeek(0,null)">← All Issues</button>
+      <button class="compose-btn delete-post-btn" onclick="deleteNewsPost('${post.id}', null)">🗑 Delete This Post</button>
     </div>
     ${commentsHtml('news_' + post.id)}
   `;
@@ -1929,7 +1962,11 @@ async function publishNewsPost() {
   document.getElementById('fn-category').value = '';
   closeAllForms();
   showNewsPost(id);
-  await saveToDB({ type:'news', author, category, headline, deck, body });
+  const savedRow = await saveToDB({ type:'news', author, category, headline, deck, body });
+  if (savedRow && savedRow.id) {
+    const idx = newsItems.findIndex(n => n.id === id);
+    if (idx > -1) newsItems[idx].id = savedRow.id;
+  }
 }
 
 async function publishReport() {
@@ -2156,14 +2193,74 @@ const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFz
 const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
 async function saveToDB(post) {
-  const { error } = await db.from('posts').insert([post]);
+  const { data, error } = await db.from('posts').insert([post]).select();
   if (error) {
     console.error('Save failed:', error.message);
     showToast('⚠️ Post published locally but failed to save to database. Check console.', 4000);
+    return null;
   } else {
     showToast('✓ Post saved and published!');
+    return data && data[0] ? data[0] : null;
   }
 }
+
+/* ── COMMISSIONER PASSWORD GATE ──
+   This only guards against accidental/casual clicks by teammates browsing
+   the site — anyone who opens the browser's dev tools could read this
+   password in the page source, so don't reuse a password you care about
+   protecting elsewhere. Change the word below to whatever you like. */
+const COMMISSIONER_PASSWORD = 'mfl2026';
+
+function checkAdminPassword() {
+  if (sessionStorage.getItem('mfl_admin_ok') === '1') return true;
+  const entered = prompt('Enter the commissioner password to continue:');
+  if (entered === null) return false;
+  if (entered === COMMISSIONER_PASSWORD) {
+    sessionStorage.setItem('mfl_admin_ok', '1');
+    return true;
+  }
+  alert('Incorrect password.');
+  return false;
+}
+
+async function deleteNewsPost(id, event) {
+  if (event) event.stopPropagation();
+  if (!checkAdminPassword()) return;
+  if (!confirm('Delete this post? This cannot be undone.')) return;
+  const { error } = await db.from('posts').delete().eq('id', id).eq('type', 'news');
+  if (error) {
+    console.error('Delete failed:', error.message);
+    showToast('⚠️ Delete failed — check console.', 4000);
+    return;
+  }
+  newsItems = newsItems.filter(n => n.id !== id);
+  showToast('🗑 Post deleted.');
+  showWeek(0, null);
+}
+
+async function deleteReport(week, event) {
+  if (event) event.stopPropagation();
+  if (REPORTS.find(r => r.week === week)) {
+    alert("This is an archived season report built into the site's code — it can't be deleted from here.");
+    return;
+  }
+  if (!checkAdminPassword()) return;
+  if (!confirm(`Delete the Week ${week} report? This cannot be undone.`)) return;
+  const { error } = await db.from('posts').delete().eq('type', 'report').eq('week', week);
+  if (error) {
+    console.error('Delete failed:', error.message);
+    showToast('⚠️ Delete failed — check console.', 4000);
+    return;
+  }
+  userReports = userReports.filter(r => r.week !== week);
+  delete WEEK_DATA[week];
+  document.querySelectorAll('.week-tab').forEach(t => {
+    if (t.textContent.trim() === `Wk ${week}`) t.remove();
+  });
+  showToast('🗑 Report deleted.');
+  showWeek(0, null);
+}
+
 
 async function loadPostsFromDB() {
   const { data, error } = await db.from('posts').select('*').order('created_at', { ascending: false });
