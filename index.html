@@ -36,6 +36,10 @@
       --blue-bg: rgba(0,48,135,0.08);
       --red: #dc2626;
       --red-bg: rgba(220,38,38,0.08);
+      /* Bracket result-state colors */
+      --win-bg: #E6F1FB; --win-bd: #185FA5; --win-tx: #0C447C;
+      --ups-bg: #FEF3E2; --ups-bd: #BA7517; --ups-tx: #633806;
+      --loss-bg: #f5f5f4; --up-clr: #1D9E75; --dn-clr: #E24B4A;
     }
 
     body {
@@ -274,6 +278,71 @@
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+    /* ── PLAYOFF BRACKET ── */
+    .bracket-scroll { overflow-x: auto; padding: 1.25rem; }
+    .col-headers { display: grid; grid-template-columns: repeat(4, 185px) 140px; min-width: 880px; margin-bottom: 10px; }
+    .col-h { text-align: center; padding: 0 5px; }
+    .col-h-week { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); letter-spacing: 0.02em; text-transform: uppercase; }
+    .col-h-sub { font-size: 11px; color: var(--text3); }
+    .bracket { display: grid; grid-template-columns: repeat(4, 185px) 140px; gap: 0; min-width: 880px; align-items: start; }
+    .round-col { display: flex; flex-direction: column; padding: 0 5px; gap: 5px; }
+    .matchup { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--bg2); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    .matchup.champ-game { border-color: var(--ups-bd); border-width: 1.5px; }
+    .team-row { display: flex; align-items: center; padding: 5px 9px; gap: 5px; min-height: 34px; border-bottom: 1px solid var(--border); }
+    .team-row:last-child { border-bottom: none; }
+    .team-row.win  { background: var(--win-bg); }
+    .team-row.loss { background: var(--loss-bg); }
+    .team-row.upset { background: var(--ups-bg); }
+    .seed-block { display: flex; align-items: center; gap: 3px; min-width: 38px; flex-shrink: 0; }
+    .t-seed { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; color: var(--text3); min-width: 18px; }
+    .arrow { font-size: 9px; line-height: 1; }
+    .arrow.up { color: var(--up-clr); }
+    .arrow.down { color: var(--dn-clr); }
+    .arrow.same { color: var(--text3); font-size: 8px; }
+    .t-name { font-size: 12px; font-weight: 500; flex: 1; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .t-name.dim { color: var(--text3); font-weight: 400; }
+    .t-name.champ-name { color: var(--ups-tx); font-weight: 600; }
+    .t-pts { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; min-width: 24px; text-align: right; color: var(--text); }
+    .t-pts.dim { color: var(--text3); font-weight: 400; }
+    .t-pts.champ-pts { color: var(--ups-tx); }
+    .upset-flag { font-size: 9px; color: var(--ups-tx); margin-left: 1px; }
+    .finals-col { display: flex; flex-direction: column; gap: 5px; padding: 0 5px; }
+    .champ-banner { background: var(--navy); color: var(--gold); text-align: center; padding: 8px; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 8px; margin-bottom: 1px; }
+    .final-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--bg2); }
+    .final-card.top { border-color: var(--ups-bd); }
+    .final-row { display: flex; align-items: center; padding: 5px 9px; gap: 5px; border-bottom: 1px solid var(--border); min-height: 30px; }
+    .final-row:last-child { border-bottom: none; }
+    .final-row.champ  { background: var(--ups-bg); }
+    .final-row.runner { background: var(--win-bg); }
+    .final-place { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 600; color: var(--text3); min-width: 24px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .final-name { font-size: 11px; font-weight: 500; flex: 1; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .final-pay { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; }
+    .final-pay.gold { color: var(--ups-bd); }
+    .final-pay.blue { color: var(--yankees-blue); }
+    .final-pay.none { color: var(--text3); font-weight: 400; }
+    .bracket-legend { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; padding: 0.75rem 1.25rem; border-top: 1px solid var(--border); }
+    .leg { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text2); white-space: nowrap; }
+    .leg-sq { width: 13px; height: 13px; border-radius: 3px; border: 1px solid transparent; flex-shrink: 0; }
+
+    /* ── COMMISSIONER ADMIN PANEL (bracket) ── */
+    .admin-panel { background: var(--navy); color: #fff; padding: 1.25rem 1.25rem; border-radius: 12px; margin-bottom: 1.25rem; }
+    .admin-toggle { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--yankees-gray); background: none; border: 1px solid rgba(255,255,255,0.25); border-radius: 4px; padding: 5px 12px; cursor: pointer; }
+    .admin-toggle:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+    .admin-body { display: none; margin-top: 1rem; }
+    .admin-body.open { display: block; }
+    .admin-row { margin-bottom: 1rem; }
+    .admin-label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--yankees-gray); margin-bottom: 5px; }
+    .admin-select, .admin-input, .admin-textarea { font-family: 'Barlow', sans-serif; font-size: 13px; width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 5px; padding: 7px 9px; box-sizing: border-box; }
+    .admin-textarea { min-height: 90px; font-family: monospace; font-size: 12px; resize: vertical; }
+    .admin-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--gold); color: #fff; border: none; border-radius: 5px; padding: 8px 16px; cursor: pointer; margin-right: 8px; }
+    .admin-btn:hover { background: #e03a00; }
+    .admin-btn.secondary { background: rgba(255,255,255,0.12); }
+    .admin-btn.secondary:hover { background: rgba(255,255,255,0.2); }
+    .admin-note { font-size: 11px; color: var(--yankees-gray); line-height: 1.5; margin-top: 6px; }
+    .admin-status { font-size: 12px; margin-top: 8px; min-height: 16px; }
+    .admin-status.ok { color: #7ddc7d; }
+    .admin-status.err { color: #ff8080; }
   </style>
 </head>
 <body>
@@ -310,7 +379,7 @@
     <div class="card">
       <div class="card-header">
         <span class="card-title">Regular Season Standings</span>
-        <span class="badge badge-gray">Weeks 1–13 · $20/win</span>
+        <span class="badge badge-gray">Weeks 1–13 · $40/win</span>
       </div>
       <div style="overflow-x:auto;">
         <table>
@@ -334,7 +403,7 @@
     <div class="card">
       <div class="card-header">
         <span class="card-title">Point Pool Standings</span>
-        <span class="badge badge-gold">17-Week Cumulative · $1,900 Prize</span>
+        <span class="badge badge-gold">17-Week Cumulative · $2,175 Prize</span>
       </div>
       <div style="overflow-x:auto;">
         <table>
@@ -360,9 +429,9 @@
 
     <div class="grid-4" style="margin-bottom:1.25rem;">
       <div class="stat-card"><div class="stat-label">Regular Season</div><div class="stat-val">13</div><div class="stat-sub">Weeks · 5 matchups/wk</div></div>
-      <div class="stat-card"><div class="stat-label">Championship</div><div class="stat-val">Wks 14–17</div><div class="stat-sub">Top 4 · Double elim</div></div>
-      <div class="stat-card"><div class="stat-label">NIT</div><div class="stat-val">Wks 14–17</div><div class="stat-sub">Bottom 6 · $25/win</div></div>
-      <div class="stat-card"><div class="stat-label">Derby</div><div class="stat-val">Wk 18</div><div class="stat-sub">All-play · Top 5 win $50</div></div>
+      <div class="stat-card"><div class="stat-label">Postseason</div><div class="stat-val">Wks 14–17</div><div class="stat-sub">All 10 teams · Re-seeded each round</div></div>
+      <div class="stat-card"><div class="stat-label">Final Standing</div><div class="stat-val">1st–10th</div><div class="stat-sub">Paid by final placement</div></div>
+      <div class="stat-card"><div class="stat-label">Derby</div><div class="stat-val">Wk 18</div><div class="stat-sub">All-play · Top 5 win $40</div></div>
     </div>
 
     <!-- Week selector -->
@@ -393,40 +462,30 @@
       <div>
         <div class="card">
           <div class="card-header">
-            <span class="card-title">Championship Bracket</span>
-            <span class="badge badge-gold">Top 4 Teams</span>
+            <span class="card-title">Postseason Format</span>
+            <span class="badge badge-gold">All 10 Teams</span>
           </div>
-          <div style="padding:0.75rem 1.25rem;font-size:12px;color:var(--text3);">Double elimination · Weeks 14–17 · Week 18 if needed</div>
-          <div class="bracket-wrap">
-            <div class="match-card">
-              <div class="match-label">Semifinal 1 — Wk 14</div>
-              <div class="match-team tbd">Seed 1 — TBD</div>
-              <div class="match-team tbd">Seed 4 — TBD</div>
-            </div>
-            <div class="match-card">
-              <div class="match-label">Semifinal 2 — Wk 14</div>
-              <div class="match-team tbd">Seed 2 — TBD</div>
-              <div class="match-team tbd">Seed 3 — TBD</div>
-            </div>
+          <div style="padding:1rem 1.25rem;font-size:13px;color:var(--text2);line-height:1.7;">
+            All 10 teams enter the postseason after Week 13 — no byes, no separate brackets. Every team is seeded 1–10 based on regular season record, then re-seeded after each of the four rounds (Weeks 14–17) based on cumulative postseason results. Final placement after Week 17 sets the payout.
           </div>
-          <div class="payout-row"><span class="payout-label">1st Place</span><span class="payout-amount">$800</span></div>
-          <div class="payout-row"><span class="payout-label">2nd Place</span><span class="payout-amount">$450</span></div>
-          <div class="payout-row"><span class="payout-label">3rd Place</span><span class="payout-amount">$300</span></div>
-          <div class="payout-row"><span class="payout-label">4th Place</span><span class="payout-amount">$200</span></div>
         </div>
       </div>
       <div>
         <div class="card">
           <div class="card-header">
-            <span class="card-title">NIT Bracket</span>
-            <span class="badge badge-blue">Bottom 6 Teams</span>
+            <span class="card-title">Postseason Payouts</span>
+            <span class="badge badge-gold">$2,155 Total</span>
           </div>
-          <div style="padding:0.75rem 1.25rem;font-size:12px;color:var(--text3);">H2H + top-3 scorer wins · $25/win · Weeks 14–17</div>
-          <div style="padding:0 1.25rem 0.5rem;">
-            <div style="font-size:13px;color:var(--text3);margin-bottom:8px;">Seeds 5–10 determined after Week 13</div>
-            <div id="nit-teams-list"></div>
-          </div>
-          <div class="payout-row"><span class="payout-label">4 wks × 6 wins × $25</span><span class="payout-amount">$600 total</span></div>
+          <div class="payout-row"><span class="payout-label">1st Place</span><span class="payout-amount">$600</span></div>
+          <div class="payout-row"><span class="payout-label">2nd Place</span><span class="payout-amount">$450</span></div>
+          <div class="payout-row"><span class="payout-label">3rd Place</span><span class="payout-amount">$325</span></div>
+          <div class="payout-row"><span class="payout-label">4th Place</span><span class="payout-amount">$250</span></div>
+          <div class="payout-row"><span class="payout-label">5th Place</span><span class="payout-amount">$175</span></div>
+          <div class="payout-row"><span class="payout-label">6th Place</span><span class="payout-amount">$130</span></div>
+          <div class="payout-row"><span class="payout-label">7th Place</span><span class="payout-amount">$100</span></div>
+          <div class="payout-row"><span class="payout-label">8th Place</span><span class="payout-amount">$75</span></div>
+          <div class="payout-row"><span class="payout-label">9th Place</span><span class="payout-amount">$50</span></div>
+          <div class="payout-row"><span class="payout-label">10th Place</span><span class="payout-amount">$0</span></div>
         </div>
         <div class="card" style="margin-top:0;">
           <div class="card-header">
@@ -434,17 +493,77 @@
             <span class="badge badge-green">All-Play</span>
           </div>
           <div style="padding:1rem 1.25rem;">
-            <div style="font-size:13px;color:var(--text2);line-height:1.7;">All 10 teams compete. Top 5 scoring teams each earn <strong style="color:var(--green);">$50</strong>.</div>
-            <div style="margin-top:10px;" class="payout-row" style="padding:0;"><span class="payout-label">Total payout</span><span class="payout-amount">$250</span></div>
+            <div style="font-size:13px;color:var(--text2);line-height:1.7;">All 10 teams compete. Top 5 scoring teams each earn <strong style="color:var(--green);">$40</strong>.</div>
+            <div style="margin-top:10px;" class="payout-row" style="padding:0;"><span class="payout-label">Total payout</span><span class="payout-amount">$200</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Tiebreaker rules -->
+    <!-- Commissioner: enter scores -->
+    <div class="admin-panel">
+      <button class="admin-toggle" onclick="toggleBracketAdmin()" id="bracket-admin-toggle-btn">Commissioner: Enter Scores ▾</button>
+      <div class="admin-body" id="bracket-admin-body">
+        <div class="admin-row">
+          <label class="admin-label">Week 13 final seeds (best seed first — 10 team abbreviations, comma or space separated)</label>
+          <input class="admin-input" id="bracket-admin-seeds" value="BDG, LOF, HBL, CRK, CLP, BLU, OOL, POT, SDG, WIZ" />
+          <button class="admin-btn secondary" style="margin-top:8px;" onclick="applyBracketSeeds()">Set Seeds</button>
+        </div>
+        <div class="admin-row">
+          <label class="admin-label">Enter a round's scores</label>
+          <div style="display:flex;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
+            <select class="admin-select" id="bracket-admin-round" style="width:140px;">
+              <option value="14">Week 14 — Round 1</option>
+              <option value="15">Week 15 — Round 2</option>
+              <option value="16">Week 16 — Round 3</option>
+              <option value="17">Week 17 — Round 4</option>
+            </select>
+          </div>
+          <textarea class="admin-textarea" id="bracket-admin-scores" placeholder="One team per line, e.g.&#10;BDG 87.4&#10;LOF 69.1&#10;... (all 10 teams)"></textarea>
+          <div style="margin-top:8px;">
+            <button class="admin-btn" onclick="applyBracketRoundScores()">Preview This Round</button>
+            <button class="admin-btn secondary" onclick="clearBracketRound()">Clear This Round</button>
+          </div>
+        </div>
+        <div class="admin-status" id="bracket-admin-status"></div>
+        <div class="admin-row" style="border-top:1px solid rgba(255,255,255,0.15);padding-top:1rem;">
+          <div class="admin-note">This recalculates live in your browser but isn't saved anywhere permanent. When a week is final, use the button below to grab the updated data — paste it over the SEASON DATA block in this file's source, then re-upload to Netlify so everyone sees it.</div>
+          <button class="admin-btn secondary" style="margin-top:8px;" onclick="exportBracketData()">Copy Updated Data Block</button>
+          <textarea class="admin-textarea" id="bracket-admin-export" style="margin-top:8px;display:none;color:#7ddc7d;background:rgba(0,0,0,0.3);" readonly></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive bracket -->
     <div class="card">
       <div class="card-header">
-        <span class="card-title">Playoff Seeding Tiebreakers</span>
+        <span class="card-title">Playoff Bracket</span>
+        <span class="badge badge-gray">Live — updates as scores are entered</span>
+      </div>
+      <div class="bracket-scroll">
+        <div class="col-headers">
+          <div class="col-h"><div class="col-h-week">Week 14</div><div class="col-h-sub">Round 1 · seeded</div></div>
+          <div class="col-h"><div class="col-h-week">Week 15</div><div class="col-h-sub">Round 2 · re-seeded</div></div>
+          <div class="col-h"><div class="col-h-week">Week 16</div><div class="col-h-sub">Round 3 · re-seeded</div></div>
+          <div class="col-h"><div class="col-h-week">Week 17</div><div class="col-h-sub">Round 4 · final</div></div>
+          <div class="col-h"><div class="col-h-week">Final</div><div class="col-h-sub">standings & pay</div></div>
+        </div>
+        <div class="bracket" id="bracket-grid"></div>
+      </div>
+      <div class="bracket-legend">
+        <div class="leg"><div class="leg-sq" style="background:var(--win-bg);border-color:var(--win-bd);"></div> Win</div>
+        <div class="leg"><div class="leg-sq" style="background:var(--loss-bg);border-color:#ccc;"></div> Loss</div>
+        <div class="leg"><div class="leg-sq" style="background:var(--ups-bg);border-color:var(--ups-bd);"></div> Upset</div>
+        <div class="leg"><span style="color:var(--up-clr);font-size:11px;">▲</span> Seed up</div>
+        <div class="leg"><span style="color:var(--dn-clr);font-size:11px;">▼</span> Seed down</div>
+        <div class="leg"><span style="font-size:11px;">⚡</span> Upset flag</div>
+      </div>
+    </div>
+
+    <!-- Tiebreaker / seeding rules -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Seeding & Re-Seeding Tiebreakers</span>
         <span class="badge badge-gray">Applied in order</span>
       </div>
       <div style="padding:1rem 1.25rem;display:flex;flex-direction:column;gap:8px;">
@@ -454,7 +573,7 @@
         <div class="fin-row"><span style="color:var(--text3);">4</span><span style="color:var(--text2);">Total points for</span></div>
         <div class="fin-row" style="border:none;"><span style="color:var(--text3);">5</span><span style="color:var(--text2);">Both teams submit lineup — coin toss for seeding</span></div>
       </div>
-      <div style="padding:0 1.25rem 1rem;font-size:11px;color:var(--text3);">If more than two teams are tied, break the first tie then restart from #1.</div>
+      <div style="padding:0 1.25rem 1rem;font-size:11px;color:var(--text3);">If more than two teams are tied, break the first tie then restart from #1. Applied both for initial seeding after Week 13 and for re-seeding after each postseason round.</div>
     </div>
   </div>
 
@@ -467,29 +586,29 @@
     <div class="card">
       <div class="card-header">
         <span class="card-title">Prize Pool Breakdown</span>
-        <span class="badge badge-gold">$8,000 Total</span>
+        <span class="badge badge-gold">$10,000 Total</span>
       </div>
       <div class="fin-grid">
         <div>
           <div class="fin-section-title">Regular Season</div>
-          <div class="fin-row"><span>Spiffs (18 × $50)</span><span class="fin-val" style="color:var(--green);">$900</span></div>
-          <div class="fin-row"><span>Per-win (130 × $20)</span><span class="fin-val" style="color:var(--green);">$2,600</span></div>
+          <div class="fin-row"><span>H2H Wins (65 × $40)</span><span class="fin-val" style="color:var(--green);">$2,600</span></div>
+          <div class="fin-row"><span>Top-5 Wins (65 × $40)</span><span class="fin-val" style="color:var(--green);">$2,600</span></div>
+          <div class="fin-row"><span>Spiffs (18 × $15)</span><span class="fin-val" style="color:var(--green);">$270</span></div>
           <div class="divider"></div>
-          <div class="fin-row"><span style="font-weight:500;">Subtotal</span><span class="fin-val" style="color:var(--gold);">$3,500</span></div>
+          <div class="fin-row"><span style="font-weight:500;">Subtotal</span><span class="fin-val" style="color:var(--gold);">$5,470</span></div>
         </div>
         <div>
           <div class="fin-section-title">Postseason</div>
-          <div class="fin-row"><span>Championship (1st–4th)</span><span class="fin-val" style="color:var(--green);">$1,750</span></div>
-          <div class="fin-row"><span>NIT Bracket</span><span class="fin-val" style="color:var(--green);">$600</span></div>
-          <div class="fin-row"><span>Week 18 Derby</span><span class="fin-val" style="color:var(--green);">$250</span></div>
-          <div class="fin-row"><span>Point Pool (1st–5th)</span><span class="fin-val" style="color:var(--green);">$1,900</span></div>
+          <div class="fin-row"><span>Postseason (1st–10th)</span><span class="fin-val" style="color:var(--green);">$2,155</span></div>
+          <div class="fin-row"><span>Week 18 Derby</span><span class="fin-val" style="color:var(--green);">$200</span></div>
+          <div class="fin-row"><span>Point Pool (1st–5th)</span><span class="fin-val" style="color:var(--green);">$2,175</span></div>
           <div class="divider"></div>
-          <div class="fin-row"><span style="font-weight:500;">Subtotal</span><span class="fin-val" style="color:var(--gold);">$4,500</span></div>
+          <div class="fin-row"><span style="font-weight:500;">Subtotal</span><span class="fin-val" style="color:var(--gold);">$4,530</span></div>
         </div>
       </div>
       <div style="padding:1rem 1.25rem;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center;">
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text);">Grand Total</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--gold);">$8,000</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--gold);">$10,000</span>
       </div>
     </div>
 
@@ -507,7 +626,7 @@
               <th>Spiffs $</th>
               <th>Postseason $</th>
               <th>Total Earned</th>
-              <th>Net (vs $800)</th>
+              <th>Net (vs $1,000)</th>
             </tr>
           </thead>
           <tbody id="earnings-body"></tbody>
@@ -520,10 +639,10 @@
         <span class="card-title">Point Pool Payouts</span>
         <span class="badge badge-gold">End of season</span>
       </div>
-      <div class="payout-row"><span class="payout-label">1st</span><span class="payout-amount">$800</span></div>
-      <div class="payout-row"><span class="payout-label">2nd</span><span class="payout-amount">$450</span></div>
-      <div class="payout-row"><span class="payout-label">3rd</span><span class="payout-amount">$300</span></div>
-      <div class="payout-row"><span class="payout-label">4th</span><span class="payout-amount">$200</span></div>
+      <div class="payout-row"><span class="payout-label">1st</span><span class="payout-amount">$750</span></div>
+      <div class="payout-row"><span class="payout-label">2nd</span><span class="payout-amount">$600</span></div>
+      <div class="payout-row"><span class="payout-label">3rd</span><span class="payout-amount">$400</span></div>
+      <div class="payout-row"><span class="payout-label">4th</span><span class="payout-amount">$275</span></div>
       <div class="payout-row"><span class="payout-label">5th</span><span class="payout-amount">$150</span></div>
     </div>
   </div>
@@ -617,7 +736,7 @@
         <div class="card">
           <div class="card-header">
             <span class="card-title">Spiff Ledger</span>
-            <span class="badge badge-gray">18 × $50</span>
+            <span class="badge badge-gray">18 × $15</span>
           </div>
           <div id="spiff-list"></div>
         </div>
@@ -634,11 +753,11 @@
                 <option>16</option><option>17</option><option>18</option>
               </select>
             </div>
-            <div class="fin-row"><span>Buy-in per team</span><span class="fin-val">$800</span></div>
-            <div class="fin-row"><span>Win value (reg season)</span><span class="fin-val">$20</span></div>
-            <div class="fin-row"><span>Win value (NIT)</span><span class="fin-val">$25</span></div>
-            <div class="fin-row"><span>Spiff value</span><span class="fin-val">$50</span></div>
-            <div class="fin-row" style="border:none;"><span>Derby prize per team</span><span class="fin-val">$50</span></div>
+            <div class="fin-row"><span>Buy-in per team</span><span class="fin-val">$1,000</span></div>
+            <div class="fin-row"><span>Win value (H2H)</span><span class="fin-val">$40</span></div>
+            <div class="fin-row"><span>Win value (Top-5)</span><span class="fin-val">$40</span></div>
+            <div class="fin-row"><span>Spiff value</span><span class="fin-val">$15</span></div>
+            <div class="fin-row" style="border:none;"><span>Derby prize per team</span><span class="fin-val">$40</span></div>
           </div>
         </div>
       </div>
@@ -648,7 +767,7 @@
 </div><!-- /content -->
 
 <div class="footer">
-  MFL 2026 League HQ &nbsp;·&nbsp; McCann's Football League &nbsp;·&nbsp; 10 teams · $8,000 prize pool
+  MFL 2026 League HQ &nbsp;·&nbsp; McCann's Football League &nbsp;·&nbsp; 10 teams · $10,000 prize pool
 </div>
 
 <div class="toast" id="toast"></div>
@@ -695,7 +814,8 @@ const TEAM_NAMES = {
 };
 
 const DRAFT_ORDER = ['Big Dogs','Legends','Clapperz','Crankees','Huterball','Blue Cheese','Out of Luck','Jackpots','Slimey Dogs','Wizards'];
-const POOL_PRIZES = [800,450,300,200,150,0,0,0,0,0];
+const POOL_PRIZES = [750,600,400,275,150,0,0,0,0,0];
+const PLAYOFF_PRIZES = [600,450,325,250,175,130,100,75,50,0];
 const MATCHUPS = [
   [0,1],[2,3],[4,5],[6,7],[8,9], // wk1
   [0,2],[1,3],[4,6],[5,7],[8,0], // wk2 — simplified example
@@ -766,7 +886,7 @@ function renderStandings() {
       <td><span class="num" style="color:var(--text);">${tw}</span></td>
       <td><span class="num">${t.pts.toFixed(1)}</span></td>
       <td><span class="num" style="color:var(--text3);">${t.bench.toFixed(1)}</span></td>
-      <td><span class="money">$${tw*20}</span></td>
+      <td><span class="money">$${tw*40}</span></td>
     </tr>`;
   }).join('');
 
@@ -787,7 +907,7 @@ function renderStandings() {
   document.getElementById('stats-row').innerHTML = `
     <div class="stat-card"><div class="stat-label">Current Week</div><div class="stat-val">${currentWeek}</div><div class="stat-sub">of 18</div></div>
     <div class="stat-card"><div class="stat-label">Wins Awarded</div><div class="stat-val">${totalWins}</div><div class="stat-sub">of 130 reg season</div></div>
-    <div class="stat-card"><div class="stat-label">Prize Pool</div><div class="stat-val">$8,000</div><div class="stat-sub">10 × $800 buy-in</div></div>
+    <div class="stat-card"><div class="stat-label">Prize Pool</div><div class="stat-val">$10,000</div><div class="stat-sub">10 × $1,000 buy-in</div></div>
     <div class="stat-card"><div class="stat-label">Total Pts Scored</div><div class="stat-val">${totalPts.toFixed(0)}</div><div class="stat-sub">all teams combined</div></div>
   `;
 
@@ -835,7 +955,7 @@ function openWeek(w) {
   if (w === 18 || matchups === 'derby') {
     display.innerHTML = `
       <div style="padding:1.25rem;">
-        <div style="font-size:13px;color:var(--text2);margin-bottom:1rem;">All-play format — no head-to-head matchups. All 10 teams submit lineups. Top 5 scoring teams earn <strong style="color:var(--green);">$50</strong> each.</div>
+        <div style="font-size:13px;color:var(--text2);margin-bottom:1rem;">All-play format — no head-to-head matchups. All 10 teams submit lineups. Top 5 scoring teams earn <strong style="color:var(--green);">$40</strong> each.</div>
         <table>
           <thead><tr><th>#</th><th>Team</th><th>Score</th><th>Result</th></tr></thead>
           <tbody>
@@ -844,7 +964,7 @@ function openWeek(w) {
                 <td><span class="rank ${i===0?'gold':i===1?'silver':i===2?'bronze':''}">${i+1}</span></td>
                 <td><div class="team-cell"><div class="name">${TEAM_NAMES[r.t]}</div><div class="owners">${r.t}</div></div></td>
                 <td><span class="num">${r.p.toFixed(1)}</span></td>
-                <td>${i<5?'<span class="money">+$50</span>':'<span style="color:var(--text3);">—</span>'}</td>
+                <td>${i<5?'<span class="money">+$40</span>':'<span style="color:var(--text3);">—</span>'}</td>
               </tr>`).join('')}
           </tbody>
         </table>
@@ -912,22 +1032,22 @@ function openWeek(w) {
    FINANCES
 ══════════════════════════════════════════════ */
 function renderEarnings() {
-  const totalSpiffs = spiffData.filter(s=>s.paid).length * 50;
-  const totalWinMoney = TEAMS.reduce((s,t)=>(s+(t.h2h+t.top5)*20),0);
+  const totalSpiffs = spiffData.filter(s=>s.paid).length * 15;
+  const totalWinMoney = TEAMS.reduce((s,t)=>(s+(t.h2h+t.top5)*40),0);
   const distributed = totalWinMoney + totalSpiffs;
 
   document.getElementById('fin-stats-row').innerHTML = `
-    <div class="stat-card"><div class="stat-label">Total Pool</div><div class="stat-val">$8,000</div><div class="stat-sub">10 × $800 buy-in</div></div>
-    <div class="stat-card"><div class="stat-label">Distributed</div><div class="stat-val">$${distributed}</div><div class="stat-sub">${Math.round(distributed/80)}% paid out</div></div>
-    <div class="stat-card"><div class="stat-label">Remaining</div><div class="stat-val">$${8000-distributed}</div><div class="stat-sub">pending</div></div>
-    <div class="stat-card"><div class="stat-label">Spiffs Paid</div><div class="stat-val">${spiffData.filter(s=>s.paid).length}/18</div><div class="stat-sub">$${totalSpiffs} of $900</div></div>
+    <div class="stat-card"><div class="stat-label">Total Pool</div><div class="stat-val">$10,000</div><div class="stat-sub">10 × $1,000 buy-in</div></div>
+    <div class="stat-card"><div class="stat-label">Distributed</div><div class="stat-val">$${distributed}</div><div class="stat-sub">${Math.round(distributed/100)}% paid out</div></div>
+    <div class="stat-card"><div class="stat-label">Remaining</div><div class="stat-val">$${10000-distributed}</div><div class="stat-sub">pending</div></div>
+    <div class="stat-card"><div class="stat-label">Spiffs Paid</div><div class="stat-val">${spiffData.filter(s=>s.paid).length}/18</div><div class="stat-sub">$${totalSpiffs} of $270</div></div>
   `;
 
   document.getElementById('earnings-body').innerHTML = TEAMS.map(t=>{
-    const winMoney = (t.h2h+t.top5)*20;
-    const spiffMoney = t.spiffs*50;
+    const winMoney = (t.h2h+t.top5)*40;
+    const spiffMoney = t.spiffs*15;
     const total = winMoney+spiffMoney+t.postseason;
-    const net = total-800;
+    const net = total-1000;
     return `<tr>
       <td><div class="team-cell"><div class="name">${t.name}</div><div class="owners">${t.owners}</div></div></td>
       <td><span class="num">$${winMoney}</span></td>
@@ -962,7 +1082,7 @@ function renderAdmin() {
     <div class="spiff-row">
       <div><div class="spiff-name">Spiff #${s.id}${s.name!==`Spiff ${s.id}`?' — '+s.name:''}</div><div class="spiff-winner">Winner: ${s.winner}</div></div>
       <div style="display:flex;align-items:center;gap:6px;">
-        <span class="badge ${s.paid?'badge-green':'badge-gray'}">${s.paid?'PAID':'$50'}</span>
+        <span class="badge ${s.paid?'badge-green':'badge-gray'}">${s.paid?'PAID':'$15'}</span>
         <button onclick="toggleSpiff(${s.id})" style="background:var(--surface2);border:1px solid var(--border2);color:var(--text2);border-radius:6px;padding:3px 8px;font-size:11px;cursor:pointer;">${s.paid?'Undo':'Mark paid'}</button>
       </div>
     </div>
@@ -975,11 +1095,204 @@ function toggleSpiff(id) {
 }
 
 /* ══════════════════════════════════════════════
-   NIT PLACEHOLDER
+   PLAYOFF BRACKET
+   Round 1 pairs by seed (1v10, 2v9, 3v8, 4v7, 5v6). After every round,
+   all 10 teams are re-seeded by (wins, then cumulative points scored)
+   and paired adjacent (1v2, 3v4, 5v6, 7v8, 9v10) through Week 17.
+   Final standings after Round 4 set the payout (PLAYOFF_PRIZES above).
+   Manual tiebreaker overrides: edit seed13 or a round's scores directly
+   in the admin panel below if a real-world tiebreak needs to override
+   the computed order.
 ══════════════════════════════════════════════ */
-function renderNIT() {
-  document.getElementById('nit-teams-list').innerHTML =
-    `<div style="font-size:12px;color:var(--text3);padding:4px 0;">Seeds 5–10 will populate here after Week 13.</div>`;
+const ALL_TEAMS = Object.keys(TEAM_NAMES);
+const ROUND_WEEKS = [14, 15, 16, 17];
+
+/* SEASON DATA — edit here (or via the admin panel), then re-upload.
+   seed13: final Week 13 regular-season order, best seed first.
+   rounds[14..17]: that week's individual scores, e.g. {BDG:87.4, ...}
+   covering all 10 teams. Leave a round null until that week is final. */
+let seed13 = ['BDG','LOF','HBL','CRK','CLP','BLU','OOL','POT','SDG','WIZ'];
+let rounds = { 14: null, 15: null, 16: null, 17: null };
+
+function computeBracket() {
+  const wins = {}, cum = {};
+  ALL_TEAMS.forEach(t => { wins[t] = 0; cum[t] = 0; });
+  let prevSeeds = seed13.slice();
+  const roundResults = [];
+
+  for (let ri = 0; ri < 4; ri++) {
+    const week = ROUND_WEEKS[ri];
+    const scores = rounds[week];
+    const seedsEntering = prevSeeds.slice();
+    const pairs = ri === 0
+      ? [[0,9],[1,8],[2,7],[3,6],[4,5]]
+      : [[0,1],[2,3],[4,5],[6,7],[8,9]];
+    const matchups = pairs.map(([i,j]) => ({ aTeam: seedsEntering[i], bTeam: seedsEntering[j], aSeed: i+1, bSeed: j+1 }));
+
+    if (!scores) {
+      roundResults.push({ week, seedsEntering, matchups, played: false });
+      break;
+    }
+
+    matchups.forEach(m => {
+      const aPts = scores[m.aTeam] ?? 0;
+      const bPts = scores[m.bTeam] ?? 0;
+      m.aPts = aPts; m.bPts = bPts;
+      m.winner = aPts >= bPts ? m.aTeam : m.bTeam;
+    });
+    ALL_TEAMS.forEach(t => { if (scores[t] != null) cum[t] += scores[t]; });
+    matchups.forEach(m => { wins[m.winner]++; });
+
+    const seedsAfter = ALL_TEAMS.slice().sort((a,b) =>
+      (wins[b]-wins[a]) || (cum[b]-cum[a]) || (seed13.indexOf(a)-seed13.indexOf(b))
+    );
+
+    roundResults.push({ week, seedsEntering, matchups, played: true, seedsAfter });
+    prevSeeds = seedsAfter;
+  }
+
+  const finalPlayed = roundResults.length === 4 && roundResults[3].played;
+  const standings = finalPlayed
+    ? ALL_TEAMS.slice().sort((a,b) => (wins[b]-wins[a]) || (cum[b]-cum[a]) || (seed13.indexOf(a)-seed13.indexOf(b)))
+    : null;
+
+  return { roundResults, wins, cum, standings };
+}
+
+function ordinal(n) { return n===1?'1st':n===2?'2nd':n===3?'3rd':n+'th'; }
+
+function renderBracket() {
+  const el = document.getElementById('bracket-grid');
+  if (!el) return;
+  const { roundResults, standings } = computeBracket();
+  let html = '';
+
+  roundResults.forEach((rr, ri) => {
+    html += '<div class="round-col">' + rr.matchups.map(m => {
+      if (!rr.played) {
+        return `<div class="matchup">
+          <div class="team-row"><div class="seed-block"><span class="t-seed">#${m.aSeed}</span></div><span class="t-name">${TEAM_NAMES[m.aTeam]}</span><span class="t-pts">–</span></div>
+          <div class="team-row"><div class="seed-block"><span class="t-seed">#${m.bSeed}</span></div><span class="t-name">${TEAM_NAMES[m.bTeam]}</span><span class="t-pts">–</span></div>
+        </div>`;
+      }
+      const aWin = m.winner === m.aTeam;
+      const aUpset = aWin && m.aSeed > m.bSeed;
+      const bUpset = !aWin && m.bSeed > m.aSeed;
+      const arrow = (team) => {
+        if (ri === 0) return '';
+        const prevSeed = roundResults[ri-1].seedsAfter.indexOf(team) + 1;
+        const curSeed = rr.seedsEntering.indexOf(team) + 1;
+        if (curSeed < prevSeed) return '<span class="arrow up">▲</span>';
+        if (curSeed > prevSeed) return '<span class="arrow down">▼</span>';
+        return '<span class="arrow same">—</span>';
+      };
+      const isChampGame = ri === 3;
+      return `<div class="matchup${isChampGame?' champ-game':''}">
+        <div class="team-row ${aWin ? (aUpset?'upset':'win') : 'loss'}"><div class="seed-block"><span class="t-seed">#${m.aSeed}</span>${arrow(m.aTeam)}</div><span class="t-name ${aWin?'':'dim'}${(isChampGame&&aWin)?' champ-name':''}">${TEAM_NAMES[m.aTeam]}${(isChampGame&&aWin)?' 🏆':''}${aUpset?' <span class="upset-flag">⚡</span>':''}</span><span class="t-pts ${aWin?'':'dim'}${(isChampGame&&aWin)?' champ-pts':''}">${m.aPts}</span></div>
+        <div class="team-row ${!aWin ? (bUpset?'upset':'win') : 'loss'}"><div class="seed-block"><span class="t-seed">#${m.bSeed}</span>${arrow(m.bTeam)}</div><span class="t-name ${!aWin?'':'dim'}${(isChampGame&&!aWin)?' champ-name':''}">${TEAM_NAMES[m.bTeam]}${(isChampGame&&!aWin)?' 🏆':''}${bUpset?' <span class="upset-flag">⚡</span>':''}</span><span class="t-pts ${!aWin?'':'dim'}${(isChampGame&&!aWin)?' champ-pts':''}">${m.bPts}</span></div>
+      </div>`;
+    }).join('') + '</div>';
+  });
+
+  for (let i = roundResults.length; i < 4; i++) {
+    html += `<div class="round-col"><div style="padding:1rem;text-align:center;color:var(--text3);font-size:12px;">Awaiting Week ${ROUND_WEEKS[i]} results</div></div>`;
+  }
+
+  html += '<div class="finals-col">';
+  if (standings) {
+    html += '<div class="champ-banner">🏆 MFL Champion</div>';
+    for (let i = 0; i < 10; i += 2) {
+      html += `<div class="final-card${i===0?' top':''}">`;
+      [0,1].forEach(k => {
+        const idx = i+k, team = standings[idx], pay = PLAYOFF_PRIZES[idx];
+        const rowCls = idx===0?'champ':(idx===1?'runner':'');
+        const payCls = idx===0?'gold':(pay>0?'blue':'none');
+        html += `<div class="final-row ${rowCls}"><span class="final-place">${ordinal(idx+1)}</span><span class="final-name">${TEAM_NAMES[team]}</span><span class="final-pay ${payCls}">$${pay}</span></div>`;
+      });
+      html += '</div>';
+    }
+  } else {
+    html += '<div style="padding:1rem;color:var(--text3);font-size:12px;">Final standings & payouts appear here once Week 17 is complete.</div>';
+  }
+  html += '</div>';
+
+  el.innerHTML = html;
+}
+
+/* ── Commissioner admin panel ── */
+function toggleBracketAdmin() {
+  const body = document.getElementById('bracket-admin-body');
+  body.classList.toggle('open');
+  document.getElementById('bracket-admin-toggle-btn').textContent = 'Commissioner: Enter Scores ' + (body.classList.contains('open') ? '▴' : '▾');
+}
+
+function setBracketStatus(msg, type) {
+  const el = document.getElementById('bracket-admin-status');
+  el.textContent = msg;
+  el.className = 'admin-status' + (type ? ' ' + type : '');
+}
+
+function applyBracketSeeds() {
+  const raw = document.getElementById('bracket-admin-seeds').value.trim();
+  const list = raw.split(/[\s,]+/).map(s => s.toUpperCase()).filter(Boolean);
+  if (list.length !== 10 || !list.every(t => ALL_TEAMS.includes(t))) {
+    setBracketStatus('Seeds must be exactly 10 valid team abbreviations: ' + ALL_TEAMS.join(', '), 'err');
+    return;
+  }
+  seed13 = list;
+  rounds = { 14: null, 15: null, 16: null, 17: null };
+  renderBracket();
+  setBracketStatus('✓ Seeds set. Earlier round scores were cleared since seeding changed — re-enter them.', 'ok');
+}
+
+function applyBracketRoundScores() {
+  const week = parseInt(document.getElementById('bracket-admin-round').value);
+  const raw = document.getElementById('bracket-admin-scores').value.trim();
+  if (!raw) { setBracketStatus("Paste that week's scores first.", 'err'); return; }
+  const scores = {};
+  raw.split('\n').forEach(line => {
+    const parts = line.trim().split(/\s+/);
+    if (parts.length < 2) return;
+    const team = parts[0].toUpperCase();
+    const pts = parseFloat(parts[1]);
+    if (ALL_TEAMS.includes(team) && !isNaN(pts)) scores[team] = pts;
+  });
+  const missing = ALL_TEAMS.filter(t => scores[t] == null);
+  if (missing.length) {
+    setBracketStatus('Missing scores for: ' + missing.join(', ') + ' — all 10 teams need a score.', 'err');
+    return;
+  }
+  rounds[week] = scores;
+  renderBracket();
+  setBracketStatus(`✓ Week ${week} previewed. Remember to copy the data block when you're ready to save.`, 'ok');
+}
+
+function clearBracketRound() {
+  const week = parseInt(document.getElementById('bracket-admin-round').value);
+  rounds[week] = null;
+  renderBracket();
+  setBracketStatus(`Week ${week} cleared.`, 'ok');
+}
+
+function exportBracketData() {
+  const fmt = (obj) => obj ? '{ ' + Object.entries(obj).map(([k,v])=>`${k}:${v}`).join(', ') + ' }' : 'null';
+  const text = `let seed13 = [${seed13.map(t=>`'${t}'`).join(',')}];
+let rounds = {
+  14: ${fmt(rounds[14])},
+  15: ${fmt(rounds[15])},
+  16: ${fmt(rounds[16])},
+  17: ${fmt(rounds[17])}
+};`;
+  const ta = document.getElementById('bracket-admin-export');
+  ta.style.display = 'block';
+  ta.value = text;
+  ta.select();
+  try {
+    document.execCommand('copy');
+    setBracketStatus('✓ Copied — paste this over the SEASON DATA block in the file source.', 'ok');
+  } catch (e) {
+    setBracketStatus("Couldn't auto-copy — select the text above and copy manually.", 'err');
+  }
 }
 
 /* ══════════════════════════════════════════════
@@ -988,7 +1301,7 @@ function renderNIT() {
 renderStandings();
 renderWeekGrid();
 renderAdmin();
-renderNIT();
+renderBracket();
 renderEarnings();
 </script>
 </body>
