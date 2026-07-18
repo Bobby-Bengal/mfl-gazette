@@ -563,17 +563,32 @@
     <!-- Tiebreaker / seeding rules -->
     <div class="card">
       <div class="card-header">
-        <span class="card-title">Seeding & Re-Seeding Tiebreakers</span>
+        <span class="card-title">a) Regular Season Standings → Playoff Seeding</span>
         <span class="badge badge-gray">Applied in order</span>
       </div>
       <div style="padding:1rem 1.25rem;display:flex;flex-direction:column;gap:8px;">
-        <div class="fin-row"><span style="color:var(--text3);">1</span><span style="color:var(--text2);">Head to head record</span></div>
-        <div class="fin-row"><span style="color:var(--text3);">2</span><span style="color:var(--text2);">Net points head to head</span></div>
-        <div class="fin-row"><span style="color:var(--text3);">3</span><span style="color:var(--text2);">Strength of schedule (most points against)</span></div>
-        <div class="fin-row"><span style="color:var(--text3);">4</span><span style="color:var(--text2);">Total points for</span></div>
-        <div class="fin-row" style="border:none;"><span style="color:var(--text3);">5</span><span style="color:var(--text2);">Both teams submit lineup — coin toss for seeding</span></div>
+        <div class="fin-row"><span style="color:var(--text3);">1</span><span style="color:var(--text2);">Head to head W-L</span></div>
+        <div class="fin-row"><span style="color:var(--text3);">2</span><span style="color:var(--text2);">Net points, head to head (Points For minus Points Against)</span></div>
+        <div class="fin-row"><span style="color:var(--text3);">3</span><span style="color:var(--text2);">Strength of schedule (most total Points Against)</span></div>
+        <div class="fin-row"><span style="color:var(--text3);">4</span><span style="color:var(--text2);">Most total Points For</span></div>
+        <div class="fin-row" style="border:none;"><span style="color:var(--text3);">5</span><span style="color:var(--text2);">Coin toss</span></div>
       </div>
-      <div style="padding:0 1.25rem 1rem;font-size:11px;color:var(--text3);">If more than two teams are tied, break the first tie then restart from #1. Applied both for initial seeding after Week 13 and for re-seeding after each postseason round.</div>
+      <div style="padding:0 1.25rem 1rem;font-size:11px;color:var(--text3);">If more than two teams are tied, break the first tie then restart from #1. Determines the 1–10 seed entering Week 14.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">b) Playoff Re-Seeding (after Round 1)</span>
+        <span class="badge badge-gray">Applied in order</span>
+      </div>
+      <div style="padding:1rem 1.25rem;display:flex;flex-direction:column;gap:8px;">
+        <div class="fin-row"><span style="color:var(--text3);">1</span><span style="color:var(--text2);">Playoffs W-L</span></div>
+        <div class="fin-row"><span style="color:var(--text3);">2</span><span style="color:var(--text2);">Playoffs most points (total Points For)</span></div>
+        <div class="fin-row"><span style="color:var(--text3);">3</span><span style="color:var(--text2);">Playoffs head-to-head W-L, if applicable</span></div>
+        <div class="fin-row"><span style="color:var(--text3);">4</span><span style="color:var(--text2);">Net playoffs points (Points For minus Points Against)</span></div>
+        <div class="fin-row" style="border:none;"><span style="color:var(--text3);">5</span><span style="color:var(--text2);">Regular season seed</span></div>
+      </div>
+      <div style="padding:0 1.25rem 1rem;font-size:11px;color:var(--text3);">Applied after every postseason round (Weeks 14–17) to re-seed all 10 teams. The live bracket below computes this automatically as scores are entered.</div>
     </div>
   </div>
 
@@ -654,7 +669,6 @@
     <div class="card">
       <div class="card-header">
         <span class="card-title">2025 Scoring Rules</span>
-        <span class="badge badge-blue">New rules marked NEW</span>
       </div>
       <div class="rules-grid">
         <div>
@@ -662,7 +676,7 @@
           <div class="rule-row"><span>TD under 50 yards</span><span class="rule-pts">5 pts</span></div>
           <div class="rule-row"><span>TD 50+ yards</span><span class="rule-pts">10 pts</span></div>
           <div class="rule-row"><span>Two-point conversion</span><span class="rule-pts">2 pts</span></div>
-          <div class="rule-row"><span>350+ passing yards <span class="rule-new">NEW</span></span><span class="rule-pts">+5 pts</span></div>
+          <div class="rule-row"><span>350+ passing yards</span><span class="rule-pts">+5 pts</span></div>
         </div>
         <div>
           <div class="rules-group-title">Rushing</div>
@@ -680,10 +694,10 @@
           <div class="rule-row"><span>Offensive fumble rec TD</span><span class="rule-pts">7 pts</span></div>
         </div>
         <div>
-          <div class="rules-group-title">Kicking <span class="rule-new">ALL NEW</span></div>
-          <div class="rule-row"><span>FG under 55 yards <span class="rule-new">NEW</span></span><span class="rule-pts">3 pts</span></div>
-          <div class="rule-row"><span>FG 55–59 yards <span class="rule-new">NEW</span></span><span class="rule-pts">5 pts</span></div>
-          <div class="rule-row"><span>FG 60+ yards <span class="rule-new">NEW</span></span><span class="rule-pts">7 pts</span></div>
+          <div class="rules-group-title">Kicking</div>
+          <div class="rule-row"><span>FG under 55 yards</span><span class="rule-pts">3 pts</span></div>
+          <div class="rule-row"><span>FG 55–59 yards</span><span class="rule-pts">5 pts</span></div>
+          <div class="rule-row"><span>FG 60+ yards</span><span class="rule-pts">7 pts</span></div>
           <div class="rule-row"><span>Extra point</span><span class="rule-pts">1 pt</span></div>
         </div>
         <div>
@@ -1100,6 +1114,10 @@ function toggleSpiff(id) {
    all 10 teams are re-seeded by (wins, then cumulative points scored)
    and paired adjacent (1v2, 3v4, 5v6, 7v8, 9v10) through Week 17.
    Final standings after Round 4 set the payout (PLAYOFF_PRIZES above).
+   Re-seeding tiebreak chain (see Rules tab, "b) Playoff Re-Seeding"):
+   1. Playoffs W-L  2. Playoffs total Points For  3. Playoffs head-to-
+   head W-L (if the two teams have played each other)  4. Net playoff
+   points (PF minus PA)  5. Regular season seed.
    Manual tiebreaker overrides: edit seed13 or a round's scores directly
    in the admin panel below if a real-world tiebreak needs to override
    the computed order.
@@ -1114,9 +1132,18 @@ const ROUND_WEEKS = [14, 15, 16, 17];
 let seed13 = ['BDG','LOF','HBL','CRK','CLP','BLU','OOL','POT','SDG','WIZ'];
 let rounds = { 14: null, 15: null, 16: null, 17: null };
 
+function comparePlayoffTeams(a, b, wins, cumPF, cumPA, h2h) {
+  if (wins[b] !== wins[a]) return wins[b] - wins[a];
+  if (cumPF[b] !== cumPF[a]) return cumPF[b] - cumPF[a];
+  if (h2h[a] && h2h[a][b]) return h2h[a][b] === 'win' ? -1 : 1;
+  const netA = cumPF[a] - cumPA[a], netB = cumPF[b] - cumPA[b];
+  if (netB !== netA) return netB - netA;
+  return seed13.indexOf(a) - seed13.indexOf(b);
+}
+
 function computeBracket() {
-  const wins = {}, cum = {};
-  ALL_TEAMS.forEach(t => { wins[t] = 0; cum[t] = 0; });
+  const wins = {}, cumPF = {}, cumPA = {}, h2h = {};
+  ALL_TEAMS.forEach(t => { wins[t] = 0; cumPF[t] = 0; cumPA[t] = 0; h2h[t] = {}; });
   let prevSeeds = seed13.slice();
   const roundResults = [];
 
@@ -1140,12 +1167,15 @@ function computeBracket() {
       m.aPts = aPts; m.bPts = bPts;
       m.winner = aPts >= bPts ? m.aTeam : m.bTeam;
     });
-    ALL_TEAMS.forEach(t => { if (scores[t] != null) cum[t] += scores[t]; });
-    matchups.forEach(m => { wins[m.winner]++; });
+    matchups.forEach(m => {
+      cumPF[m.aTeam] += m.aPts; cumPF[m.bTeam] += m.bPts;
+      cumPA[m.aTeam] += m.bPts; cumPA[m.bTeam] += m.aPts;
+      wins[m.winner]++;
+      h2h[m.aTeam][m.bTeam] = m.winner === m.aTeam ? 'win' : 'loss';
+      h2h[m.bTeam][m.aTeam] = m.winner === m.bTeam ? 'win' : 'loss';
+    });
 
-    const seedsAfter = ALL_TEAMS.slice().sort((a,b) =>
-      (wins[b]-wins[a]) || (cum[b]-cum[a]) || (seed13.indexOf(a)-seed13.indexOf(b))
-    );
+    const seedsAfter = ALL_TEAMS.slice().sort((a,b) => comparePlayoffTeams(a, b, wins, cumPF, cumPA, h2h));
 
     roundResults.push({ week, seedsEntering, matchups, played: true, seedsAfter });
     prevSeeds = seedsAfter;
@@ -1153,10 +1183,10 @@ function computeBracket() {
 
   const finalPlayed = roundResults.length === 4 && roundResults[3].played;
   const standings = finalPlayed
-    ? ALL_TEAMS.slice().sort((a,b) => (wins[b]-wins[a]) || (cum[b]-cum[a]) || (seed13.indexOf(a)-seed13.indexOf(b)))
+    ? ALL_TEAMS.slice().sort((a,b) => comparePlayoffTeams(a, b, wins, cumPF, cumPA, h2h))
     : null;
 
-  return { roundResults, wins, cum, standings };
+  return { roundResults, wins, cumPF, cumPA, standings };
 }
 
 function ordinal(n) { return n===1?'1st':n===2?'2nd':n===3?'3rd':n+'th'; }
