@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The MFL Gazette — 2025 Season</title>
-  <link rel="icon" type="image/png" href="mfl_logo2.png" />
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -62,9 +60,6 @@
       color: var(--ink);
       line-height: 1;
       letter-spacing: -1px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     .gazette-subtitle {
       font-family: 'Barlow Condensed', sans-serif;
@@ -367,214 +362,6 @@
       white-space: nowrap;
     }
 
-    /* ── HERO / BLOG-STYLE LAYOUT (2/3 main + 1/3 rail) ── */
-    .gazette-hero-layout {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 2rem;
-      align-items: start;
-      margin-bottom: 1rem;
-    }
-    @media (max-width: 900px) {
-      .gazette-hero-layout { grid-template-columns: 1fr; gap: 1.5rem; }
-    }
-
-    .featured-card {
-      position: relative;
-      cursor: pointer;
-      border: 1px solid var(--rule);
-      border-top: 4px solid var(--gold);
-      background: var(--paper2);
-      padding: 1.75rem;
-      transition: background 0.15s;
-    }
-    .featured-card:hover { background: var(--paper3); }
-    .featured-card:hover .card-delete-btn { opacity: 1; }
-    .featured-card.news-card { border-top-color: var(--red); }
-    .featured-delete-btn { top: 14px; right: 14px; }
-    .featured-kicker {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--ink3);
-      margin-bottom: 10px;
-    }
-    .featured-headline {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(24px, 3vw, 34px);
-      font-weight: 900;
-      line-height: 1.15;
-      color: var(--ink);
-      margin-bottom: 10px;
-    }
-    .featured-deck {
-      font-family: 'Source Serif 4', serif;
-      font-size: 16px;
-      font-style: italic;
-      color: var(--ink2);
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-    .featured-preview {
-      font-size: 14.5px;
-      line-height: 1.7;
-      color: var(--ink2);
-      margin-bottom: 14px;
-    }
-    .featured-readmore {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .hero-rail {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      position: sticky;
-      top: 1rem;
-    }
-    .rail-box {
-      background: var(--paper2);
-      border: 1px solid var(--rule2);
-      border-top: 3px solid var(--gold);
-      padding: 1rem;
-    }
-    .rail-box.recent-rail-box { border-top-color: var(--ink); }
-    .rail-box-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--gold);
-      margin-bottom: 10px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--rule);
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 8px;
-    }
-    .rail-box.recent-rail-box .rail-box-title { color: var(--ink3); }
-    .rail-box-subtitle {
-      font-size: 10px;
-      color: var(--ink4);
-      font-weight: 400;
-      letter-spacing: 0.5px;
-      white-space: nowrap;
-    }
-    .rail-recent-item {
-      padding: 8px 0;
-      border-bottom: 1px dotted var(--rule);
-      cursor: pointer;
-    }
-    .rail-recent-item:last-child { border-bottom: none; }
-    .rail-recent-item:hover .rail-recent-headline { color: var(--gold); }
-    .rail-recent-meta {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--ink4);
-      margin-bottom: 3px;
-    }
-    .rail-recent-headline {
-      font-family: 'Playfair Display', serif;
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 1.35;
-      color: var(--ink);
-      transition: color 0.15s;
-    }
-    .rail-empty {
-      font-size: 12px;
-      color: var(--ink4);
-      font-style: italic;
-    }
-
-    .pool-strip {
-      margin-top: 1.25rem;
-      background: var(--paper2);
-      border: 1px solid var(--rule2);
-      border-top: 3px solid var(--gold);
-      padding: 1rem;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-    .pool-strip:hover { background: var(--paper3); }
-    .pool-strip-link {
-      margin-top: 10px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .pool-strip-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--gold);
-      margin-bottom: 10px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--rule);
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 8px;
-    }
-    .pool-strip-subtitle {
-      font-size: 10px;
-      color: var(--ink4);
-      font-weight: 400;
-      letter-spacing: 0.5px;
-      white-space: nowrap;
-    }
-    .pool-strip-row {
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-    }
-    .pool-chip {
-      flex: 1 1 90px;
-      min-width: 80px;
-      text-align: center;
-      background: var(--paper);
-      border: 1px solid var(--rule);
-      padding: 8px 6px;
-    }
-    .pool-chip:first-child {
-      border-top: 2px solid var(--gold);
-      background: var(--paper3);
-    }
-    .pool-chip-rank {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      color: var(--ink4);
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-    }
-    .pool-chip-team {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: 0.5px;
-      margin-bottom: 2px;
-    }
-    .pool-chip-pts {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--gold);
-    }
-
     /* ── ARCHIVE GRID ── */
     .archive-grid {
       display: grid;
@@ -582,7 +369,6 @@
       gap: 1rem;
     }
     .archive-card {
-      position: relative;
       border: 1px solid var(--rule);
       border-top: 3px solid var(--ink);
       background: var(--paper2);
@@ -591,34 +377,6 @@
       transition: background 0.15s;
     }
     .archive-card:hover { background: var(--paper3); }
-    .archive-card.news-card { border-top-color: var(--red); }
-    .card-delete-btn {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      border: 1px solid var(--rule2);
-      background: var(--paper);
-      color: var(--ink3);
-      font-size: 12px;
-      line-height: 1;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.15s, background 0.15s, color 0.15s;
-    }
-    .archive-card:hover .card-delete-btn { opacity: 1; }
-    .card-delete-btn:hover { background: var(--red); border-color: var(--red); color: var(--paper); }
-    .delete-post-btn {
-      background: var(--paper2);
-      color: var(--red);
-      border: 1px solid var(--red);
-    }
-    .delete-post-btn:hover { background: var(--red); color: var(--paper); }
     .archive-card-week {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 10px;
@@ -640,36 +398,6 @@
       color: var(--ink3);
       line-height: 1.5;
     }
-
-    /* ── TYPE CHOOSER MODAL ── */
-    .type-modal-overlay { display:none; position:fixed; inset:0; background:rgba(26,18,8,0.6); z-index:100; align-items:center; justify-content:center; }
-    .type-modal-overlay.open { display:flex; }
-    .type-modal { background:var(--paper); border:1px solid var(--rule2); border-top:4px solid var(--gold); padding:2rem; max-width:480px; width:90%; }
-    .type-modal-title { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--ink); margin-bottom:6px; }
-    .type-modal-sub { font-family:'Barlow Condensed',sans-serif; font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--ink3); margin-bottom:1.5rem; }
-    .type-choice { display:flex; flex-direction:column; gap:12px; margin-bottom:1.5rem; }
-    .type-btn { display:flex; align-items:flex-start; gap:14px; padding:14px 16px; border:1px solid var(--rule2); background:var(--paper2); cursor:pointer; text-align:left; transition:background 0.15s; }
-    .type-btn:hover { background:var(--paper3); }
-    .type-btn-icon { font-size:22px; flex-shrink:0; line-height:1; margin-top:2px; }
-    .type-btn-label { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--ink); margin-bottom:3px; }
-    .type-btn-desc { font-family:'Source Serif 4',serif; font-size:12px; color:var(--ink3); line-height:1.4; }
-    .type-cancel { font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:1px; text-transform:uppercase; background:none; color:var(--ink4); border:none; cursor:pointer; padding:0; }
-    .type-cancel:hover { color:var(--ink3); }
-
-    /* ── CBS FETCH PANEL ── */
-    .cbs-fetch-panel { background:var(--ink); color:var(--paper); padding:1rem 1.25rem; margin-bottom:1.5rem; }
-    .cbs-fetch-header { margin-bottom:0.75rem; }
-    .cbs-fetch-title { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold-light); display:block; margin-bottom:3px; }
-    .cbs-fetch-sub { font-family:'Barlow Condensed',sans-serif; font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:0.5px; }
-    .cbs-fetch-controls { display:flex; align-items:flex-end; gap:12px; flex-wrap:wrap; }
-    .cbs-fetch-controls .form-label { color:rgba(255,255,255,0.6); }
-    .cbs-fetch-controls .form-select { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:var(--paper); }
-    .cbs-fetch-btn { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:var(--gold); color:var(--paper); border:none; padding:9px 20px; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
-    .cbs-fetch-btn:hover { background:var(--gold-light); }
-    .cbs-fetch-btn:disabled { background:#555; cursor:wait; }
-    .cbs-fetch-status { font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:0.5px; margin-top:8px; min-height:18px; color:rgba(255,255,255,0.7); }
-    .cbs-fetch-status.ok { color:#7ddc7d; }
-    .cbs-fetch-status.err { color:#ff8080; }
 
     /* ── SIGNOFF ── */
     .signoff {
@@ -921,9 +649,7 @@
     <span>Est. 1980 · McCann's Football League</span>
     <span>10 Teams · $8,000 Prize Pool</span>
   </div>
-  <div class="gazette-name">
-    <img src="mfl_logo2.png" alt="MFL" style="height:70px;width:auto;vertical-align:middle;margin-right:16px;opacity:0.92;" />The MFL Gazette<img src="mfl_logo2.png" alt="MFL" style="height:70px;width:auto;vertical-align:middle;margin-left:16px;opacity:0.92;" />
-  </div>
+  <div class="gazette-name">The MFL Gazette</div>
   <div class="gazette-subtitle">Official Weekly Publication of McCann's Football League</div>
   <div class="masthead-bottom">
     <span>2025 Season Archive</span>
@@ -956,75 +682,15 @@
 
 <div class="page">
 
-  <!-- TYPE CHOOSER MODAL -->
-  <div class="type-modal-overlay" id="type-modal">
-    <div class="type-modal">
-      <div class="type-modal-title">New Gazette Post</div>
-      <div class="type-modal-sub">Commissioner's Desk · Choose a post type</div>
-      <div class="type-choice">
-        <button class="type-btn" onclick="openForm('report')">
-          <div class="type-btn-icon">📋</div>
-          <div>
-            <div class="type-btn-label">Weekly Report</div>
-            <div class="type-btn-desc">The regular weekly recap — scores, spiff, point pool standings, top performers, and your commentary.</div>
-          </div>
-        </button>
-        <button class="type-btn" onclick="openForm('news')">
-          <div class="type-btn-icon">📰</div>
-          <div>
-            <div class="type-btn-label">News Post</div>
-            <div class="type-btn-desc">League news, announcements, hot takes, trade rumors, historical musings — anything beyond the weekly report.</div>
-          </div>
-        </button>
-      </div>
-      <button class="type-cancel" onclick="closeTypeModal()">Cancel</button>
-    </div>
-  </div>
-
   <!-- COMPOSE BAR -->
   <div class="compose-bar">
-    <div class="compose-bar-text"><strong>Commissioner's Desk</strong> — Publish a new weekly report or league news post</div>
-    <button class="compose-btn" onclick="openTypeModal()">+ New Post</button>
+    <div class="compose-bar-text"><strong>Commissioner's Desk</strong> — Publish a new weekly report</div>
+    <button class="compose-btn" onclick="toggleCompose()">Write New Report</button>
   </div>
 
-  <!-- COMPOSE FORM: WEEKLY REPORT -->
+  <!-- COMPOSE FORM -->
   <div class="compose-form" id="compose-form">
     <div class="form-title">New Weekly Report</div>
-    <!-- CBS FETCH PANEL -->
-    <div class="cbs-fetch-panel">
-      <div class="cbs-fetch-header">
-        <span class="cbs-fetch-title">⚡ Auto-Fill from CBS</span>
-        <span class="cbs-fetch-sub">Pulls team scores &amp; standings directly from your league page</span>
-      </div>
-      <div class="cbs-fetch-controls">
-        <div class="form-row" style="margin:0;flex:0 0 auto;">
-          <label class="form-label">Season Year</label>
-          <select class="form-select" id="f-cbs-year" style="width:100px;">
-            <option value="2026">2026</option>
-            <option value="2025" selected>2025</option>
-          </select>
-        </div>
-        <div class="form-row" style="margin:0;flex:0 0 auto;">
-          <label class="form-label">Week</label>
-          <select class="form-select" id="f-cbs-week" style="width:80px;">
-            <option>1</option><option>2</option><option>3</option><option>4</option>
-            <option>5</option><option>6</option><option>7</option><option>8</option>
-            <option>9</option><option>10</option><option>11</option><option>12</option>
-            <option>13</option><option>14</option><option>15</option><option>16</option>
-            <option>17</option><option>18</option>
-          </select>
-        </div>
-        <button class="cbs-fetch-btn" onclick="fetchFromCBS()">Fetch Scores →</button>
-      </div>
-      <div class="cbs-fetch-status" id="cbs-status"></div>
-      <div id="cbs-import-panel" style="display:none;margin-top:1rem;border-top:1px solid rgba(255,255,255,0.15);padding-top:1rem;">
-        <label class="form-label" style="color:rgba(255,255,255,0.6);">Paste CBS data here after running the script on the CBS page:</label>
-        <div style="display:flex;gap:8px;align-items:flex-start;margin-top:4px;">
-          <textarea class="form-textarea" id="cbs-json-input" style="min-height:80px;font-family:monospace;font-size:12px;background:rgba(0,0,0,0.3);color:#7ddc7d;border-color:rgba(255,255,255,0.15);" placeholder='{"week":1,"scores":[...],"matchups":[]}'></textarea>
-          <button class="form-submit" style="white-space:nowrap;flex-shrink:0;" onclick="importCBSData()">Import →</button>
-        </div>
-      </div>
-    </div>
     <div class="form-row-2">
       <div class="form-row">
         <label class="form-label">Week Number</label>
@@ -1058,58 +724,21 @@
       <input class="form-input" id="f-spiff" placeholder="e.g. Legends — Boswell's big kicking day" />
     </div>
     <div class="form-row">
-      <label class="form-label">Point Pool Standings <span id="pool-autofill-badge" style="display:none;background:var(--gold);color:var(--paper);font-size:9px;padding:2px 6px;margin-left:6px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">AUTO-FILLED ✓</span></label>
+      <label class="form-label">Point Pool Standings (optional — paste as: TEAM POINTS, one per line)</label>
       <textarea class="form-textarea" id="f-pool" style="min-height:120px;" placeholder="POT 417&#10;WIZ 403&#10;HBL 385"></textarea>
     </div>
     <div class="form-row">
-      <label class="form-label">Week Scores <span id="scores-autofill-badge" style="display:none;background:var(--gold);color:var(--paper);font-size:9px;padding:2px 6px;margin-left:6px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">AUTO-FILLED ✓</span></label>
+      <label class="form-label">Week Scores (paste as: TEAM POINTS, one per line e.g. BDG 87.4)</label>
       <textarea class="form-textarea" id="f-scores" style="min-height:140px;" placeholder="BDG 87.4&#10;BLU 72.1&#10;CLP 65.0&#10;CRK 58.2&#10;HBL 54.0&#10;POT 49.8&#10;LOF 44.2&#10;OOL 41.0&#10;SDG 38.6&#10;WIZ 33.1"></textarea>
     </div>
     <div class="form-row">
-      <label class="form-label">Top 10 Players (paste as: NAME TEAM POINTS, one per line — add * at end if bench)</label>
+      <label class="form-label">Top 10 Players (paste as: NAME TEAM POINTS BENCH, one per line — add * at end if bench)</label>
       <textarea class="form-textarea" id="f-players" style="min-height:160px;" placeholder="D. Gibbs BDG 31&#10;J. Taylor WIZ 26&#10;A. Rodgers CRK 25 *"></textarea>
     </div>
-    <div class="form-row">
-      <label class="form-label">Sign-off</label>
       <input class="form-input" id="f-signoff" placeholder="e.g. Have a great week!" value="Have a great week!" />
     </div>
     <button class="form-submit" onclick="publishReport()">Publish Report</button>
-    <button class="form-cancel" onclick="closeAllForms()">Cancel</button>
-  </div>
-
-  <!-- COMPOSE FORM: NEWS POST -->
-  <div class="compose-form" id="compose-news-form">
-    <div class="form-title">New League News Post</div>
-    <div class="form-row-2">
-      <div class="form-row">
-        <label class="form-label">Author</label>
-        <input class="form-input" id="fn-author" placeholder="e.g. Bob" />
-      </div>
-      <div class="form-row">
-        <label class="form-label">Category</label>
-        <select class="form-select" id="fn-category">
-          <option value="">— Select a category —</option>
-          <option value="MFL News">MFL News</option>
-          <option value="MFL Update">MFL Update</option>
-          <option value="Announcement">Announcement</option>
-          <option value="From the Commish">From the Commish</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-row">
-      <label class="form-label">Headline</label>
-      <input class="form-input" id="fn-headline" placeholder="e.g. Trade Deadline — What to Watch" />
-    </div>
-    <div class="form-row">
-      <label class="form-label">Deck (short teaser line, optional)</label>
-      <input class="form-input" id="fn-deck" placeholder="e.g. A look at the market as the deadline approaches" />
-    </div>
-    <div class="form-row">
-      <label class="form-label">Body</label>
-      <textarea class="form-textarea" id="fn-body" style="min-height:260px;" placeholder="Write your post here. Separate paragraphs with a blank line. The first paragraph gets the drop cap treatment."></textarea>
-    </div>
-    <button class="form-submit" onclick="publishNewsPost()">Publish Post</button>
-    <button class="form-cancel" onclick="closeAllForms()">Cancel</button>
+    <button class="form-cancel" onclick="toggleCompose()">Cancel</button>
   </div>
 
   <!-- CONTENT AREA -->
@@ -1491,126 +1120,19 @@ function showWeek(week, btn) {
   }
 }
 
-function archiveCardHtml(p) {
-  if (p.type === 'news') {
-    return `
-      <div class="archive-card news-card" onclick="showNewsPost('${p.id}')">
-        <button class="card-delete-btn" onclick="deleteNewsPost('${p.id}', event)" title="Delete this post">✕</button>
-        <div class="archive-card-week" style="color:var(--red);">📰 ${p.category || 'League News'} · ${p.date} · By ${p.author}</div>
-        <div class="archive-card-headline">${p.headline}</div>
-        <div class="archive-card-deck">${p.deck || ''}</div>
-      </div>`;
-  } else {
-    const isArchived = REPORTS.find(rr => rr.week === p.week);
-    return `
-      <div class="archive-card" onclick="showWeek(${p.week}, null)">
-        ${!isArchived ? `<button class="card-delete-btn" onclick="deleteReport(${p.week}, event)" title="Delete this report">✕</button>` : ''}
-        <div class="archive-card-week">📋 Week ${p.week} Report · By ${p.author}</div>
-        <div class="archive-card-headline">${p.headline}</div>
-        <div class="archive-card-deck">${p.deck}</div>
-      </div>`;
-  }
-}
-
-function featuredCardHtml(p) {
-  const isNews = p.type === 'news';
-  const kicker = isNews
-    ? `📰 ${p.category || 'League News'} · ${p.date} · By ${p.author}`
-    : `📋 Week ${p.week} Report · By ${p.author}`;
-  const clickAttr = isNews ? `showNewsPost('${p.id}')` : `showWeek(${p.week}, null)`;
-  const isArchived = !isNews && REPORTS.find(rr => rr.week === p.week);
-  const deleteBtn = isNews
-    ? `<button class="card-delete-btn featured-delete-btn" onclick="deleteNewsPost('${p.id}', event)" title="Delete this post">✕</button>`
-    : (!isArchived ? `<button class="card-delete-btn featured-delete-btn" onclick="deleteReport(${p.week}, event)" title="Delete this report">✕</button>` : '');
-
-  const firstPara = (p.body || '').split('\n\n').filter(x => x.trim())[0] || '';
-  const preview = firstPara.length > 320 ? firstPara.slice(0, 320).trim() + '…' : firstPara;
-
-  return `
-    <div class="featured-card ${isNews ? 'news-card' : ''}" onclick="${clickAttr}">
-      ${deleteBtn}
-      <div class="featured-kicker" style="${isNews ? 'color:var(--red);' : ''}">${kicker}</div>
-      <div class="featured-headline">${p.headline}</div>
-      ${p.deck ? `<div class="featured-deck">${p.deck}</div>` : ''}
-      ${preview ? `<div class="featured-preview">${preview}</div>` : ''}
-      <div class="featured-readmore">Read the full story →</div>
-    </div>
-  `;
-}
-
-function railRecentItemHtml(p) {
-  const isNews = p.type === 'news';
-  const clickAttr = isNews ? `showNewsPost('${p.id}')` : `showWeek(${p.week}, null)`;
-  const meta = isNews ? `${p.category || 'League News'} · ${p.date}` : `Week ${p.week} Report`;
-  return `
-    <div class="rail-recent-item" onclick="${clickAttr}">
-      <div class="rail-recent-meta">${meta}</div>
-      <div class="rail-recent-headline">${p.headline}</div>
-    </div>
-  `;
-}
-
-function getLatestPoolData() {
-  const reports = allReports(); // sorted desc by week
-  for (const r of reports) {
-    if (r.pool && r.pool.length > 0) return { pool: r.pool.slice(0, 5), week: r.week };
-  }
-  return null;
-}
-
-function poolStripHtml(poolData) {
-  return `
-    <div class="pool-strip" onclick="location.href='index.html#point-pool-standings'">
-      <div class="pool-strip-title">
-        <span>Point Pool Standings — Top 5</span>
-        ${poolData ? `<span class="pool-strip-subtitle">Thru Wk ${poolData.week}</span>` : ''}
-      </div>
-      ${poolData ? `
-        <div class="pool-strip-row">
-          ${poolData.pool.map((row, i) => `
-            <div class="pool-chip">
-              <div class="pool-chip-rank">${i + 1}</div>
-              <div class="pool-chip-team">${row[0]}</div>
-              <div class="pool-chip-pts">${row[1]}</div>
-            </div>
-          `).join('')}
-        </div>
-      ` : '<div class="rail-empty">No standings posted yet.</div>'}
-      <div class="pool-strip-link">View Full Standings on League HQ →</div>
-    </div>
-  `;
-}
-
 function renderArchiveGrid() {
-  const posts = allPosts();
-  document.getElementById('masthead-date').textContent = 'MFL Gazette — Full Archive';
-
-  const featured = posts[0];
-  const recentFive = posts.slice(1, 6);
-  const poolData = getLatestPoolData();
-
-  const recentBoxHtml = `
-    <div class="rail-box recent-rail-box">
-      <div class="rail-box-title"><span>Most Recent Stories</span></div>
-      ${recentFive.length ? recentFive.map(railRecentItemHtml).join('') : '<div class="rail-empty">No other stories yet.</div>'}
-    </div>
-  `;
-
+  const reports = allReports();
+  document.getElementById('masthead-date').textContent = '2025 Season — Full Archive';
   document.getElementById('content-area').innerHTML = `
-    ${featured ? `
-      <div class="gazette-hero-layout">
-        <div class="hero-main">
-          ${featuredCardHtml(featured)}
-          ${poolStripHtml(poolData)}
-        </div>
-        <aside class="hero-rail">
-          ${recentBoxHtml}
-        </aside>
-      </div>
-    ` : ''}
-    <div class="section-rule" style="margin-top:${featured ? '2.5rem' : '0'};"><span class="section-rule-text">More From The Gazette</span></div>
+    <div class="section-rule"><span class="section-rule-text">2025 Season · All Issues</span></div>
     <div class="archive-grid">
-      ${posts.map(archiveCardHtml).join('')}
+      ${reports.map(r=>`
+        <div class="archive-card" onclick="showWeek(${r.week}, null)">
+          <div class="archive-card-week">Week ${r.week} · By ${r.author}</div>
+          <div class="archive-card-headline">${r.headline}</div>
+          <div class="archive-card-deck">${r.deck}</div>
+        </div>
+      `).join('')}
     </div>
   `;
 }
@@ -1619,7 +1141,7 @@ function renderEmpty(week) {
   document.getElementById('content-area').innerHTML = `
     <div style="text-align:center;padding:3rem;color:var(--ink4);">
       <div style="font-family:'Playfair Display',serif;font-size:24px;margin-bottom:8px;">No report filed for Week ${week}</div>
-      <div style="font-size:14px;">Use the "+ New Post" button above to publish one.</div>
+      <div style="font-size:14px;">Use the "Write New Report" button above to publish one.</div>
     </div>
   `;
 }
@@ -1993,23 +1515,41 @@ const WEEK_DATA = {
 /* ════════════════════════════════════════════
    DASHBOARD RENDER
 ════════════════════════════════════════════ */
+function spiffTeamAbbr(spiffText) {
+  if (!spiffText) return null;
+  const namePart = spiffText.split('—')[0].split('-')[0].trim().toLowerCase();
+  const variants = {
+    'big dogs':'BDG',
+    'blue cheese':'BLU',
+    'clapperz':'CLP',
+    'crankees':'CRK',
+    'huterball':'HBL',
+    'jackpots':'POT',
+    'legends':'LOF',
+    'legends of the fall':'LOF',
+    'out of luck':'OOL',
+    'slimy dogs':'SDG',
+    'slimey dogs':'SDG',
+    'wizards':'WIZ'
+  };
+  return variants[namePart] || null;
+}
+
+function seasonSpiffCounts(uptoWeek) {
+  const counts = {};
+  Object.keys(TEAM_ABBR).forEach(abbr => counts[abbr] = 0);
+  allReports().forEach(r => {
+    if (r.week <= uptoWeek && r.spiff) {
+      const abbr = spiffTeamAbbr(r.spiff);
+      if (abbr) counts[abbr] = (counts[abbr] || 0) + 1;
+    }
+  });
+  return counts;
+}
+
 function renderDashboard(week) {
   const d = WEEK_DATA[week];
   if (!d) return '';
-
-  // Sort scores descending
-  const sorted = [...d.scores].sort((a,b)=>b.pts-a.pts);
-  const top5teams = new Set(sorted.slice(0,5).map(s=>s.team));
-
-  // Matchups: pair teams for H2H display (by score order for historical weeks)
-  // We show all 10 scores; top 5 bolded
-  const scoresHtml = sorted.map((s,i) => {
-    const isTop5 = top5teams.has(s.team);
-    return `<div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--rule);${i===sorted.length-1?'border-bottom:none;':''}">
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:0.5px;${isTop5?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${s.team}</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:${isTop5?'700':'400'};color:${isTop5?'var(--ink)':'var(--ink3)'};">${s.pts.toFixed(1)}${isTop5?' ★':''}</span>
-    </div>`;
-  }).join('');
 
   // Top 10 players
   const playersHtml = d.players.map((p,i) => `
@@ -2049,46 +1589,70 @@ function renderDashboard(week) {
     </div>
   `).join('');
 
+  // Season spiff tracker — count of weekly high-score spiffs won per team, most to least
+  const spiffCounts = seasonSpiffCounts(week);
+  const spiffSorted = Object.entries(spiffCounts).sort((a,b)=>b[1]-a[1]);
+  const maxSpiff = Math.max(1, spiffSorted[0][1]);
+  const spiffTrackerHtml = spiffSorted.map(([team,count],i) => `
+    <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--rule);${i===spiffSorted.length-1?'border-bottom:none;':''}">
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--ink4);width:16px;">${i+1}</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--ink2);flex:1;">${team}</span>
+      <div style="width:80px;background:var(--paper3);border-radius:2px;height:6px;">
+        <div style="width:${Math.round(count/maxSpiff*100)}%;background:var(--red);height:6px;border-radius:2px;"></div>
+      </div>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--red);width:28px;text-align:right;">${count}</span>
+    </div>
+  `).join('');
+
+  // This week's results — one merged matchup box, top 5 scores starred
+  const resultsHtml = (()=>{
+    const matchups = GAZETTE_SCHEDULE[week];
+    if (!matchups || matchups === 'derby') return `<div style="font-size:12px;color:var(--ink3);">All-play Derby</div>`;
+    const allScores = matchups.flatMap(m=>[{team:m.h,pts:m.hp},{team:m.a,pts:m.ap}]).sort((a,b)=>b.pts-a.pts);
+    const top5 = new Set(allScores.slice(0,5).map(s=>s.team));
+    return matchups.map((m,i)=>{
+      const hWin = m.hp >= m.ap;
+      const hTop = top5.has(m.h), aTop = top5.has(m.a);
+      return `<div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--rule);${i===matchups.length-1?'border-bottom:none;':''}">
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;${hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${m.h}${hTop?' ★':''}</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--ink4);">${m.hp.toFixed(1)}–${m.ap.toFixed(1)}</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;${!hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${aTop?' ★':''}${m.a}</span>
+      </div>`;
+    }).join('');
+  })();
+
   return `
     <div style="border-top:3px double var(--rule2);margin-top:2rem;padding-top:1.5rem;">
       <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);margin-bottom:4px;">Week ${week} Dashboard</div>
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:1.5rem;">McCann's Football League · Season to Date</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:1.5rem;">McCann's Football League</div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;">
-
-        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--ink);padding:1rem;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
-            Week ${week} Matchups &nbsp;·&nbsp; <span style="color:var(--gold);">★ = Top 5 win</span>
-          </div>
-          ${(()=>{
-            const matchups = GAZETTE_SCHEDULE[week];
-            if (!matchups || matchups === 'derby') return `<div style="font-size:12px;color:var(--ink3);">All-play Derby</div>`;
-            const allScores = matchups.flatMap(m=>[{team:m.h,pts:m.hp},{team:m.a,pts:m.ap}]).sort((a,b)=>b.pts-a.pts);
-            const top5 = new Set(allScores.slice(0,5).map(s=>s.team));
-            return matchups.map((m,i)=>{
-              const hWin = m.hp >= m.ap;
-              const hTop = top5.has(m.h), aTop = top5.has(m.a);
-              return `<div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--rule);${i===matchups.length-1?'border-bottom:none;':''}">
-                <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;${hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${m.h}${hTop?' ★':''}</span>
-                <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--ink4);">${m.hp.toFixed(1)}–${m.ap.toFixed(1)}</span>
-                <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;${!hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${aTop?' ★':''}${m.a}</span>
-              </div>`;
-            }).join('');
-          })()}
-        </div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);margin-bottom:0.75rem;padding-bottom:4px;border-bottom:2px solid var(--ink);">This Week</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-bottom:1.75rem;">
 
         <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--ink);padding:1rem;">
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
-            Week ${week} Scores &nbsp;·&nbsp; <span style="color:var(--gold);">★ = Top 5 win</span>
+            Week ${week} Results &nbsp;·&nbsp; <span style="color:var(--gold);">★ = Top 5 score</span>
           </div>
-          ${scoresHtml}
+          ${resultsHtml}
         </div>
 
         <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--red);padding:1rem;">
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
-            Top 10 Scores &nbsp;·&nbsp; <span style="color:var(--ink4);">(b) = reserve</span>
+            Top Scorers &nbsp;·&nbsp; <span style="color:var(--ink4);">(b) = reserve</span>
           </div>
           ${playersHtml}
+        </div>
+
+      </div>
+
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);margin-bottom:0.75rem;padding-bottom:4px;border-bottom:2px solid var(--ink);">Season to Date</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;">
+
+        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--gold);padding:1rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+            Point Pool · Thru Wk ${week}
+          </div>
+          ${ptsHtml}
         </div>
 
         <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--ink2);padding:1rem;">
@@ -2098,11 +1662,11 @@ function renderDashboard(week) {
           ${winsHtml}
         </div>
 
-        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--gold);padding:1rem;">
+        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--red);padding:1rem;">
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
-            Point Pool · Thru Wk ${week}
+            Spiff Tracker · Thru Wk ${week}
           </div>
-          ${ptsHtml}
+          ${spiffTrackerHtml}
         </div>
 
       </div>
@@ -2124,19 +1688,6 @@ function renderReport(r) {
     </div>
   ` : '';
 
-  const poolHtml = r.pool && r.pool.length > 0 ? `
-    <div class="pool-table">
-      <div class="pool-table-title">Point Pool Standings</div>
-      ${r.pool.map((row,i)=>`
-        <div class="pool-row">
-          <span class="pool-rank">${i+1}</span>
-          <span>${row[0]}</span>
-          <span class="pool-pts">${row[1]}</span>
-        </div>
-      `).join('')}
-    </div>
-  ` : '';
-
   const clubHtml = r.club ? `
     <div class="club-box">
       <div class="club-title">The 21 Club</div>
@@ -2150,7 +1701,7 @@ function renderReport(r) {
   ` : '';
 
   const midPoint = Math.floor(restParas.length / 2);
-  const sideboxes = [spiffHtml, poolHtml, clubHtml].filter(Boolean);
+  const sideboxes = [spiffHtml, clubHtml].filter(Boolean);
 
   let col2Content = `<p>${firstPara}</p>`;
   restParas.forEach((p, i) => {
@@ -2170,7 +1721,7 @@ function renderReport(r) {
       <div class="edition-deck">${r.deck}</div>
       <div class="edition-byline">By ${r.author} &nbsp;·&nbsp; MFL Commissioner's Report &nbsp;·&nbsp; 2025 Season</div>
     </div>
-    <div class="columns-2 article-body">${col2Content}</div>
+    <div class="columns-3 article-body">${col2Content}</div>
     ${dashboardHtml}
     <div class="section-rule" style="margin-top:2rem;">
       <span class="section-rule-text">End of Week ${r.week} Report</span>
@@ -2179,7 +1730,6 @@ function renderReport(r) {
       ${currentWeek > 1 ? `<button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="navReport(-1)">← Previous Issue</button>` : ''}
       <button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="showWeek(0,null)">All Issues</button>
       ${currentWeek < 18 ? `<button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="navReport(1)">Next Issue →</button>` : ''}
-      ${!REPORTS.find(rr => rr.week === r.week) ? `<button class="compose-btn delete-post-btn" onclick="deleteReport(${r.week}, null)">🗑 Delete This Report</button>` : ''}
     </div>
     ${commentsHtml(r.week)}
   `;
@@ -2194,84 +1744,17 @@ function navReport(dir) {
 }
 
 /* ════════════════════════════════════════════
-   COMPOSE — Modal, News Post, CBS Fetch
+   COMPOSE
 ════════════════════════════════════════════ */
-let newsItems = [];
-let newsCounter = 0;
-
-function allPosts() {
-  const reports = allReports().map(r => ({...r, type:'report', _sort: r.week * 10}));
-  const news = newsItems.map(n => ({...n, _sort: (new Date(n.dateISO).getTime() / 86400000) + 0.5}));
-  return [...reports, ...news].sort((a,b) => b._sort - a._sort);
-}
-
-function openTypeModal() { document.getElementById('type-modal').classList.add('open'); }
-function closeTypeModal() { document.getElementById('type-modal').classList.remove('open'); }
-function openForm(type) {
-  closeTypeModal(); closeAllForms();
-  const form = document.getElementById(type === 'news' ? 'compose-news-form' : 'compose-form');
-  form.classList.add('open');
-  form.scrollIntoView({behavior:'smooth'});
-}
-function closeAllForms() {
-  document.getElementById('compose-form').classList.remove('open');
-  document.getElementById('compose-news-form').classList.remove('open');
-}
-function toggleCompose() { openTypeModal(); } // legacy shim
-
-function showNewsPost(id) {
-  const post = newsItems.find(n => n.id === id);
-  if (post) renderNewsPost(post);
-}
-
-function renderNewsPost(post) {
-  document.getElementById('masthead-date').textContent = `${post.category || 'League News'} · ${post.date}`;
-  const paragraphs = post.body.split('\n\n').filter(p=>p.trim());
-  let bodyHtml = `<p>${paragraphs[0]}</p>`;
-  paragraphs.slice(1).forEach(p => { bodyHtml += `<p>${p}</p>`; });
-  document.getElementById('content-area').innerHTML = `
-    <div class="edition-header">
-      <div class="edition-kicker" style="color:var(--red);">${post.category || 'League News'} · MFL Gazette · ${post.date}</div>
-      <div class="edition-headline">${post.headline}</div>
-      ${post.deck ? `<div class="edition-deck">${post.deck}</div>` : ''}
-      <div class="edition-byline">By ${post.author} &nbsp;·&nbsp; MFL Gazette</div>
-    </div>
-    <div class="article-body">${bodyHtml}</div>
-    <div class="section-rule" style="margin-top:2rem;"><span class="section-rule-text">End of Post</span></div>
-    <div style="display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap;">
-      <button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="showWeek(0,null)">← All Issues</button>
-      <button class="compose-btn delete-post-btn" onclick="deleteNewsPost('${post.id}', null)">🗑 Delete This Post</button>
-    </div>
-    ${commentsHtml('news_' + post.id)}
-  `;
-  setTimeout(() => renderComments('news_' + post.id), 0);
-}
-
-async function publishNewsPost() {
-  const author = document.getElementById('fn-author').value.trim() || 'Commissioner';
-  const category = document.getElementById('fn-category').value;
-  const headline = document.getElementById('fn-headline').value.trim();
-  const deck = document.getElementById('fn-deck').value.trim();
-  const body = document.getElementById('fn-body').value.trim();
-  if (!headline || !body) { alert('Please add at least a headline and body text.'); return; }
-  const now = new Date();
-  const date = now.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
-  const dateISO = now.toISOString();
-  const id = 'np' + (++newsCounter) + '_' + Date.now();
-  const post = { type:'news', id, author, category, headline, deck, body, date, dateISO };
-  newsItems.unshift({ ...post });
-  ['fn-author','fn-headline','fn-deck','fn-body'].forEach(i => document.getElementById(i).value = '');
-  document.getElementById('fn-category').value = '';
-  closeAllForms();
-  showNewsPost(id);
-  const savedRow = await saveToDB({ type:'news', author, category, headline, deck, body });
-  if (savedRow && savedRow.id) {
-    const idx = newsItems.findIndex(n => n.id === id);
-    if (idx > -1) newsItems[idx].id = savedRow.id;
+function toggleCompose() {
+  const form = document.getElementById('compose-form');
+  form.classList.toggle('open');
+  if (form.classList.contains('open')) {
+    form.scrollIntoView({behavior:'smooth'});
   }
 }
 
-async function publishReport() {
+function publishReport() {
   const week = parseInt(document.getElementById('f-week').value);
   const author = document.getElementById('f-author').value.trim() || 'Commissioner';
   const headline = document.getElementById('f-headline').value.trim();
@@ -2280,86 +1763,59 @@ async function publishReport() {
   const spiff = document.getElementById('f-spiff').value.trim() || null;
   const poolRaw = document.getElementById('f-pool').value.trim();
   const signoff = document.getElementById('f-signoff').value.trim() || 'Have a great week!';
-  if (!headline || !body) { alert('Please add at least a headline and body text.'); return; }
-  const pool = poolRaw ? poolRaw.split('\n').map(line=>{ const p=line.trim().split(/\s+/); return [p[0],parseInt(p[1])||0]; }).filter(r=>r[0]) : [];
+
+  if (!headline || !body) {
+    alert('Please add at least a headline and body text.');
+    return;
+  }
+
+  const pool = poolRaw ? poolRaw.split('\n').map(line=>{
+    const parts = line.trim().split(/\s+/);
+    return [parts[0], parseInt(parts[1])||0];
+  }).filter(r=>r[0]) : [];
+
   const scoresRaw = document.getElementById('f-scores').value.trim();
   const playersRaw = document.getElementById('f-players').value.trim();
-  const scores = scoresRaw ? scoresRaw.split('\n').map(line=>{ const p=line.trim().split(/\s+/); return {team:p[0],pts:parseFloat(p[1])||0}; }).filter(s=>s.team) : [];
-  const players = playersRaw ? playersRaw.split('\n').map(line=>{ const p=line.trim().split(/\s+/); const bench=p[p.length-1]==='*'; return {name:p[0],team:p[1],pts:parseInt(p[2])||0,bench}; }).filter(p=>p.name) : [];
+
+  const scores = scoresRaw ? scoresRaw.split('\n').map(line=>{
+    const parts = line.trim().split(/\s+/);
+    return {team: parts[0], pts: parseFloat(parts[1])||0};
+  }).filter(s=>s.team) : [];
+
+  const players = playersRaw ? playersRaw.split('\n').map(line=>{
+    const parts = line.trim().split(/\s+/);
+    const bench = parts[parts.length-1] === '*';
+    return {name: parts[0], team: parts[1], pts: parseInt(parts[2])||0, bench};
+  }).filter(p=>p.name) : [];
+
   const report = { week, author, headline, deck, body, spiff, pool, signoff };
+
   if (scores.length > 0 || players.length > 0) {
+    const winsEntry = {};
+    const cumPtsEntry = {};
     WEEK_DATA[week] = WEEK_DATA[week] || {};
     if (scores.length) WEEK_DATA[week].scores = scores;
     if (players.length) WEEK_DATA[week].players = players;
   }
+
+  // Remove existing user report for same week if any
   userReports = userReports.filter(r=>r.week !== week);
   userReports.push(report);
-  ['f-headline','f-deck','f-body','f-spiff','f-pool','f-scores','f-players'].forEach(id=>{ document.getElementById(id).value=''; });
+
+  // Clear form
+  ['f-headline','f-deck','f-body','f-spiff','f-pool','f-scores','f-players'].forEach(id=>{
+    document.getElementById(id).value = '';
+  });
   document.getElementById('f-signoff').value = 'Have a great week!';
-  document.getElementById('scores-autofill-badge').style.display = 'none';
-  document.getElementById('pool-autofill-badge').style.display = 'none';
-  closeAllForms();
+
+  toggleCompose();
+
+  // Add tab if missing
   addWeekTab(week);
+
   showWeek(week, null);
-  await saveToDB({ type:'report', week: week, author, headline, deck, body, spiff: spiff||'', pool: document.getElementById('f-pool').value.trim(), scores: document.getElementById('f-scores').value.trim(), players: document.getElementById('f-players').value.trim(), signoff });
 }
 
-/* ── CBS FETCH ── */
-const CBS_NAME_TO_ABBR = {
-  'Big Dogs':'BDG','Blue Cheese':'BLU','Clapperz':'CLP','Crankees':'CRK',
-  'Huterball':'HBL','Jackpots':'POT','Legends of The Fall':'LOF',
-  'out of luck':'OOL','Out of Luck':'OOL','Slimy Dogs':'SDG','Westchester Wizards':'WIZ'
-};
-function setStatus(msg, type='') {
-  const el = document.getElementById('cbs-status');
-  el.textContent = msg;
-  el.className = 'cbs-fetch-status' + (type ? ' '+type : '');
-}
-function fetchFromCBS() {
-  const year = document.getElementById('f-cbs-year').value;
-  const week = document.getElementById('f-cbs-week').value;
-  const consoleScript = `(function(){const text=document.body.innerText;const lines=text.split('\\n').map(l=>l.trim()).filter(Boolean);const periods=[];let current=null;for(const line of lines){const pm=line.match(/PERIOD (\\d+):/);if(pm){if(current)periods.push(current);current={week:parseInt(pm[1]),matchups:[],scores:[]};continue;}if(!current)continue;const mm=line.match(/^(.+?)\\s*\\([WL]\\)\\s+(.+?)\\s*\\([WL]\\)\\s+([\\d.]+)\\s*-\\s*([\\d.]+)$/);if(mm){current.matchups.push({home:mm[1].trim(),away:mm[2].trim(),hpts:parseFloat(mm[3]),apts:parseFloat(mm[4])});continue;}const sm=line.match(/^(.+?)\\t(\\d+)\\t(\\d+)\\t(\\d+)\\t([\\d.]+)$/);if(sm)current.scores.push({team:sm[1].trim(),pts:parseFloat(sm[5])});}if(current)periods.push(current);const wk=periods.find(p=>p.week===${week});if(!wk){alert('Week ${week} not found');return;}const json=JSON.stringify(wk);navigator.clipboard.writeText(json).then(()=>alert('Week ${week} data copied! Go back to the Gazette and paste it.')).catch(()=>prompt('Copy this:',json));})();`;
-  window.open(`https://mcfl20.football.cbssports.com/schedule/full/${year}`, '_blank');
-  document.getElementById('cbs-import-panel').style.display = 'block';
-  setStatus('✓ CBS opened in new tab. Open browser console (F12 → Console), paste the script below, press Enter, then paste the result above.', 'ok');
-  const existing = document.getElementById('cbs-console-script-box');
-  if (existing) existing.remove();
-  const scriptBox = document.createElement('div');
-  scriptBox.id = 'cbs-console-script-box';
-  scriptBox.style.cssText = 'margin-top:1rem;border-top:1px solid rgba(255,255,255,0.15);padding-top:1rem;';
-  scriptBox.innerHTML = `
-    <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;">Console script — paste into CBS browser console (F12):</div>
-    <textarea id="cbs-script-ta" style="width:100%;min-height:70px;background:rgba(0,0,0,0.4);color:#7ddc7d;border:1px solid rgba(255,255,255,0.1);padding:8px;font-family:monospace;font-size:11px;resize:vertical;box-sizing:border-box;" readonly>${consoleScript}</textarea>
-    <button onclick="document.getElementById('cbs-script-ta').select();document.execCommand('copy');this.textContent='Copied ✓';" style="margin-top:6px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:rgba(255,255,255,0.15);color:var(--paper);border:1px solid rgba(255,255,255,0.2);padding:5px 14px;cursor:pointer;">Copy Script</button>
-  `;
-  document.querySelector('.cbs-fetch-panel').appendChild(scriptBox);
-}
-function importCBSData() {
-  const raw = document.getElementById('cbs-json-input').value.trim();
-  if (!raw) { setStatus('Paste the CBS JSON data first.', 'err'); return; }
-  let data;
-  try { data = JSON.parse(raw); } catch(e) { setStatus('Could not parse — make sure you pasted the full output.', 'err'); return; }
-  if (!data.week || !data.scores || !data.matchups) { setStatus('Data looks incomplete.', 'err'); return; }
-  document.getElementById('f-week').value = data.week;
-  const sorted = [...data.scores].sort((a,b)=>b.pts-a.pts);
-  document.getElementById('f-scores').value = sorted.map(s=>`${CBS_NAME_TO_ABBR[s.team]||s.team.substring(0,3).toUpperCase()} ${s.pts.toFixed(1)}`).join('\n');
-  document.getElementById('scores-autofill-badge').style.display = 'inline';
-  document.getElementById('f-pool').value = sorted.map(s=>`${CBS_NAME_TO_ABBR[s.team]||s.team.substring(0,3).toUpperCase()} ${Math.round(s.pts)}`).join('\n');
-  document.getElementById('pool-autofill-badge').style.display = 'inline';
-  if (!document.getElementById('f-body').value.trim()) {
-    const summary = data.matchups.map(m=>{
-      const hA=CBS_NAME_TO_ABBR[m.home]||m.home, aA=CBS_NAME_TO_ABBR[m.away]||m.away;
-      const w=m.hpts>=m.apts?hA:aA, l=m.hpts>=m.apts?aA:hA, wp=m.hpts>=m.apts?m.hpts:m.apts, lp=m.hpts>=m.apts?m.apts:m.hpts;
-      return `${w} def. ${l} ${wp}–${lp}`;
-    }).join('\n');
-    document.getElementById('f-body').value = `Week ${data.week} results:\n\n${summary}\n\n[Add your commentary here]`;
-  }
-  setStatus(`✓ Week ${data.week} imported — scores and standings filled. Add commentary and publish!`, 'ok');
-  document.getElementById('cbs-import-panel').style.display = 'none';
-  const sb = document.getElementById('cbs-console-script-box');
-  if (sb) sb.remove();
-  document.getElementById('f-body').scrollIntoView({behavior:'smooth', block:'center'});
-}
 
 /* ════════════════════════════════════════════
    COMMENTS — localStorage per week
@@ -2488,131 +1944,9 @@ function addWeekTab(week) {
 }
 
 /* ════════════════════════════════════════════
-   SUPABASE — persistence layer
+   INIT — show latest report
 ════════════════════════════════════════════ */
-const SUPABASE_URL = 'https://zbwcvnquubmnxzbbbevc.supabase.co';
-const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpid2N2bnF1dWJtbnh6YmJiZXZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5NTQ1OTMsImV4cCI6MjA5ODUzMDU5M30.OTymmeVQJkerF38LGCflV3HGCmuY3mzrAhvZ5eolEt8';
-const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
-
-async function saveToDB(post) {
-  const { data, error } = await db.from('posts').insert([post]).select();
-  if (error) {
-    console.error('Save failed:', error.message);
-    showToast('⚠️ Post published locally but failed to save to database. Check console.', 4000);
-    return null;
-  } else {
-    showToast('✓ Post saved and published!');
-    return data && data[0] ? data[0] : null;
-  }
-}
-
-/* ── COMMISSIONER PASSWORD GATE ──
-   This only guards against accidental/casual clicks by teammates browsing
-   the site — anyone who opens the browser's dev tools could read this
-   password in the page source, so don't reuse a password you care about
-   protecting elsewhere. Change the word below to whatever you like. */
-const COMMISSIONER_PASSWORD = 'mfl2026';
-
-function checkAdminPassword() {
-  if (sessionStorage.getItem('mfl_admin_ok') === '1') return true;
-  const entered = prompt('Enter the commissioner password to continue:');
-  if (entered === null) return false;
-  if (entered === COMMISSIONER_PASSWORD) {
-    sessionStorage.setItem('mfl_admin_ok', '1');
-    return true;
-  }
-  alert('Incorrect password.');
-  return false;
-}
-
-async function deleteNewsPost(id, event) {
-  if (event) event.stopPropagation();
-  if (!checkAdminPassword()) return;
-  if (!confirm('Delete this post? This cannot be undone.')) return;
-  const { error } = await db.from('posts').delete().eq('id', id).eq('type', 'news');
-  if (error) {
-    console.error('Delete failed:', error.message);
-    showToast('⚠️ Delete failed — check console.', 4000);
-    return;
-  }
-  newsItems = newsItems.filter(n => n.id !== id);
-  showToast('🗑 Post deleted.');
-  showWeek(0, null);
-}
-
-async function deleteReport(week, event) {
-  if (event) event.stopPropagation();
-  if (REPORTS.find(r => r.week === week)) {
-    alert("This is an archived season report built into the site's code — it can't be deleted from here.");
-    return;
-  }
-  if (!checkAdminPassword()) return;
-  if (!confirm(`Delete the Week ${week} report? This cannot be undone.`)) return;
-  const { error } = await db.from('posts').delete().eq('type', 'report').eq('week', week);
-  if (error) {
-    console.error('Delete failed:', error.message);
-    showToast('⚠️ Delete failed — check console.', 4000);
-    return;
-  }
-  userReports = userReports.filter(r => r.week !== week);
-  delete WEEK_DATA[week];
-  document.querySelectorAll('.week-tab').forEach(t => {
-    if (t.textContent.trim() === `Wk ${week}`) t.remove();
-  });
-  showToast('🗑 Report deleted.');
-  showWeek(0, null);
-}
-
-
-async function loadPostsFromDB() {
-  const { data, error } = await db.from('posts').select('*').order('created_at', { ascending: false });
-  if (error) { console.error('Load failed:', error.message); return; }
-  if (!data || !data.length) return;
-
-  for (const row of data) {
-    if (row.type === 'report') {
-      // Avoid duplicating hardcoded REPORTS
-      if (REPORTS.find(r => r.week === parseInt(row.week))) continue;
-      if (userReports.find(r => r.week === parseInt(row.week))) continue;
-      const pool = row.pool ? row.pool.split('\n').map(l=>{ const p=l.trim().split(/\s+/); return [p[0],parseInt(p[1])||0]; }).filter(r=>r[0]) : [];
-      const scores = row.scores ? row.scores.split('\n').map(l=>{ const p=l.trim().split(/\s+/); return {team:p[0],pts:parseFloat(p[1])||0}; }).filter(s=>s.team) : [];
-      const players = row.players ? row.players.split('\n').map(l=>{ const p=l.trim().split(/\s+/); const bench=p[p.length-1]==='*'; return {name:p[0],team:p[1],pts:parseInt(p[2])||0,bench}; }).filter(p=>p.name) : [];
-      const report = { week: parseInt(row.week), author: row.author, headline: row.headline, deck: row.deck, body: row.body, spiff: row.spiff, pool, signoff: row.signoff };
-      userReports.push(report);
-      if (scores.length || players.length) {
-        WEEK_DATA[row.week] = WEEK_DATA[row.week] || {};
-        if (scores.length) WEEK_DATA[row.week].scores = scores;
-        if (players.length) WEEK_DATA[row.week].players = players;
-      }
-      addWeekTab(parseInt(row.week));
-    } else if (row.type === 'news') {
-      if (newsItems.find(n => n.id === row.id)) continue;
-      newsItems.push({ type:'news', id: row.id, author: row.author, category: row.category, headline: row.headline, deck: row.deck, body: row.body, date: new Date(row.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}), dateISO: row.created_at });
-    }
-  }
-}
-
-function showToast(msg, duration=2500) {
-  let t = document.getElementById('db-toast');
-  if (!t) {
-    t = document.createElement('div');
-    t.id = 'db-toast';
-    t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:var(--ink);color:var(--paper);font-family:"Barlow Condensed",sans-serif;font-size:13px;letter-spacing:1px;padding:10px 18px;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;';
-    document.body.appendChild(t);
-  }
-  t.textContent = msg;
-  t.style.opacity = '1';
-  setTimeout(() => { t.style.opacity = '0'; }, duration);
-}
-
-/* ════════════════════════════════════════════
-   INIT — load from DB then show latest report
-════════════════════════════════════════════ */
-(async function init() {
-  showToast('Loading posts…', 8000);
-  await loadPostsFromDB();
-  showWeek(0, document.querySelector('.week-tab'));
-})();
+showWeek(18, document.querySelector('.week-tab.active'));
 </script>
 </body>
 </html>
