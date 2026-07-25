@@ -367,6 +367,214 @@
       white-space: nowrap;
     }
 
+    /* ── HERO / BLOG-STYLE LAYOUT (2/3 main + 1/3 rail) ── */
+    .gazette-hero-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 900px) {
+      .gazette-hero-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+
+    .featured-card {
+      position: relative;
+      cursor: pointer;
+      border: 1px solid var(--rule);
+      border-top: 4px solid var(--gold);
+      background: var(--paper2);
+      padding: 1.75rem;
+      transition: background 0.15s;
+    }
+    .featured-card:hover { background: var(--paper3); }
+    .featured-card:hover .card-delete-btn { opacity: 1; }
+    .featured-card.news-card { border-top-color: var(--red); }
+    .featured-delete-btn { top: 14px; right: 14px; }
+    .featured-kicker {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 10px;
+    }
+    .featured-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .featured-deck {
+      font-family: 'Source Serif 4', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--ink2);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .featured-preview {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--ink2);
+      margin-bottom: 14px;
+    }
+    .featured-readmore {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero-rail {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      position: sticky;
+      top: 1rem;
+    }
+    .rail-box {
+      background: var(--paper2);
+      border: 1px solid var(--rule2);
+      border-top: 3px solid var(--gold);
+      padding: 1rem;
+    }
+    .rail-box.recent-rail-box { border-top-color: var(--ink); }
+    .rail-box-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .rail-box.recent-rail-box .rail-box-title { color: var(--ink3); }
+    .rail-box-subtitle {
+      font-size: 10px;
+      color: var(--ink4);
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .rail-recent-item {
+      padding: 8px 0;
+      border-bottom: 1px dotted var(--rule);
+      cursor: pointer;
+    }
+    .rail-recent-item:last-child { border-bottom: none; }
+    .rail-recent-item:hover .rail-recent-headline { color: var(--gold); }
+    .rail-recent-meta {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--ink4);
+      margin-bottom: 3px;
+    }
+    .rail-recent-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--ink);
+      transition: color 0.15s;
+    }
+    .rail-empty {
+      font-size: 12px;
+      color: var(--ink4);
+      font-style: italic;
+    }
+
+    .pool-strip {
+      margin-top: 1.25rem;
+      background: var(--paper2);
+      border: 1px solid var(--rule2);
+      border-top: 3px solid var(--gold);
+      padding: 1rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .pool-strip:hover { background: var(--paper3); }
+    .pool-strip-link {
+      margin-top: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pool-strip-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .pool-strip-subtitle {
+      font-size: 10px;
+      color: var(--ink4);
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .pool-strip-row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .pool-chip {
+      flex: 1 1 90px;
+      min-width: 80px;
+      text-align: center;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      padding: 8px 6px;
+    }
+    .pool-chip:first-child {
+      border-top: 2px solid var(--gold);
+      background: var(--paper3);
+    }
+    .pool-chip-rank {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      color: var(--ink4);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .pool-chip-team {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+    .pool-chip-pts {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
     /* ── ARCHIVE GRID ── */
     .archive-grid {
       display: grid;
@@ -1283,32 +1491,126 @@ function showWeek(week, btn) {
   }
 }
 
+function archiveCardHtml(p) {
+  if (p.type === 'news') {
+    return `
+      <div class="archive-card news-card" onclick="showNewsPost('${p.id}')">
+        <button class="card-delete-btn" onclick="deleteNewsPost('${p.id}', event)" title="Delete this post">✕</button>
+        <div class="archive-card-week" style="color:var(--red);">📰 ${p.category || 'League News'} · ${p.date} · By ${p.author}</div>
+        <div class="archive-card-headline">${p.headline}</div>
+        <div class="archive-card-deck">${p.deck || ''}</div>
+      </div>`;
+  } else {
+    const isArchived = REPORTS.find(rr => rr.week === p.week);
+    return `
+      <div class="archive-card" onclick="showWeek(${p.week}, null)">
+        ${!isArchived ? `<button class="card-delete-btn" onclick="deleteReport(${p.week}, event)" title="Delete this report">✕</button>` : ''}
+        <div class="archive-card-week">📋 Week ${p.week} Report · By ${p.author}</div>
+        <div class="archive-card-headline">${p.headline}</div>
+        <div class="archive-card-deck">${p.deck}</div>
+      </div>`;
+  }
+}
+
+function featuredCardHtml(p) {
+  const isNews = p.type === 'news';
+  const kicker = isNews
+    ? `📰 ${p.category || 'League News'} · ${p.date} · By ${p.author}`
+    : `📋 Week ${p.week} Report · By ${p.author}`;
+  const clickAttr = isNews ? `showNewsPost('${p.id}')` : `showWeek(${p.week}, null)`;
+  const isArchived = !isNews && REPORTS.find(rr => rr.week === p.week);
+  const deleteBtn = isNews
+    ? `<button class="card-delete-btn featured-delete-btn" onclick="deleteNewsPost('${p.id}', event)" title="Delete this post">✕</button>`
+    : (!isArchived ? `<button class="card-delete-btn featured-delete-btn" onclick="deleteReport(${p.week}, event)" title="Delete this report">✕</button>` : '');
+
+  const firstPara = (p.body || '').split('\n\n').filter(x => x.trim())[0] || '';
+  const preview = firstPara.length > 320 ? firstPara.slice(0, 320).trim() + '…' : firstPara;
+
+  return `
+    <div class="featured-card ${isNews ? 'news-card' : ''}" onclick="${clickAttr}">
+      ${deleteBtn}
+      <div class="featured-kicker" style="${isNews ? 'color:var(--red);' : ''}">${kicker}</div>
+      <div class="featured-headline">${p.headline}</div>
+      ${p.deck ? `<div class="featured-deck">${p.deck}</div>` : ''}
+      ${preview ? `<div class="featured-preview">${preview}</div>` : ''}
+      <div class="featured-readmore">Read the full story →</div>
+    </div>
+  `;
+}
+
+function railRecentItemHtml(p) {
+  const isNews = p.type === 'news';
+  const clickAttr = isNews ? `showNewsPost('${p.id}')` : `showWeek(${p.week}, null)`;
+  const meta = isNews ? `${p.category || 'League News'} · ${p.date}` : `Week ${p.week} Report`;
+  return `
+    <div class="rail-recent-item" onclick="${clickAttr}">
+      <div class="rail-recent-meta">${meta}</div>
+      <div class="rail-recent-headline">${p.headline}</div>
+    </div>
+  `;
+}
+
+function getLatestPoolData() {
+  const reports = allReports(); // sorted desc by week
+  for (const r of reports) {
+    if (r.pool && r.pool.length > 0) return { pool: r.pool.slice(0, 5), week: r.week };
+  }
+  return null;
+}
+
+function poolStripHtml(poolData) {
+  return `
+    <div class="pool-strip" onclick="location.href='index.html#point-pool-standings'">
+      <div class="pool-strip-title">
+        <span>Point Pool Standings — Top 5</span>
+        ${poolData ? `<span class="pool-strip-subtitle">Thru Wk ${poolData.week}</span>` : ''}
+      </div>
+      ${poolData ? `
+        <div class="pool-strip-row">
+          ${poolData.pool.map((row, i) => `
+            <div class="pool-chip">
+              <div class="pool-chip-rank">${i + 1}</div>
+              <div class="pool-chip-team">${row[0]}</div>
+              <div class="pool-chip-pts">${row[1]}</div>
+            </div>
+          `).join('')}
+        </div>
+      ` : '<div class="rail-empty">No standings posted yet.</div>'}
+      <div class="pool-strip-link">View Full Standings on League HQ →</div>
+    </div>
+  `;
+}
+
 function renderArchiveGrid() {
   const posts = allPosts();
   document.getElementById('masthead-date').textContent = 'MFL Gazette — Full Archive';
+
+  const featured = posts[0];
+  const recentFive = posts.slice(1, 6);
+  const poolData = getLatestPoolData();
+
+  const recentBoxHtml = `
+    <div class="rail-box recent-rail-box">
+      <div class="rail-box-title"><span>Most Recent Stories</span></div>
+      ${recentFive.length ? recentFive.map(railRecentItemHtml).join('') : '<div class="rail-empty">No other stories yet.</div>'}
+    </div>
+  `;
+
   document.getElementById('content-area').innerHTML = `
-    <div class="section-rule"><span class="section-rule-text">MFL Gazette · All Issues &amp; Posts</span></div>
+    ${featured ? `
+      <div class="gazette-hero-layout">
+        <div class="hero-main">
+          ${featuredCardHtml(featured)}
+          ${poolStripHtml(poolData)}
+        </div>
+        <aside class="hero-rail">
+          ${recentBoxHtml}
+        </aside>
+      </div>
+    ` : ''}
+    <div class="section-rule" style="margin-top:${featured ? '2.5rem' : '0'};"><span class="section-rule-text">More From The Gazette</span></div>
     <div class="archive-grid">
-      ${posts.map(p => {
-        if (p.type === 'news') {
-          return `
-            <div class="archive-card news-card" onclick="showNewsPost('${p.id}')">
-              <button class="card-delete-btn" onclick="deleteNewsPost('${p.id}', event)" title="Delete this post">✕</button>
-              <div class="archive-card-week" style="color:var(--red);">📰 ${p.category || 'League News'} · ${p.date} · By ${p.author}</div>
-              <div class="archive-card-headline">${p.headline}</div>
-              <div class="archive-card-deck">${p.deck || ''}</div>
-            </div>`;
-        } else {
-          const isArchived = REPORTS.find(rr => rr.week === p.week);
-          return `
-            <div class="archive-card" onclick="showWeek(${p.week}, null)">
-              ${!isArchived ? `<button class="card-delete-btn" onclick="deleteReport(${p.week}, event)" title="Delete this report">✕</button>` : ''}
-              <div class="archive-card-week">📋 Week ${p.week} Report · By ${p.author}</div>
-              <div class="archive-card-headline">${p.headline}</div>
-              <div class="archive-card-deck">${p.deck}</div>
-            </div>`;
-        }
-      }).join('')}
+      ${posts.map(archiveCardHtml).join('')}
     </div>
   `;
 }
