@@ -2170,7 +2170,7 @@ function renderReport(r) {
       <div class="edition-deck">${r.deck}</div>
       <div class="edition-byline">By ${r.author} &nbsp;·&nbsp; MFL Commissioner's Report &nbsp;·&nbsp; 2025 Season</div>
     </div>
-    <div class="columns-3 article-body">${col2Content}</div>
+    <div class="columns-2 article-body">${col2Content}</div>
     ${dashboardHtml}
     <div class="section-rule" style="margin-top:2rem;">
       <span class="section-rule-text">End of Week ${r.week} Report</span>
@@ -2236,7 +2236,7 @@ function renderNewsPost(post) {
       ${post.deck ? `<div class="edition-deck">${post.deck}</div>` : ''}
       <div class="edition-byline">By ${post.author} &nbsp;·&nbsp; MFL Gazette</div>
     </div>
-    <div class="columns-2 article-body">${bodyHtml}</div>
+    <div class="article-body">${bodyHtml}</div>
     <div class="section-rule" style="margin-top:2rem;"><span class="section-rule-text">End of Post</span></div>
     <div style="display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap;">
       <button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="showWeek(0,null)">← All Issues</button>
