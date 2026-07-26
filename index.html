@@ -590,6 +590,158 @@
       </div>
       <div style="padding:0 1.25rem 1rem;font-size:11px;color:var(--text3);">Applied after every postseason round (Weeks 14–17) to re-seed all 10 teams. The live bracket below computes this automatically as scores are entered.</div>
     </div>
+
+    <!-- Example bracket simulation -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Playoff Bracket</span>
+        <span class="badge badge-gray">Example</span>
+      </div>
+      <div style="padding:0.85rem 1.25rem;font-size:12px;color:var(--text2);line-height:1.6;border-bottom:1px solid var(--border);">
+        A simulated run-through of the Swiss format so you can see how re-seeding and payouts play out over four rounds. Not real results.
+      </div>
+      <div class="bracket-scroll">
+        <div class="col-headers">
+          <div class="col-h"><div class="col-h-week">Week 14</div><div class="col-h-sub">Round 1 · seeded</div></div>
+          <div class="col-h"><div class="col-h-week">Week 15</div><div class="col-h-sub">Round 2 · re-seeded</div></div>
+          <div class="col-h"><div class="col-h-week">Week 16</div><div class="col-h-sub">Round 3 · re-seeded</div></div>
+          <div class="col-h"><div class="col-h-week">Week 17</div><div class="col-h-sub">Round 4 · final</div></div>
+          <div class="col-h"><div class="col-h-week">Final</div><div class="col-h-sub">standings & pay</div></div>
+        </div>
+        <div class="bracket">
+
+          <!-- ROUND 1 -->
+          <div class="round-col">
+            <div class="matchup">
+              <div class="team-row win"><div class="seed-block"><span class="t-seed">#2</span></div><span class="t-name">Legends</span><span class="t-pts">59</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#9</span></div><span class="t-name dim">Slimy Dogs</span><span class="t-pts dim">15</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row win"><div class="seed-block"><span class="t-seed">#1</span></div><span class="t-name">Big Dogs</span><span class="t-pts">57</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#10</span></div><span class="t-name dim">Wizards</span><span class="t-pts dim">12</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row win"><div class="seed-block"><span class="t-seed">#5</span></div><span class="t-name">Huterball</span><span class="t-pts">53</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#6</span></div><span class="t-name dim">Blue Cheese</span><span class="t-pts dim">16</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row win"><div class="seed-block"><span class="t-seed">#3</span></div><span class="t-name">Clapperz</span><span class="t-pts">49</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#8</span></div><span class="t-name dim">Jackpots</span><span class="t-pts dim">20</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#7</span></div><span class="t-name">Out of Luck <span class="upset-flag">⚡</span></span><span class="t-pts">66</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#4</span></div><span class="t-name dim">Crankees</span><span class="t-pts dim">23</span></div>
+            </div>
+          </div>
+
+          <!-- ROUND 2 -->
+          <div class="round-col">
+            <div class="matchup">
+              <div class="team-row win"><div class="seed-block"><span class="t-seed">#2</span><span class="arrow same">—</span></div><span class="t-name">Legends</span><span class="t-pts">69</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#1</span><span class="arrow up">▲</span></div><span class="t-name dim">Out of Luck</span><span class="t-pts dim">51</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row win"><div class="seed-block"><span class="t-seed">#4</span><span class="arrow up">▲</span></div><span class="t-name">Huterball</span><span class="t-pts">42</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#3</span><span class="arrow down">▼</span></div><span class="t-name dim">Big Dogs</span><span class="t-pts dim">8</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#6</span><span class="arrow down">▼</span></div><span class="t-name">Crankees <span class="upset-flag">⚡</span></span><span class="t-pts">53</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#5</span><span class="arrow up">▲</span></div><span class="t-name dim">Clapperz</span><span class="t-pts dim">37</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#5</span><span class="arrow up">▲</span></div><span class="t-name">Wizards <span class="upset-flag">⚡</span></span><span class="t-pts">65</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#9</span><span class="arrow same">—</span></div><span class="t-name dim">Slimy Dogs</span><span class="t-pts dim">33</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row win"><div class="seed-block"><span class="t-seed">#8</span><span class="arrow up">▲</span></div><span class="t-name">Jackpots</span><span class="t-pts">25</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#10</span><span class="arrow down">▼</span></div><span class="t-name dim">Blue Cheese</span><span class="t-pts dim">5</span></div>
+            </div>
+          </div>
+
+          <!-- ROUND 3 -->
+          <div class="round-col">
+            <div class="matchup">
+              <div class="team-row win"><div class="seed-block"><span class="t-seed">#1</span><span class="arrow up">▲</span></div><span class="t-name">Legends</span><span class="t-pts">27</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#2</span><span class="arrow up">▲</span></div><span class="t-name dim">Huterball</span><span class="t-pts dim">9</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row win"><div class="seed-block"><span class="t-seed">#3</span><span class="arrow down">▼</span></div><span class="t-name">Out of Luck</span><span class="t-pts">38</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#4</span><span class="arrow up">▲</span></div><span class="t-name dim">Clapperz</span><span class="t-pts dim">18</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#6</span><span class="arrow same">—</span></div><span class="t-name">Crankees <span class="upset-flag">⚡</span></span><span class="t-pts">21</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#5</span><span class="arrow up">▲</span></div><span class="t-name dim">Wizards</span><span class="t-pts dim">11</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#8</span><span class="arrow up">▲</span></div><span class="t-name">Blue Cheese <span class="upset-flag">⚡</span></span><span class="t-pts">64</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#7</span><span class="arrow down">▼</span></div><span class="t-name dim">Big Dogs</span><span class="t-pts dim">32</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row win"><div class="seed-block"><span class="t-seed">#9</span><span class="arrow same">—</span></div><span class="t-name">Slimy Dogs</span><span class="t-pts">46</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#10</span><span class="arrow same">—</span></div><span class="t-name dim">Jackpots</span><span class="t-pts dim">9</span></div>
+            </div>
+          </div>
+
+          <!-- ROUND 4 -->
+          <div class="round-col">
+            <div class="matchup champ-game">
+              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#2</span><span class="arrow up">▲</span></div><span class="t-name champ-name">Out of Luck 🏆 <span class="upset-flag">⚡</span></span><span class="t-pts champ-pts">51</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#1</span><span class="arrow same">—</span></div><span class="t-name dim">Legends</span><span class="t-pts dim">25</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row win"><div class="seed-block"><span class="t-seed">#4</span><span class="arrow up">▲</span></div><span class="t-name">Crankees</span><span class="t-pts">70</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#3</span><span class="arrow down">▼</span></div><span class="t-name dim">Huterball</span><span class="t-pts dim">16</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row win"><div class="seed-block"><span class="t-seed">#6</span><span class="arrow down">▼</span></div><span class="t-name">Clapperz</span><span class="t-pts">51</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#5</span><span class="arrow up">▲</span></div><span class="t-name dim">Big Dogs</span><span class="t-pts dim">17</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row win"><div class="seed-block"><span class="t-seed">#7</span><span class="arrow up">▲</span></div><span class="t-name">Slimy Dogs</span><span class="t-pts">47</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#8</span><span class="arrow up">▲</span></div><span class="t-name dim">Blue Cheese</span><span class="t-pts dim">27</span></div>
+            </div>
+            <div class="matchup">
+              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#10</span><span class="arrow down">▼</span></div><span class="t-name">Wizards <span class="upset-flag">⚡</span></span><span class="t-pts">46</span></div>
+              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#9</span><span class="arrow down">▼</span></div><span class="t-name dim">Jackpots</span><span class="t-pts dim">6</span></div>
+            </div>
+          </div>
+
+          <!-- FINAL STANDINGS -->
+          <div class="finals-col">
+            <div class="champ-banner">🏆 MFL Champion</div>
+            <div class="final-card top">
+              <div class="final-row champ"><span class="final-place">1st</span><span class="final-name">Out of Luck</span><span class="final-pay gold">$500</span></div>
+              <div class="final-row runner"><span class="final-place">2nd</span><span class="final-name">Legends</span><span class="final-pay blue">$400</span></div>
+            </div>
+            <div class="final-card">
+              <div class="final-row"><span class="final-place">3rd</span><span class="final-name">Crankees</span><span class="final-pay blue">$300</span></div>
+              <div class="final-row"><span class="final-place">4th</span><span class="final-name">Huterball</span><span class="final-pay blue">$250</span></div>
+            </div>
+            <div class="final-card">
+              <div class="final-row"><span class="final-place">5th</span><span class="final-name">Clapperz</span><span class="final-pay blue">$150</span></div>
+              <div class="final-row"><span class="final-place">6th</span><span class="final-name">Big Dogs</span><span class="final-pay blue">$125</span></div>
+            </div>
+            <div class="final-card">
+              <div class="final-row"><span class="final-place">7th</span><span class="final-name">Slimy Dogs</span><span class="final-pay blue">$100</span></div>
+              <div class="final-row"><span class="final-place">8th</span><span class="final-name">Blue Cheese</span><span class="final-pay blue">$75</span></div>
+            </div>
+            <div class="final-card">
+              <div class="final-row"><span class="final-place">9th</span><span class="final-name">Wizards</span><span class="final-pay blue">$50</span></div>
+              <div class="final-row"><span class="final-place">10th</span><span class="final-name">Jackpots</span><span class="final-pay none">$0</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="bracket-legend">
+        <div class="leg"><div class="leg-sq" style="background:var(--win-bg);border-color:var(--win-bd);"></div> Win</div>
+        <div class="leg"><div class="leg-sq" style="background:var(--loss-bg);border-color:#ccc;"></div> Loss</div>
+        <div class="leg"><div class="leg-sq" style="background:var(--ups-bg);border-color:var(--ups-bd);"></div> Upset</div>
+        <div class="leg"><span style="color:var(--up-clr);font-size:11px;">▲</span> Seed up</div>
+        <div class="leg"><span style="color:var(--dn-clr);font-size:11px;">▼</span> Seed down</div>
+        <div class="leg"><span style="font-size:11px;">⚡</span> Upset flag</div>
+      </div>
+    </div>
   </div>
 
   <!-- ══════════════════════════════════════════════
