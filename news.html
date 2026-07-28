@@ -99,6 +99,23 @@
       border-radius: 2px;
     }
     .back-link:hover { background: var(--paper2); }
+    .back-link-prominent {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--paper);
+      font-weight: 700;
+      font-size: 12px;
+      padding: 7px 16px;
+      letter-spacing: 1.5px;
+    }
+    .back-link-prominent:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink);
+    }
+    .cold-ones {
+      font-style: italic;
+    }
 
     /* ── ARCHIVE NAV ── */
     .archive-bar {
@@ -917,18 +934,16 @@
 <!-- MASTHEAD -->
 <div class="masthead">
   <div class="masthead-top">
-    <a href="index.html" class="back-link">← MFL League HQ</a>
+    <span class="cold-ones">May all your drafts be cold ones.</span>
     <span>Est. 1980 · McCann's Football League</span>
-    <span>10 Teams · $8,000 Prize Pool</span>
+    <a href="index.html" class="back-link back-link-prominent">MFL League HQ →</a>
   </div>
   <div class="gazette-name">
     <img src="mfl_logo2.png" alt="MFL" style="height:70px;width:auto;vertical-align:middle;margin-right:16px;opacity:0.92;" />The MFL Gazette<img src="mfl_logo2.png" alt="MFL" style="height:70px;width:auto;vertical-align:middle;margin-left:16px;opacity:0.92;" />
   </div>
   <div class="gazette-subtitle">Official Weekly Publication of McCann's Football League</div>
   <div class="masthead-bottom">
-    <span>2025 Season Archive</span>
     <span id="masthead-date">Week 18 · Final Edition</span>
-    <span>May all your drafts be cold ones.</span>
   </div>
 </div>
 
@@ -1583,7 +1598,7 @@ function poolStripHtml(poolData) {
 
 function renderArchiveGrid() {
   const posts = allPosts();
-  document.getElementById('masthead-date').textContent = 'MFL Gazette — Full Archive';
+  document.getElementById('masthead-date').textContent = '';
 
   const featured = posts[0];
   const recentFive = posts.slice(1, 6);
