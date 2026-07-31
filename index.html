@@ -391,7 +391,7 @@
               <th title="Top-5 scoring wins">Top-5 W</th>
               <th>Total W</th>
               <th>Pts For</th>
-              <th>Bench Pts</th>
+              <th title="Season cumulative — informational only, not a standings tiebreaker">Bench Pts</th>
               <th>Earnings</th>
             </tr>
           </thead>
@@ -1036,10 +1036,9 @@ function renderStandings() {
   const sorted = [...TEAMS].sort((a,b)=>{
     const wa = a.h2h+a.top5, wb = b.h2h+b.top5;
     if (wb!==wa) return wb-wa;
-    if (b.pts!==a.pts) return b.pts-a.pts;
-    return b.bench-a.bench;
+    return b.pts-a.pts;
   });
-  const poolSorted = [...TEAMS].sort((a,b)=>b.pts-a.pts || b.bench-a.bench);
+  const poolSorted = [...TEAMS].sort((a,b)=>b.pts-a.pts);
   const maxPts = poolSorted[0].pts || 1;
 
   document.getElementById('standings-body').innerHTML = sorted.map((t,i)=>{
@@ -1185,7 +1184,7 @@ function openWeek(w) {
         </tbody>
       </table>
       <div style="padding:0.75rem 1.25rem;border-top:0.5px solid var(--border);font-size:11px;color:var(--text3);">
-        Winners in green · Top-5 scoring teams earn an additional win · Bench points are tiebreaker
+        Winners in green · Top-5 scoring teams earn an additional win · A tied matchup score is decided by bench points (CBS reflects this in the win/loss)
       </div>
     `;
   }
