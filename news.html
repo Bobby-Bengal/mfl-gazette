@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="mfl_logo2.png" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -28,7 +28,7 @@
     }
 
     body {
-      font-family: 'Source Serif 4', Georgia, serif;
+      font-family: 'Inter', sans-serif;
       background: var(--paper);
       color: var(--ink);
       min-height: 100vh;
@@ -49,7 +49,7 @@
       border-bottom: 1px solid var(--rule);
       padding-bottom: 0.75rem;
       margin-bottom: 0.75rem;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -67,7 +67,7 @@
       justify-content: center;
     }
     .gazette-subtitle {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 13px;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -81,14 +81,14 @@
       border-top: 1px solid var(--rule);
       padding-top: 0.75rem;
       margin-top: 0.75rem;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       letter-spacing: 1px;
       text-transform: uppercase;
       color: var(--ink3);
     }
     .back-link {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -128,7 +128,7 @@
       flex-wrap: nowrap;
     }
     .archive-label {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -139,7 +139,7 @@
       border-right: 1px solid #444;
     }
     .week-tab {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.5px;
@@ -178,7 +178,7 @@
       margin-bottom: 1.5rem;
     }
     .edition-kicker {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -194,7 +194,7 @@
       margin-bottom: 8px;
     }
     .edition-deck {
-      font-family: 'Source Serif 4', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 16px;
       font-style: italic;
       color: var(--ink2);
@@ -203,7 +203,7 @@
     }
     .edition-byline {
       margin-top: 10px;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -272,7 +272,7 @@
       margin: 1rem 0;
     }
     .scorebox-title {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -291,7 +291,7 @@
     }
     .score-line:last-child { border-bottom: none; }
     .score-line .winner { font-weight: 700; color: var(--ink); }
-    .score-num { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; }
+    .score-num { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; }
 
     /* ── POOL TABLE ── */
     .pool-table {
@@ -303,7 +303,7 @@
       margin: 1rem 0;
     }
     .pool-table-title {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -320,8 +320,8 @@
       color: var(--ink2);
     }
     .pool-row:last-child { border-bottom: none; }
-    .pool-rank { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--ink4); width: 16px; }
-    .pool-pts { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); }
+    .pool-rank { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--ink4); width: 16px; }
+    .pool-pts { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); }
 
     /* ── 21 CLUB ── */
     .club-box {
@@ -350,7 +350,7 @@
       border-bottom: 1px dotted var(--rule);
     }
     .club-row:last-child { border-bottom: none; }
-    .club-pts { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px; color: var(--ink); }
+    .club-pts { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; color: var(--ink); }
     .club-team { font-size: 10px; color: var(--ink4); }
 
     /* ── SPIFF BANNER ── */
@@ -365,7 +365,7 @@
       gap: 8px;
     }
     .spiff-icon { font-size: 16px; }
-    .spiff-text { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
+    .spiff-text { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
 
     /* ── SECTION RULE ── */
     .section-rule {
@@ -376,7 +376,7 @@
     }
     .section-rule::before, .section-rule::after { content: ''; flex: 1; height: 1px; background: var(--rule2); }
     .section-rule-text {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -410,7 +410,7 @@
     .featured-card.news-card { border-top-color: var(--red); }
     .featured-delete-btn { top: 14px; right: 14px; }
     .featured-kicker {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -426,7 +426,7 @@
       margin-bottom: 10px;
     }
     .featured-deck {
-      font-family: 'Source Serif 4', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 16px;
       font-style: italic;
       color: var(--ink2);
@@ -440,7 +440,7 @@
       margin-bottom: 14px;
     }
     .featured-readmore {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 1px;
@@ -463,7 +463,7 @@
     }
     .rail-box.recent-rail-box { border-top-color: var(--ink); }
     .rail-box-title {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -492,7 +492,7 @@
     .rail-recent-item:last-child { border-bottom: none; }
     .rail-recent-item:hover .rail-recent-headline { color: var(--gold); }
     .rail-recent-meta {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -525,7 +525,7 @@
     .pool-strip:hover { background: var(--paper3); }
     .pool-strip-link {
       margin-top: 10px;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 1px;
@@ -533,7 +533,7 @@
       color: var(--gold);
     }
     .pool-strip-title {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -571,14 +571,14 @@
       background: var(--paper3);
     }
     .pool-chip-rank {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 10px;
       color: var(--ink4);
       letter-spacing: 1px;
       margin-bottom: 4px;
     }
     .pool-chip-team {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 15px;
       font-weight: 700;
       color: var(--ink);
@@ -586,7 +586,7 @@
       margin-bottom: 2px;
     }
     .pool-chip-pts {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 17px;
       font-weight: 700;
       color: var(--gold);
@@ -637,7 +637,7 @@
     }
     .delete-post-btn:hover { background: var(--red); color: var(--paper); }
     .archive-card-week {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -663,28 +663,28 @@
     .type-modal-overlay.open { display:flex; }
     .type-modal { background:var(--paper); border:1px solid var(--rule2); border-top:4px solid var(--gold); padding:2rem; max-width:480px; width:90%; }
     .type-modal-title { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--ink); margin-bottom:6px; }
-    .type-modal-sub { font-family:'Barlow Condensed',sans-serif; font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--ink3); margin-bottom:1.5rem; }
+    .type-modal-sub { font-family:'Inter',sans-serif; font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--ink3); margin-bottom:1.5rem; }
     .type-choice { display:flex; flex-direction:column; gap:12px; margin-bottom:1.5rem; }
     .type-btn { display:flex; align-items:flex-start; gap:14px; padding:14px 16px; border:1px solid var(--rule2); background:var(--paper2); cursor:pointer; text-align:left; transition:background 0.15s; }
     .type-btn:hover { background:var(--paper3); }
     .type-btn-icon { font-size:22px; flex-shrink:0; line-height:1; margin-top:2px; }
     .type-btn-label { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--ink); margin-bottom:3px; }
-    .type-btn-desc { font-family:'Source Serif 4',serif; font-size:12px; color:var(--ink3); line-height:1.4; }
-    .type-cancel { font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:1px; text-transform:uppercase; background:none; color:var(--ink4); border:none; cursor:pointer; padding:0; }
+    .type-btn-desc { font-family:'Inter',sans-serif; font-size:12px; color:var(--ink3); line-height:1.4; }
+    .type-cancel { font-family:'Inter',sans-serif; font-size:12px; letter-spacing:1px; text-transform:uppercase; background:none; color:var(--ink4); border:none; cursor:pointer; padding:0; }
     .type-cancel:hover { color:var(--ink3); }
 
     /* ── CBS FETCH PANEL ── */
     .cbs-fetch-panel { background:var(--ink); color:var(--paper); padding:1rem 1.25rem; margin-bottom:1.5rem; }
     .cbs-fetch-header { margin-bottom:0.75rem; }
-    .cbs-fetch-title { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold-light); display:block; margin-bottom:3px; }
-    .cbs-fetch-sub { font-family:'Barlow Condensed',sans-serif; font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:0.5px; }
+    .cbs-fetch-title { font-family:'Inter',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold-light); display:block; margin-bottom:3px; }
+    .cbs-fetch-sub { font-family:'Inter',sans-serif; font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:0.5px; }
     .cbs-fetch-controls { display:flex; align-items:flex-end; gap:12px; flex-wrap:wrap; }
     .cbs-fetch-controls .form-label { color:rgba(255,255,255,0.6); }
     .cbs-fetch-controls .form-select { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:var(--paper); }
-    .cbs-fetch-btn { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:var(--gold); color:var(--paper); border:none; padding:9px 20px; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+    .cbs-fetch-btn { font-family:'Inter',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:var(--gold); color:var(--paper); border:none; padding:9px 20px; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
     .cbs-fetch-btn:hover { background:var(--gold-light); }
     .cbs-fetch-btn:disabled { background:#555; cursor:wait; }
-    .cbs-fetch-status { font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:0.5px; margin-top:8px; min-height:18px; color:rgba(255,255,255,0.7); }
+    .cbs-fetch-status { font-family:'Inter',sans-serif; font-size:12px; letter-spacing:0.5px; margin-top:8px; min-height:18px; color:rgba(255,255,255,0.7); }
     .cbs-fetch-status.ok { color:#7ddc7d; }
     .cbs-fetch-status.err { color:#ff8080; }
 
@@ -714,7 +714,7 @@
     }
     .compose-bar-text { font-size: 13px; color: var(--ink2); }
     .compose-btn {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 1px;
@@ -739,14 +739,14 @@
     .compose-form.open { display: block; }
     .form-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 1rem; }
     .form-row { margin-bottom: 1rem; }
-    .form-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--ink3); display: block; margin-bottom: 4px; }
+    .form-label { font-family: 'Inter', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--ink3); display: block; margin-bottom: 4px; }
     .form-input, .form-textarea, .form-select {
       width: 100%;
       padding: 8px 10px;
       border: 1px solid var(--rule2);
       background: var(--paper);
       color: var(--ink);
-      font-family: 'Source Serif 4', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 14px;
       outline: none;
     }
@@ -755,7 +755,7 @@
     .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     @media (max-width: 500px) { .form-row-2 { grid-template-columns: 1fr; } }
     .form-submit {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 1px;
@@ -768,7 +768,7 @@
       margin-right: 8px;
     }
     .form-cancel {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 13px;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -787,7 +787,7 @@
       padding-top: 1.5rem;
     }
     .comments-header {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -817,7 +817,7 @@
       border-radius: 50%;
       background: #0C2340;
       color: #FB4F14;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 12px;
       font-weight: 700;
       display: flex;
@@ -828,7 +828,7 @@
     }
     .comment-body { flex: 1; }
     .comment-meta {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       letter-spacing: 0.5px;
       color: var(--ink3);
@@ -850,7 +850,7 @@
       border: none;
       cursor: pointer;
       padding: 0 4px;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       letter-spacing: 0.5px;
     }
     .comment-delete:hover { color: var(--red); }
@@ -861,7 +861,7 @@
       padding: 1rem;
     }
     .comment-form-title {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -879,7 +879,7 @@
       border: 1px solid var(--rule2);
       background: var(--paper);
       color: var(--ink);
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.5px;
@@ -893,7 +893,7 @@
       border: 1px solid var(--rule2);
       background: var(--paper);
       color: var(--ink);
-      font-family: 'Source Serif 4', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 13px;
       outline: none;
       resize: none;
@@ -902,7 +902,7 @@
     }
     .comment-input:focus, .comment-select:focus { border-color: #0C2340; }
     .comment-submit {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 1px;
@@ -1073,11 +1073,11 @@
       <input class="form-input" id="f-spiff" placeholder="e.g. Legends — Boswell's big kicking day" />
     </div>
     <div class="form-row">
-      <label class="form-label">Point Pool Standings <span id="pool-autofill-badge" style="display:none;background:var(--gold);color:var(--paper);font-size:9px;padding:2px 6px;margin-left:6px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">AUTO-FILLED ✓</span></label>
+      <label class="form-label">Point Pool Standings <span id="pool-autofill-badge" style="display:none;background:var(--gold);color:var(--paper);font-size:9px;padding:2px 6px;margin-left:6px;font-family:'Inter',sans-serif;letter-spacing:1px;">AUTO-FILLED ✓</span></label>
       <textarea class="form-textarea" id="f-pool" style="min-height:120px;" placeholder="POT 417&#10;WIZ 403&#10;HBL 385"></textarea>
     </div>
     <div class="form-row">
-      <label class="form-label">Week Scores <span id="scores-autofill-badge" style="display:none;background:var(--gold);color:var(--paper);font-size:9px;padding:2px 6px;margin-left:6px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">AUTO-FILLED ✓</span></label>
+      <label class="form-label">Week Scores <span id="scores-autofill-badge" style="display:none;background:var(--gold);color:var(--paper);font-size:9px;padding:2px 6px;margin-left:6px;font-family:'Inter',sans-serif;letter-spacing:1px;">AUTO-FILLED ✓</span></label>
       <textarea class="form-textarea" id="f-scores" style="min-height:140px;" placeholder="BDG 87.4&#10;BLU 72.1&#10;CLP 65.0&#10;CRK 58.2&#10;HBL 54.0&#10;POT 49.8&#10;LOF 44.2&#10;OOL 41.0&#10;SDG 38.6&#10;WIZ 33.1"></textarea>
     </div>
     <div class="form-row">
@@ -2049,10 +2049,10 @@ function renderDashboard(week) {
     <div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--rule);${i===d.players.length-1?'border-bottom:none;':''}">
       <div>
         <span style="font-size:13px;color:var(--ink2);">${p.name}</span>
-        ${p.bench ? '<span style="font-family:\'Barlow Condensed\',sans-serif;font-size:10px;color:var(--ink4);background:var(--paper3);padding:1px 5px;border-radius:2px;margin-left:4px;">(b)</span>' : ''}
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--ink4);margin-left:6px;">${p.team}</span>
+        ${p.bench ? '<span style="font-family:'Inter',sans-serif;font-size:10px;color:var(--ink4);background:var(--paper3);padding:1px 5px;border-radius:2px;margin-left:4px;">(b)</span>' : ''}
+        <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);margin-left:6px;">${p.team}</span>
       </div>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--ink);">${p.pts}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--ink);">${p.pts}</span>
     </div>
   `).join('');
 
@@ -2060,12 +2060,12 @@ function renderDashboard(week) {
   const winsSorted = Object.entries(d.wins).sort((a,b)=>b[1]-a[1]);
   const winsHtml = winsSorted.map(([team,w],i) => `
     <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--rule);${i===winsSorted.length-1?'border-bottom:none;':''}">
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--ink4);width:16px;">${i+1}</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--ink2);flex:1;">${team}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);width:16px;">${i+1}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink2);flex:1;">${team}</span>
       <div style="width:80px;background:var(--paper3);border-radius:2px;height:6px;">
         <div style="width:${Math.round(w/winsSorted[0][1]*100)}%;background:var(--ink2);height:6px;border-radius:2px;"></div>
       </div>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--ink);width:28px;text-align:right;">${w}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--ink);width:28px;text-align:right;">${w}</span>
     </div>
   `).join('');
 
@@ -2073,12 +2073,12 @@ function renderDashboard(week) {
   const ptsSorted = Object.entries(d.cumPts).sort((a,b)=>b[1]-a[1]);
   const ptsHtml = ptsSorted.map(([team,pts],i) => `
     <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--rule);${i===ptsSorted.length-1?'border-bottom:none;':''}">
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--ink4);width:16px;">${i+1}</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--ink2);flex:1;">${team}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);width:16px;">${i+1}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink2);flex:1;">${team}</span>
       <div style="width:80px;background:var(--paper3);border-radius:2px;height:6px;">
         <div style="width:${Math.round(pts/ptsSorted[0][1]*100)}%;background:var(--gold);height:6px;border-radius:2px;"></div>
       </div>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--gold);width:40px;text-align:right;">${pts}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--gold);width:40px;text-align:right;">${pts}</span>
     </div>
   `).join('');
 
@@ -2088,12 +2088,12 @@ function renderDashboard(week) {
   const maxSpiff = Math.max(1, spiffSorted[0][1]);
   const spiffTrackerHtml = spiffSorted.map(([team,count],i) => `
     <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--rule);${i===spiffSorted.length-1?'border-bottom:none;':''}">
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--ink4);width:16px;">${i+1}</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--ink2);flex:1;">${team}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);width:16px;">${i+1}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink2);flex:1;">${team}</span>
       <div style="width:80px;background:var(--paper3);border-radius:2px;height:6px;">
         <div style="width:${Math.round(count/maxSpiff*100)}%;background:var(--red);height:6px;border-radius:2px;"></div>
       </div>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--red);width:28px;text-align:right;">${count}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--red);width:28px;text-align:right;">${count}</span>
     </div>
   `).join('');
 
@@ -2107,9 +2107,9 @@ function renderDashboard(week) {
       const hWin = m.hp >= m.ap;
       const hTop = top5.has(m.h), aTop = top5.has(m.a);
       return `<div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--rule);${i===matchups.length-1?'border-bottom:none;':''}">
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;${hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${m.h}${hTop?' ★':''}</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--ink4);">${m.hp.toFixed(1)}–${m.ap.toFixed(1)}</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;${!hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${aTop?' ★':''}${m.a}</span>
+        <span style="font-family:'Inter',sans-serif;font-size:13px;${hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${m.h}${hTop?' ★':''}</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);">${m.hp.toFixed(1)}–${m.ap.toFixed(1)}</span>
+        <span style="font-family:'Inter',sans-serif;font-size:13px;${!hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${aTop?' ★':''}${m.a}</span>
       </div>`;
     }).join('');
   })();
@@ -2117,20 +2117,20 @@ function renderDashboard(week) {
   return `
     <div style="border-top:3px double var(--rule2);margin-top:2rem;padding-top:1.5rem;">
       <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);margin-bottom:4px;">Week ${week} Dashboard</div>
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:1.5rem;">McCann's Football League</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:1.5rem;">McCann's Football League</div>
 
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);margin-bottom:0.75rem;padding-bottom:4px;border-bottom:2px solid var(--ink);">This Week</div>
+      <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);margin-bottom:0.75rem;padding-bottom:4px;border-bottom:2px solid var(--ink);">This Week</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-bottom:1.75rem;">
 
         <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--ink);padding:1rem;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+          <div style="font-family:'Inter',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
             Week ${week} Results &nbsp;·&nbsp; <span style="color:var(--gold);">★ = Top 5 score</span>
           </div>
           ${resultsHtml}
         </div>
 
         <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--red);padding:1rem;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+          <div style="font-family:'Inter',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
             Top Scorers &nbsp;·&nbsp; <span style="color:var(--ink4);">(b) = reserve</span>
           </div>
           ${playersHtml}
@@ -2138,25 +2138,25 @@ function renderDashboard(week) {
 
       </div>
 
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);margin-bottom:0.75rem;padding-bottom:4px;border-bottom:2px solid var(--ink);">Season to Date</div>
+      <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);margin-bottom:0.75rem;padding-bottom:4px;border-bottom:2px solid var(--ink);">Season to Date</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;">
 
         <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--gold);padding:1rem;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+          <div style="font-family:'Inter',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
             Point Pool · Thru Wk ${week}
           </div>
           ${ptsHtml}
         </div>
 
         <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--ink2);padding:1rem;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+          <div style="font-family:'Inter',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
             Season Wins · Thru Wk ${week}
           </div>
           ${winsHtml}
         </div>
 
         <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--red);padding:1rem;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+          <div style="font-family:'Inter',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
             Spiff Tracker · Thru Wk ${week}
           </div>
           ${spiffTrackerHtml}
@@ -2372,9 +2372,9 @@ function fetchFromCBS() {
   scriptBox.id = 'cbs-console-script-box';
   scriptBox.style.cssText = 'margin-top:1rem;border-top:1px solid rgba(255,255,255,0.15);padding-top:1rem;';
   scriptBox.innerHTML = `
-    <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;">Console script — paste into CBS browser console (F12):</div>
+    <div style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;">Console script — paste into CBS browser console (F12):</div>
     <textarea id="cbs-script-ta" style="width:100%;min-height:70px;background:rgba(0,0,0,0.4);color:#7ddc7d;border:1px solid rgba(255,255,255,0.1);padding:8px;font-family:monospace;font-size:11px;resize:vertical;box-sizing:border-box;" readonly>${consoleScript}</textarea>
-    <button onclick="document.getElementById('cbs-script-ta').select();document.execCommand('copy');this.textContent='Copied ✓';" style="margin-top:6px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:rgba(255,255,255,0.15);color:var(--paper);border:1px solid rgba(255,255,255,0.2);padding:5px 14px;cursor:pointer;">Copy Script</button>
+    <button onclick="document.getElementById('cbs-script-ta').select();document.execCommand('copy');this.textContent='Copied ✓';" style="margin-top:6px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:rgba(255,255,255,0.15);color:var(--paper);border:1px solid rgba(255,255,255,0.2);padding:5px 14px;cursor:pointer;">Copy Script</button>
   `;
   document.querySelector('.cbs-fetch-panel').appendChild(scriptBox);
 }
@@ -2641,7 +2641,7 @@ function showToast(msg, duration=2500) {
   if (!t) {
     t = document.createElement('div');
     t.id = 'db-toast';
-    t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:var(--ink);color:var(--paper);font-family:"Barlow Condensed",sans-serif;font-size:13px;letter-spacing:1px;padding:10px 18px;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;';
+    t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;font-size:13px;letter-spacing:1px;padding:10px 18px;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;';
     document.body.appendChild(t);
   }
   t.textContent = msg;

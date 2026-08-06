@@ -6,7 +6,7 @@
   <title>MFL 2026 — League HQ</title>
   <link rel="icon" type="image/png" href="mfl_logo2.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -43,7 +43,7 @@
     }
 
     body {
-      font-family: 'Barlow', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
@@ -64,8 +64,8 @@
       top: 0;
       z-index: 100;
     }
-    .logo { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff; letter-spacing: 2px; line-height: 1.1; }
-    .week-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; background: rgba(255,255,255,0.15); color: #ffffff; border: 1px solid rgba(255,255,255,0.25); padding: 5px 14px; border-radius: 20px; }
+    .logo { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff; letter-spacing: 2px; line-height: 1.1; }
+    .week-badge { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; background: rgba(255,255,255,0.15); color: #ffffff; border: 1px solid rgba(255,255,255,0.25); padding: 5px 14px; border-radius: 20px; }
 
     /* ── NAV ── */
     .nav {
@@ -77,7 +77,7 @@
       overflow-x: auto;
     }
     .nav-btn {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 1px;
@@ -115,17 +115,17 @@
       border-radius: 10px;
       padding: 1rem 1.125rem;
     }
-    .stat-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 6px; }
-    .stat-val { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; }
+    .stat-label { font-family: 'Inter', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 6px; }
+    .stat-val { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; }
     .stat-sub { font-size: 11px; color: var(--text3); margin-top: 4px; }
 
     /* ── CARDS ── */
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 1.25rem; }
     .card-header { padding: 0.875rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
-    .card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text); }
+    .card-title { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text); }
 
     /* ── BADGES ── */
-    .badge { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 3px 10px; border-radius: 20px; }
+    .badge { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 3px 10px; border-radius: 20px; }
     .badge-gold { background: var(--gold-bg); color: var(--gold); border: 1px solid rgba(232,200,74,0.2); }
     .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid rgba(74,222,128,0.2); }
     .badge-blue { background: var(--blue-bg); color: var(--yankees-blue); border: 1px solid rgba(96,165,250,0.2); }
@@ -134,18 +134,18 @@
 
     /* ── TABLES ── */
     table { width: 100%; border-collapse: collapse; }
-    th { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); font-weight: 600; padding: 8px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { font-family: 'Inter', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); font-weight: 600; padding: 8px 14px; text-align: left; border-bottom: 1px solid var(--border); }
     td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
     tr:last-child td { border-bottom: none; }
     tbody tr:hover td { background: rgba(255,255,255,0.03); }
-    .rank { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; color: var(--text3); }
+    .rank { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: var(--text3); }
     .rank.gold { color: var(--gold); }
     .rank.silver { color: #c0c0c0; }
     .rank.bronze { color: #cd7f32; }
     .team-cell .name { font-size: 14px; font-weight: 500; color: var(--text); }
     .team-cell .owners { font-size: 11px; color: var(--text3); margin-top: 1px; }
-    .num { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 600; }
-    .money { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; color: var(--green); }
+    .num { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; }
+    .money { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--green); }
     .money.neg { color: var(--red); }
 
     /* ── WEEK GRID ── */
@@ -164,7 +164,7 @@
     .week-pill.complete { border-color: rgba(74,222,128,0.3); background: var(--green-bg); }
     .week-pill.post { border-color: rgba(96,165,250,0.25); }
     .week-pill.derby { border-color: rgba(232,200,74,0.4); }
-    .week-num { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; color: var(--text2); }
+    .week-num { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; color: var(--text2); }
     .week-pill.current .week-num { color: var(--gold); }
     .week-pill.complete .week-num { color: var(--green); }
     .week-type { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text3); margin-top: 2px; }
@@ -179,7 +179,7 @@
       border-radius: 8px;
       background: var(--bg);
       color: var(--text);
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 16px;
       font-weight: 600;
       outline: none;
@@ -193,7 +193,7 @@
       color: #ffffff;
       border: none;
       border-radius: 8px;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 1px;
@@ -213,7 +213,7 @@
     /* ── BRACKET ── */
     .bracket-wrap { padding: 1rem 1.25rem; display: flex; flex-wrap: wrap; gap: 10px; }
     .match-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; min-width: 150px; }
-    .match-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 8px; }
+    .match-label { font-family: 'Inter', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 8px; }
     .match-team { font-size: 13px; font-weight: 500; padding: 5px 0; border-bottom: 1px solid var(--border); color: var(--text); }
     .match-team:last-child { border-bottom: none; padding-bottom: 0; }
     .match-team.tbd { color: var(--text3); font-style: italic; }
@@ -222,15 +222,15 @@
     .payout-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 1.25rem; border-bottom: 1px solid var(--border); }
     .payout-row:last-child { border-bottom: none; }
     .payout-label { font-size: 13px; color: var(--text2); }
-    .payout-amount { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; color: var(--green); }
+    .payout-amount { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; color: var(--green); }
 
     /* ── FINANCES ── */
     .fin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding: 1.25rem; }
     @media (max-width: 500px) { .fin-grid { grid-template-columns: 1fr; } }
-    .fin-section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 10px; }
+    .fin-section-title { font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 10px; }
     .fin-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
     .fin-row:last-child { border-bottom: none; }
-    .fin-val { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 600; }
+    .fin-val { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; }
     .divider { height: 1px; background: var(--border2); margin: 8px 0; }
 
     /* ── ADMIN ── */
@@ -247,10 +247,10 @@
 
     /* ── RULES ── */
     .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.25rem; padding: 1.25rem; }
-    .rules-group-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gold); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border2); }
+    .rules-group-title { font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gold); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border2); }
     .rule-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 12px; color: var(--text2); }
     .rule-row:last-child { border-bottom: none; }
-    .rule-pts { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; color: var(--gold); }
+    .rule-pts { font-family: 'Inter', sans-serif; font-weight: 600; color: var(--gold); }
     .rule-new { font-size: 9px; color: var(--yankees-blue); background: var(--blue-bg); padding: 1px 5px; border-radius: 4px; margin-left: 4px; vertical-align: middle; }
 
     /* ── FOOTER ── */
@@ -270,7 +270,7 @@
 
     /* ── WIN RESULT ── */
     .win-result { margin: 0 1.25rem 1.25rem; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; }
-    .win-result-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 8px; }
+    .win-result-title { font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 8px; }
     .win-result-row { display: flex; justify-content: space-between; font-size: 12px; padding: 3px 0; color: var(--text2); }
     .win-result-row.winner { color: var(--green); font-weight: 500; }
 
@@ -283,7 +283,7 @@
     .bracket-scroll { overflow-x: auto; padding: 1.25rem; }
     .col-headers { display: grid; grid-template-columns: repeat(4, 185px) 140px; min-width: 880px; margin-bottom: 10px; }
     .col-h { text-align: center; padding: 0 5px; }
-    .col-h-week { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); letter-spacing: 0.02em; text-transform: uppercase; }
+    .col-h-week { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); letter-spacing: 0.02em; text-transform: uppercase; }
     .col-h-sub { font-size: 11px; color: var(--text3); }
     .bracket { display: grid; grid-template-columns: repeat(4, 185px) 140px; gap: 0; min-width: 880px; align-items: start; }
     .round-col { display: flex; flex-direction: column; padding: 0 5px; gap: 5px; }
@@ -295,7 +295,7 @@
     .team-row.loss { background: var(--loss-bg); }
     .team-row.upset { background: var(--ups-bg); }
     .seed-block { display: flex; align-items: center; gap: 3px; min-width: 38px; flex-shrink: 0; }
-    .t-seed { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; color: var(--text3); min-width: 18px; }
+    .t-seed { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; color: var(--text3); min-width: 18px; }
     .arrow { font-size: 9px; line-height: 1; }
     .arrow.up { color: var(--up-clr); }
     .arrow.down { color: var(--dn-clr); }
@@ -303,21 +303,21 @@
     .t-name { font-size: 12px; font-weight: 500; flex: 1; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .t-name.dim { color: var(--text3); font-weight: 400; }
     .t-name.champ-name { color: var(--ups-tx); font-weight: 600; }
-    .t-pts { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; min-width: 24px; text-align: right; color: var(--text); }
+    .t-pts { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; min-width: 24px; text-align: right; color: var(--text); }
     .t-pts.dim { color: var(--text3); font-weight: 400; }
     .t-pts.champ-pts { color: var(--ups-tx); }
     .upset-flag { font-size: 9px; color: var(--ups-tx); margin-left: 1px; }
     .finals-col { display: flex; flex-direction: column; gap: 5px; padding: 0 5px; }
-    .champ-banner { background: var(--navy); color: var(--gold); text-align: center; padding: 8px; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 8px; margin-bottom: 1px; }
+    .champ-banner { background: var(--navy); color: var(--gold); text-align: center; padding: 8px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 8px; margin-bottom: 1px; }
     .final-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--bg2); }
     .final-card.top { border-color: var(--ups-bd); }
     .final-row { display: flex; align-items: center; padding: 5px 9px; gap: 5px; border-bottom: 1px solid var(--border); min-height: 30px; }
     .final-row:last-child { border-bottom: none; }
     .final-row.champ  { background: var(--ups-bg); }
     .final-row.runner { background: var(--win-bg); }
-    .final-place { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 600; color: var(--text3); min-width: 24px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .final-place { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; color: var(--text3); min-width: 24px; text-transform: uppercase; letter-spacing: 0.05em; }
     .final-name { font-size: 11px; font-weight: 500; flex: 1; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .final-pay { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; }
+    .final-pay { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; }
     .final-pay.gold { color: var(--ups-bd); }
     .final-pay.blue { color: var(--yankees-blue); }
     .final-pay.none { color: var(--text3); font-weight: 400; }
@@ -327,15 +327,15 @@
 
     /* ── COMMISSIONER ADMIN PANEL (bracket) ── */
     .admin-panel { background: var(--navy); color: #fff; padding: 1.25rem 1.25rem; border-radius: 12px; margin-bottom: 1.25rem; }
-    .admin-toggle { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--yankees-gray); background: none; border: 1px solid rgba(255,255,255,0.25); border-radius: 4px; padding: 5px 12px; cursor: pointer; }
+    .admin-toggle { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--yankees-gray); background: none; border: 1px solid rgba(255,255,255,0.25); border-radius: 4px; padding: 5px 12px; cursor: pointer; }
     .admin-toggle:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
     .admin-body { display: none; margin-top: 1rem; }
     .admin-body.open { display: block; }
     .admin-row { margin-bottom: 1rem; }
-    .admin-label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--yankees-gray); margin-bottom: 5px; }
-    .admin-select, .admin-input, .admin-textarea { font-family: 'Barlow', sans-serif; font-size: 13px; width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 5px; padding: 7px 9px; box-sizing: border-box; }
+    .admin-label { display: block; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--yankees-gray); margin-bottom: 5px; }
+    .admin-select, .admin-input, .admin-textarea { font-family: 'Inter', sans-serif; font-size: 13px; width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 5px; padding: 7px 9px; box-sizing: border-box; }
     .admin-textarea { min-height: 90px; font-family: monospace; font-size: 12px; resize: vertical; }
-    .admin-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--gold); color: #fff; border: none; border-radius: 5px; padding: 8px 16px; cursor: pointer; margin-right: 8px; }
+    .admin-btn { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--gold); color: #fff; border: none; border-radius: 5px; padding: 8px 16px; cursor: pointer; margin-right: 8px; }
     .admin-btn:hover { background: #e03a00; }
     .admin-btn.secondary { background: rgba(255,255,255,0.12); }
     .admin-btn.secondary:hover { background: rgba(255,255,255,0.2); }
@@ -353,8 +353,8 @@
     <span class="logo" style="font-size:22px;">McCann's Football League<span style="display:block;font-size:11px;font-weight:400;letter-spacing:1px;color:rgba(255,255,255,0.5);margin-top:1px;">League HQ · 2026 Season</span></span>
   </div>
   <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-    <a href="news.html" class="gazette-link" style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.4);padding:5px 12px;border-radius:6px;">Gazette</a>
-    <a href="https://mcfl20.football.cbssports.com/" target="_blank" style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.25);padding:5px 12px;border-radius:6px;text-decoration:none;">CBS Scores ↗</a>
+    <a href="news.html" class="gazette-link" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.4);padding:5px 12px;border-radius:6px;">Gazette</a>
+    <a href="https://mcfl20.football.cbssports.com/" target="_blank" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.25);padding:5px 12px;border-radius:6px;text-decoration:none;">CBS Scores ↗</a>
     <div class="week-badge" id="header-week">WEEK 1 · REG SEASON</div>
   </div>
 </div>
@@ -774,8 +774,8 @@
         </div>
       </div>
       <div style="padding:1rem 1.25rem;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text);">Grand Total</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--gold);">$10,000</span>
+        <span style="font-family:'Inter',sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text);">Grand Total</span>
+        <span style="font-family:'Inter',sans-serif;font-size:22px;font-weight:700;color:var(--gold);">$10,000</span>
       </div>
     </div>
 
@@ -912,7 +912,7 @@
           </div>
           <div style="padding:1rem 1.25rem;display:flex;flex-direction:column;gap:6px;">
             <div class="fin-row"><span>Current Week</span>
-              <select id="cur-week-sel" onchange="updateWeek()" style="background:var(--bg);color:var(--text);border:1px solid var(--border2);border-radius:6px;padding:4px 8px;font-family:'Barlow Condensed',sans-serif;font-size:14px;">
+              <select id="cur-week-sel" onchange="updateWeek()" style="background:var(--bg);color:var(--text);border:1px solid var(--border2);border-radius:6px;padding:4px 8px;font-family:'Inter',sans-serif;font-size:14px;">
                 <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
                 <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
                 <option>11</option><option>12</option><option>13</option><option>14</option><option>15</option>
@@ -1166,9 +1166,9 @@ function openWeek(w) {
                 </div>
               </td>
               <td style="text-align:center;">
-                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:${hWin?'var(--green)':'var(--text3)'};">${m.hp.toFixed(1)}</span>
+                <span style="font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:${hWin?'var(--green)':'var(--text3)'};">${m.hp.toFixed(1)}</span>
                 <span style="font-size:11px;color:var(--text3);margin:0 4px;">–</span>
-                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:${!hWin&&!tie?'var(--green)':'var(--text3)'};">${m.ap.toFixed(1)}</span>
+                <span style="font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:${!hWin&&!tie?'var(--green)':'var(--text3)'};">${m.ap.toFixed(1)}</span>
               </td>
               <td style="text-align:right;">
                 <div class="team-cell" style="align-items:flex-end;">
@@ -1238,7 +1238,7 @@ function renderAdmin() {
 
   document.getElementById('draft-order-list').innerHTML = DRAFT_ORDER.map((name,i)=>`
     <div class="team-admin-row">
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--text3);width:24px;">${i+1}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text3);width:24px;">${i+1}</span>
       <span style="font-size:13px;color:var(--text);">${name}</span>
     </div>
   `).join('');
