@@ -28,7 +28,7 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', Georgia, serif;
       background: var(--paper);
       color: var(--ink);
       min-height: 100vh;
@@ -194,7 +194,7 @@
       margin-bottom: 8px;
     }
     .edition-deck {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', serif;
       font-size: 16px;
       font-style: italic;
       color: var(--ink2);
@@ -426,7 +426,7 @@
       margin-bottom: 10px;
     }
     .featured-deck {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', serif;
       font-size: 16px;
       font-style: italic;
       color: var(--ink2);
@@ -669,7 +669,7 @@
     .type-btn:hover { background:var(--paper3); }
     .type-btn-icon { font-size:22px; flex-shrink:0; line-height:1; margin-top:2px; }
     .type-btn-label { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--ink); margin-bottom:3px; }
-    .type-btn-desc { font-family:'Inter',sans-serif; font-size:12px; color:var(--ink3); line-height:1.4; }
+    .type-btn-desc { font-family:'Inter',serif; font-size:12px; color:var(--ink3); line-height:1.4; }
     .type-cancel { font-family:'Inter',sans-serif; font-size:12px; letter-spacing:1px; text-transform:uppercase; background:none; color:var(--ink4); border:none; cursor:pointer; padding:0; }
     .type-cancel:hover { color:var(--ink3); }
 
@@ -746,7 +746,7 @@
       border: 1px solid var(--rule2);
       background: var(--paper);
       color: var(--ink);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', serif;
       font-size: 14px;
       outline: none;
     }
@@ -893,7 +893,7 @@
       border: 1px solid var(--rule2);
       background: var(--paper);
       color: var(--ink);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', serif;
       font-size: 13px;
       outline: none;
       resize: none;
@@ -2049,7 +2049,7 @@ function renderDashboard(week) {
     <div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--rule);${i===d.players.length-1?'border-bottom:none;':''}">
       <div>
         <span style="font-size:13px;color:var(--ink2);">${p.name}</span>
-        ${p.bench ? '<span style="font-family:'Inter',sans-serif;font-size:10px;color:var(--ink4);background:var(--paper3);padding:1px 5px;border-radius:2px;margin-left:4px;">(b)</span>' : ''}
+        ${p.bench ? '<span style="font-family:\'Inter\',sans-serif;font-size:10px;color:var(--ink4);background:var(--paper3);padding:1px 5px;border-radius:2px;margin-left:4px;">(b)</span>' : ''}
         <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);margin-left:6px;">${p.team}</span>
       </div>
       <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--ink);">${p.pts}</span>
@@ -2641,7 +2641,7 @@ function showToast(msg, duration=2500) {
   if (!t) {
     t = document.createElement('div');
     t.id = 'db-toast';
-    t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;font-size:13px;letter-spacing:1px;padding:10px 18px;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;';
+    t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:var(--ink);color:var(--paper);font-family:"Inter",sans-serif;font-size:13px;letter-spacing:1px;padding:10px 18px;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;';
     document.body.appendChild(t);
   }
   t.textContent = msg;
