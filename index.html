@@ -355,7 +355,7 @@
   <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
     <a href="news.html" class="gazette-link" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.4);padding:5px 12px;border-radius:6px;">Gazette</a>
     <a href="https://mcfl20.football.cbssports.com/" target="_blank" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.25);padding:5px 12px;border-radius:6px;text-decoration:none;">CBS Scores ↗</a>
-    <div class="week-badge" id="header-week">WEEK 2 · REG SEASON</div>
+    <div class="week-badge" id="header-week">WEEK 4 · REG SEASON</div>
   </div>
 </div>
 
@@ -912,7 +912,7 @@
           <div style="padding:1rem 1.25rem;display:flex;flex-direction:column;gap:6px;">
             <div class="fin-row"><span>Current Week</span>
               <select id="cur-week-sel" onchange="updateWeek()" style="background:var(--bg);color:var(--text);border:1px solid var(--border2);border-radius:6px;padding:4px 8px;font-family:'Inter',sans-serif;font-size:14px;">
-                <option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option>
+                <option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option>
                 <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
                 <option>11</option><option>12</option><option>13</option><option>14</option><option>15</option>
                 <option>16</option><option>17</option><option>18</option>
@@ -942,23 +942,23 @@
    DATA
 ══════════════════════════════════════════════ */
 const TEAMS = [
-  { id: 'bigdogs',   name: 'Big Dogs',    owners: 'Bob H. & Chris',         h2h: 2, top5: 2, pts: 144, spiffs: 1, postseason: 0 },
-  { id: 'bluecheese',name: 'Blue Cheese', owners: 'Reg & John',             h2h: 2, top5: 2, pts: 129, spiffs: 0, postseason: 0 },
-  { id: 'clapperz',  name: 'Clapperz',   owners: 'Steve',                  h2h: 1, top5: 1, pts: 94, spiffs: 1, postseason: 0 },
-  { id: 'crankees',  name: 'Crankees',   owners: 'Drew & J',               h2h: 1, top5: 1, pts: 98, spiffs: 0, postseason: 0 },
-  { id: 'huterball', name: 'Huterball',  owners: 'Jeff',                   h2h: 1, top5: 0, pts: 88, spiffs: 0, postseason: 0 },
-  { id: 'jackpots',  name: 'Jackpots',   owners: 'Bill & Ray',             h2h: 0, top5: 1, pts: 95, spiffs: 0, postseason: 0 },
-  { id: 'legends',   name: 'Legends',    owners: 'Bobby A.',               h2h: 0, top5: 1, pts: 86, spiffs: 0, postseason: 0 },
-  { id: 'ool',       name: 'Out of Luck',owners: 'Rob W.',                 h2h: 0, top5: 0, pts: 63, spiffs: 0, postseason: 0 },
-  { id: 'slimey',    name: 'Slimey Dogs',owners: 'Don, Brendan & Kieran',  h2h: 1, top5: 1, pts: 82, spiffs: 0, postseason: 0 },
-  { id: 'wizards',   name: 'Wizards',    owners: 'Chip & Teddy',           h2h: 2, top5: 1, pts: 113, spiffs: 0, postseason: 0 }
+  { id: 'bigdogs',   name: 'Big Dogs',    owners: 'Bob H. & Chris',         h2h: 3, top5: 3, pts: 196, spiffs: 1, postseason: 0 },
+  { id: 'bluecheese',name: 'Blue Cheese', owners: 'Reg & John',             h2h: 2, top5: 2, pts: 165, spiffs: 0, postseason: 0 },
+  { id: 'clapperz',  name: 'Clapperz',   owners: 'Steve',                  h2h: 2, top5: 1, pts: 135, spiffs: 1, postseason: 0 },
+  { id: 'crankees',  name: 'Crankees',   owners: 'Drew & J',               h2h: 2, top5: 2, pts: 166, spiffs: 0, postseason: 0 },
+  { id: 'huterball', name: 'Huterball',  owners: 'Jeff',                   h2h: 2, top5: 1, pts: 157, spiffs: 1, postseason: 0 },
+  { id: 'jackpots',  name: 'Jackpots',   owners: 'Bill & Ray',             h2h: 0, top5: 1, pts: 126, spiffs: 0, postseason: 0 },
+  { id: 'legends',   name: 'Legends',    owners: 'Bobby A.',               h2h: 0, top5: 1, pts: 122, spiffs: 0, postseason: 0 },
+  { id: 'ool',       name: 'Out of Luck',owners: 'Rob W.',                 h2h: 0, top5: 1, pts: 105, spiffs: 0, postseason: 0 },
+  { id: 'slimey',    name: 'Slimey Dogs',owners: 'Don, Brendan & Kieran',  h2h: 1, top5: 1, pts: 109, spiffs: 0, postseason: 0 },
+  { id: 'wizards',   name: 'Wizards',    owners: 'Chip & Teddy',           h2h: 3, top5: 2, pts: 157, spiffs: 0, postseason: 0 }
 ];
 
 const SCHEDULE = {
   // 2026 Regular Season — scores to be filled in weekly
   1:  [{h:'BDG',a:'HBL',hp:64,ap:54},{h:'OOL',a:'BLU',hp:22,ap:57},{h:'POT',a:'CLP',hp:69,ap:76},{h:'LOF',a:'CRK',hp:23,ap:62},{h:'SDG',a:'WIZ',hp:31,ap:45}],
   2:  [{h:'POT',a:'BDG',hp:26,ap:80},{h:'WIZ',a:'OOL',hp:68,ap:41},{h:'CLP',a:'HBL',hp:18,ap:34},{h:'BLU',a:'LOF',hp:72,ap:63},{h:'CRK',a:'SDG',hp:36,ap:51}],
-  3:  [{h:'OOL',a:'BDG',hp:0,ap:0},{h:'HBL',a:'SDG',hp:0,ap:0},{h:'LOF',a:'CLP',hp:0,ap:0},{h:'CRK',a:'POT',hp:0,ap:0},{h:'WIZ',a:'BLU',hp:0,ap:0}],
+  3:  [{h:'OOL',a:'BDG',hp:42,ap:52},{h:'HBL',a:'SDG',hp:69,ap:27},{h:'LOF',a:'CLP',hp:36,ap:41},{h:'CRK',a:'POT',hp:68,ap:31},{h:'WIZ',a:'BLU',hp:44,ap:36}],
   4:  [{h:'BDG',a:'SDG',hp:0,ap:0},{h:'BLU',a:'POT',hp:0,ap:0},{h:'CLP',a:'OOL',hp:0,ap:0},{h:'HBL',a:'CRK',hp:0,ap:0},{h:'LOF',a:'WIZ',hp:0,ap:0}],
   5:  [{h:'BDG',a:'CRK',hp:0,ap:0},{h:'WIZ',a:'POT',hp:0,ap:0},{h:'SDG',a:'CLP',hp:0,ap:0},{h:'BLU',a:'HBL',hp:0,ap:0},{h:'OOL',a:'LOF',hp:0,ap:0}],
   6:  [{h:'CLP',a:'BDG',hp:0,ap:0},{h:'POT',a:'OOL',hp:0,ap:0},{h:'CRK',a:'WIZ',hp:0,ap:0},{h:'SDG',a:'BLU',hp:0,ap:0},{h:'HBL',a:'LOF',hp:0,ap:0}],
@@ -986,11 +986,12 @@ const MATCHUPS = [
   [0,2],[1,3],[4,6],[5,7],[8,0], // wk2 — simplified example
 ];
 
-let currentWeek = 3;
+let currentWeek = 4;
 let weekScores = {}; // { week: { teamId: { pts } } }
 let spiffData = Array.from({length:18},(_,i)=>({id:i+1, name:`Spiff ${i+1}`, winner:'TBD', paid:false}));
 spiffData[0].winner = 'Clapperz'; // Week 1 high score: 76
 spiffData[1].winner = 'Big Dogs'; // Week 2 high score: 80
+spiffData[2].winner = 'Huterball'; // Week 3 high score: 69
 
 /* ══════════════════════════════════════════════
    NAV
