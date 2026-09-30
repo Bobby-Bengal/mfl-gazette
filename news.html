@@ -1348,11 +1348,39 @@ function seasonSpiffCounts(uptoWeek) {
   return counts;
 }
 
+function fmtPts(n) { return Number.isInteger(n) ? String(n) : n.toFixed(1); }
+
 function renderDashboard(week, dataKey = week) {
   // dataKey lets a live (2026) report and an archived (2025) report that happen to share the
   // same week number read from separate WEEK_DATA/GAZETTE_SCHEDULE slots — see renderReport().
-  const d = WEEK_DATA[dataKey];
-  if (!d) return '';
+  const d = WEEK_DATA[dataKey] || {};
+  if (!WEEK_DATA[dataKey] && !Array.isArray(GAZETTE_SCHEDULE[dataKey])) return '';
+  const isLive = String(dataKey).startsWith('u');
+
+  // Season wins: tally every published week's game results up through this week.
+  // Weeks with no saved scores are listed so the gap is visible instead of silently wrong.
+  const wins = {}; Object.keys(TEAM_ABBR).forEach(t => wins[t] = 0);
+  const missingWeeks = [];
+  for (let w = 1; w <= week; w++) {
+    const games = GAZETTE_SCHEDULE[isLive ? 'u' + w : w];
+    const real = Array.isArray(games) && games.some(g => g.hp > 0 || g.ap > 0);
+    if (!real) { missingWeeks.push(w); continue; }
+    games.forEach(g => {
+      if (g.hp > g.ap) wins[g.h] = (wins[g.h] || 0) + 1;
+      else if (g.ap > g.hp) wins[g.a] = (wins[g.a] || 0) + 1;
+      else { wins[g.h] = (wins[g.h] || 0) + 0.5; wins[g.a] = (wins[g.a] || 0) + 0.5; }
+    });
+  }
+  d.wins = wins;
+  const missingNote = missingWeeks.length
+    ? `<div style="font-family:'Inter',sans-serif;font-size:11px;color:var(--red);margin-top:8px;">Missing scores for Wk ${missingWeeks.join(', ')}</div>` : '';
+
+  // Point pool: use the standings saved with this report; if none, sum weekly scores.
+  if (!d.cumPts && !missingWeeks.length) {
+    const sum = {}; Object.keys(TEAM_ABBR).forEach(t => sum[t] = 0);
+    for (let w = 1; w <= week; w++) (GAZETTE_SCHEDULE[isLive ? 'u' + w : w] || []).forEach(g => { sum[g.h] += g.hp; sum[g.a] += g.ap; });
+    d.cumPts = sum;
+  }
 
   // Top 10 players
   const playersHtml = (d.players || []).map((p,i) => `
@@ -1367,13 +1395,14 @@ function renderDashboard(week, dataKey = week) {
   `).join('');
 
   // Season wins standings
-  const winsSorted = Object.entries(d.wins || {}).sort((a,b)=>b[1]-a[1]);
+  const winsSorted = Object.entries(d.wins || {}).sort((a,b)=>b[1]-a[1] || ((d.cumPts||{})[b[0]]||0)-((d.cumPts||{})[a[0]]||0));
+  const maxWins = Math.max(1, winsSorted.length ? winsSorted[0][1] : 1);
   const winsHtml = winsSorted.map(([team,w],i) => `
     <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--rule);${i===winsSorted.length-1?'border-bottom:none;':''}">
       <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);width:16px;">${i+1}</span>
       <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink2);flex:1;">${team}</span>
       <div style="width:80px;background:var(--paper3);border-radius:2px;height:6px;">
-        <div style="width:${Math.round(w/winsSorted[0][1]*100)}%;background:var(--ink2);height:6px;border-radius:2px;"></div>
+        <div style="width:${Math.round(w/maxWins*100)}%;background:var(--ink2);height:6px;border-radius:2px;"></div>
       </div>
       <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--ink);width:28px;text-align:right;">${w}</span>
     </div>
@@ -1410,7 +1439,8 @@ function renderDashboard(week, dataKey = week) {
   // This week's results — one merged matchup box, top 5 scores starred
   const resultsHtml = (()=>{
     const matchups = GAZETTE_SCHEDULE[dataKey];
-    if (!matchups || matchups === 'derby') return `<div style="font-size:12px;color:var(--ink3);">All-play Derby</div>`;
+    if (matchups === 'derby') return `<div style="font-size:12px;color:var(--ink3);">All-play Derby</div>`;
+    if (!matchups || !matchups.length) return `<div style="font-size:12px;color:var(--red);">No game scores entered for this week.</div>`;
     const allScores = matchups.flatMap(m=>[{team:m.h,pts:m.hp},{team:m.a,pts:m.ap}]).sort((a,b)=>b.pts-a.pts);
     const top5 = new Set(allScores.slice(0,5).map(s=>s.team));
     return matchups.map((m,i)=>{
@@ -1418,7 +1448,7 @@ function renderDashboard(week, dataKey = week) {
       const hTop = top5.has(m.h), aTop = top5.has(m.a);
       return `<div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--rule);${i===matchups.length-1?'border-bottom:none;':''}">
         <span style="font-family:'Inter',sans-serif;font-size:13px;${hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${m.h}${hTop?' ★':''}</span>
-        <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);">${m.hp.toFixed(1)}–${m.ap.toFixed(1)}</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);">${fmtPts(m.hp)}–${fmtPts(m.ap)}</span>
         <span style="font-family:'Inter',sans-serif;font-size:13px;${!hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${aTop?' ★':''}${m.a}</span>
       </div>`;
     }).join('');
@@ -1463,6 +1493,7 @@ function renderDashboard(week, dataKey = week) {
             Season Wins · Thru Wk ${week}
           </div>
           ${winsHtml}
+          ${missingNote}
         </div>
 
         <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--red);padding:1rem;">
@@ -1631,13 +1662,66 @@ async function publishNewsPost() {
 // Parses the Week Scores field: one "TEAM PTS - TEAM PTS" line per game.
 // Returns an array of {h, hp, a, ap} — same shape GAZETTE_SCHEDULE entries use —
 // so it can overwrite that week's matchups directly. Lines that don't match are skipped.
+// CBS sometimes uses abbreviations that differ from MFL's standard ones.
+const ABBR_ALIASES = { 'BLC':'BLU' };
+function normAbbr(t) { t = (t || '').toUpperCase(); return ABBR_ALIASES[t] || t; }
+
 function parseGameScores(raw) {
   if (!raw) return [];
   return raw.split('\n').map(line => {
-    const m = line.trim().match(/^(\S+)\s+([\d.]+)\s*-\s*(\S+)\s+([\d.]+)\s*$/);
+    // Accepts "-", "–", "—" or "vs" between the two sides.
+    const m = line.trim().match(/^(\S+)\s+([\d.]+)\s*(?:-|–|—|vs\.?)\s*(\S+)\s+([\d.]+)\s*$/i);
     if (!m) return null;
-    return { h: m[1].toUpperCase(), hp: parseFloat(m[2]), a: m[3].toUpperCase(), ap: parseFloat(m[4]) };
+    return { h: normAbbr(m[1]), hp: parseFloat(m[2]), a: normAbbr(m[3]), ap: parseFloat(m[4]) };
   }).filter(Boolean);
+}
+
+// Parses the Top 10 Players field: "NAME TEAM PTS" with an optional trailing "*" for bench.
+// Reads from the RIGHT so multi-word names ("J. Smith-Njigba", "K. Walker III") stay intact.
+function parsePlayers(raw) {
+  if (!raw) return [];
+  return raw.split('\n').map(line => {
+    const m = line.trim().match(/^(.+?)\s+([A-Za-z]{2,4})\s+([\d.]+)\s*(\*)?\s*$/);
+    if (!m) return null;
+    return { name: m[1], team: normAbbr(m[2]), pts: parseFloat(m[3]), bench: !!m[4] };
+  }).filter(Boolean);
+}
+
+// Parses the Point Pool field: "TEAM PTS" per line.
+function parsePool(raw) {
+  if (!raw) return [];
+  return raw.split('\n').map(line => {
+    const m = line.trim().match(/^(\S+)\s+([\d.]+)\s*$/);
+    return m ? [normAbbr(m[1]), parseFloat(m[2])] : null;
+  }).filter(Boolean);
+}
+
+// Stores everything the dashboard needs for one week in one place.
+function storeWeekData(week, scoresRaw, playersRaw, poolRaw) {
+  const key = 'u' + week;
+  const games = parseGameScores(scoresRaw);
+  if (games.length) GAZETTE_SCHEDULE[key] = games;
+  WEEK_DATA[key] = WEEK_DATA[key] || {};
+  const players = parsePlayers(playersRaw);
+  if (players.length) WEEK_DATA[key].players = players;
+  const pool = parsePool(poolRaw);
+  if (pool.length) WEEK_DATA[key].cumPts = Object.fromEntries(pool);
+}
+
+// Checks the three data fields before publishing; returns a list of problems (empty = OK).
+function validateWeekFields(scoresRaw, playersRaw, poolRaw) {
+  const problems = [];
+  const lines = s => s ? s.split('\n').filter(l => l.trim()).length : 0;
+  const games = parseGameScores(scoresRaw), players = parsePlayers(playersRaw), pool = parsePool(poolRaw);
+  if (games.length !== 5) problems.push(`Week Scores: ${games.length} of 5 games recognized` + (lines(scoresRaw) > games.length ? ` (${lines(scoresRaw) - games.length} line(s) not in "TEAM PTS - TEAM PTS" format)` : ''));
+  if (players.length < 10) problems.push(`Top 10 Players: ${players.length} player(s) recognized` + (lines(playersRaw) > players.length ? ` (${lines(playersRaw) - players.length} line(s) not in "NAME TEAM PTS" format)` : ''));
+  if (pool.length !== 10) problems.push(`Point Pool: ${pool.length} of 10 teams recognized`);
+  const bad = new Set();
+  games.forEach(g => [g.h, g.a].forEach(t => { if (!TEAM_ABBR[t]) bad.add(t); }));
+  players.forEach(p => { if (!TEAM_ABBR[p.team]) bad.add(p.team); });
+  pool.forEach(([t]) => { if (!TEAM_ABBR[t]) bad.add(t); });
+  if (bad.size) problems.push(`Unknown team abbreviation(s): ${[...bad].join(', ')}`);
+  return problems;
 }
 
 async function publishReport() {
@@ -1650,18 +1734,13 @@ async function publishReport() {
   const poolRaw = document.getElementById('f-pool').value.trim();
   const signoff = document.getElementById('f-signoff').value.trim() || 'Have a great week!';
   if (!headline || !body) { alert('Please add at least a headline and body text.'); return; }
-  const pool = poolRaw ? poolRaw.split('\n').map(line=>{ const p=line.trim().split(/\s+/); return [p[0],parseInt(p[1])||0]; }).filter(r=>r[0]) : [];
   const scoresRaw = document.getElementById('f-scores').value.trim();
   const playersRaw = document.getElementById('f-players').value.trim();
-  const gameScores = parseGameScores(scoresRaw);
-  const players = playersRaw ? playersRaw.split('\n').map(line=>{ const p=line.trim().split(/\s+/); const bench=p[p.length-1]==='*'; return {name:p[0],team:p[1],pts:parseInt(p[2])||0,bench}; }).filter(p=>p.name) : [];
+  const problems = validateWeekFields(scoresRaw, playersRaw, poolRaw);
+  if (problems.length && !confirm('The dashboard data has problems:\n\n• ' + problems.join('\n• ') + '\n\nPublish anyway? (Cancel to go back and fix.)')) return;
+  const pool = parsePool(poolRaw);
   const report = { week, author, headline, deck, body, spiff, pool, signoff };
-  const dataKey = 'u' + week;
-  if (gameScores.length) GAZETTE_SCHEDULE[dataKey] = gameScores;
-  if (gameScores.length > 0 || players.length > 0) {
-    WEEK_DATA[dataKey] = WEEK_DATA[dataKey] || {};
-    if (players.length) WEEK_DATA[dataKey].players = players;
-  }
+  storeWeekData(week, scoresRaw, playersRaw, poolRaw);
   userReports = userReports.filter(r=>r.week !== week);
   userReports.push(report);
   ['f-headline','f-deck','f-body','f-spiff','f-pool','f-scores','f-players'].forEach(id=>{ document.getElementById(id).value=''; });
@@ -1948,21 +2027,14 @@ async function loadPostsFromDB() {
       // Avoid duplicating hardcoded REPORTS
       if (REPORTS.find(r => r.week === parseInt(row.week))) continue;
       if (userReports.find(r => r.week === parseInt(row.week))) continue;
-      const pool = row.pool ? row.pool.split('\n').map(l=>{ const p=l.trim().split(/\s+/); return [p[0],parseInt(p[1])||0]; }).filter(r=>r[0]) : [];
-      const gameScores = parseGameScores(row.scores);
-      const players = row.players ? row.players.split('\n').map(l=>{ const p=l.trim().split(/\s+/); const bench=p[p.length-1]==='*'; return {name:p[0],team:p[1],pts:parseInt(p[2])||0,bench}; }).filter(p=>p.name) : [];
+      const pool = parsePool(row.pool);
       const report = { week: parseInt(row.week), author: row.author, headline: row.headline, deck: row.deck, body: row.body, spiff: row.spiff, pool, signoff: row.signoff };
       userReports.push(report);
       // GAZETTE_SCHEDULE lives in memory only (not saved to Supabase), so it has to be
       // rebuilt from the saved raw scores text on every page load, same as at publish time.
       // Rows reaching this point are always live reports (the REPORTS.find check above skips
       // archived weeks), so the 'u' prefix here always matches publishReport()'s dataKey.
-      const rowDataKey = 'u' + row.week;
-      if (gameScores.length) GAZETTE_SCHEDULE[rowDataKey] = gameScores;
-      if (gameScores.length > 0 || players.length > 0) {
-        WEEK_DATA[rowDataKey] = WEEK_DATA[rowDataKey] || {};
-        if (players.length) WEEK_DATA[rowDataKey].players = players;
-      }
+      storeWeekData(parseInt(row.week), row.scores, row.players, row.pool);
       addWeekTab(parseInt(row.week));
     } else if (row.type === 'news') {
       if (newsItems.find(n => n.id === row.id)) continue;
