@@ -6,6 +6,7 @@
   <title>MFL 2026 — League HQ</title>
   <link rel="icon" type="image/png" href="mfl_logo2.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -397,6 +398,7 @@
           <tbody id="standings-body"></tbody>
         </table>
       </div>
+      <div id="standings-source" style="padding:0.6rem 1.25rem;border-top:0.5px solid var(--border);font-size:11px;color:var(--text3);">Standings as entered manually</div>
     </div>
 
     <div class="card" id="point-pool-standings">
@@ -978,6 +980,127 @@ const TEAM_NAMES = {
   SDG:'Slimey Dogs',WIZ:'Wizards'
 };
 
+/* ══════════════════════════════════════════════
+   CBS STANDINGS — shared logic.
+   KEEP THIS BLOCK IDENTICAL in index.html (League HQ) and news.html (Gazette).
+   Supabase table `standings` holds a season-to-date snapshot of the CBS standings
+   page after every week (one row per team per week). CBS applies the league's
+   tiebreak (that week's bench points, for both the H2H and the top-5 win), so the
+   records here always match CBS. A single week's results are the difference
+   between that week's snapshot and the previous week's.
+══════════════════════════════════════════════ */
+const STANDINGS_SEASON = 2026;
+let STANDINGS = {};   // STANDINGS[week][abbr] = { h2h_w, h2h_l, top5_w, top5_l, ties, pf, pa }
+
+async function loadStandings(client) {
+  const { data, error } = await client.from('standings').select('*').eq('season', STANDINGS_SEASON);
+  if (error) { console.error('Standings load failed:', error.message); return false; }
+  STANDINGS = {};
+  (data || []).forEach(r => {
+    (STANDINGS[r.week] = STANDINGS[r.week] || {})[r.team] = {
+      h2h_w: r.h2h_w, h2h_l: r.h2h_l, top5_w: r.top5_w, top5_l: r.top5_l,
+      ties: r.ties || 0, pf: Number(r.pf), pa: Number(r.pa)
+    };
+  });
+  return Object.keys(STANDINGS).length > 0;
+}
+
+function latestStandingsWeek() {
+  const ws = Object.keys(STANDINGS).map(Number);
+  return ws.length ? Math.max(...ws) : 0;
+}
+
+// Season record through `week`, sorted wins → points-for. Null if that week wasn't saved.
+function standingsTable(week) {
+  const s = STANDINGS[week];
+  if (!s) return null;
+  return Object.entries(s).map(([team, r]) => ({
+    team, h2h: r.h2h_w, top5: r.top5_w, wins: r.h2h_w + r.top5_w,
+    losses: r.h2h_l + r.top5_l, pf: r.pf, pa: r.pa
+  })).sort((a, b) => b.wins - a.wins || b.pf - a.pf);
+}
+
+// Who won what in a single week: { abbr: { h2hWin, top5Win } }. Null if the snapshot
+// for this week (or the week before it) is missing.
+function weekResultsFromStandings(week) {
+  const cur = STANDINGS[week];
+  const prev = week > 1 ? STANDINGS[week - 1] : {};
+  if (!cur || !prev) return null;
+  const out = {};
+  Object.keys(cur).forEach(t => {
+    const p = prev[t] || { h2h_w: 0, top5_w: 0 };
+    out[t] = { h2hWin: cur[t].h2h_w > p.h2h_w, top5Win: cur[t].top5_w > p.top5_w };
+  });
+  return out;
+}
+/* ═══════════════ end shared standings block ═══════════════ */
+
+/* ══════════════════════════════════════════════
+   LIVE DATA — League HQ reads standings, weekly scores and spiffs from Supabase
+   (same data the Gazette uses). The hard-coded TEAMS / SCHEDULE / spiffData above
+   are only a fallback if Supabase can't be reached.
+══════════════════════════════════════════════ */
+const SUPABASE_URL = 'https://zbwcvnquubmnxzbbbevc.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpid2N2bnF1dWJtbnh6YmJiZXZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5NTQ1OTMsImV4cCI6MjA5ODUzMDU5M30.OTymmeVQJkerF38LGCflV3HGCmuY3mzrAhvZ5eolEt8';
+const HQ_ABBR = { bigdogs:'BDG', bluecheese:'BLU', clapperz:'CLP', crankees:'CRK', huterball:'HBL',
+  jackpots:'POT', legends:'LOF', ool:'OOL', slimey:'SDG', wizards:'WIZ' };
+const FULLNAME_TO_ABBR = { 'big dogs':'BDG','blue cheese':'BLU','clapperz':'CLP','crankees':'CRK','huterball':'HBL',
+  'jackpots':'POT','legends':'LOF','legends of the fall':'LOF','out of luck':'OOL','slimey dogs':'SDG','slimy dogs':'SDG',
+  'wizards':'WIZ','westchester wizards':'WIZ' };
+function hqParseScores(raw) {
+  if (!raw) return [];
+  return raw.split('\n').map(line => {
+    const m = line.trim().match(/^(\S+)\s+([\d.]+)\s*(?:-|–|—|vs\.?)\s*(\S+)\s+([\d.]+)\s*$/i);
+    if (!m) return null;
+    const ab = t => { t = t.toUpperCase(); return t === 'BLC' ? 'BLU' : t; };
+    return { h: ab(m[1]), hp: parseFloat(m[2]), a: ab(m[3]), ap: parseFloat(m[4]) };
+  }).filter(Boolean);
+}
+let standingsThru = 0;
+
+async function loadLiveData() {
+  if (typeof supabase === 'undefined') return;
+  const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+  if (await loadStandings(client)) {
+    standingsThru = latestStandingsWeek();
+    const snap = STANDINGS[standingsThru];
+    TEAMS.forEach(t => {
+      const r = snap[HQ_ABBR[t.id]];
+      if (r) { t.h2h = r.h2h_w; t.top5 = r.top5_w; t.pts = r.pf; }
+    });
+    currentWeek = Math.min(18, standingsThru + 1);
+  }
+
+  const { data, error } = await client.from('posts').select('week,scores,spiff,created_at')
+    .eq('type', 'report').order('created_at', { ascending: false });
+  if (!error && data) {
+    const seen = new Set();
+    data.forEach(row => {
+      const w = parseInt(row.week);
+      if (seen.has(w)) return;            // newest report for each week wins
+      seen.add(w);
+      const games = hqParseScores(row.scores);
+      if (games.length === 5 && Array.isArray(SCHEDULE[w])) {
+        SCHEDULE[w] = games;
+        weekScores[w] = Object.fromEntries(games.flatMap(g => [[g.h, g.hp], [g.a, g.ap]]));
+      }
+      if (row.spiff && spiffData[w - 1]) spiffData[w - 1].winner = row.spiff;
+    });
+    TEAMS.forEach(t => {
+      t.spiffs = spiffData.filter(s => FULLNAME_TO_ABBR[(s.winner || '').trim().toLowerCase()] === HQ_ABBR[t.id]).length;
+    });
+  }
+
+  const sel = document.getElementById('cur-week-sel');
+  if (sel && [...sel.options].some(o => parseInt(o.value) === currentWeek)) sel.value = currentWeek;
+  document.getElementById('header-week').textContent = weekLabel(currentWeek);
+  if (standingsThru) document.getElementById('standings-source').textContent =
+    `Through Week ${standingsThru} · from CBS standings (ties decided by that week's bench points)`;
+  renderStandings(); renderWeekGrid(); renderAdmin(); renderEarnings();
+  if (activeWeek) openWeek(activeWeek);
+}
+
 const DRAFT_ORDER = ['Big Dogs','Legends','Clapperz','Crankees','Huterball','Blue Cheese','Out of Luck','Jackpots','Slimey Dogs','Wizards'];
 const POOL_PRIZES = [750,600,400,275,150,0,0,0,0,0];
 const PLAYOFF_PRIZES = [600,450,325,250,175,130,100,75,50,0];
@@ -1141,7 +1264,12 @@ function openWeek(w) {
     // Find top 5 scores across all teams this week for top-5 win indicator
     const allScores = matchups.flatMap(m=>[{team:m.h,pts:m.hp},{team:m.a,pts:m.ap}])
       .sort((a,b)=>b.pts-a.pts);
-    const top5 = new Set(allScores.slice(0,5).map(s=>s.team));
+    // Winners and top-5 wins come from the CBS standings snapshots when saved, so
+    // bench-point tiebreaks match CBS; otherwise fall back to comparing scores.
+    const wr = weekResultsFromStandings(w);
+    const cut = allScores[Math.min(4, allScores.length - 1)].pts;
+    const top5 = new Set(wr ? Object.keys(wr).filter(t => wr[t].top5Win)
+                            : allScores.filter(s => s.pts >= cut).map(s => s.team));
 
     display.innerHTML = `
       <table>
@@ -1155,8 +1283,8 @@ function openWeek(w) {
         </thead>
         <tbody>
           ${matchups.map(m => {
-            const hWin = m.hp > m.ap;
-            const tie  = m.hp === m.ap;
+            const hWin = wr && wr[m.h] ? wr[m.h].h2hWin : m.hp > m.ap;
+            const tie  = !wr && m.hp === m.ap;
             const hTop = top5.has(m.h);
             const aTop = top5.has(m.a);
             return `<tr>
@@ -1485,6 +1613,7 @@ renderWeekGrid();
 renderAdmin();
 renderBracket();
 renderEarnings();
+loadLiveData();
 </script>
 </body>
 </html>
