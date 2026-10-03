@@ -3,964 +3,1299 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MFL 2026 — League HQ</title>
+  <title>The MFL Gazette — 2026 Season</title>
   <link rel="icon" type="image/png" href="mfl_logo2.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* ── LIGHT/CLEAN THEME · NAVY ACCENT ── */
-      --bg: #f0f2f5;
-      --bg2: #ffffff;
-      --bg3: #e4e8ed;
-      --surface: #ffffff;
-      --surface2: #f0f2f5;
-      --border: rgba(0,0,0,0.08);
-      --border2: rgba(0,0,0,0.15);
-      --text: #111827;
-      --text2: #4b5563;
-      --text3: #9ca3af;
-      /* Team color palette */
-      --gold: #FB4F14;
-      --gold2: #C44000;
-      --gold-bg: rgba(251,79,20,0.08);
-      --navy: #0C2340;
-      --yankees-blue: #003087;
-      --isles-blue: #00539B;
-      --yankees-gray: #C4CED3;
-      --green: #16a34a;
-      --green-bg: rgba(22,163,74,0.08);
-      --blue: #003087;
-      --blue-bg: rgba(0,48,135,0.08);
-      --red: #dc2626;
-      --red-bg: rgba(220,38,38,0.08);
-      /* Bracket result-state colors */
-      --win-bg: #E6F1FB; --win-bd: #185FA5; --win-tx: #0C447C;
-      --ups-bg: #FEF3E2; --ups-bd: #BA7517; --ups-tx: #633806;
-      --loss-bg: #f5f5f4; --up-clr: #1D9E75; --dn-clr: #E24B4A;
+      --ink: #1a1208;
+      --ink2: #3d3120;
+      --ink3: #7a6a50;
+      --ink4: #b0a080;
+      --paper: #f5f0e8;
+      --paper2: #ede8d8;
+      --paper3: #e0d8c4;
+      --rule: #c8b898;
+      --rule2: #a89878;
+      --gold: #8a6a00;
+      --gold-light: #c8a020;
+      --red: #8a1a00;
+      --col-gap: 1.5rem;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'Inter', Georgia, serif;
+      background: var(--paper);
+      color: var(--ink);
       min-height: 100vh;
-      font-size: 14px;
-      line-height: 1.5;
     }
 
-    /* ── HEADER ── */
-    .header {
-      background: #0C2340;
-      border-bottom: 3px solid #FB4F14;
-      padding: 0 1.5rem;
+    /* ── MASTHEAD ── */
+    .masthead {
+      background: var(--paper);
+      border-bottom: 3px double var(--ink);
+      padding: 1.5rem 3rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+    .masthead-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 60px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .logo { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff; letter-spacing: 2px; line-height: 1.1; }
-    .week-badge { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; background: rgba(255,255,255,0.15); color: #ffffff; border: 1px solid rgba(255,255,255,0.25); padding: 5px 14px; border-radius: 20px; }
-
-    /* ── NAV ── */
-    .nav {
-      background: #0C2340;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding: 0 1.5rem;
-      display: flex;
-      gap: 0;
-      overflow-x: auto;
-    }
-    .nav-btn {
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
       font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 11px;
       letter-spacing: 1px;
       text-transform: uppercase;
-      padding: 12px 18px;
+      color: var(--ink3);
+    }
+    .gazette-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1;
+      letter-spacing: -1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gazette-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-top: 6px;
+    }
+    .masthead-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--rule);
+      padding-top: 0.75rem;
+      margin-top: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ink3);
+    }
+    .back-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      text-decoration: none;
+      border: 1px solid var(--rule);
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .back-link:hover { background: var(--paper2); }
+    .back-link-prominent {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--paper);
+      font-weight: 700;
+      font-size: 12px;
+      padding: 7px 16px;
+      letter-spacing: 1.5px;
+    }
+    .back-link-prominent:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink);
+    }
+    .cold-ones {
+      font-style: italic;
+    }
+
+    /* ── ARCHIVE NAV ── */
+    .archive-bar {
+      background: var(--ink);
+      padding: 0.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+    }
+    .archive-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ink4);
+      white-space: nowrap;
+      margin-right: 1rem;
+      padding-right: 1rem;
+      border-right: 1px solid #444;
+    }
+    .week-tab {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 5px 12px;
       background: none;
       border: none;
-      border-bottom: 2px solid transparent;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.7);
       cursor: pointer;
       white-space: nowrap;
       transition: color 0.15s;
+      border-right: 1px solid #333;
     }
-    .nav-btn:hover { color: #ffffff; }
-    .nav-btn.active { color: #FB4F14; border-bottom-color: #FB4F14; }
-
-    /* Gazette header link — suppress browser visited-link coloring */
-    .gazette-link { color: #ffffff !important; text-decoration: none; }
-    .gazette-link:visited { color: #ffffff !important; }
-    .gazette-link:hover { color: rgba(255,255,255,0.75) !important; }
+    .week-tab:hover { color: #ffffff; }
+    .week-tab.active { color: var(--gold-light); }
 
     /* ── LAYOUT ── */
-    .content { padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
-    .section { display: none; }
-    .section.active { display: block; }
-
-    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 10px; margin-bottom: 1.25rem; }
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-    @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
-
-    /* ── STAT CARDS ── */
-    .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem 1.125rem;
+    .page { max-width: 1100px; margin: 0 auto; padding: 0; }
+    #content-area { padding: 2rem 3rem; }
+    .compose-bar { margin: 2rem 3rem 0; }
+    .compose-form { margin: 0 3rem 1.5rem; }
+    @media (max-width: 768px) {
+      #content-area { padding: 1.5rem; }
+      .compose-bar { margin: 1.5rem 1.5rem 0; }
+      .compose-form { margin: 0 1.5rem 1.5rem; }
     }
-    .stat-label { font-family: 'Inter', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 6px; }
-    .stat-val { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; }
-    .stat-sub { font-size: 11px; color: var(--text3); margin-top: 4px; }
-
-    /* ── CARDS ── */
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 1.25rem; }
-    .card-header { padding: 0.875rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
-    .card-title { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text); }
-
-    /* ── BADGES ── */
-    .badge { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 3px 10px; border-radius: 20px; }
-    .badge-gold { background: var(--gold-bg); color: var(--gold); border: 1px solid rgba(232,200,74,0.2); }
-    .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid rgba(74,222,128,0.2); }
-    .badge-blue { background: var(--blue-bg); color: var(--yankees-blue); border: 1px solid rgba(96,165,250,0.2); }
-    .badge-gray { background: rgba(255,255,255,0.05); color: var(--text2); border: 1px solid var(--border); }
-    .badge-red { background: var(--red-bg); color: var(--red); border: 1px solid rgba(248,113,113,0.2); }
-
-    /* ── TABLES ── */
-    table { width: 100%; border-collapse: collapse; }
-    th { font-family: 'Inter', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); font-weight: 600; padding: 8px 14px; text-align: left; border-bottom: 1px solid var(--border); }
-    td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
-    tr:last-child td { border-bottom: none; }
-    tbody tr:hover td { background: rgba(255,255,255,0.03); }
-    .rank { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: var(--text3); }
-    .rank.gold { color: var(--gold); }
-    .rank.silver { color: #c0c0c0; }
-    .rank.bronze { color: #cd7f32; }
-    .team-cell .name { font-size: 14px; font-weight: 500; color: var(--text); }
-    .team-cell .owners { font-size: 11px; color: var(--text3); margin-top: 1px; }
-    .num { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; }
-    .money { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--green); }
-    .money.neg { color: var(--red); }
-
-    /* ── WEEK GRID ── */
-    .week-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(56px,1fr)); gap: 6px; padding: 1rem 1.25rem; }
-    .week-pill {
-      border-radius: 8px;
-      padding: 8px 4px;
-      text-align: center;
-      cursor: pointer;
-      border: 1px solid var(--border);
-      background: var(--bg2);
-      transition: border-color 0.15s, background 0.15s;
+    @media (max-width: 480px) {
+      #content-area { padding: 1rem; }
+      .compose-bar { margin: 1rem 1rem 0; }
+      .compose-form { margin: 0 1rem 1rem; }
     }
-    .week-pill:hover { border-color: var(--border2); background: var(--surface2); }
-    .week-pill.current { border-color: var(--gold); background: var(--gold-bg); }
-    .week-pill.complete { border-color: rgba(74,222,128,0.3); background: var(--green-bg); }
-    .week-pill.post { border-color: rgba(96,165,250,0.25); }
-    .week-pill.derby { border-color: rgba(232,200,74,0.4); }
-    .week-num { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; color: var(--text2); }
-    .week-pill.current .week-num { color: var(--gold); }
-    .week-pill.complete .week-num { color: var(--green); }
-    .week-type { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text3); margin-top: 2px; }
 
-    /* ── SCORE ENTRY ── */
-    .score-entry { padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 8px; }
-    .score-row { display: flex; align-items: center; gap: 10px; }
-    .score-row label { font-size: 13px; color: var(--text2); min-width: 140px; }
-    .score-row input {
-      width: 90px; padding: 7px 10px;
-      border: 1px solid var(--border2);
-      border-radius: 8px;
-      background: var(--bg);
-      color: var(--text);
+    /* ── EDITION HEADER ── */
+    .edition-header {
+      border-bottom: 3px double var(--rule2);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .edition-kicker {
       font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 6px;
+    }
+    .edition-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 4vw, 44px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .edition-deck {
+      font-family: 'Inter', serif;
       font-size: 16px;
-      font-weight: 600;
-      outline: none;
+      font-style: italic;
+      color: var(--ink2);
+      line-height: 1.5;
+      max-width: 700px;
     }
-    .score-row input:focus { border-color: var(--gold); }
-    .score-row .pts-label { font-size: 11px; color: var(--text3); }
-    .action-btn {
-      margin: 0.5rem 1.25rem 1.25rem;
-      padding: 10px 24px;
-      background: var(--gold);
-      color: #ffffff;
-      border: none;
-      border-radius: 8px;
+    .edition-byline {
+      margin-top: 10px;
       font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      padding-top: 8px;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── COLUMNS ── */
+    .columns-3 {
+      column-count: 3;
+      column-gap: var(--col-gap);
+      column-rule: 1px solid var(--rule);
+    }
+    .columns-2 {
+      column-count: 2;
+      column-gap: var(--col-gap);
+      column-rule: 1px solid var(--rule);
+    }
+    @media (max-width: 720px) {
+      .columns-3, .columns-2 { column-count: 1; }
+    }
+    @media (max-width: 960px) {
+      .columns-3 { column-count: 2; }
+    }
+
+    /* ── ARTICLE BODY ── */
+    .article-body {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--ink2);
+    }
+    .article-body p { margin-bottom: 0.85em; }
+    .article-body p:first-child::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 900;
+      float: left;
+      line-height: 0.85;
+      margin: 4px 6px 0 0;
+      color: var(--ink);
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      break-inside: avoid;
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      padding: 0.75rem 0;
+      margin: 1rem 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-style: italic;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    /* ── SCOREBOX ── */
+    .scorebox {
+      break-inside: avoid;
+      background: var(--paper2);
+      border: 1px solid var(--rule2);
+      border-top: 3px solid var(--ink);
+      padding: 0.75rem;
+      margin: 1rem 0;
+    }
+    .scorebox-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--ink3);
+      margin-bottom: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .score-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 3px 0;
+      border-bottom: 1px dotted var(--rule);
+      color: var(--ink2);
+    }
+    .score-line:last-child { border-bottom: none; }
+    .score-line .winner { font-weight: 700; color: var(--ink); }
+    .score-num { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; }
+
+    /* ── POOL TABLE ── */
+    .pool-table {
+      break-inside: avoid;
+      background: var(--paper2);
+      border: 1px solid var(--rule2);
+      border-top: 3px solid var(--gold);
+      padding: 0.75rem;
+      margin: 1rem 0;
+    }
+    .pool-table-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .pool-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3px 0;
+      border-bottom: 1px dotted var(--rule);
+      font-size: 12px;
+      color: var(--ink2);
+    }
+    .pool-row:last-child { border-bottom: none; }
+    .pool-rank { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--ink4); width: 16px; }
+    .pool-pts { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); }
+
+    /* ── 21 CLUB ── */
+    .club-box {
+      break-inside: avoid;
+      border: 1px solid var(--rule2);
+      border-top: 3px solid var(--red);
+      background: var(--paper2);
+      padding: 0.75rem;
+      margin: 1rem 0;
+    }
+    .club-title {
+      font-family: 'Playfair Display', serif;
       font-size: 14px;
+      font-weight: 700;
+      color: var(--red);
+      margin-bottom: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .club-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      padding: 2px 0;
+      color: var(--ink2);
+      border-bottom: 1px dotted var(--rule);
+    }
+    .club-row:last-child { border-bottom: none; }
+    .club-pts { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; color: var(--ink); }
+    .club-team { font-size: 10px; color: var(--ink4); }
+
+    /* ── SPIFF BANNER ── */
+    .spiff-banner {
+      break-inside: avoid;
+      background: var(--gold);
+      color: var(--paper);
+      padding: 8px 12px;
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .spiff-icon { font-size: 16px; }
+    .spiff-text { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
+
+    /* ── SECTION RULE ── */
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 1.5rem 0 1rem;
+    }
+    .section-rule::before, .section-rule::after { content: ''; flex: 1; height: 1px; background: var(--rule2); }
+    .section-rule-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--ink3);
+      white-space: nowrap;
+    }
+
+    /* ── HERO / BLOG-STYLE LAYOUT (2/3 main + 1/3 rail) ── */
+    .gazette-hero-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 900px) {
+      .gazette-hero-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+
+    .featured-card {
+      position: relative;
+      cursor: pointer;
+      border: 1px solid var(--rule);
+      border-top: 4px solid var(--gold);
+      background: var(--paper2);
+      padding: 1.75rem;
+      transition: background 0.15s;
+    }
+    .featured-card:hover { background: var(--paper3); }
+    .featured-card:hover .card-delete-btn { opacity: 1; }
+    .featured-card.news-card { border-top-color: var(--red); }
+    .featured-delete-btn { top: 14px; right: 14px; }
+    .featured-kicker {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 10px;
+    }
+    .featured-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .featured-deck {
+      font-family: 'Inter', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--ink2);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .featured-preview {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--ink2);
+      margin-bottom: 14px;
+    }
+    .featured-readmore {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero-rail {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      position: sticky;
+      top: 1rem;
+    }
+    .rail-box {
+      background: var(--paper2);
+      border: 1px solid var(--rule2);
+      border-top: 3px solid var(--gold);
+      padding: 1rem;
+    }
+    .rail-box.recent-rail-box { border-top-color: var(--ink); }
+    .rail-box-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .rail-box.recent-rail-box .rail-box-title { color: var(--ink3); }
+    .rail-box-subtitle {
+      font-size: 10px;
+      color: var(--ink4);
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .rail-recent-item {
+      padding: 8px 0;
+      border-bottom: 1px dotted var(--rule);
+      cursor: pointer;
+    }
+    .rail-recent-item:last-child { border-bottom: none; }
+    .rail-recent-item:hover .rail-recent-headline { color: var(--gold); }
+    .rail-recent-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--ink4);
+      margin-bottom: 3px;
+    }
+    .rail-recent-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--ink);
+      transition: color 0.15s;
+    }
+    .rail-empty {
+      font-size: 12px;
+      color: var(--ink4);
+      font-style: italic;
+    }
+
+    .pool-strip {
+      margin-top: 1.25rem;
+      background: var(--paper2);
+      border: 1px solid var(--rule2);
+      border-top: 3px solid var(--gold);
+      padding: 1rem;
       cursor: pointer;
       transition: background 0.15s;
-      display: inline-block;
     }
-    .action-btn:hover { background: #e03a00; }
-    .action-btn.secondary {
-      background: var(--surface2);
-      color: var(--text);
-      border: 1px solid var(--border2);
+    .pool-strip:hover { background: var(--paper3); }
+    .pool-strip-link {
+      margin-top: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
     }
-    .action-btn.secondary:hover { background: var(--bg3); }
-
-    /* ── BRACKET ── */
-    .bracket-wrap { padding: 1rem 1.25rem; display: flex; flex-wrap: wrap; gap: 10px; }
-    .match-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; min-width: 150px; }
-    .match-label { font-family: 'Inter', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 8px; }
-    .match-team { font-size: 13px; font-weight: 500; padding: 5px 0; border-bottom: 1px solid var(--border); color: var(--text); }
-    .match-team:last-child { border-bottom: none; padding-bottom: 0; }
-    .match-team.tbd { color: var(--text3); font-style: italic; }
-
-    /* ── PAYOUT ROWS ── */
-    .payout-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 1.25rem; border-bottom: 1px solid var(--border); }
-    .payout-row:last-child { border-bottom: none; }
-    .payout-label { font-size: 13px; color: var(--text2); }
-    .payout-amount { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; color: var(--green); }
-
-    /* ── FINANCES ── */
-    .fin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding: 1.25rem; }
-    @media (max-width: 500px) { .fin-grid { grid-template-columns: 1fr; } }
-    .fin-section-title { font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 10px; }
-    .fin-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
-    .fin-row:last-child { border-bottom: none; }
-    .fin-val { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; }
-    .divider { height: 1px; background: var(--border2); margin: 8px 0; }
-
-    /* ── ADMIN ── */
-    .team-admin-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 1.25rem; border-bottom: 1px solid var(--border); }
-    .team-admin-row:last-child { border-bottom: none; }
-    .spiff-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 1.25rem; border-bottom: 1px solid var(--border); }
-    .spiff-row:last-child { border-bottom: none; }
-    .spiff-name { font-size: 12px; color: var(--text2); }
-    .spiff-winner { font-size: 11px; color: var(--text3); margin-top: 2px; }
-
-    /* ── PROGRESS ── */
-    .progress-wrap { background: rgba(255,255,255,0.06); border-radius: 4px; height: 5px; margin-top: 6px; }
-    .progress-bar { height: 5px; border-radius: 4px; background: var(--gold); }
-
-    /* ── RULES ── */
-    .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.25rem; padding: 1.25rem; }
-    .rules-group-title { font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gold); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border2); }
-    .rule-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 12px; color: var(--text2); }
-    .rule-row:last-child { border-bottom: none; }
-    .rule-pts { font-family: 'Inter', sans-serif; font-weight: 600; color: var(--gold); }
-    .rule-new { font-size: 9px; color: var(--yankees-blue); background: var(--blue-bg); padding: 1px 5px; border-radius: 4px; margin-left: 4px; vertical-align: middle; }
-
-    /* ── FOOTER ── */
-    .footer { text-align: center; padding: 2rem; font-size: 11px; color: var(--text3); border-top: 1px solid var(--border); margin-top: 2rem; }
-
-    /* ── TOAST ── */
-    .toast {
-      position: fixed; bottom: 1.5rem; right: 1.5rem;
-      background: var(--surface2); border: 1px solid var(--border2);
-      color: var(--text); padding: 10px 18px; border-radius: 8px;
-      font-size: 13px; z-index: 999;
-      opacity: 0; transform: translateY(8px);
-      transition: opacity 0.2s, transform 0.2s;
-      pointer-events: none;
+    .pool-strip-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
     }
-    .toast.show { opacity: 1; transform: translateY(0); }
+    .pool-strip-subtitle {
+      font-size: 10px;
+      color: var(--ink4);
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .pool-strip-row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .pool-chip {
+      flex: 1 1 90px;
+      min-width: 80px;
+      text-align: center;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      padding: 8px 6px;
+    }
+    .pool-chip:first-child {
+      border-top: 2px solid var(--gold);
+      background: var(--paper3);
+    }
+    .pool-chip-rank {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: var(--ink4);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .pool-chip-team {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+    .pool-chip-pts {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--gold);
+    }
 
-    /* ── WIN RESULT ── */
-    .win-result { margin: 0 1.25rem 1.25rem; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; }
-    .win-result-title { font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); margin-bottom: 8px; }
-    .win-result-row { display: flex; justify-content: space-between; font-size: 12px; padding: 3px 0; color: var(--text2); }
-    .win-result-row.winner { color: var(--green); font-weight: 500; }
+    /* ── ARCHIVE GRID ── */
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .archive-card {
+      position: relative;
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--ink);
+      background: var(--paper2);
+      padding: 1rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .archive-card:hover { background: var(--paper3); }
+    .archive-card.news-card { border-top-color: var(--red); }
+    .card-delete-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid var(--rule2);
+      background: var(--paper);
+      color: var(--ink3);
+      font-size: 12px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.15s, background 0.15s, color 0.15s;
+    }
+    .archive-card:hover .card-delete-btn { opacity: 1; }
+    .card-delete-btn:hover { background: var(--red); border-color: var(--red); color: var(--paper); }
+    .delete-post-btn {
+      background: var(--paper2);
+      color: var(--red);
+      border: 1px solid var(--red);
+    }
+    .delete-post-btn:hover { background: var(--red); color: var(--paper); }
+    .archive-card-week {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--ink3);
+      margin-bottom: 6px;
+    }
+    .archive-card-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .archive-card-deck {
+      font-size: 12px;
+      color: var(--ink3);
+      line-height: 1.5;
+    }
 
-    /* ── SCROLL ── */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+    /* ── TYPE CHOOSER MODAL ── */
+    .type-modal-overlay { display:none; position:fixed; inset:0; background:rgba(26,18,8,0.6); z-index:100; align-items:center; justify-content:center; }
+    .type-modal-overlay.open { display:flex; }
+    .type-modal { background:var(--paper); border:1px solid var(--rule2); border-top:4px solid var(--gold); padding:2rem; max-width:480px; width:90%; }
+    .type-modal-title { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--ink); margin-bottom:6px; }
+    .type-modal-sub { font-family:'Inter',sans-serif; font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--ink3); margin-bottom:1.5rem; }
+    .type-choice { display:flex; flex-direction:column; gap:12px; margin-bottom:1.5rem; }
+    .type-btn { display:flex; align-items:flex-start; gap:14px; padding:14px 16px; border:1px solid var(--rule2); background:var(--paper2); cursor:pointer; text-align:left; transition:background 0.15s; }
+    .type-btn:hover { background:var(--paper3); }
+    .type-btn-icon { font-size:22px; flex-shrink:0; line-height:1; margin-top:2px; }
+    .type-btn-label { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--ink); margin-bottom:3px; }
+    .type-btn-desc { font-family:'Inter',serif; font-size:12px; color:var(--ink3); line-height:1.4; }
+    .type-cancel { font-family:'Inter',sans-serif; font-size:12px; letter-spacing:1px; text-transform:uppercase; background:none; color:var(--ink4); border:none; cursor:pointer; padding:0; }
+    .type-cancel:hover { color:var(--ink3); }
 
-    /* ── PLAYOFF BRACKET ── */
-    .bracket-scroll { overflow-x: auto; padding: 1.25rem; }
-    .col-headers { display: grid; grid-template-columns: repeat(4, 185px) 140px; min-width: 880px; margin-bottom: 10px; }
-    .col-h { text-align: center; padding: 0 5px; }
-    .col-h-week { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); letter-spacing: 0.02em; text-transform: uppercase; }
-    .col-h-sub { font-size: 11px; color: var(--text3); }
-    .bracket { display: grid; grid-template-columns: repeat(4, 185px) 140px; gap: 0; min-width: 880px; align-items: start; }
-    .round-col { display: flex; flex-direction: column; padding: 0 5px; gap: 5px; }
-    .matchup { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--bg2); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
-    .matchup.champ-game { border-color: var(--ups-bd); border-width: 1.5px; }
-    .team-row { display: flex; align-items: center; padding: 5px 9px; gap: 5px; min-height: 34px; border-bottom: 1px solid var(--border); }
-    .team-row:last-child { border-bottom: none; }
-    .team-row.win  { background: var(--win-bg); }
-    .team-row.loss { background: var(--loss-bg); }
-    .team-row.upset { background: var(--ups-bg); }
-    .seed-block { display: flex; align-items: center; gap: 3px; min-width: 38px; flex-shrink: 0; }
-    .t-seed { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; color: var(--text3); min-width: 18px; }
-    .arrow { font-size: 9px; line-height: 1; }
-    .arrow.up { color: var(--up-clr); }
-    .arrow.down { color: var(--dn-clr); }
-    .arrow.same { color: var(--text3); font-size: 8px; }
-    .t-name { font-size: 12px; font-weight: 500; flex: 1; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .t-name.dim { color: var(--text3); font-weight: 400; }
-    .t-name.champ-name { color: var(--ups-tx); font-weight: 600; }
-    .t-pts { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; min-width: 24px; text-align: right; color: var(--text); }
-    .t-pts.dim { color: var(--text3); font-weight: 400; }
-    .t-pts.champ-pts { color: var(--ups-tx); }
-    .upset-flag { font-size: 9px; color: var(--ups-tx); margin-left: 1px; }
-    .finals-col { display: flex; flex-direction: column; gap: 5px; padding: 0 5px; }
-    .champ-banner { background: var(--navy); color: var(--gold); text-align: center; padding: 8px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 8px; margin-bottom: 1px; }
-    .final-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--bg2); }
-    .final-card.top { border-color: var(--ups-bd); }
-    .final-row { display: flex; align-items: center; padding: 5px 9px; gap: 5px; border-bottom: 1px solid var(--border); min-height: 30px; }
-    .final-row:last-child { border-bottom: none; }
-    .final-row.champ  { background: var(--ups-bg); }
-    .final-row.runner { background: var(--win-bg); }
-    .final-place { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; color: var(--text3); min-width: 24px; text-transform: uppercase; letter-spacing: 0.05em; }
-    .final-name { font-size: 11px; font-weight: 500; flex: 1; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .final-pay { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; }
-    .final-pay.gold { color: var(--ups-bd); }
-    .final-pay.blue { color: var(--yankees-blue); }
-    .final-pay.none { color: var(--text3); font-weight: 400; }
-    .bracket-legend { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; padding: 0.75rem 1.25rem; border-top: 1px solid var(--border); }
-    .leg { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text2); white-space: nowrap; }
-    .leg-sq { width: 13px; height: 13px; border-radius: 3px; border: 1px solid transparent; flex-shrink: 0; }
+    /* ── CBS FETCH PANEL ── */
+    .cbs-fetch-panel { background:var(--ink); color:var(--paper); padding:1rem 1.25rem; margin-bottom:1.5rem; }
+    .cbs-fetch-header { margin-bottom:0.75rem; }
+    .cbs-fetch-title { font-family:'Inter',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold-light); display:block; margin-bottom:3px; }
+    .cbs-fetch-sub { font-family:'Inter',sans-serif; font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:0.5px; }
+    .cbs-fetch-controls { display:flex; align-items:flex-end; gap:12px; flex-wrap:wrap; }
+    .cbs-fetch-controls .form-label { color:rgba(255,255,255,0.6); }
+    .cbs-fetch-controls .form-select { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:var(--paper); }
+    .cbs-fetch-controls .form-select option { background:var(--ink); color:var(--paper); }
+    .cbs-fetch-btn { font-family:'Inter',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:var(--gold); color:var(--paper); border:none; padding:9px 20px; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+    .cbs-fetch-btn:hover { background:var(--gold-light); }
+    .cbs-fetch-btn:disabled { background:#555; cursor:wait; }
+    .cbs-fetch-status { font-family:'Inter',sans-serif; font-size:12px; letter-spacing:0.5px; margin-top:8px; min-height:18px; color:rgba(255,255,255,0.7); }
+    .cbs-fetch-status.ok { color:#7ddc7d; }
+    .cbs-fetch-status.err { color:#ff8080; }
 
-    /* ── COMMISSIONER ADMIN PANEL (bracket) ── */
-    .admin-panel { background: var(--navy); color: #fff; padding: 1.25rem 1.25rem; border-radius: 12px; margin-bottom: 1.25rem; }
-    .admin-toggle { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--yankees-gray); background: none; border: 1px solid rgba(255,255,255,0.25); border-radius: 4px; padding: 5px 12px; cursor: pointer; }
-    .admin-toggle:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
-    .admin-body { display: none; margin-top: 1rem; }
-    .admin-body.open { display: block; }
-    .admin-row { margin-bottom: 1rem; }
-    .admin-label { display: block; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--yankees-gray); margin-bottom: 5px; }
-    .admin-select, .admin-input, .admin-textarea { font-family: 'Inter', sans-serif; font-size: 13px; width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 5px; padding: 7px 9px; box-sizing: border-box; }
-    .admin-textarea { min-height: 90px; font-family: monospace; font-size: 12px; resize: vertical; }
-    .admin-btn { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--gold); color: #fff; border: none; border-radius: 5px; padding: 8px 16px; cursor: pointer; margin-right: 8px; }
-    .admin-btn:hover { background: #e03a00; }
-    .admin-btn.secondary { background: rgba(255,255,255,0.12); }
-    .admin-btn.secondary:hover { background: rgba(255,255,255,0.2); }
-    .admin-note { font-size: 11px; color: var(--yankees-gray); line-height: 1.5; margin-top: 6px; }
-    .admin-status { font-size: 12px; margin-top: 8px; min-height: 16px; }
-    .admin-status.ok { color: #7ddc7d; }
-    .admin-status.err { color: #ff8080; }
+    /* ── SIGNOFF ── */
+    .signoff {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--ink3);
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── WRITE NEW ── */
+    .compose-bar {
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--gold);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .compose-bar-text { font-size: 13px; color: var(--ink2); }
+    .compose-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--paper);
+      border: none;
+      padding: 8px 18px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .compose-btn:hover { background: var(--ink2); }
+
+    /* ── COMPOSE FORM ── */
+    .compose-form {
+      display: none;
+      background: var(--paper2);
+      border: 1px solid var(--rule2);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .compose-form.open { display: block; }
+    .form-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 1rem; }
+    .form-row { margin-bottom: 1rem; }
+    .form-label { font-family: 'Inter', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--ink3); display: block; margin-bottom: 4px; }
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--rule2);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', serif;
+      font-size: 14px;
+      outline: none;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--gold); }
+    .form-textarea { min-height: 200px; resize: vertical; line-height: 1.6; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 500px) { .form-row-2 { grid-template-columns: 1fr; } }
+    .form-submit {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--paper);
+      border: none;
+      padding: 10px 24px;
+      cursor: pointer;
+      margin-right: 8px;
+    }
+    .form-cancel {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: none;
+      color: var(--ink3);
+      border: 1px solid var(--rule);
+      padding: 10px 18px;
+      cursor: pointer;
+    }
+
+
+    /* ── COMMENTS ── */
+    .comments-section {
+      margin-top: 2rem;
+      border-top: 3px double var(--rule2);
+      padding-top: 1.5rem;
+    }
+    .comments-header {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--ink3);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .comments-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+    .comment-list { margin-bottom: 1.25rem; }
+    .comment-item {
+      padding: 10px 0;
+      border-bottom: 1px dotted var(--rule);
+      display: flex;
+      gap: 10px;
+    }
+    .comment-item:last-child { border-bottom: none; }
+    .comment-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #0C2340;
+      color: #FB4F14;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      letter-spacing: 0.5px;
+    }
+    .comment-body { flex: 1; }
+    .comment-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      color: var(--ink3);
+      margin-bottom: 3px;
+    }
+    .comment-team {
+      font-weight: 700;
+      color: #0C2340;
+    }
+    .comment-text {
+      font-size: 13px;
+      color: var(--ink2);
+      line-height: 1.5;
+    }
+    .comment-delete {
+      font-size: 10px;
+      color: var(--ink4);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0 4px;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .comment-delete:hover { color: var(--red); }
+    .comment-form {
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-top: 2px solid #0C2340;
+      padding: 1rem;
+    }
+    .comment-form-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--ink3);
+      margin-bottom: 10px;
+    }
+    .comment-form-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .comment-select {
+      padding: 7px 10px;
+      border: 1px solid var(--rule2);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      outline: none;
+      min-width: 160px;
+    }
+    .comment-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 7px 10px;
+      border: 1px solid var(--rule2);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', serif;
+      font-size: 13px;
+      outline: none;
+      resize: none;
+      min-height: 60px;
+      line-height: 1.5;
+    }
+    .comment-input:focus, .comment-select:focus { border-color: #0C2340; }
+    .comment-submit {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: #0C2340;
+      color: #ffffff;
+      border: none;
+      padding: 8px 20px;
+      cursor: pointer;
+      align-self: flex-end;
+      transition: background 0.15s;
+    }
+    .comment-submit:hover { background: #FB4F14; }
+    .no-comments {
+      font-size: 13px;
+      color: var(--ink4);
+      font-style: italic;
+      padding: 4px 0 12px;
+    }
+
+    /* scroll */
+    ::-webkit-scrollbar { height: 4px; width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--paper2); }
+    ::-webkit-scrollbar-thumb { background: var(--rule2); }
   </style>
 </head>
 <body>
 
-<div class="header">
-  <div style="display:flex;align-items:center;gap:12px;">
-    <img src="mfl_logo2.png" alt="MFL Shield" style="height:48px;width:auto;" />
-    <span class="logo" style="font-size:22px;">McCann's Football League<span style="display:block;font-size:11px;font-weight:400;letter-spacing:1px;color:rgba(255,255,255,0.5);margin-top:1px;">League HQ · 2026 Season</span></span>
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-top">
+    <span class="cold-ones">May all your drafts be cold ones.</span>
+    <span>Est. 1980 · McCann's Football League</span>
+    <a href="index.html" class="back-link back-link-prominent">MFL League HQ →</a>
   </div>
-  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-    <a href="news.html" class="gazette-link" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.4);padding:5px 12px;border-radius:6px;">Gazette</a>
-    <a href="https://mcfl20.football.cbssports.com/" target="_blank" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.25);padding:5px 12px;border-radius:6px;text-decoration:none;">CBS Scores ↗</a>
-    <div class="week-badge" id="header-week">WEEK 4 · REG SEASON</div>
+  <div class="gazette-name">
+    <img src="mfl_logo2.png" alt="MFL" style="height:70px;width:auto;vertical-align:middle;margin-right:16px;opacity:0.92;" />The MFL Gazette<img src="mfl_logo2.png" alt="MFL" style="height:70px;width:auto;vertical-align:middle;margin-left:16px;opacity:0.92;" />
+  </div>
+  <div class="gazette-subtitle">Official Weekly Publication of McCann's Football League</div>
+  <div class="masthead-bottom">
+    <span id="masthead-date">2026 Season</span>
   </div>
 </div>
 
-<div class="nav">
-  <button class="nav-btn active" onclick="showSection('standings', this)">Standings</button>
-  <button class="nav-btn" onclick="showSection('schedule', this)">Schedule</button>
-  <button class="nav-btn" onclick="showSection('playoffs', this)">Playoffs</button>
-  <button class="nav-btn" onclick="showSection('finances', this)">Finances</button>
-  <button class="nav-btn" onclick="showSection('rules', this)">Rules</button>
-  <button class="nav-btn" onclick="showSection('admin', this)">Admin</button>
+<!-- ARCHIVE NAV -->
+<div class="archive-bar">
+  <span class="archive-label">2026 Archive</span>
+  <button class="week-tab active" onclick="showWeek(0, this)">All Issues</button>
 </div>
 
-<div class="content">
+<div class="page">
 
-  <!-- ══════════════════════════════════════════════
-       STANDINGS
-  ══════════════════════════════════════════════ -->
-  <div id="standings" class="section active">
-    <div class="grid-4" id="stats-row"></div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">Regular Season Standings</span>
-        <span class="badge badge-gray">Weeks 1–13 · $40/win</span>
+  <!-- TYPE CHOOSER MODAL -->
+  <div class="type-modal-overlay" id="type-modal">
+    <div class="type-modal">
+      <div class="type-modal-title">New Gazette Post</div>
+      <div class="type-modal-sub">Commissioner's Desk · Choose a post type</div>
+      <div class="type-choice">
+        <button class="type-btn" onclick="openForm('report')">
+          <div class="type-btn-icon">📋</div>
+          <div>
+            <div class="type-btn-label">Weekly Report</div>
+            <div class="type-btn-desc">The regular weekly recap — scores, spiff, point pool standings, top performers, and your commentary.</div>
+          </div>
+        </button>
+        <button class="type-btn" onclick="openForm('news')">
+          <div class="type-btn-icon">📰</div>
+          <div>
+            <div class="type-btn-label">News Post</div>
+            <div class="type-btn-desc">League news, announcements, hot takes, trade rumors, historical musings — anything beyond the weekly report.</div>
+          </div>
+        </button>
       </div>
-      <div style="overflow-x:auto;">
-        <table>
-          <thead>
-            <tr>
-              <th style="width:36px;">#</th>
-              <th>Team</th>
-              <th title="Head-to-head wins">H2H W</th>
-              <th title="Top-5 scoring wins">Top-5 W</th>
-              <th>Total W</th>
-              <th>Pts For</th>
-              <th>Earnings</th>
-            </tr>
-          </thead>
-          <tbody id="standings-body"></tbody>
-        </table>
-      </div>
-      <div id="standings-source" style="padding:0.6rem 1.25rem;border-top:0.5px solid var(--border);font-size:11px;color:var(--text3);">Standings as entered manually</div>
-    </div>
-
-    <div class="card" id="point-pool-standings">
-      <div class="card-header">
-        <span class="card-title">Point Pool Standings</span>
-        <span class="badge badge-gold">17-Week Cumulative · $2,175 Prize</span>
-      </div>
-      <div style="overflow-x:auto;">
-        <table>
-          <thead>
-            <tr>
-              <th style="width:36px;">#</th>
-              <th>Team</th>
-              <th>Total Points</th>
-              <th>Progress</th>
-              <th>Pool Prize</th>
-            </tr>
-          </thead>
-          <tbody id="pool-body"></tbody>
-        </table>
-      </div>
+      <button class="type-cancel" onclick="closeTypeModal()">Cancel</button>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       SCHEDULE
-  ══════════════════════════════════════════════ -->
-  <div id="schedule" class="section">
-
-    <div class="grid-4" style="margin-bottom:1.25rem;">
-      <div class="stat-card"><div class="stat-label">Regular Season</div><div class="stat-val">13</div><div class="stat-sub">Weeks · 5 matchups/wk</div></div>
-      <div class="stat-card"><div class="stat-label">Postseason</div><div class="stat-val">Wks 14–17</div><div class="stat-sub">All 10 teams · Re-seeded each round</div></div>
-      <div class="stat-card"><div class="stat-label">Final Standing</div><div class="stat-val">1st–10th</div><div class="stat-sub">Paid by final placement</div></div>
-      <div class="stat-card"><div class="stat-label">Derby</div><div class="stat-val">Wk 18</div><div class="stat-sub">All-play · Top 5 win $40</div></div>
-    </div>
-
-    <!-- Week selector -->
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">2026 Season Schedule</span>
-        <span class="badge badge-gray">Select a week</span>
-      </div>
-      <div class="week-grid" id="week-grid"></div>
-    </div>
-
-    <!-- Matchup detail -->
-    <div class="card" id="week-detail" style="display:none;">
-      <div class="card-header">
-        <span class="card-title" id="week-detail-title">Week 2 Matchups</span>
-        <span class="badge badge-gray" id="week-type-badge">Regular Season</span>
-      </div>
-      <div id="matchup-display"></div>
-    </div>
-
+  <!-- COMPOSE BAR -->
+  <div class="compose-bar">
+    <div class="compose-bar-text"><strong>Commissioner's Desk</strong> — Publish a new weekly report or league news post</div>
+    <button class="compose-btn" onclick="openTypeModal()">+ New Post</button>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       PLAYOFFS
-  ══════════════════════════════════════════════ -->
-  <div id="playoffs" class="section">
-    <div class="two-col">
-      <div>
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Postseason Format</span>
-            <span class="badge badge-gold">All 10 Teams</span>
-          </div>
-          <div style="padding:1rem 1.25rem;font-size:13px;color:var(--text2);line-height:1.7;">
-            All 10 teams enter the postseason after Week 13 — no byes, no separate brackets. Every team is seeded 1–10 based on regular season record, then re-seeded after each of the four rounds (Weeks 14–17) based on cumulative postseason results. Final placement after Week 17 sets the payout.
-          </div>
-        </div>
+  <!-- COMPOSE FORM: WEEKLY REPORT -->
+  <div class="compose-form" id="compose-form">
+    <div class="form-title">New Weekly Report</div>
+    <!-- CBS FETCH PANEL -->
+    <div class="cbs-fetch-panel">
+      <div class="cbs-fetch-header">
+        <span class="cbs-fetch-title">⚡ Auto-Fill from CBS</span>
+        <span class="cbs-fetch-sub">Pulls team scores &amp; standings directly from your league page</span>
       </div>
-      <div>
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Postseason Payouts</span>
-            <span class="badge badge-gold">$2,155 Total</span>
-          </div>
-          <div class="payout-row"><span class="payout-label">1st Place</span><span class="payout-amount">$600</span></div>
-          <div class="payout-row"><span class="payout-label">2nd Place</span><span class="payout-amount">$450</span></div>
-          <div class="payout-row"><span class="payout-label">3rd Place</span><span class="payout-amount">$325</span></div>
-          <div class="payout-row"><span class="payout-label">4th Place</span><span class="payout-amount">$250</span></div>
-          <div class="payout-row"><span class="payout-label">5th Place</span><span class="payout-amount">$175</span></div>
-          <div class="payout-row"><span class="payout-label">6th Place</span><span class="payout-amount">$130</span></div>
-          <div class="payout-row"><span class="payout-label">7th Place</span><span class="payout-amount">$100</span></div>
-          <div class="payout-row"><span class="payout-label">8th Place</span><span class="payout-amount">$75</span></div>
-          <div class="payout-row"><span class="payout-label">9th Place</span><span class="payout-amount">$50</span></div>
-          <div class="payout-row"><span class="payout-label">10th Place</span><span class="payout-amount">$0</span></div>
+      <div class="cbs-fetch-controls">
+        <div class="form-row" style="margin:0;flex:0 0 auto;">
+          <label class="form-label">Season Year</label>
+          <select class="form-select" id="f-cbs-year" style="width:100px;">
+            <option value="2026" selected>2026</option>
+            <option value="2025">2025</option>
+          </select>
         </div>
-        <div class="card" style="margin-top:0;">
-          <div class="card-header">
-            <span class="card-title">Week 18 Derby</span>
-            <span class="badge badge-green">All-Play</span>
-          </div>
-          <div style="padding:1rem 1.25rem;">
-            <div style="font-size:13px;color:var(--text2);line-height:1.7;">All 10 teams compete. Top 5 scoring teams each earn <strong style="color:var(--green);">$40</strong>.</div>
-            <div style="margin-top:10px;" class="payout-row" style="padding:0;"><span class="payout-label">Total payout</span><span class="payout-amount">$200</span></div>
-          </div>
+        <div class="form-row" style="margin:0;flex:0 0 auto;">
+          <label class="form-label">Week</label>
+          <select class="form-select" id="f-cbs-week" style="width:80px;">
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8</option>
+            <option>9</option><option>10</option><option>11</option><option>12</option>
+            <option>13</option><option>14</option><option>15</option><option>16</option>
+            <option>17</option><option>18</option>
+          </select>
+        </div>
+        <button class="cbs-fetch-btn" onclick="fetchFromCBS()">Fetch Scores →</button>
+      </div>
+      <div class="cbs-fetch-status" id="cbs-status"></div>
+      <div id="cbs-import-panel" style="display:none;margin-top:1rem;border-top:1px solid rgba(255,255,255,0.15);padding-top:1rem;">
+        <label class="form-label" style="color:rgba(255,255,255,0.6);">Paste CBS data here after running the script on the CBS page:</label>
+        <div style="display:flex;gap:8px;align-items:flex-start;margin-top:4px;">
+          <textarea class="form-textarea" id="cbs-json-input" style="min-height:80px;font-family:monospace;font-size:12px;background:rgba(0,0,0,0.3);color:#7ddc7d;border-color:rgba(255,255,255,0.15);" placeholder='{"week":1,"scores":[...],"matchups":[]}'></textarea>
+          <button class="form-submit" style="white-space:nowrap;flex-shrink:0;" onclick="importCBSData()">Import →</button>
         </div>
       </div>
     </div>
-
-    <!-- Commissioner: enter scores -->
-    <div class="admin-panel">
-      <button class="admin-toggle" onclick="toggleBracketAdmin()" id="bracket-admin-toggle-btn">Commissioner: Enter Scores ▾</button>
-      <div class="admin-body" id="bracket-admin-body">
-        <div class="admin-row">
-          <label class="admin-label">Week 13 final seeds (best seed first — 10 team abbreviations, comma or space separated)</label>
-          <input class="admin-input" id="bracket-admin-seeds" value="BDG, LOF, HBL, CRK, CLP, BLU, OOL, POT, SDG, WIZ" />
-          <button class="admin-btn secondary" style="margin-top:8px;" onclick="applyBracketSeeds()">Set Seeds</button>
-        </div>
-        <div class="admin-row">
-          <label class="admin-label">Enter a round's scores</label>
-          <div style="display:flex;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
-            <select class="admin-select" id="bracket-admin-round" style="width:140px;">
-              <option value="14">Week 14 — Round 1</option>
-              <option value="15">Week 15 — Round 2</option>
-              <option value="16">Week 16 — Round 3</option>
-              <option value="17">Week 17 — Round 4</option>
-            </select>
-          </div>
-          <textarea class="admin-textarea" id="bracket-admin-scores" placeholder="One team per line, e.g.&#10;BDG 87.4&#10;LOF 69.1&#10;... (all 10 teams)"></textarea>
-          <div style="margin-top:8px;">
-            <button class="admin-btn" onclick="applyBracketRoundScores()">Preview This Round</button>
-            <button class="admin-btn secondary" onclick="clearBracketRound()">Clear This Round</button>
-          </div>
-        </div>
-        <div class="admin-status" id="bracket-admin-status"></div>
-        <div class="admin-row" style="border-top:1px solid rgba(255,255,255,0.15);padding-top:1rem;">
-          <div class="admin-note">This recalculates live in your browser but isn't saved anywhere permanent. When a week is final, use the button below to grab the updated data — paste it over the SEASON DATA block in this file's source, then re-upload to Netlify so everyone sees it.</div>
-          <button class="admin-btn secondary" style="margin-top:8px;" onclick="exportBracketData()">Copy Updated Data Block</button>
-          <textarea class="admin-textarea" id="bracket-admin-export" style="margin-top:8px;display:none;color:#7ddc7d;background:rgba(0,0,0,0.3);" readonly></textarea>
-        </div>
+    <div class="form-row-2">
+      <div class="form-row">
+        <label class="form-label">Week Number</label>
+        <select class="form-select" id="f-week">
+          <option>1</option><option>2</option><option>3</option><option>4</option>
+          <option>5</option><option>6</option><option>7</option><option>8</option>
+          <option>9</option><option>10</option><option>11</option><option>12</option>
+          <option>13</option><option>14</option><option>15</option><option>16</option>
+          <option>17</option><option>18</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Author</label>
+        <input class="form-input" id="f-author" placeholder="e.g. Bob" />
       </div>
     </div>
-
-    <!-- Interactive bracket -->
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">Playoff Bracket</span>
-        <span class="badge badge-gray">Live — updates as scores are entered</span>
-      </div>
-      <div class="bracket-scroll">
-        <div class="col-headers">
-          <div class="col-h"><div class="col-h-week">Week 14</div><div class="col-h-sub">Round 1 · seeded</div></div>
-          <div class="col-h"><div class="col-h-week">Week 15</div><div class="col-h-sub">Round 2 · re-seeded</div></div>
-          <div class="col-h"><div class="col-h-week">Week 16</div><div class="col-h-sub">Round 3 · re-seeded</div></div>
-          <div class="col-h"><div class="col-h-week">Week 17</div><div class="col-h-sub">Round 4 · final</div></div>
-          <div class="col-h"><div class="col-h-week">Final</div><div class="col-h-sub">standings & pay</div></div>
-        </div>
-        <div class="bracket" id="bracket-grid"></div>
-      </div>
-      <div class="bracket-legend">
-        <div class="leg"><div class="leg-sq" style="background:var(--win-bg);border-color:var(--win-bd);"></div> Win</div>
-        <div class="leg"><div class="leg-sq" style="background:var(--loss-bg);border-color:#ccc;"></div> Loss</div>
-        <div class="leg"><div class="leg-sq" style="background:var(--ups-bg);border-color:var(--ups-bd);"></div> Upset</div>
-        <div class="leg"><span style="color:var(--up-clr);font-size:11px;">▲</span> Seed up</div>
-        <div class="leg"><span style="color:var(--dn-clr);font-size:11px;">▼</span> Seed down</div>
-        <div class="leg"><span style="font-size:11px;">⚡</span> Upset flag</div>
-      </div>
+    <div class="form-row">
+      <label class="form-label">Headline</label>
+      <input class="form-input" id="f-headline" placeholder="e.g. Dogs Bite Back as Pots Stay Hot" />
     </div>
-
-    <!-- Tiebreaker / seeding rules -->
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">a) Regular Season Standings → Playoff Seeding</span>
-        <span class="badge badge-gray">Applied in order</span>
-      </div>
-      <div style="padding:1rem 1.25rem;display:flex;flex-direction:column;gap:8px;">
-        <div class="fin-row"><span style="color:var(--text3);">1</span><span style="color:var(--text2);">Head to head W-L</span></div>
-        <div class="fin-row"><span style="color:var(--text3);">2</span><span style="color:var(--text2);">Net points, head to head (Points For minus Points Against)</span></div>
-        <div class="fin-row"><span style="color:var(--text3);">3</span><span style="color:var(--text2);">Strength of schedule (most total Points Against)</span></div>
-        <div class="fin-row"><span style="color:var(--text3);">4</span><span style="color:var(--text2);">Most total Points For</span></div>
-        <div class="fin-row" style="border:none;"><span style="color:var(--text3);">5</span><span style="color:var(--text2);">Coin toss</span></div>
-      </div>
-      <div style="padding:0 1.25rem 1rem;font-size:11px;color:var(--text3);">If more than two teams are tied, break the first tie then restart from #1. Determines the 1–10 seed entering Week 14.</div>
+    <div class="form-row">
+      <label class="form-label">Deck (short summary line)</label>
+      <input class="form-input" id="f-deck" placeholder="e.g. Gibbs goes off, Pots clinch playoff spot" />
     </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">b) Playoff Re-Seeding (after Round 1)</span>
-        <span class="badge badge-gray">Applied in order</span>
-      </div>
-      <div style="padding:1rem 1.25rem;display:flex;flex-direction:column;gap:8px;">
-        <div class="fin-row"><span style="color:var(--text3);">1</span><span style="color:var(--text2);">Playoffs W-L</span></div>
-        <div class="fin-row"><span style="color:var(--text3);">2</span><span style="color:var(--text2);">Playoffs most points (total Points For)</span></div>
-        <div class="fin-row"><span style="color:var(--text3);">3</span><span style="color:var(--text2);">Playoffs head-to-head W-L, if applicable</span></div>
-        <div class="fin-row"><span style="color:var(--text3);">4</span><span style="color:var(--text2);">Net playoffs points (Points For minus Points Against)</span></div>
-        <div class="fin-row" style="border:none;"><span style="color:var(--text3);">5</span><span style="color:var(--text2);">Regular season seed</span></div>
-      </div>
-      <div style="padding:0 1.25rem 1rem;font-size:11px;color:var(--text3);">Applied after every postseason round (Weeks 14–17) to re-seed all 10 teams. The live bracket below computes this automatically as scores are entered.</div>
+    <div class="form-row">
+      <label class="form-label">Report Body</label>
+      <textarea class="form-textarea" id="f-body" placeholder="Write the week's report here. Hit enter between paragraphs. The first paragraph will get the large drop cap automatically."></textarea>
     </div>
-
-    <!-- Example bracket simulation -->
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">Playoff Bracket</span>
-        <span class="badge badge-gray">Example</span>
-      </div>
-      <div style="padding:0.85rem 1.25rem;font-size:12px;color:var(--text2);line-height:1.6;border-bottom:1px solid var(--border);">
-        A simulated run-through of the postseason so you can see how re-seeding and payouts play out over four rounds. Not real results.
-      </div>
-      <div class="bracket-scroll">
-        <div class="col-headers">
-          <div class="col-h"><div class="col-h-week">Week 14</div><div class="col-h-sub">Round 1 · seeded</div></div>
-          <div class="col-h"><div class="col-h-week">Week 15</div><div class="col-h-sub">Round 2 · re-seeded</div></div>
-          <div class="col-h"><div class="col-h-week">Week 16</div><div class="col-h-sub">Round 3 · re-seeded</div></div>
-          <div class="col-h"><div class="col-h-week">Week 17</div><div class="col-h-sub">Round 4 · final</div></div>
-          <div class="col-h"><div class="col-h-week">Final</div><div class="col-h-sub">standings & pay</div></div>
-        </div>
-        <div class="bracket">
-
-          <!-- ROUND 1 -->
-          <div class="round-col">
-            <div class="matchup">
-              <div class="team-row win"><div class="seed-block"><span class="t-seed">#2</span></div><span class="t-name">Legends</span><span class="t-pts">59</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#9</span></div><span class="t-name dim">Slimy Dogs</span><span class="t-pts dim">15</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row win"><div class="seed-block"><span class="t-seed">#1</span></div><span class="t-name">Big Dogs</span><span class="t-pts">57</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#10</span></div><span class="t-name dim">Wizards</span><span class="t-pts dim">12</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row win"><div class="seed-block"><span class="t-seed">#5</span></div><span class="t-name">Huterball</span><span class="t-pts">53</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#6</span></div><span class="t-name dim">Blue Cheese</span><span class="t-pts dim">16</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row win"><div class="seed-block"><span class="t-seed">#3</span></div><span class="t-name">Clapperz</span><span class="t-pts">49</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#8</span></div><span class="t-name dim">Jackpots</span><span class="t-pts dim">20</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#7</span></div><span class="t-name">Out of Luck <span class="upset-flag">⚡</span></span><span class="t-pts">66</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#4</span></div><span class="t-name dim">Crankees</span><span class="t-pts dim">23</span></div>
-            </div>
-          </div>
-
-          <!-- ROUND 2 -->
-          <div class="round-col">
-            <div class="matchup">
-              <div class="team-row win"><div class="seed-block"><span class="t-seed">#2</span><span class="arrow same">—</span></div><span class="t-name">Legends</span><span class="t-pts">69</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#1</span><span class="arrow up">▲</span></div><span class="t-name dim">Out of Luck</span><span class="t-pts dim">51</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row win"><div class="seed-block"><span class="t-seed">#4</span><span class="arrow up">▲</span></div><span class="t-name">Huterball</span><span class="t-pts">42</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#3</span><span class="arrow down">▼</span></div><span class="t-name dim">Big Dogs</span><span class="t-pts dim">8</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#6</span><span class="arrow down">▼</span></div><span class="t-name">Crankees <span class="upset-flag">⚡</span></span><span class="t-pts">53</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#5</span><span class="arrow up">▲</span></div><span class="t-name dim">Clapperz</span><span class="t-pts dim">37</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#5</span><span class="arrow up">▲</span></div><span class="t-name">Wizards <span class="upset-flag">⚡</span></span><span class="t-pts">65</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#9</span><span class="arrow same">—</span></div><span class="t-name dim">Slimy Dogs</span><span class="t-pts dim">33</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row win"><div class="seed-block"><span class="t-seed">#8</span><span class="arrow up">▲</span></div><span class="t-name">Jackpots</span><span class="t-pts">25</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#10</span><span class="arrow down">▼</span></div><span class="t-name dim">Blue Cheese</span><span class="t-pts dim">5</span></div>
-            </div>
-          </div>
-
-          <!-- ROUND 3 -->
-          <div class="round-col">
-            <div class="matchup">
-              <div class="team-row win"><div class="seed-block"><span class="t-seed">#1</span><span class="arrow up">▲</span></div><span class="t-name">Legends</span><span class="t-pts">27</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#2</span><span class="arrow up">▲</span></div><span class="t-name dim">Huterball</span><span class="t-pts dim">9</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row win"><div class="seed-block"><span class="t-seed">#3</span><span class="arrow down">▼</span></div><span class="t-name">Out of Luck</span><span class="t-pts">38</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#4</span><span class="arrow up">▲</span></div><span class="t-name dim">Clapperz</span><span class="t-pts dim">18</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#6</span><span class="arrow same">—</span></div><span class="t-name">Crankees <span class="upset-flag">⚡</span></span><span class="t-pts">21</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#5</span><span class="arrow up">▲</span></div><span class="t-name dim">Wizards</span><span class="t-pts dim">11</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#8</span><span class="arrow up">▲</span></div><span class="t-name">Blue Cheese <span class="upset-flag">⚡</span></span><span class="t-pts">64</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#7</span><span class="arrow down">▼</span></div><span class="t-name dim">Big Dogs</span><span class="t-pts dim">32</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row win"><div class="seed-block"><span class="t-seed">#9</span><span class="arrow same">—</span></div><span class="t-name">Slimy Dogs</span><span class="t-pts">46</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#10</span><span class="arrow same">—</span></div><span class="t-name dim">Jackpots</span><span class="t-pts dim">9</span></div>
-            </div>
-          </div>
-
-          <!-- ROUND 4 -->
-          <div class="round-col">
-            <div class="matchup champ-game">
-              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#2</span><span class="arrow up">▲</span></div><span class="t-name champ-name">Out of Luck 🏆 <span class="upset-flag">⚡</span></span><span class="t-pts champ-pts">51</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#1</span><span class="arrow same">—</span></div><span class="t-name dim">Legends</span><span class="t-pts dim">25</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row win"><div class="seed-block"><span class="t-seed">#4</span><span class="arrow up">▲</span></div><span class="t-name">Crankees</span><span class="t-pts">70</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#3</span><span class="arrow down">▼</span></div><span class="t-name dim">Huterball</span><span class="t-pts dim">16</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row win"><div class="seed-block"><span class="t-seed">#6</span><span class="arrow down">▼</span></div><span class="t-name">Clapperz</span><span class="t-pts">51</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#5</span><span class="arrow up">▲</span></div><span class="t-name dim">Big Dogs</span><span class="t-pts dim">17</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row win"><div class="seed-block"><span class="t-seed">#7</span><span class="arrow up">▲</span></div><span class="t-name">Slimy Dogs</span><span class="t-pts">47</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#8</span><span class="arrow up">▲</span></div><span class="t-name dim">Blue Cheese</span><span class="t-pts dim">27</span></div>
-            </div>
-            <div class="matchup">
-              <div class="team-row upset"><div class="seed-block"><span class="t-seed">#10</span><span class="arrow down">▼</span></div><span class="t-name">Wizards <span class="upset-flag">⚡</span></span><span class="t-pts">46</span></div>
-              <div class="team-row loss"><div class="seed-block"><span class="t-seed">#9</span><span class="arrow down">▼</span></div><span class="t-name dim">Jackpots</span><span class="t-pts dim">6</span></div>
-            </div>
-          </div>
-
-          <!-- FINAL STANDINGS -->
-          <div class="finals-col">
-            <div class="champ-banner">🏆 MFL Champion</div>
-            <div class="final-card top">
-              <div class="final-row champ"><span class="final-place">1st</span><span class="final-name">Out of Luck</span><span class="final-pay gold">$600</span></div>
-              <div class="final-row runner"><span class="final-place">2nd</span><span class="final-name">Legends</span><span class="final-pay blue">$450</span></div>
-            </div>
-            <div class="final-card">
-              <div class="final-row"><span class="final-place">3rd</span><span class="final-name">Crankees</span><span class="final-pay blue">$325</span></div>
-              <div class="final-row"><span class="final-place">4th</span><span class="final-name">Huterball</span><span class="final-pay blue">$250</span></div>
-            </div>
-            <div class="final-card">
-              <div class="final-row"><span class="final-place">5th</span><span class="final-name">Clapperz</span><span class="final-pay blue">$175</span></div>
-              <div class="final-row"><span class="final-place">6th</span><span class="final-name">Big Dogs</span><span class="final-pay blue">$130</span></div>
-            </div>
-            <div class="final-card">
-              <div class="final-row"><span class="final-place">7th</span><span class="final-name">Slimy Dogs</span><span class="final-pay blue">$100</span></div>
-              <div class="final-row"><span class="final-place">8th</span><span class="final-name">Blue Cheese</span><span class="final-pay blue">$75</span></div>
-            </div>
-            <div class="final-card">
-              <div class="final-row"><span class="final-place">9th</span><span class="final-name">Wizards</span><span class="final-pay blue">$50</span></div>
-              <div class="final-row"><span class="final-place">10th</span><span class="final-name">Jackpots</span><span class="final-pay none">$0</span></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="bracket-legend">
-        <div class="leg"><div class="leg-sq" style="background:var(--win-bg);border-color:var(--win-bd);"></div> Win</div>
-        <div class="leg"><div class="leg-sq" style="background:var(--loss-bg);border-color:#ccc;"></div> Loss</div>
-        <div class="leg"><div class="leg-sq" style="background:var(--ups-bg);border-color:var(--ups-bd);"></div> Upset</div>
-        <div class="leg"><span style="color:var(--up-clr);font-size:11px;">▲</span> Seed up</div>
-        <div class="leg"><span style="color:var(--dn-clr);font-size:11px;">▼</span> Seed down</div>
-        <div class="leg"><span style="font-size:11px;">⚡</span> Upset flag</div>
-      </div>
+    <div class="form-row">
+      <label class="form-label">Spiff Winner (optional)</label>
+      <input class="form-input" id="f-spiff" placeholder="e.g. Legends — Boswell's big kicking day" />
     </div>
+    <div class="form-row">
+      <label class="form-label">Point Pool Standings <span id="pool-autofill-badge" style="display:none;background:var(--gold);color:var(--paper);font-size:9px;padding:2px 6px;margin-left:6px;font-family:'Inter',sans-serif;letter-spacing:1px;">AUTO-FILLED ✓</span></label>
+      <textarea class="form-textarea" id="f-pool" style="min-height:120px;" placeholder="POT 417&#10;WIZ 403&#10;HBL 385"></textarea>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Week Scores — 5 game results, one per line: TEAM PTS - TEAM PTS <span id="scores-autofill-badge" style="display:none;background:var(--gold);color:var(--paper);font-size:9px;padding:2px 6px;margin-left:6px;font-family:'Inter',sans-serif;letter-spacing:1px;">AUTO-FILLED ✓</span></label>
+      <textarea class="form-textarea" id="f-scores" style="min-height:140px;" placeholder="BDG 64 - HBL 54&#10;BLU 57 - OOL 22&#10;CLP 76 - POT 69&#10;CRK 62 - LOF 23&#10;WIZ 45 - SDG 31"></textarea>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Top 10 Players (paste as: NAME TEAM POINTS, one per line — add * at end if bench)</label>
+      <textarea class="form-textarea" id="f-players" style="min-height:160px;" placeholder="D. Gibbs BDG 31&#10;J. Taylor WIZ 26&#10;A. Rodgers CRK 25 *"></textarea>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Sign-off</label>
+      <input class="form-input" id="f-signoff" placeholder="e.g. Have a great week!" value="Have a great week!" />
+    </div>
+    <button class="form-submit" onclick="publishReport()">Publish Report</button>
+    <button class="form-cancel" onclick="closeAllForms()">Cancel</button>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       FINANCES
-  ══════════════════════════════════════════════ -->
-  <div id="finances" class="section">
-    <div class="grid-4" id="fin-stats-row"></div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">Prize Pool Breakdown</span>
-        <span class="badge badge-gold">$10,000 Total</span>
+  <!-- COMPOSE FORM: NEWS POST -->
+  <div class="compose-form" id="compose-news-form">
+    <div class="form-title">New League News Post</div>
+    <div class="form-row-2">
+      <div class="form-row">
+        <label class="form-label">Author</label>
+        <input class="form-input" id="fn-author" placeholder="e.g. Bob" />
       </div>
-      <div class="fin-grid">
-        <div>
-          <div class="fin-section-title">Regular Season</div>
-          <div class="fin-row"><span>H2H Wins (65 × $40)</span><span class="fin-val" style="color:var(--green);">$2,600</span></div>
-          <div class="fin-row"><span>Top-5 Wins (65 × $40)</span><span class="fin-val" style="color:var(--green);">$2,600</span></div>
-          <div class="fin-row"><span>Spiffs (18 × $15)</span><span class="fin-val" style="color:var(--green);">$270</span></div>
-          <div class="divider"></div>
-          <div class="fin-row"><span style="font-weight:500;">Subtotal</span><span class="fin-val" style="color:var(--gold);">$5,470</span></div>
-        </div>
-        <div>
-          <div class="fin-section-title">Postseason</div>
-          <div class="fin-row"><span>Postseason (1st–10th)</span><span class="fin-val" style="color:var(--green);">$2,155</span></div>
-          <div class="fin-row"><span>Week 18 Derby</span><span class="fin-val" style="color:var(--green);">$200</span></div>
-          <div class="fin-row"><span>Point Pool (1st–5th)</span><span class="fin-val" style="color:var(--green);">$2,175</span></div>
-          <div class="divider"></div>
-          <div class="fin-row"><span style="font-weight:500;">Subtotal</span><span class="fin-val" style="color:var(--gold);">$4,530</span></div>
-        </div>
-      </div>
-      <div style="padding:1rem 1.25rem;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-family:'Inter',sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text);">Grand Total</span>
-        <span style="font-family:'Inter',sans-serif;font-size:22px;font-weight:700;color:var(--gold);">$10,000</span>
+      <div class="form-row">
+        <label class="form-label">Category</label>
+        <select class="form-select" id="fn-category">
+          <option value="">— Select a category —</option>
+          <option value="MFL News">MFL News</option>
+          <option value="MFL Update">MFL Update</option>
+          <option value="Announcement">Announcement</option>
+          <option value="From the Commish">From the Commish</option>
+        </select>
       </div>
     </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">Team Earnings Tracker</span>
-        <span class="badge badge-gray">Live season totals</span>
-      </div>
-      <div style="overflow-x:auto;">
-        <table>
-          <thead>
-            <tr>
-              <th>Team</th>
-              <th>Reg Wins $</th>
-              <th>Spiffs $</th>
-              <th>Postseason $</th>
-              <th>Total Earned</th>
-              <th>Net (vs $1,000)</th>
-            </tr>
-          </thead>
-          <tbody id="earnings-body"></tbody>
-        </table>
-      </div>
+    <div class="form-row">
+      <label class="form-label">Headline</label>
+      <input class="form-input" id="fn-headline" placeholder="e.g. Trade Deadline — What to Watch" />
     </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">Point Pool Payouts</span>
-        <span class="badge badge-gold">End of season</span>
-      </div>
-      <div class="payout-row"><span class="payout-label">1st</span><span class="payout-amount">$750</span></div>
-      <div class="payout-row"><span class="payout-label">2nd</span><span class="payout-amount">$600</span></div>
-      <div class="payout-row"><span class="payout-label">3rd</span><span class="payout-amount">$400</span></div>
-      <div class="payout-row"><span class="payout-label">4th</span><span class="payout-amount">$275</span></div>
-      <div class="payout-row"><span class="payout-label">5th</span><span class="payout-amount">$150</span></div>
+    <div class="form-row">
+      <label class="form-label">Deck (short teaser line, optional)</label>
+      <input class="form-input" id="fn-deck" placeholder="e.g. A look at the market as the deadline approaches" />
     </div>
+    <div class="form-row">
+      <label class="form-label">Body</label>
+      <textarea class="form-textarea" id="fn-body" style="min-height:260px;" placeholder="Write your post here. Separate paragraphs with a blank line. The first paragraph gets the drop cap treatment."></textarea>
+    </div>
+    <button class="form-submit" onclick="publishNewsPost()">Publish Post</button>
+    <button class="form-cancel" onclick="closeAllForms()">Cancel</button>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       RULES
-  ══════════════════════════════════════════════ -->
-  <div id="rules" class="section">
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">2025 Scoring Rules</span>
-      </div>
-      <div class="rules-grid">
-        <div>
-          <div class="rules-group-title">Passing</div>
-          <div class="rule-row"><span>TD under 50 yards</span><span class="rule-pts">5 pts</span></div>
-          <div class="rule-row"><span>TD 50+ yards</span><span class="rule-pts">10 pts</span></div>
-          <div class="rule-row"><span>Two-point conversion</span><span class="rule-pts">2 pts</span></div>
-          <div class="rule-row"><span>350+ passing yards</span><span class="rule-pts">+5 pts</span></div>
-        </div>
-        <div>
-          <div class="rules-group-title">Rushing</div>
-          <div class="rule-row"><span>TD under 50 yards</span><span class="rule-pts">7 pts</span></div>
-          <div class="rule-row"><span>TD 50+ yards</span><span class="rule-pts">14 pts</span></div>
-          <div class="rule-row"><span>Two-point conversion</span><span class="rule-pts">2 pts</span></div>
-          <div class="rule-row"><span>125 rush/rec yards</span><span class="rule-pts">+5 pts</span></div>
-          <div class="rule-row"><span>200 rush/rec yards</span><span class="rule-pts">+5 pts</span></div>
-        </div>
-        <div>
-          <div class="rules-group-title">Receiving</div>
-          <div class="rule-row"><span>TD under 50 yards</span><span class="rule-pts">7 pts</span></div>
-          <div class="rule-row"><span>TD 50+ yards</span><span class="rule-pts">10 pts</span></div>
-          <div class="rule-row"><span>Two-point conversion</span><span class="rule-pts">2 pts</span></div>
-          <div class="rule-row"><span>Offensive fumble rec TD</span><span class="rule-pts">7 pts</span></div>
-        </div>
-        <div>
-          <div class="rules-group-title">Kicking</div>
-          <div class="rule-row"><span>FG under 55 yards</span><span class="rule-pts">3 pts</span></div>
-          <div class="rule-row"><span>FG 55–59 yards</span><span class="rule-pts">5 pts</span></div>
-          <div class="rule-row"><span>FG 60+ yards</span><span class="rule-pts">7 pts</span></div>
-          <div class="rule-row"><span>Extra point</span><span class="rule-pts">1 pt</span></div>
-        </div>
-        <div>
-          <div class="rules-group-title">Defense / Special Teams</div>
-          <div class="rule-row"><span>D/ST TD under 50 yards</span><span class="rule-pts">7 pts</span></div>
-          <div class="rule-row"><span>D/ST TD 50+ yards</span><span class="rule-pts">10 pts</span></div>
-          <div class="rule-row"><span>0 points against</span><span class="rule-pts">14 pts</span></div>
-          <div class="rule-row"><span>1–9 points against</span><span class="rule-pts">10 pts</span></div>
-          <div class="rule-row"><span>10–12 points against</span><span class="rule-pts">5 pts</span></div>
-          <div class="rule-row"><span>Safety</span><span class="rule-pts">5 pts</span></div>
-          <div class="rule-row"><span>ST conversion return (2pt)</span><span class="rule-pts">2 pts</span></div>
-          <div class="rule-row"><span>ST one-point safety</span><span class="rule-pts">1 pt</span></div>
-        </div>
-        <div>
-          <div class="rules-group-title">Lineup</div>
-          <div class="rule-row"><span>QB</span><span class="rule-pts">1 slot</span></div>
-          <div class="rule-row"><span>RB</span><span class="rule-pts">1 slot</span></div>
-          <div class="rule-row"><span>WR/TE</span><span class="rule-pts">2 slots</span></div>
-          <div class="rule-row"><span>Flex RB/WR/TE</span><span class="rule-pts">1 slot</span></div>
-          <div class="rule-row"><span>K</span><span class="rule-pts">1 slot</span></div>
-          <div class="rule-row"><span>Defense</span><span class="rule-pts">1 slot</span></div>
-          <div class="rule-row"><span>Waivers</span><span class="rule-pts">Tue–Sat night</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- CONTENT AREA -->
+  <div id="content-area"></div>
 
-  <!-- ══════════════════════════════════════════════
-       ADMIN
-  ══════════════════════════════════════════════ -->
-  <div id="admin" class="section">
-    <div class="two-col">
-      <div>
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Teams & Owners</span>
-            <span class="badge badge-gray">10 teams</span>
-          </div>
-          <div id="team-admin-list"></div>
-        </div>
-        <div class="card" style="margin-top:0;">
-          <div class="card-header">
-            <span class="card-title">Draft Order</span>
-            <span class="badge badge-gray">2025</span>
-          </div>
-          <div id="draft-order-list"></div>
-        </div>
-      </div>
-      <div>
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Spiff Ledger</span>
-            <span class="badge badge-gray">18 × $15</span>
-          </div>
-          <div id="spiff-list"></div>
-        </div>
-        <div class="card" style="margin-top:0;">
-          <div class="card-header">
-            <span class="card-title">Season Settings</span>
-          </div>
-          <div style="padding:1rem 1.25rem;display:flex;flex-direction:column;gap:6px;">
-            <div class="fin-row"><span>Current Week</span>
-              <select id="cur-week-sel" onchange="updateWeek()" style="background:var(--bg);color:var(--text);border:1px solid var(--border2);border-radius:6px;padding:4px 8px;font-family:'Inter',sans-serif;font-size:14px;">
-                <option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option>
-                <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
-                <option>11</option><option>12</option><option>13</option><option>14</option><option>15</option>
-                <option>16</option><option>17</option><option>18</option>
-              </select>
-            </div>
-            <div class="fin-row"><span>Buy-in per team</span><span class="fin-val">$1,000</span></div>
-            <div class="fin-row"><span>Win value (H2H)</span><span class="fin-val">$40</span></div>
-            <div class="fin-row"><span>Win value (Top-5)</span><span class="fin-val">$40</span></div>
-            <div class="fin-row"><span>Spiff value</span><span class="fin-val">$15</span></div>
-            <div class="fin-row" style="border:none;"><span>Derby prize per team</span><span class="fin-val">$40</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div><!-- /content -->
-
-<div class="footer">
-  MFL 2026 League HQ &nbsp;·&nbsp; McCann's Football League &nbsp;·&nbsp; 10 teams · $10,000 prize pool
 </div>
-
-<div class="toast" id="toast"></div>
 
 <script>
-/* ══════════════════════════════════════════════
-   DATA
-══════════════════════════════════════════════ */
-const TEAMS = [
-  { id: 'bigdogs',   name: 'Big Dogs',    owners: 'Bob H. & Chris',         h2h: 3, top5: 3, pts: 196, spiffs: 1, postseason: 0 },
-  { id: 'bluecheese',name: 'Blue Cheese', owners: 'Reg & John',             h2h: 2, top5: 2, pts: 165, spiffs: 0, postseason: 0 },
-  { id: 'clapperz',  name: 'Clapperz',   owners: 'Steve',                  h2h: 2, top5: 1, pts: 135, spiffs: 1, postseason: 0 },
-  { id: 'crankees',  name: 'Crankees',   owners: 'Drew & J',               h2h: 2, top5: 2, pts: 166, spiffs: 0, postseason: 0 },
-  { id: 'huterball', name: 'Huterball',  owners: 'Jeff',                   h2h: 2, top5: 1, pts: 157, spiffs: 1, postseason: 0 },
-  { id: 'jackpots',  name: 'Jackpots',   owners: 'Bill & Ray',             h2h: 0, top5: 1, pts: 126, spiffs: 0, postseason: 0 },
-  { id: 'legends',   name: 'Legends',    owners: 'Bobby A.',               h2h: 0, top5: 1, pts: 122, spiffs: 0, postseason: 0 },
-  { id: 'ool',       name: 'Out of Luck',owners: 'Rob W.',                 h2h: 0, top5: 1, pts: 105, spiffs: 0, postseason: 0 },
-  { id: 'slimey',    name: 'Slimey Dogs',owners: 'Don, Brendan & Kieran',  h2h: 1, top5: 1, pts: 109, spiffs: 0, postseason: 0 },
-  { id: 'wizards',   name: 'Wizards',    owners: 'Chip & Teddy',           h2h: 3, top5: 2, pts: 157, spiffs: 0, postseason: 0 }
-];
+/* ════════════════════════════════════════════
+   REPORT DATA — archived seasons (none yet for 2026)
+════════════════════════════════════════════ */
+// 2025 was placeholder/test data used before the 2026 season had real results.
+// Starting fresh for 2026 — real weekly reports get added here via the compose form.
+const REPORTS = [];
 
-const SCHEDULE = {
-  // 2026 Regular Season — scores to be filled in weekly
-  1:  [{h:'BDG',a:'HBL',hp:64,ap:54},{h:'OOL',a:'BLU',hp:22,ap:57},{h:'POT',a:'CLP',hp:69,ap:76},{h:'LOF',a:'CRK',hp:23,ap:62},{h:'SDG',a:'WIZ',hp:31,ap:45}],
-  2:  [{h:'POT',a:'BDG',hp:26,ap:80},{h:'WIZ',a:'OOL',hp:68,ap:41},{h:'CLP',a:'HBL',hp:18,ap:34},{h:'BLU',a:'LOF',hp:72,ap:63},{h:'CRK',a:'SDG',hp:36,ap:51}],
-  3:  [{h:'OOL',a:'BDG',hp:42,ap:52},{h:'HBL',a:'SDG',hp:69,ap:27},{h:'LOF',a:'CLP',hp:36,ap:41},{h:'CRK',a:'POT',hp:68,ap:31},{h:'WIZ',a:'BLU',hp:44,ap:36}],
+let currentWeek = 0;
+let userReports = [];
+
+/* ════════════════════════════════════════════
+   RENDER
+════════════════════════════════════════════ */
+function allReports() {
+  return [...REPORTS, ...userReports].sort((a,b)=>b.week-a.week);
+}
+
+function showWeek(week, btn) {
+  document.querySelectorAll('.week-tab').forEach(t=>t.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  currentWeek = week;
+
+  if (week === 0) {
+    renderArchiveGrid();
+  } else {
+    const report = allReports().find(r=>r.week===week);
+    if (report) renderReport(report);
+    else renderEmpty(week);
+  }
+}
+
+function archiveCardHtml(p) {
+  if (p.type === 'news') {
+    return `
+      <div class="archive-card news-card" onclick="showNewsPost('${p.id}')">
+        <button class="card-delete-btn" onclick="deleteNewsPost('${p.id}', event)" title="Delete this post">✕</button>
+        <div class="archive-card-week" style="color:var(--red);">📰 ${p.category || 'League News'} · ${p.date} · By ${p.author}</div>
+        <div class="archive-card-headline">${p.headline}</div>
+        <div class="archive-card-deck">${p.deck || ''}</div>
+      </div>`;
+  } else {
+    const isArchived = REPORTS.find(rr => rr.week === p.week);
+    return `
+      <div class="archive-card" onclick="showWeek(${p.week}, null)">
+        ${!isArchived ? `<button class="card-delete-btn" onclick="deleteReport(${p.week}, event)" title="Delete this report">✕</button>` : ''}
+        <div class="archive-card-week">📋 Week ${p.week} Report · By ${p.author}</div>
+        <div class="archive-card-headline">${p.headline}</div>
+        <div class="archive-card-deck">${p.deck}</div>
+      </div>`;
+  }
+}
+
+function featuredCardHtml(p) {
+  const isNews = p.type === 'news';
+  const kicker = isNews
+    ? `📰 ${p.category || 'League News'} · ${p.date} · By ${p.author}`
+    : `📋 Week ${p.week} Report · By ${p.author}`;
+  const clickAttr = isNews ? `showNewsPost('${p.id}')` : `showWeek(${p.week}, null)`;
+  const isArchived = !isNews && REPORTS.find(rr => rr.week === p.week);
+  const deleteBtn = isNews
+    ? `<button class="card-delete-btn featured-delete-btn" onclick="deleteNewsPost('${p.id}', event)" title="Delete this post">✕</button>`
+    : (!isArchived ? `<button class="card-delete-btn featured-delete-btn" onclick="deleteReport(${p.week}, event)" title="Delete this report">✕</button>` : '');
+
+  const firstPara = (p.body || '').split('\n\n').filter(x => x.trim())[0] || '';
+  const preview = firstPara.length > 320 ? firstPara.slice(0, 320).trim() + '…' : firstPara;
+
+  return `
+    <div class="featured-card ${isNews ? 'news-card' : ''}" onclick="${clickAttr}">
+      ${deleteBtn}
+      <div class="featured-kicker" style="${isNews ? 'color:var(--red);' : ''}">${kicker}</div>
+      <div class="featured-headline">${p.headline}</div>
+      ${p.deck ? `<div class="featured-deck">${p.deck}</div>` : ''}
+      ${preview ? `<div class="featured-preview">${preview}</div>` : ''}
+      <div class="featured-readmore">Read the full story →</div>
+    </div>
+  `;
+}
+
+function railRecentItemHtml(p) {
+  const isNews = p.type === 'news';
+  const clickAttr = isNews ? `showNewsPost('${p.id}')` : `showWeek(${p.week}, null)`;
+  const meta = isNews ? `${p.category || 'League News'} · ${p.date}` : `Week ${p.week} Report`;
+  return `
+    <div class="rail-recent-item" onclick="${clickAttr}">
+      <div class="rail-recent-meta">${meta}</div>
+      <div class="rail-recent-headline">${p.headline}</div>
+    </div>
+  `;
+}
+
+function getLatestPoolData() {
+  const reports = allReports(); // sorted desc by week
+  for (const r of reports) {
+    if (r.pool && r.pool.length > 0) return { pool: r.pool.slice(0, 5), week: r.week };
+  }
+  return null;
+}
+
+function poolStripHtml(poolData) {
+  return `
+    <div class="pool-strip" onclick="location.href='index.html#point-pool-standings'">
+      <div class="pool-strip-title">
+        <span>Point Pool Standings — Top 5</span>
+        ${poolData ? `<span class="pool-strip-subtitle">Thru Wk ${poolData.week}</span>` : ''}
+      </div>
+      ${poolData ? `
+        <div class="pool-strip-row">
+          ${poolData.pool.map((row, i) => `
+            <div class="pool-chip">
+              <div class="pool-chip-rank">${i + 1}</div>
+              <div class="pool-chip-team">${row[0]}</div>
+              <div class="pool-chip-pts">${row[1]}</div>
+            </div>
+          `).join('')}
+        </div>
+      ` : '<div class="rail-empty">No standings posted yet.</div>'}
+      <div class="pool-strip-link">View Full Standings on League HQ →</div>
+    </div>
+  `;
+}
+
+function renderArchiveGrid() {
+  const posts = allPosts();
+  document.getElementById('masthead-date').textContent = '';
+
+  const featured = posts[0];
+  const recentFive = posts.slice(1, 6);
+  const poolData = getLatestPoolData();
+
+  const recentBoxHtml = `
+    <div class="rail-box recent-rail-box">
+      <div class="rail-box-title"><span>Most Recent Stories</span></div>
+      ${recentFive.length ? recentFive.map(railRecentItemHtml).join('') : '<div class="rail-empty">No other stories yet.</div>'}
+    </div>
+  `;
+
+  document.getElementById('content-area').innerHTML = `
+    ${featured ? `
+      <div class="gazette-hero-layout">
+        <div class="hero-main">
+          ${featuredCardHtml(featured)}
+          ${poolStripHtml(poolData)}
+        </div>
+        <aside class="hero-rail">
+          ${recentBoxHtml}
+        </aside>
+      </div>
+    ` : ''}
+    <div class="section-rule" style="margin-top:${featured ? '2.5rem' : '0'};"><span class="section-rule-text">More From The Gazette</span></div>
+    <div class="archive-grid">
+      ${posts.map(archiveCardHtml).join('')}
+    </div>
+  `;
+}
+
+function renderEmpty(week) {
+  document.getElementById('content-area').innerHTML = `
+    <div style="text-align:center;padding:3rem;color:var(--ink4);">
+      <div style="font-family:'Playfair Display',serif;font-size:24px;margin-bottom:8px;">No report filed for Week ${week}</div>
+      <div style="font-size:14px;">Use the "+ New Post" button above to publish one.</div>
+    </div>
+  `;
+}
+
+/* ════════════════════════════════════════════
+   DASHBOARD DATA — scores, players, standings per week
+════════════════════════════════════════════ */
+const TEAM_ABBR = {
+  'BDG':'Big Dogs','BLU':'Blue Cheese','CLP':'Clapperz',
+  'CRK':'Crankees','HBL':'Huterball','POT':'Jackpots',
+  'LOF':'Legends','OOL':'Out of Luck','SDG':'Slimey Dogs','WIZ':'Wizards'
+};
+
+const GAZETTE_SCHEDULE = {
+  // 2026 Regular Season
+  1:  [{h:'BDG',a:'HBL',hp:0,ap:0},{h:'OOL',a:'BLU',hp:0,ap:0},{h:'POT',a:'CLP',hp:0,ap:0},{h:'LOF',a:'CRK',hp:0,ap:0},{h:'SDG',a:'WIZ',hp:0,ap:0}],
+  2:  [{h:'POT',a:'BDG',hp:0,ap:0},{h:'WIZ',a:'OOL',hp:0,ap:0},{h:'CLP',a:'HBL',hp:0,ap:0},{h:'BLU',a:'LOF',hp:0,ap:0},{h:'CRK',a:'SDG',hp:0,ap:0}],
+  3:  [{h:'OOL',a:'BDG',hp:0,ap:0},{h:'HBL',a:'SDG',hp:0,ap:0},{h:'LOF',a:'CLP',hp:0,ap:0},{h:'CRK',a:'POT',hp:0,ap:0},{h:'WIZ',a:'BLU',hp:0,ap:0}],
   4:  [{h:'BDG',a:'SDG',hp:0,ap:0},{h:'BLU',a:'POT',hp:0,ap:0},{h:'CLP',a:'OOL',hp:0,ap:0},{h:'HBL',a:'CRK',hp:0,ap:0},{h:'LOF',a:'WIZ',hp:0,ap:0}],
   5:  [{h:'BDG',a:'CRK',hp:0,ap:0},{h:'WIZ',a:'POT',hp:0,ap:0},{h:'SDG',a:'CLP',hp:0,ap:0},{h:'BLU',a:'HBL',hp:0,ap:0},{h:'OOL',a:'LOF',hp:0,ap:0}],
   6:  [{h:'CLP',a:'BDG',hp:0,ap:0},{h:'POT',a:'OOL',hp:0,ap:0},{h:'CRK',a:'WIZ',hp:0,ap:0},{h:'SDG',a:'BLU',hp:0,ap:0},{h:'HBL',a:'LOF',hp:0,ap:0}],
@@ -974,11 +1309,9 @@ const SCHEDULE = {
   14: [], 15: [], 16: [], 17: [], 18: 'derby'
 };
 
-const TEAM_NAMES = {
-  BDG:'Big Dogs',BLU:'Blue Cheese',CLP:'Clapperz',CRK:'Crankees',
-  HBL:'Huterball',POT:'Jackpots',LOF:'Legends',OOL:'Out of Luck',
-  SDG:'Slimey Dogs',WIZ:'Wizards'
-};
+// Starts empty for the fresh 2026 season. Gets populated per-week (namespaced with a
+// 'u' prefix, e.g. 'u1' for Week 1) as reports are published — see publishReport().
+const WEEK_DATA = {};
 
 /* ══════════════════════════════════════════════
    CBS STANDINGS — shared logic.
@@ -1035,585 +1368,785 @@ function weekResultsFromStandings(week) {
 }
 /* ═══════════════ end shared standings block ═══════════════ */
 
-/* ══════════════════════════════════════════════
-   LIVE DATA — League HQ reads standings, weekly scores and spiffs from Supabase
-   (same data the Gazette uses). The hard-coded TEAMS / SCHEDULE / spiffData above
-   are only a fallback if Supabase can't be reached.
-══════════════════════════════════════════════ */
-const SUPABASE_URL = 'https://zbwcvnquubmnxzbbbevc.supabase.co';
-const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpid2N2bnF1dWJtbnh6YmJiZXZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5NTQ1OTMsImV4cCI6MjA5ODUzMDU5M30.OTymmeVQJkerF38LGCflV3HGCmuY3mzrAhvZ5eolEt8';
-const HQ_ABBR = { bigdogs:'BDG', bluecheese:'BLU', clapperz:'CLP', crankees:'CRK', huterball:'HBL',
-  jackpots:'POT', legends:'LOF', ool:'OOL', slimey:'SDG', wizards:'WIZ' };
-const FULLNAME_TO_ABBR = { 'big dogs':'BDG','blue cheese':'BLU','clapperz':'CLP','crankees':'CRK','huterball':'HBL',
-  'jackpots':'POT','legends':'LOF','legends of the fall':'LOF','out of luck':'OOL','slimey dogs':'SDG','slimy dogs':'SDG',
-  'wizards':'WIZ','westchester wizards':'WIZ' };
-function hqParseScores(raw) {
+/* ════════════════════════════════════════════
+   DASHBOARD RENDER
+════════════════════════════════════════════ */
+function spiffTeamAbbr(spiffText) {
+  if (!spiffText) return null;
+  const namePart = spiffText.split('—')[0].split('-')[0].trim().toLowerCase();
+  const variants = {
+    'big dogs':'BDG',
+    'blue cheese':'BLU',
+    'clapperz':'CLP',
+    'crankees':'CRK',
+    'huterball':'HBL',
+    'jackpots':'POT',
+    'legends':'LOF',
+    'legends of the fall':'LOF',
+    'out of luck':'OOL',
+    'slimy dogs':'SDG',
+    'slimey dogs':'SDG',
+    'wizards':'WIZ'
+  };
+  return variants[namePart] || null;
+}
+
+function seasonSpiffCounts(uptoWeek) {
+  const counts = {};
+  Object.keys(TEAM_ABBR).forEach(abbr => counts[abbr] = 0);
+  allReports().forEach(r => {
+    if (r.week <= uptoWeek && r.spiff) {
+      const abbr = spiffTeamAbbr(r.spiff);
+      if (abbr) counts[abbr] = (counts[abbr] || 0) + 1;
+    }
+  });
+  return counts;
+}
+
+function fmtPts(n) { return Number.isInteger(n) ? String(n) : n.toFixed(1); }
+
+// The 5th-highest team score of a week; any team scoring at least this is "top 5".
+function topFiveCutoff(games) {
+  const s = games.flatMap(g => [g.hp, g.ap]).sort((a,b) => b - a);
+  return s[Math.min(4, s.length - 1)];
+}
+
+function renderDashboard(week, dataKey = week) {
+  // dataKey lets a live (2026) report and an archived (2025) report that happen to share the
+  // same week number read from separate WEEK_DATA/GAZETTE_SCHEDULE slots — see renderReport().
+  const d = WEEK_DATA[dataKey] || {};
+  if (!WEEK_DATA[dataKey] && !Array.isArray(GAZETTE_SCHEDULE[dataKey])) return '';
+  const isLive = String(dataKey).startsWith('u');
+
+  // Season record = H2H wins + top-5 wins (2 decisions per team per week).
+  // Source of truth is the CBS standings snapshot for this week (CBS breaks ties with
+  // that week's bench points). If the snapshot wasn't saved, fall back to computing it
+  // from the saved scores and say so on the card.
+  const snap = isLive ? standingsTable(week) : null;
+  const rec = {};   // abbr -> { w, l }
+  const missingWeeks = [];
+  if (snap) {
+    snap.forEach(r => rec[r.team] = { w: r.wins, l: r.losses });
+    d.cumPts = Object.fromEntries(snap.map(r => [r.team, r.pf]));
+  } else {
+    Object.keys(TEAM_ABBR).forEach(t => rec[t] = { w: 0, l: 0 });
+    for (let w = 1; w <= week; w++) {
+      const games = GAZETTE_SCHEDULE[isLive ? 'u' + w : w];
+      const real = Array.isArray(games) && games.some(g => g.hp > 0 || g.ap > 0);
+      if (!real) { missingWeeks.push(w); continue; }
+      const topCut = topFiveCutoff(games);
+      games.forEach(g => {
+        [[g.h, g.hp, g.ap], [g.a, g.ap, g.hp]].forEach(([t, mine, theirs]) => {
+          rec[t] = rec[t] || { w: 0, l: 0 };
+          if (mine > theirs) rec[t].w++; else if (mine < theirs) rec[t].l++; else { rec[t].w += 0.5; rec[t].l += 0.5; }
+          if (mine >= topCut) rec[t].w++; else rec[t].l++;
+        });
+      });
+    }
+  }
+  d.wins = Object.fromEntries(Object.entries(rec).map(([t, r]) => [t, r.w]));
+  const sourceNote = snap
+    ? `<div style="font-family:'Inter',sans-serif;font-size:10px;color:var(--ink4);margin-top:8px;">From CBS standings · ties decided by bench points</div>`
+    : (isLive ? `<div style="font-family:'Inter',sans-serif;font-size:10px;color:var(--ink4);margin-top:8px;">Computed from scores — CBS standings not saved for Wk ${week}</div>` : '');
+  const missingNote = missingWeeks.length
+    ? `<div style="font-family:'Inter',sans-serif;font-size:11px;color:var(--red);margin-top:8px;">Missing scores for Wk ${missingWeeks.join(', ')}</div>` : '';
+
+  // Point pool: use the standings saved with this report; if none, sum weekly scores.
+  if (!d.cumPts && !missingWeeks.length) {
+    const sum = {}; Object.keys(TEAM_ABBR).forEach(t => sum[t] = 0);
+    for (let w = 1; w <= week; w++) (GAZETTE_SCHEDULE[isLive ? 'u' + w : w] || []).forEach(g => { sum[g.h] += g.hp; sum[g.a] += g.ap; });
+    d.cumPts = sum;
+  }
+
+  // Top 10 players
+  const playersHtml = (d.players || []).map((p,i) => `
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--rule);${i===(d.players||[]).length-1?'border-bottom:none;':''}">
+      <div>
+        <span style="font-size:13px;color:var(--ink2);">${p.name}</span>
+        ${p.bench ? '<span style="font-family:\'Inter\',sans-serif;font-size:10px;color:var(--ink4);background:var(--paper3);padding:1px 5px;border-radius:2px;margin-left:4px;">(b)</span>' : ''}
+        <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);margin-left:6px;">${p.team}</span>
+      </div>
+      <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--ink);">${p.pts}</span>
+    </div>
+  `).join('');
+
+  // Season wins standings
+  const winsSorted = Object.entries(d.wins || {}).sort((a,b)=>b[1]-a[1] || ((d.cumPts||{})[b[0]]||0)-((d.cumPts||{})[a[0]]||0));
+  const maxWins = Math.max(1, winsSorted.length ? winsSorted[0][1] : 1);
+  const winsHtml = winsSorted.map(([team,w],i) => `
+    <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--rule);${i===winsSorted.length-1?'border-bottom:none;':''}">
+      <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);width:16px;">${i+1}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink2);flex:1;">${team}</span>
+      <div style="width:80px;background:var(--paper3);border-radius:2px;height:6px;">
+        <div style="width:${Math.round(w/maxWins*100)}%;background:var(--ink2);height:6px;border-radius:2px;"></div>
+      </div>
+      <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--ink);width:44px;text-align:right;white-space:nowrap;">${fmtPts(w)}-${fmtPts(rec[team] ? rec[team].l : 0)}</span>
+    </div>
+  `).join('');
+
+  // Point pool standings
+  const ptsSorted = Object.entries(d.cumPts || {}).sort((a,b)=>b[1]-a[1]);
+  const ptsHtml = ptsSorted.map(([team,pts],i) => `
+    <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--rule);${i===ptsSorted.length-1?'border-bottom:none;':''}">
+      <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);width:16px;">${i+1}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink2);flex:1;">${team}</span>
+      <div style="width:80px;background:var(--paper3);border-radius:2px;height:6px;">
+        <div style="width:${Math.round(pts/ptsSorted[0][1]*100)}%;background:var(--gold);height:6px;border-radius:2px;"></div>
+      </div>
+      <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--gold);width:40px;text-align:right;">${pts}</span>
+    </div>
+  `).join('');
+
+  // Season spiff tracker — count of weekly high-score spiffs won per team, most to least
+  const spiffCounts = seasonSpiffCounts(week);
+  const spiffSorted = Object.entries(spiffCounts).sort((a,b)=>b[1]-a[1]);
+  const maxSpiff = Math.max(1, spiffSorted[0][1]);
+  const spiffTrackerHtml = spiffSorted.map(([team,count],i) => `
+    <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--rule);${i===spiffSorted.length-1?'border-bottom:none;':''}">
+      <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);width:16px;">${i+1}</span>
+      <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink2);flex:1;">${team}</span>
+      <div style="width:80px;background:var(--paper3);border-radius:2px;height:6px;">
+        <div style="width:${Math.round(count/maxSpiff*100)}%;background:var(--red);height:6px;border-radius:2px;"></div>
+      </div>
+      <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--red);width:28px;text-align:right;">${count}</span>
+    </div>
+  `).join('');
+
+  // This week's results — one merged matchup box, top 5 scores starred
+  const resultsHtml = (()=>{
+    const matchups = GAZETTE_SCHEDULE[dataKey];
+    if (matchups === 'derby') return `<div style="font-size:12px;color:var(--ink3);">All-play Derby</div>`;
+    if (!matchups || !matchups.length) return `<div style="font-size:12px;color:var(--red);">No game scores entered for this week.</div>`;
+    const allScores = matchups.flatMap(m=>[{team:m.h,pts:m.hp},{team:m.a,pts:m.ap}]).sort((a,b)=>b.pts-a.pts);
+    // Winners and top-5 wins come from the CBS standings snapshots when saved (so bench-point
+    // tiebreaks match CBS); otherwise fall back to comparing scores.
+    const wr = isLive ? weekResultsFromStandings(week) : null;
+    const topCut = topFiveCutoff(matchups);
+    const top5 = new Set(wr ? Object.keys(wr).filter(t => wr[t].top5Win)
+                            : allScores.filter(s=>s.pts>=topCut).map(s=>s.team));
+    return matchups.map((m,i)=>{
+      const hWin = wr && wr[m.h] ? wr[m.h].h2hWin : m.hp >= m.ap;
+      const hTop = top5.has(m.h), aTop = top5.has(m.a);
+      return `<div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--rule);${i===matchups.length-1?'border-bottom:none;':''}">
+        <span style="font-family:'Inter',sans-serif;font-size:13px;${hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${m.h}${hTop?' ★':''}</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;color:var(--ink4);">${fmtPts(m.hp)}–${fmtPts(m.ap)}</span>
+        <span style="font-family:'Inter',sans-serif;font-size:13px;${!hWin?'font-weight:700;color:var(--ink);':'color:var(--ink3);'}">${aTop?' ★':''}${m.a}</span>
+      </div>`;
+    }).join('');
+  })();
+
+  return `
+    <div style="border-top:3px double var(--rule2);margin-top:2rem;padding-top:1.5rem;">
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);margin-bottom:4px;">Week ${week} Dashboard</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:1.5rem;">McCann's Football League</div>
+
+      <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);margin-bottom:0.75rem;padding-bottom:4px;border-bottom:2px solid var(--ink);">This Week</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-bottom:1.75rem;">
+
+        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--ink);padding:1rem;">
+          <div style="font-family:'Inter',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+            Week ${week} Results &nbsp;·&nbsp; <span style="color:var(--gold);">★ = Top 5 score</span>
+          </div>
+          ${resultsHtml}
+        </div>
+
+        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--red);padding:1rem;">
+          <div style="font-family:'Inter',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+            Top Scorers &nbsp;·&nbsp; <span style="color:var(--ink4);">(b) = reserve</span>
+          </div>
+          ${playersHtml}
+        </div>
+
+      </div>
+
+      <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);margin-bottom:0.75rem;padding-bottom:4px;border-bottom:2px solid var(--ink);">Season to Date</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;">
+
+        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--gold);padding:1rem;">
+          <div style="font-family:'Inter',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+            Point Pool · Thru Wk ${week}
+          </div>
+          ${ptsHtml}
+        </div>
+
+        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--ink2);padding:1rem;">
+          <div style="font-family:'Inter',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+            Season Record · Thru Wk ${week} &nbsp;·&nbsp; <span style="color:var(--ink4);">H2H + Top 5</span>
+          </div>
+          ${winsHtml}
+          ${missingNote}
+          ${sourceNote}
+        </div>
+
+        <div style="background:var(--paper2);border:1px solid var(--rule);border-top:3px solid var(--red);padding:1rem;">
+          <div style="font-family:'Inter',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+            Spiff Tracker · Thru Wk ${week}
+          </div>
+          ${spiffTrackerHtml}
+        </div>
+
+      </div>
+    </div>
+  `;
+}
+
+function renderReport(r) {
+  document.getElementById('masthead-date').textContent = `Week ${r.week} Edition`;
+
+  const paragraphs = r.body.split('\n\n').filter(p=>p.trim());
+  const firstPara = paragraphs[0];
+  const restParas = paragraphs.slice(1);
+
+  const spiffHtml = r.spiff ? `
+    <div class="spiff-banner">
+      <span class="spiff-icon">★</span>
+      <span class="spiff-text">SPIFF: ${r.spiff}</span>
+    </div>
+  ` : '';
+
+  const clubHtml = r.club ? `
+    <div class="club-box">
+      <div class="club-title">The 21 Club</div>
+      ${r.club.map(row=>`
+        <div class="club-row">
+          <span>${row[0]} <span class="club-team">(${row[2]})</span></span>
+          <span class="club-pts">${row[1]}</span>
+        </div>
+      `).join('')}
+    </div>
+  ` : '';
+
+  const midPoint = Math.floor(restParas.length / 2);
+  const sideboxes = [spiffHtml, clubHtml].filter(Boolean);
+
+  let col2Content = `<p>${firstPara}</p>`;
+  restParas.forEach((p, i) => {
+    col2Content += `<p>${p}</p>`;
+    if (i === midPoint && sideboxes[0]) col2Content += sideboxes[0];
+    if (i === midPoint + 1 && sideboxes[1]) col2Content += sideboxes[1];
+  });
+  if (sideboxes[2]) col2Content += sideboxes[2];
+  col2Content += `<div class="signoff">${r.signoff}</div>`;
+
+  // An archived 2025 report and a live 2026 report can share the same week number —
+  // route live reports to their own 'u'-prefixed data slot so they never collide.
+  const isArchived = REPORTS.some(x => x.week === r.week);
+  const dashboardHtml = renderDashboard(r.week, isArchived ? r.week : 'u' + r.week);
+
+  document.getElementById('content-area').innerHTML = `
+    <div class="edition-header">
+      <div class="edition-kicker">Week ${r.week} · MFL 2026 Season Report · McCann's Football League</div>
+      <div class="edition-headline">${r.headline}</div>
+      <div class="edition-deck">${r.deck}</div>
+      <div class="edition-byline">By ${r.author} &nbsp;·&nbsp; MFL Commissioner's Report &nbsp;·&nbsp; 2026 Season</div>
+    </div>
+    <div class="columns-2 article-body">${col2Content}</div>
+    ${dashboardHtml}
+    <div class="section-rule" style="margin-top:2rem;">
+      <span class="section-rule-text">End of Week ${r.week} Report</span>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap;">
+      ${currentWeek > 1 ? `<button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="navReport(-1)">← Previous Issue</button>` : ''}
+      <button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="showWeek(0,null)">All Issues</button>
+      ${currentWeek < 18 ? `<button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="navReport(1)">Next Issue →</button>` : ''}
+      ${!REPORTS.find(rr => rr.week === r.week) ? `<button class="compose-btn delete-post-btn" onclick="deleteReport(${r.week}, null)">🗑 Delete This Report</button>` : ''}
+    </div>
+    ${commentsHtml(r.week)}
+  `;
+  setTimeout(() => renderComments(r.week), 0);
+}
+
+function navReport(dir) {
+  const weeks = allReports().map(r=>r.week).sort((a,b)=>a-b);
+  const idx = weeks.indexOf(currentWeek);
+  const next = weeks[idx + dir];
+  if (next !== undefined) showWeek(next, null);
+}
+
+/* ════════════════════════════════════════════
+   COMPOSE — Modal, News Post, CBS Fetch
+════════════════════════════════════════════ */
+let newsItems = [];
+let newsCounter = 0;
+
+function allPosts() {
+  // Sort everything by its real publish time so the newest story (report or news) leads the page.
+  const reports = allReports().map(r => ({...r, type:'report', _sort: r.dateISO ? new Date(r.dateISO).getTime() : r.week}));
+  const news = newsItems.map(n => ({...n, _sort: new Date(n.dateISO).getTime()}));
+  return [...reports, ...news].sort((a,b) => b._sort - a._sort);
+}
+
+function openTypeModal() { document.getElementById('type-modal').classList.add('open'); }
+function closeTypeModal() { document.getElementById('type-modal').classList.remove('open'); }
+function openForm(type) {
+  closeTypeModal(); closeAllForms();
+  const form = document.getElementById(type === 'news' ? 'compose-news-form' : 'compose-form');
+  form.classList.add('open');
+  form.scrollIntoView({behavior:'smooth'});
+}
+function closeAllForms() {
+  document.getElementById('compose-form').classList.remove('open');
+  document.getElementById('compose-news-form').classList.remove('open');
+}
+function toggleCompose() { openTypeModal(); } // legacy shim
+
+function showNewsPost(id) {
+  const post = newsItems.find(n => n.id === id);
+  if (post) renderNewsPost(post);
+}
+
+function renderNewsPost(post) {
+  document.getElementById('masthead-date').textContent = `${post.category || 'League News'} · ${post.date}`;
+  const paragraphs = post.body.split('\n\n').filter(p=>p.trim());
+  let bodyHtml = `<p>${paragraphs[0]}</p>`;
+  paragraphs.slice(1).forEach(p => { bodyHtml += `<p>${p}</p>`; });
+  document.getElementById('content-area').innerHTML = `
+    <div class="edition-header">
+      <div class="edition-kicker" style="color:var(--red);">${post.category || 'League News'} · MFL Gazette · ${post.date}</div>
+      <div class="edition-headline">${post.headline}</div>
+      ${post.deck ? `<div class="edition-deck">${post.deck}</div>` : ''}
+      <div class="edition-byline">By ${post.author} &nbsp;·&nbsp; MFL Gazette</div>
+    </div>
+    <div class="article-body">${bodyHtml}</div>
+    <div class="section-rule" style="margin-top:2rem;"><span class="section-rule-text">End of Post</span></div>
+    <div style="display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap;">
+      <button class="compose-btn" style="background:var(--paper2);color:var(--ink2);border:1px solid var(--rule);" onclick="showWeek(0,null)">← All Issues</button>
+      <button class="compose-btn delete-post-btn" onclick="deleteNewsPost('${post.id}', null)">🗑 Delete This Post</button>
+    </div>
+    ${commentsHtml('news_' + post.id)}
+  `;
+  setTimeout(() => renderComments('news_' + post.id), 0);
+}
+
+async function publishNewsPost() {
+  const author = document.getElementById('fn-author').value.trim() || 'Commissioner';
+  const category = document.getElementById('fn-category').value;
+  const headline = document.getElementById('fn-headline').value.trim();
+  const deck = document.getElementById('fn-deck').value.trim();
+  const body = document.getElementById('fn-body').value.trim();
+  if (!headline || !body) { alert('Please add at least a headline and body text.'); return; }
+  const now = new Date();
+  const date = now.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+  const dateISO = now.toISOString();
+  const id = 'np' + (++newsCounter) + '_' + Date.now();
+  const post = { type:'news', id, author, category, headline, deck, body, date, dateISO };
+  newsItems.unshift({ ...post });
+  ['fn-author','fn-headline','fn-deck','fn-body'].forEach(i => document.getElementById(i).value = '');
+  document.getElementById('fn-category').value = '';
+  closeAllForms();
+  showNewsPost(id);
+  const savedRow = await saveToDB({ type:'news', author, category, headline, deck, body });
+  if (savedRow && savedRow.id) {
+    const idx = newsItems.findIndex(n => n.id === id);
+    if (idx > -1) newsItems[idx].id = savedRow.id;
+  }
+}
+
+// Parses the Week Scores field: one "TEAM PTS - TEAM PTS" line per game.
+// Returns an array of {h, hp, a, ap} — same shape GAZETTE_SCHEDULE entries use —
+// so it can overwrite that week's matchups directly. Lines that don't match are skipped.
+// CBS sometimes uses abbreviations that differ from MFL's standard ones.
+const ABBR_ALIASES = { 'BLC':'BLU' };
+function normAbbr(t) { t = (t || '').toUpperCase(); return ABBR_ALIASES[t] || t; }
+
+function parseGameScores(raw) {
   if (!raw) return [];
   return raw.split('\n').map(line => {
+    // Accepts "-", "–", "—" or "vs" between the two sides.
     const m = line.trim().match(/^(\S+)\s+([\d.]+)\s*(?:-|–|—|vs\.?)\s*(\S+)\s+([\d.]+)\s*$/i);
     if (!m) return null;
-    const ab = t => { t = t.toUpperCase(); return t === 'BLC' ? 'BLU' : t; };
-    return { h: ab(m[1]), hp: parseFloat(m[2]), a: ab(m[3]), ap: parseFloat(m[4]) };
+    return { h: normAbbr(m[1]), hp: parseFloat(m[2]), a: normAbbr(m[3]), ap: parseFloat(m[4]) };
   }).filter(Boolean);
 }
-let standingsThru = 0;
 
-async function loadLiveData() {
-  if (typeof supabase === 'undefined') return;
-  const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
-
-  if (await loadStandings(client)) {
-    standingsThru = latestStandingsWeek();
-    const snap = STANDINGS[standingsThru];
-    TEAMS.forEach(t => {
-      const r = snap[HQ_ABBR[t.id]];
-      if (r) { t.h2h = r.h2h_w; t.top5 = r.top5_w; t.pts = r.pf; }
-    });
-    currentWeek = Math.min(18, standingsThru + 1);
-  }
-
-  const { data, error } = await client.from('posts').select('week,scores,spiff,created_at')
-    .eq('type', 'report').order('created_at', { ascending: false });
-  if (!error && data) {
-    const seen = new Set();
-    data.forEach(row => {
-      const w = parseInt(row.week);
-      if (seen.has(w)) return;            // newest report for each week wins
-      seen.add(w);
-      const games = hqParseScores(row.scores);
-      if (games.length === 5 && Array.isArray(SCHEDULE[w])) {
-        SCHEDULE[w] = games;
-        weekScores[w] = Object.fromEntries(games.flatMap(g => [[g.h, g.hp], [g.a, g.ap]]));
-      }
-      if (row.spiff && spiffData[w - 1]) spiffData[w - 1].winner = row.spiff;
-    });
-    TEAMS.forEach(t => {
-      t.spiffs = spiffData.filter(s => FULLNAME_TO_ABBR[(s.winner || '').trim().toLowerCase()] === HQ_ABBR[t.id]).length;
-    });
-  }
-
-  const sel = document.getElementById('cur-week-sel');
-  if (sel && [...sel.options].some(o => parseInt(o.value) === currentWeek)) sel.value = currentWeek;
-  document.getElementById('header-week').textContent = weekLabel(currentWeek);
-  if (standingsThru) document.getElementById('standings-source').textContent =
-    `Through Week ${standingsThru} · from CBS standings (ties decided by that week's bench points)`;
-  renderStandings(); renderWeekGrid(); renderAdmin(); renderEarnings();
-  if (activeWeek) openWeek(activeWeek);
+// Parses the Top 10 Players field: "NAME TEAM PTS" with an optional trailing "*" for bench.
+// Reads from the RIGHT so multi-word names ("J. Smith-Njigba", "K. Walker III") stay intact.
+function parsePlayers(raw) {
+  if (!raw) return [];
+  return raw.split('\n').map(line => {
+    const m = line.trim().match(/^(.+?)\s+([A-Za-z]{2,4})\s+([\d.]+)\s*(\*)?\s*$/);
+    if (!m) return null;
+    return { name: m[1], team: normAbbr(m[2]), pts: parseFloat(m[3]), bench: !!m[4] };
+  }).filter(Boolean);
 }
 
-const DRAFT_ORDER = ['Big Dogs','Legends','Clapperz','Crankees','Huterball','Blue Cheese','Out of Luck','Jackpots','Slimey Dogs','Wizards'];
-const POOL_PRIZES = [750,600,400,275,150,0,0,0,0,0];
-const PLAYOFF_PRIZES = [600,450,325,250,175,130,100,75,50,0];
-const MATCHUPS = [
-  [0,1],[2,3],[4,5],[6,7],[8,9], // wk1
-  [0,2],[1,3],[4,6],[5,7],[8,0], // wk2 — simplified example
+// Parses the Point Pool field: "TEAM PTS" per line.
+function parsePool(raw) {
+  if (!raw) return [];
+  return raw.split('\n').map(line => {
+    const m = line.trim().match(/^(\S+)\s+([\d.]+)\s*$/);
+    return m ? [normAbbr(m[1]), parseFloat(m[2])] : null;
+  }).filter(Boolean);
+}
+
+// Stores everything the dashboard needs for one week in one place.
+function storeWeekData(week, scoresRaw, playersRaw, poolRaw) {
+  const key = 'u' + week;
+  const games = parseGameScores(scoresRaw);
+  if (games.length) GAZETTE_SCHEDULE[key] = games;
+  WEEK_DATA[key] = WEEK_DATA[key] || {};
+  const players = parsePlayers(playersRaw);
+  if (players.length) WEEK_DATA[key].players = players;
+  const pool = parsePool(poolRaw);
+  if (pool.length) WEEK_DATA[key].cumPts = Object.fromEntries(pool);
+}
+
+// Checks the three data fields before publishing; returns a list of problems (empty = OK).
+function validateWeekFields(scoresRaw, playersRaw, poolRaw) {
+  const problems = [];
+  const lines = s => s ? s.split('\n').filter(l => l.trim()).length : 0;
+  const games = parseGameScores(scoresRaw), players = parsePlayers(playersRaw), pool = parsePool(poolRaw);
+  if (games.length !== 5) problems.push(`Week Scores: ${games.length} of 5 games recognized` + (lines(scoresRaw) > games.length ? ` (${lines(scoresRaw) - games.length} line(s) not in "TEAM PTS - TEAM PTS" format)` : ''));
+  if (players.length < 10) problems.push(`Top 10 Players: ${players.length} player(s) recognized` + (lines(playersRaw) > players.length ? ` (${lines(playersRaw) - players.length} line(s) not in "NAME TEAM PTS" format)` : ''));
+  if (pool.length !== 10) problems.push(`Point Pool: ${pool.length} of 10 teams recognized`);
+  const bad = new Set();
+  games.forEach(g => [g.h, g.a].forEach(t => { if (!TEAM_ABBR[t]) bad.add(t); }));
+  players.forEach(p => { if (!TEAM_ABBR[p.team]) bad.add(p.team); });
+  pool.forEach(([t]) => { if (!TEAM_ABBR[t]) bad.add(t); });
+  if (bad.size) problems.push(`Unknown team abbreviation(s): ${[...bad].join(', ')}`);
+  return problems;
+}
+
+async function publishReport() {
+  const week = parseInt(document.getElementById('f-week').value);
+  const author = document.getElementById('f-author').value.trim() || 'Commissioner';
+  const headline = document.getElementById('f-headline').value.trim();
+  const deck = document.getElementById('f-deck').value.trim();
+  const body = document.getElementById('f-body').value.trim();
+  const spiff = document.getElementById('f-spiff').value.trim() || null;
+  const poolRaw = document.getElementById('f-pool').value.trim();
+  const signoff = document.getElementById('f-signoff').value.trim() || 'Have a great week!';
+  if (!headline || !body) { alert('Please add at least a headline and body text.'); return; }
+  const scoresRaw = document.getElementById('f-scores').value.trim();
+  const playersRaw = document.getElementById('f-players').value.trim();
+  const problems = validateWeekFields(scoresRaw, playersRaw, poolRaw);
+  if (problems.length && !confirm('The dashboard data has problems:\n\n• ' + problems.join('\n• ') + '\n\nPublish anyway? (Cancel to go back and fix.)')) return;
+  const pool = parsePool(poolRaw);
+  const report = { week, author, headline, deck, body, spiff, pool, signoff, dateISO: new Date().toISOString() };
+  storeWeekData(week, scoresRaw, playersRaw, poolRaw);
+  userReports = userReports.filter(r=>r.week !== week);
+  userReports.push(report);
+  ['f-headline','f-deck','f-body','f-spiff','f-pool','f-scores','f-players'].forEach(id=>{ document.getElementById(id).value=''; });
+  document.getElementById('f-signoff').value = 'Have a great week!';
+  document.getElementById('scores-autofill-badge').style.display = 'none';
+  document.getElementById('pool-autofill-badge').style.display = 'none';
+  closeAllForms();
+  addWeekTab(week);
+  showWeek(week, null);
+  await saveToDB({ type:'report', week: week, author, headline, deck, body, spiff: spiff||'', pool: poolRaw, scores: scoresRaw, players: playersRaw, signoff });
+}
+
+/* ── CBS FETCH ── */
+const CBS_NAME_TO_ABBR = {
+  'Big Dogs':'BDG','Blue Cheese':'BLU','Clapperz':'CLP','Crankees':'CRK',
+  'Huterball':'HBL','Jackpots':'POT','Legends of The Fall':'LOF',
+  'out of luck':'OOL','Out of Luck':'OOL','Slimy Dogs':'SDG','Westchester Wizards':'WIZ'
+};
+function setStatus(msg, type='') {
+  const el = document.getElementById('cbs-status');
+  el.textContent = msg;
+  el.className = 'cbs-fetch-status' + (type ? ' '+type : '');
+}
+function fetchFromCBS() {
+  const year = document.getElementById('f-cbs-year').value;
+  const week = document.getElementById('f-cbs-week').value;
+  const consoleScript = `(function(){const text=document.body.innerText;const lines=text.split('\\n').map(l=>l.trim()).filter(Boolean);const periods=[];let current=null;for(const line of lines){const pm=line.match(/PERIOD (\\d+):/);if(pm){if(current)periods.push(current);current={week:parseInt(pm[1]),matchups:[],scores:[]};continue;}if(!current)continue;const mm=line.match(/^(.+?)\\s*\\([WL]\\)\\s+(.+?)\\s*\\([WL]\\)\\s+([\\d.]+)\\s*-\\s*([\\d.]+)$/);if(mm){current.matchups.push({home:mm[1].trim(),away:mm[2].trim(),hpts:parseFloat(mm[3]),apts:parseFloat(mm[4])});continue;}const sm=line.match(/^(.+?)\\t(\\d+)\\t(\\d+)\\t(\\d+)\\t([\\d.]+)$/);if(sm)current.scores.push({team:sm[1].trim(),pts:parseFloat(sm[5])});}if(current)periods.push(current);const wk=periods.find(p=>p.week===${week});if(!wk){alert('Week ${week} not found');return;}const json=JSON.stringify(wk);navigator.clipboard.writeText(json).then(()=>alert('Week ${week} data copied! Go back to the Gazette and paste it.')).catch(()=>prompt('Copy this:',json));})();`;
+  window.open(`https://mcfl20.football.cbssports.com/schedule/full/${year}`, '_blank');
+  document.getElementById('cbs-import-panel').style.display = 'block';
+  setStatus('✓ CBS opened in new tab. Open browser console (F12 → Console), paste the script below, press Enter, then paste the result above.', 'ok');
+  const existing = document.getElementById('cbs-console-script-box');
+  if (existing) existing.remove();
+  const scriptBox = document.createElement('div');
+  scriptBox.id = 'cbs-console-script-box';
+  scriptBox.style.cssText = 'margin-top:1rem;border-top:1px solid rgba(255,255,255,0.15);padding-top:1rem;';
+  scriptBox.innerHTML = `
+    <div style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;">Console script — paste into CBS browser console (F12):</div>
+    <textarea id="cbs-script-ta" style="width:100%;min-height:70px;background:rgba(0,0,0,0.4);color:#7ddc7d;border:1px solid rgba(255,255,255,0.1);padding:8px;font-family:monospace;font-size:11px;resize:vertical;box-sizing:border-box;" readonly>${consoleScript}</textarea>
+    <button onclick="document.getElementById('cbs-script-ta').select();document.execCommand('copy');this.textContent='Copied ✓';" style="margin-top:6px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:rgba(255,255,255,0.15);color:var(--paper);border:1px solid rgba(255,255,255,0.2);padding:5px 14px;cursor:pointer;">Copy Script</button>
+  `;
+  document.querySelector('.cbs-fetch-panel').appendChild(scriptBox);
+}
+function importCBSData() {
+  const raw = document.getElementById('cbs-json-input').value.trim();
+  if (!raw) { setStatus('Paste the CBS JSON data first.', 'err'); return; }
+  let data;
+  try { data = JSON.parse(raw); } catch(e) { setStatus('Could not parse — make sure you pasted the full output.', 'err'); return; }
+  if (!data.week || !data.scores || !data.matchups) { setStatus('Data looks incomplete.', 'err'); return; }
+  document.getElementById('f-week').value = data.week;
+  const sorted = [...data.scores].sort((a,b)=>b.pts-a.pts);
+  document.getElementById('f-scores').value = data.matchups.map(m=>{
+    const hA=CBS_NAME_TO_ABBR[m.home]||m.home, aA=CBS_NAME_TO_ABBR[m.away]||m.away;
+    return `${hA} ${m.hpts.toFixed(1)} - ${aA} ${m.apts.toFixed(1)}`;
+  }).join('\n');
+  document.getElementById('scores-autofill-badge').style.display = 'inline';
+  document.getElementById('f-pool').value = sorted.map(s=>`${CBS_NAME_TO_ABBR[s.team]||s.team.substring(0,3).toUpperCase()} ${Math.round(s.pts)}`).join('\n');
+  document.getElementById('pool-autofill-badge').style.display = 'inline';
+  if (!document.getElementById('f-body').value.trim()) {
+    const summary = data.matchups.map(m=>{
+      const hA=CBS_NAME_TO_ABBR[m.home]||m.home, aA=CBS_NAME_TO_ABBR[m.away]||m.away;
+      const w=m.hpts>=m.apts?hA:aA, l=m.hpts>=m.apts?aA:hA, wp=m.hpts>=m.apts?m.hpts:m.apts, lp=m.hpts>=m.apts?m.apts:m.hpts;
+      return `${w} def. ${l} ${wp}–${lp}`;
+    }).join('\n');
+    document.getElementById('f-body').value = `Week ${data.week} results:\n\n${summary}\n\n[Add your commentary here]`;
+  }
+  setStatus(`✓ Week ${data.week} imported — scores and standings filled. Add commentary and publish!`, 'ok');
+  document.getElementById('cbs-import-panel').style.display = 'none';
+  const sb = document.getElementById('cbs-console-script-box');
+  if (sb) sb.remove();
+  document.getElementById('f-body').scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+/* ════════════════════════════════════════════
+   COMMENTS — localStorage per week
+════════════════════════════════════════════ */
+const TEAMS_LIST = [
+  {abbr:'BDG', name:'Big Dogs'},
+  {abbr:'BLU', name:'Blue Cheese'},
+  {abbr:'CLP', name:'Clapperz'},
+  {abbr:'CRK', name:'Crankees'},
+  {abbr:'HBL', name:'Huterball'},
+  {abbr:'POT', name:'Jackpots'},
+  {abbr:'LOF', name:'Legends'},
+  {abbr:'OOL', name:'Out of Luck'},
+  {abbr:'SDG', name:'Slimey Dogs'},
+  {abbr:'WIZ', name:'Wizards'}
 ];
 
-let currentWeek = 4;
-let weekScores = {}; // { week: { teamId: { pts } } }
-let spiffData = Array.from({length:18},(_,i)=>({id:i+1, name:`Spiff ${i+1}`, winner:'TBD', paid:false}));
-spiffData[0].winner = 'Clapperz'; // Week 1 high score: 76
-spiffData[1].winner = 'Big Dogs'; // Week 2 high score: 80
-spiffData[2].winner = 'Huterball'; // Week 3 high score: 69
+function commentsKey(week) { return `mfl_comments_wk${week}`; }
 
-/* ══════════════════════════════════════════════
-   NAV
-══════════════════════════════════════════════ */
-function showSection(id, btn) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  if (btn) btn.classList.add('active');
+function loadComments(week) {
+  try { return JSON.parse(localStorage.getItem(commentsKey(week)) || '[]'); }
+  catch(e) { return []; }
 }
 
-/* ══════════════════════════════════════════════
-   TOAST
-══════════════════════════════════════════════ */
-function toast(msg) {
-  const t = document.getElementById('toast');
+function saveComments(week, comments) {
+  localStorage.setItem(commentsKey(week), JSON.stringify(comments));
+}
+
+function initials(abbr) {
+  return abbr.slice(0, 2);
+}
+
+function renderComments(week) {
+  const comments = loadComments(week);
+  const list = document.getElementById(`comments-list-${week}`);
+  const count = document.getElementById(`comments-count-${week}`);
+  if (!list) return;
+
+  count.textContent = comments.length > 0 ? `${comments.length} comment${comments.length>1?'s':''}` : '';
+
+  if (comments.length === 0) {
+    list.innerHTML = '<div class="no-comments">No comments yet — be the first to weigh in.</div>';
+    return;
+  }
+
+  list.innerHTML = comments.map((c, i) => `
+    <div class="comment-item">
+      <div class="comment-avatar">${initials(c.abbr)}</div>
+      <div class="comment-body">
+        <div class="comment-meta">
+          <span class="comment-team">${c.team}</span>
+          &nbsp;·&nbsp; ${c.date}
+          <button class="comment-delete" onclick="deleteComment(${week}, ${i})" title="Delete">✕</button>
+        </div>
+        <div class="comment-text">${escHtml(c.text)}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function submitComment(week) {
+  const sel = document.getElementById(`comment-team-${week}`);
+  const inp = document.getElementById(`comment-text-${week}`);
+  const abbr = sel.value;
+  const text = inp.value.trim();
+  if (!abbr || !text) { inp.focus(); return; }
+
+  const team = TEAMS_LIST.find(t=>t.abbr===abbr);
+  const now = new Date();
+  const date = now.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+
+  const comments = loadComments(week);
+  comments.push({abbr, team: team ? team.name : abbr, text, date});
+  saveComments(week, comments);
+
+  inp.value = '';
+  renderComments(week);
+}
+
+function deleteComment(week, idx) {
+  const comments = loadComments(week);
+  comments.splice(idx, 1);
+  saveComments(week, comments);
+  renderComments(week);
+}
+
+function commentsHtml(week) {
+  const teamOptions = TEAMS_LIST.map(t=>`<option value="${t.abbr}">${t.name}</option>`).join('');
+  return `
+    <div class="comments-section">
+      <div class="comments-header">
+        Owners' Locker Room &nbsp;<span id="comments-count-${week}" style="font-size:10px;color:var(--ink4);"></span>
+      </div>
+      <div class="comment-list" id="comments-list-${week}"></div>
+      <div class="comment-form">
+        <div class="comment-form-title">Leave a comment</div>
+        <div class="comment-form-row">
+          <select class="comment-select" id="comment-team-${week}">
+            <option value="">— Select your team —</option>
+            ${teamOptions}
+          </select>
+        </div>
+        <div class="comment-form-row">
+          <textarea class="comment-input" id="comment-text-${week}" placeholder="Weigh in on the week's action..." maxlength="500"></textarea>
+          <button class="comment-submit" onclick="submitComment(${week})">Post</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function addWeekTab(week) {
+  const bar = document.querySelector('.archive-bar');
+  const existing = [...bar.querySelectorAll('.week-tab')].find(b=>b.textContent.trim()===`Wk ${week}`);
+  if (!existing) {
+    const btn = document.createElement('button');
+    btn.className = 'week-tab';
+    btn.textContent = `Wk ${week}`;
+    btn.onclick = function(){ showWeek(week, this); };
+    bar.appendChild(btn);
+  }
+}
+
+/* ════════════════════════════════════════════
+   SUPABASE — persistence layer
+════════════════════════════════════════════ */
+const SUPABASE_URL = 'https://zbwcvnquubmnxzbbbevc.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpid2N2bnF1dWJtbnh6YmJiZXZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5NTQ1OTMsImV4cCI6MjA5ODUzMDU5M30.OTymmeVQJkerF38LGCflV3HGCmuY3mzrAhvZ5eolEt8';
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+async function saveToDB(post) {
+  const { data, error } = await db.from('posts').insert([post]).select();
+  if (error) {
+    console.error('Save failed:', error.message);
+    showToast('⚠️ Post published locally but failed to save to database. Check console.', 4000);
+    return null;
+  } else {
+    showToast('✓ Post saved and published!');
+    return data && data[0] ? data[0] : null;
+  }
+}
+
+/* ── COMMISSIONER PASSWORD GATE ──
+   This only guards against accidental/casual clicks by teammates browsing
+   the site — anyone who opens the browser's dev tools could read this
+   password in the page source, so don't reuse a password you care about
+   protecting elsewhere. Change the word below to whatever you like. */
+const COMMISSIONER_PASSWORD = 'mfl2026';
+
+function checkAdminPassword() {
+  if (sessionStorage.getItem('mfl_admin_ok') === '1') return true;
+  const entered = prompt('Enter the commissioner password to continue:');
+  if (entered === null) return false;
+  if (entered === COMMISSIONER_PASSWORD) {
+    sessionStorage.setItem('mfl_admin_ok', '1');
+    return true;
+  }
+  alert('Incorrect password.');
+  return false;
+}
+
+async function deleteNewsPost(id, event) {
+  if (event) event.stopPropagation();
+  if (!checkAdminPassword()) return;
+  if (!confirm('Delete this post? This cannot be undone.')) return;
+  const { error } = await db.from('posts').delete().eq('id', id).eq('type', 'news');
+  if (error) {
+    console.error('Delete failed:', error.message);
+    showToast('⚠️ Delete failed — check console.', 4000);
+    return;
+  }
+  newsItems = newsItems.filter(n => n.id !== id);
+  showToast('🗑 Post deleted.');
+  showWeek(0, null);
+}
+
+async function deleteReport(week, event) {
+  if (event) event.stopPropagation();
+  if (REPORTS.find(r => r.week === week)) {
+    alert("This is an archived season report built into the site's code — it can't be deleted from here.");
+    return;
+  }
+  if (!checkAdminPassword()) return;
+  if (!confirm(`Delete the Week ${week} report? This cannot be undone.`)) return;
+  const { error } = await db.from('posts').delete().eq('type', 'report').eq('week', week);
+  if (error) {
+    console.error('Delete failed:', error.message);
+    showToast('⚠️ Delete failed — check console.', 4000);
+    return;
+  }
+  userReports = userReports.filter(r => r.week !== week);
+  delete WEEK_DATA['u' + week];
+  delete GAZETTE_SCHEDULE['u' + week];
+  document.querySelectorAll('.week-tab').forEach(t => {
+    if (t.textContent.trim() === `Wk ${week}`) t.remove();
+  });
+  showToast('🗑 Report deleted.');
+  showWeek(0, null);
+}
+
+
+async function loadPostsFromDB() {
+  const { data, error } = await db.from('posts').select('*').order('created_at', { ascending: false });
+  if (error) { console.error('Load failed:', error.message); return; }
+  if (!data || !data.length) return;
+
+  for (const row of data) {
+    if (row.type === 'report') {
+      // Avoid duplicating hardcoded REPORTS
+      if (REPORTS.find(r => r.week === parseInt(row.week))) continue;
+      if (userReports.find(r => r.week === parseInt(row.week))) continue;
+      const pool = parsePool(row.pool);
+      const report = { week: parseInt(row.week), author: row.author, headline: row.headline, deck: row.deck, body: row.body, spiff: row.spiff, pool, signoff: row.signoff, dateISO: row.created_at };
+      userReports.push(report);
+      // GAZETTE_SCHEDULE lives in memory only (not saved to Supabase), so it has to be
+      // rebuilt from the saved raw scores text on every page load, same as at publish time.
+      // Rows reaching this point are always live reports (the REPORTS.find check above skips
+      // archived weeks), so the 'u' prefix here always matches publishReport()'s dataKey.
+      storeWeekData(parseInt(row.week), row.scores, row.players, row.pool);
+      addWeekTab(parseInt(row.week));
+    } else if (row.type === 'news') {
+      if (newsItems.find(n => n.id === row.id)) continue;
+      newsItems.push({ type:'news', id: row.id, author: row.author, category: row.category, headline: row.headline, deck: row.deck, body: row.body, date: new Date(row.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}), dateISO: row.created_at });
+    }
+  }
+}
+
+function showToast(msg, duration=2500) {
+  let t = document.getElementById('db-toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'db-toast';
+    t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:var(--ink);color:var(--paper);font-family:"Inter",sans-serif;font-size:13px;letter-spacing:1px;padding:10px 18px;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;';
+    document.body.appendChild(t);
+  }
   t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 2500);
+  t.style.opacity = '1';
+  setTimeout(() => { t.style.opacity = '0'; }, duration);
 }
 
-/* ══════════════════════════════════════════════
-   WEEK HEADER
-══════════════════════════════════════════════ */
-function weekLabel(w) {
-  if (w <= 13) return `WEEK ${w} · REG SEASON`;
-  if (w === 18) return `WEEK 18 · DERBY`;
-  return `WEEK ${w} · POSTSEASON`;
-}
-function updateWeek() {
-  currentWeek = parseInt(document.getElementById('cur-week-sel').value);
-  document.getElementById('header-week').textContent = weekLabel(currentWeek);
-  renderWeekGrid();
-}
-
-/* ══════════════════════════════════════════════
-   STANDINGS
-══════════════════════════════════════════════ */
-function rankClass(i) {
-  if (i===0) return 'gold'; if (i===1) return 'silver'; if (i===2) return 'bronze'; return '';
-}
-
-function renderStandings() {
-  const sorted = [...TEAMS].sort((a,b)=>{
-    const wa = a.h2h+a.top5, wb = b.h2h+b.top5;
-    if (wb!==wa) return wb-wa;
-    return b.pts-a.pts;
-  });
-  const poolSorted = [...TEAMS].sort((a,b)=>b.pts-a.pts);
-  const maxPts = poolSorted[0].pts || 1;
-
-  document.getElementById('standings-body').innerHTML = sorted.map((t,i)=>{
-    const tw = t.h2h+t.top5;
-    return `<tr>
-      <td><span class="rank ${rankClass(i)}">${i+1}</span></td>
-      <td><div class="team-cell"><div class="name">${t.name}</div><div class="owners">${t.owners}</div></div></td>
-      <td><span class="num">${t.h2h}</span></td>
-      <td><span class="num">${t.top5}</span></td>
-      <td><span class="num" style="color:var(--text);">${tw}</span></td>
-      <td><span class="num">${t.pts.toFixed(1)}</span></td>
-      <td><span class="money">$${tw*40}</span></td>
-    </tr>`;
-  }).join('');
-
-  document.getElementById('pool-body').innerHTML = poolSorted.map((t,i)=>{
-    const pct = maxPts>0 ? Math.round(t.pts/maxPts*100) : 0;
-    return `<tr>
-      <td><span class="rank ${rankClass(i)}">${i+1}</span></td>
-      <td><div class="team-cell"><div class="name">${t.name}</div><div class="owners">${t.owners}</div></div></td>
-      <td><span class="num">${t.pts.toFixed(1)}</span></td>
-      <td style="min-width:100px;"><div class="progress-wrap"><div class="progress-bar" style="width:${pct}%"></div></div></td>
-      <td><span class="money">${POOL_PRIZES[i]>0?'$'+POOL_PRIZES[i]:'—'}</span></td>
-    </tr>`;
-  }).join('');
-
-  // stat cards
-  const totalWins = TEAMS.reduce((s,t)=>s+t.h2h+t.top5,0);
-  const totalPts = TEAMS.reduce((s,t)=>s+t.pts,0);
-  document.getElementById('stats-row').innerHTML = `
-    <div class="stat-card"><div class="stat-label">Current Week</div><div class="stat-val">${currentWeek}</div><div class="stat-sub">of 18</div></div>
-    <div class="stat-card"><div class="stat-label">Wins Awarded</div><div class="stat-val">${totalWins}</div><div class="stat-sub">of 130 reg season</div></div>
-    <div class="stat-card"><div class="stat-label">Prize Pool</div><div class="stat-val">$10,000</div><div class="stat-sub">10 × $1,000 buy-in</div></div>
-    <div class="stat-card"><div class="stat-label">Total Pts Scored</div><div class="stat-val">${totalPts.toFixed(0)}</div><div class="stat-sub">all teams combined</div></div>
-  `;
-
-  renderEarnings();
-}
-
-/* ══════════════════════════════════════════════
-   SCHEDULE
-══════════════════════════════════════════════ */
-function weekType(w) {
-  if (w<=13) return {label:'REG', cls:''};
-  if (w===18) return {label:'DERBY', cls:'derby'};
-  return {label:'POST', cls:'post'};
-}
-
-function renderWeekGrid() {
-  document.getElementById('week-grid').innerHTML = Array.from({length:18},(_,i)=>{
-    const w = i+1;
-    const wt = weekType(w);
-    const done = weekScores[w] && Object.keys(weekScores[w]).length>0;
-    const cur = w===currentWeek;
-    const cls = done?'complete':cur?'current':wt.cls;
-    return `<div class="week-pill ${cls}" onclick="openWeek(${w})">
-      <div class="week-num">W${w}</div>
-      <div class="week-type">${wt.label}</div>
-    </div>`;
-  }).join('');
-}
-
-let activeWeek = null;
-function openWeek(w) {
-  activeWeek = w;
-  const wt = weekType(w);
-  const detail = document.getElementById('week-detail');
-  const title = document.getElementById('week-detail-title');
-  const badge = document.getElementById('week-type-badge');
-  const display = document.getElementById('matchup-display');
-
-  title.textContent = `Week ${w} Matchups`;
-  badge.textContent = wt.label==='REG'?'Regular Season':wt.label==='DERBY'?'Week 18 Derby':'Postseason';
-  badge.className = 'badge ' + (wt.label==='REG'?'badge-gray':wt.label==='DERBY'?'badge-gold':'badge-blue');
-
-  const matchups = SCHEDULE[w];
-
-  if (w === 18 || matchups === 'derby') {
-    display.innerHTML = `
-      <div style="padding:1.25rem;">
-        <div style="font-size:13px;color:var(--text2);margin-bottom:1rem;">All-play format — no head-to-head matchups. All 10 teams submit lineups. Top 5 scoring teams earn <strong style="color:var(--green);">$40</strong> each.</div>
-        <table>
-          <thead><tr><th>#</th><th>Team</th><th>Score</th><th>Result</th></tr></thead>
-          <tbody>
-            ${[{t:'BDG',p:50},{t:'BLU',p:49},{t:'OOL',p:49},{t:'LOF',p:44},{t:'POT',p:34},{t:'SDG',p:27},{t:'CRK',p:24},{t:'WIZ',p:20},{t:'HBL',p:15},{t:'CLP',p:3}]
-              .map((r,i)=>`<tr>
-                <td><span class="rank ${i===0?'gold':i===1?'silver':i===2?'bronze':''}">${i+1}</span></td>
-                <td><div class="team-cell"><div class="name">${TEAM_NAMES[r.t]}</div><div class="owners">${r.t}</div></div></td>
-                <td><span class="num">${r.p.toFixed(1)}</span></td>
-                <td>${i<5?'<span class="money">+$40</span>':'<span style="color:var(--text3);">—</span>'}</td>
-              </tr>`).join('')}
-          </tbody>
-        </table>
-      </div>`;
-  } else if (!matchups) {
-    display.innerHTML = `<div style="padding:1.25rem;color:var(--text3);font-size:13px;">Schedule not available for this week.</div>`;
-  } else {
-    // Find top 5 scores across all teams this week for top-5 win indicator
-    const allScores = matchups.flatMap(m=>[{team:m.h,pts:m.hp},{team:m.a,pts:m.ap}])
-      .sort((a,b)=>b.pts-a.pts);
-    // Winners and top-5 wins come from the CBS standings snapshots when saved, so
-    // bench-point tiebreaks match CBS; otherwise fall back to comparing scores.
-    const wr = weekResultsFromStandings(w);
-    const cut = allScores[Math.min(4, allScores.length - 1)].pts;
-    const top5 = new Set(wr ? Object.keys(wr).filter(t => wr[t].top5Win)
-                            : allScores.filter(s => s.pts >= cut).map(s => s.team));
-
-    display.innerHTML = `
-      <table>
-        <thead>
-          <tr>
-            <th>Home</th>
-            <th style="text-align:center;">Score</th>
-            <th style="text-align:right;">Away</th>
-            <th style="text-align:center;">Top-5</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${matchups.map(m => {
-            const hWin = wr && wr[m.h] ? wr[m.h].h2hWin : m.hp > m.ap;
-            const tie  = !wr && m.hp === m.ap;
-            const hTop = top5.has(m.h);
-            const aTop = top5.has(m.a);
-            return `<tr>
-              <td>
-                <div class="team-cell">
-                  <div class="name" style="${hWin||tie?'font-weight:600;':''}">${TEAM_NAMES[m.h]}</div>
-                  <div class="owners">${m.h}</div>
-                </div>
-              </td>
-              <td style="text-align:center;">
-                <span style="font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:${hWin?'var(--green)':'var(--text3)'};">${m.hp.toFixed(1)}</span>
-                <span style="font-size:11px;color:var(--text3);margin:0 4px;">–</span>
-                <span style="font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:${!hWin&&!tie?'var(--green)':'var(--text3)'};">${m.ap.toFixed(1)}</span>
-              </td>
-              <td style="text-align:right;">
-                <div class="team-cell" style="align-items:flex-end;">
-                  <div class="name" style="${!hWin&&!tie?'font-weight:600;':''}">${TEAM_NAMES[m.a]}</div>
-                  <div class="owners">${m.a}</div>
-                </div>
-              </td>
-              <td style="text-align:center;">
-                ${hTop&&aTop?'<span class="badge badge-gold">Both</span>':hTop?`<span class="badge badge-green">${m.h}</span>`:aTop?`<span class="badge badge-green">${m.a}</span>`:'<span style="color:var(--text3);font-size:12px;">—</span>'}
-              </td>
-            </tr>`;
-          }).join('')}
-        </tbody>
-      </table>
-      <div style="padding:0.75rem 1.25rem;border-top:0.5px solid var(--border);font-size:11px;color:var(--text3);">
-        Winners in green · Top-5 scoring teams earn an additional win · A tied matchup score is decided by bench points (CBS reflects this in the win/loss)
-      </div>
-    `;
-  }
-
-  detail.style.display = 'block';
-  detail.scrollIntoView({behavior:'smooth'});
-}
-
-/* ══════════════════════════════════════════════
-   FINANCES
-══════════════════════════════════════════════ */
-function renderEarnings() {
-  const totalSpiffs = spiffData.filter(s=>s.paid).length * 15;
-  const totalWinMoney = TEAMS.reduce((s,t)=>(s+(t.h2h+t.top5)*40),0);
-  const distributed = totalWinMoney + totalSpiffs;
-
-  document.getElementById('fin-stats-row').innerHTML = `
-    <div class="stat-card"><div class="stat-label">Total Pool</div><div class="stat-val">$10,000</div><div class="stat-sub">10 × $1,000 buy-in</div></div>
-    <div class="stat-card"><div class="stat-label">Distributed</div><div class="stat-val">$${distributed}</div><div class="stat-sub">${Math.round(distributed/100)}% paid out</div></div>
-    <div class="stat-card"><div class="stat-label">Remaining</div><div class="stat-val">$${10000-distributed}</div><div class="stat-sub">pending</div></div>
-    <div class="stat-card"><div class="stat-label">Spiffs Paid</div><div class="stat-val">${spiffData.filter(s=>s.paid).length}/18</div><div class="stat-sub">$${totalSpiffs} of $270</div></div>
-  `;
-
-  document.getElementById('earnings-body').innerHTML = TEAMS.map(t=>{
-    const winMoney = (t.h2h+t.top5)*40;
-    const spiffMoney = t.spiffs*15;
-    const total = winMoney+spiffMoney+t.postseason;
-    const net = total-1000;
-    return `<tr>
-      <td><div class="team-cell"><div class="name">${t.name}</div><div class="owners">${t.owners}</div></div></td>
-      <td><span class="num">$${winMoney}</span></td>
-      <td><span class="num">$${spiffMoney}</span></td>
-      <td><span class="num">$${t.postseason}</span></td>
-      <td><span class="money">$${total}</span></td>
-      <td><span class="money ${net<0?'neg':''}">${net>=0?'+':''}$${net}</span></td>
-    </tr>`;
-  }).join('');
-}
-
-/* ══════════════════════════════════════════════
-   ADMIN
-══════════════════════════════════════════════ */
-function renderAdmin() {
-  document.getElementById('team-admin-list').innerHTML = TEAMS.map(t=>{
-    const owners = t.owners.split(/[,&]/).length;
-    return `<div class="team-admin-row">
-      <div><div style="font-size:13px;font-weight:500;">${t.name}</div><div style="font-size:11px;color:var(--text3);">${t.owners}</div></div>
-      <span class="badge ${owners>1?'badge-blue':'badge-gray'}">${owners>1?owners+' owners':'Solo'}</span>
-    </div>`;
-  }).join('');
-
-  document.getElementById('draft-order-list').innerHTML = DRAFT_ORDER.map((name,i)=>`
-    <div class="team-admin-row">
-      <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text3);width:24px;">${i+1}</span>
-      <span style="font-size:13px;color:var(--text);">${name}</span>
-    </div>
-  `).join('');
-
-  document.getElementById('spiff-list').innerHTML = spiffData.map(s=>`
-    <div class="spiff-row">
-      <div><div class="spiff-name">Spiff #${s.id}${s.name!==`Spiff ${s.id}`?' — '+s.name:''}</div><div class="spiff-winner">Winner: ${s.winner}</div></div>
-      <div style="display:flex;align-items:center;gap:6px;">
-        <span class="badge ${s.paid?'badge-green':'badge-gray'}">${s.paid?'PAID':'$15'}</span>
-        <button onclick="toggleSpiff(${s.id})" style="background:var(--surface2);border:1px solid var(--border2);color:var(--text2);border-radius:6px;padding:3px 8px;font-size:11px;cursor:pointer;">${s.paid?'Undo':'Mark paid'}</button>
-      </div>
-    </div>
-  `).join('');
-}
-
-function toggleSpiff(id) {
-  const s = spiffData.find(x=>x.id===id);
-  if (s) { s.paid=!s.paid; renderAdmin(); renderEarnings(); toast(s.paid?`Spiff #${id} marked paid`:`Spiff #${id} unpaid`); }
-}
-
-/* ══════════════════════════════════════════════
-   PLAYOFF BRACKET
-   Round 1 pairs by seed (1v10, 2v9, 3v8, 4v7, 5v6). After every round,
-   all 10 teams are re-seeded by (wins, then cumulative points scored)
-   and paired adjacent (1v2, 3v4, 5v6, 7v8, 9v10) through Week 17.
-   Final standings after Round 4 set the payout (PLAYOFF_PRIZES above).
-   Re-seeding tiebreak chain (see Rules tab, "b) Playoff Re-Seeding"):
-   1. Playoffs W-L  2. Playoffs total Points For  3. Playoffs head-to-
-   head W-L (if the two teams have played each other)  4. Net playoff
-   points (PF minus PA)  5. Regular season seed.
-   Manual tiebreaker overrides: edit seed13 or a round's scores directly
-   in the admin panel below if a real-world tiebreak needs to override
-   the computed order.
-══════════════════════════════════════════════ */
-const ALL_TEAMS = Object.keys(TEAM_NAMES);
-const ROUND_WEEKS = [14, 15, 16, 17];
-
-/* SEASON DATA — edit here (or via the admin panel), then re-upload.
-   seed13: final Week 13 regular-season order, best seed first.
-   rounds[14..17]: that week's individual scores, e.g. {BDG:87.4, ...}
-   covering all 10 teams. Leave a round null until that week is final. */
-let seed13 = ['BDG','LOF','HBL','CRK','CLP','BLU','OOL','POT','SDG','WIZ'];
-let rounds = { 14: null, 15: null, 16: null, 17: null };
-
-function comparePlayoffTeams(a, b, wins, cumPF, cumPA, h2h) {
-  if (wins[b] !== wins[a]) return wins[b] - wins[a];
-  if (cumPF[b] !== cumPF[a]) return cumPF[b] - cumPF[a];
-  if (h2h[a] && h2h[a][b]) return h2h[a][b] === 'win' ? -1 : 1;
-  const netA = cumPF[a] - cumPA[a], netB = cumPF[b] - cumPA[b];
-  if (netB !== netA) return netB - netA;
-  return seed13.indexOf(a) - seed13.indexOf(b);
-}
-
-function computeBracket() {
-  const wins = {}, cumPF = {}, cumPA = {}, h2h = {};
-  ALL_TEAMS.forEach(t => { wins[t] = 0; cumPF[t] = 0; cumPA[t] = 0; h2h[t] = {}; });
-  let prevSeeds = seed13.slice();
-  const roundResults = [];
-
-  for (let ri = 0; ri < 4; ri++) {
-    const week = ROUND_WEEKS[ri];
-    const scores = rounds[week];
-    const seedsEntering = prevSeeds.slice();
-    const pairs = ri === 0
-      ? [[0,9],[1,8],[2,7],[3,6],[4,5]]
-      : [[0,1],[2,3],[4,5],[6,7],[8,9]];
-    const matchups = pairs.map(([i,j]) => ({ aTeam: seedsEntering[i], bTeam: seedsEntering[j], aSeed: i+1, bSeed: j+1 }));
-
-    if (!scores) {
-      roundResults.push({ week, seedsEntering, matchups, played: false });
-      break;
-    }
-
-    matchups.forEach(m => {
-      const aPts = scores[m.aTeam] ?? 0;
-      const bPts = scores[m.bTeam] ?? 0;
-      m.aPts = aPts; m.bPts = bPts;
-      m.winner = aPts >= bPts ? m.aTeam : m.bTeam;
-    });
-    matchups.forEach(m => {
-      cumPF[m.aTeam] += m.aPts; cumPF[m.bTeam] += m.bPts;
-      cumPA[m.aTeam] += m.bPts; cumPA[m.bTeam] += m.aPts;
-      wins[m.winner]++;
-      h2h[m.aTeam][m.bTeam] = m.winner === m.aTeam ? 'win' : 'loss';
-      h2h[m.bTeam][m.aTeam] = m.winner === m.bTeam ? 'win' : 'loss';
-    });
-
-    const seedsAfter = ALL_TEAMS.slice().sort((a,b) => comparePlayoffTeams(a, b, wins, cumPF, cumPA, h2h));
-
-    roundResults.push({ week, seedsEntering, matchups, played: true, seedsAfter });
-    prevSeeds = seedsAfter;
-  }
-
-  const finalPlayed = roundResults.length === 4 && roundResults[3].played;
-  const standings = finalPlayed
-    ? ALL_TEAMS.slice().sort((a,b) => comparePlayoffTeams(a, b, wins, cumPF, cumPA, h2h))
-    : null;
-
-  return { roundResults, wins, cumPF, cumPA, standings };
-}
-
-function ordinal(n) { return n===1?'1st':n===2?'2nd':n===3?'3rd':n+'th'; }
-
-function renderBracket() {
-  const el = document.getElementById('bracket-grid');
-  if (!el) return;
-  const { roundResults, standings } = computeBracket();
-  let html = '';
-
-  roundResults.forEach((rr, ri) => {
-    html += '<div class="round-col">' + rr.matchups.map(m => {
-      if (!rr.played) {
-        return `<div class="matchup">
-          <div class="team-row"><div class="seed-block"><span class="t-seed">#${m.aSeed}</span></div><span class="t-name">${TEAM_NAMES[m.aTeam]}</span><span class="t-pts">–</span></div>
-          <div class="team-row"><div class="seed-block"><span class="t-seed">#${m.bSeed}</span></div><span class="t-name">${TEAM_NAMES[m.bTeam]}</span><span class="t-pts">–</span></div>
-        </div>`;
-      }
-      const aWin = m.winner === m.aTeam;
-      const aUpset = aWin && m.aSeed > m.bSeed;
-      const bUpset = !aWin && m.bSeed > m.aSeed;
-      const arrow = (team) => {
-        if (ri === 0) return '';
-        const prevSeed = roundResults[ri-1].seedsAfter.indexOf(team) + 1;
-        const curSeed = rr.seedsEntering.indexOf(team) + 1;
-        if (curSeed < prevSeed) return '<span class="arrow up">▲</span>';
-        if (curSeed > prevSeed) return '<span class="arrow down">▼</span>';
-        return '<span class="arrow same">—</span>';
-      };
-      const isChampGame = ri === 3;
-      return `<div class="matchup${isChampGame?' champ-game':''}">
-        <div class="team-row ${aWin ? (aUpset?'upset':'win') : 'loss'}"><div class="seed-block"><span class="t-seed">#${m.aSeed}</span>${arrow(m.aTeam)}</div><span class="t-name ${aWin?'':'dim'}${(isChampGame&&aWin)?' champ-name':''}">${TEAM_NAMES[m.aTeam]}${(isChampGame&&aWin)?' 🏆':''}${aUpset?' <span class="upset-flag">⚡</span>':''}</span><span class="t-pts ${aWin?'':'dim'}${(isChampGame&&aWin)?' champ-pts':''}">${m.aPts}</span></div>
-        <div class="team-row ${!aWin ? (bUpset?'upset':'win') : 'loss'}"><div class="seed-block"><span class="t-seed">#${m.bSeed}</span>${arrow(m.bTeam)}</div><span class="t-name ${!aWin?'':'dim'}${(isChampGame&&!aWin)?' champ-name':''}">${TEAM_NAMES[m.bTeam]}${(isChampGame&&!aWin)?' 🏆':''}${bUpset?' <span class="upset-flag">⚡</span>':''}</span><span class="t-pts ${!aWin?'':'dim'}${(isChampGame&&!aWin)?' champ-pts':''}">${m.bPts}</span></div>
-      </div>`;
-    }).join('') + '</div>';
-  });
-
-  for (let i = roundResults.length; i < 4; i++) {
-    html += `<div class="round-col"><div style="padding:1rem;text-align:center;color:var(--text3);font-size:12px;">Awaiting Week ${ROUND_WEEKS[i]} results</div></div>`;
-  }
-
-  html += '<div class="finals-col">';
-  if (standings) {
-    html += '<div class="champ-banner">🏆 MFL Champion</div>';
-    for (let i = 0; i < 10; i += 2) {
-      html += `<div class="final-card${i===0?' top':''}">`;
-      [0,1].forEach(k => {
-        const idx = i+k, team = standings[idx], pay = PLAYOFF_PRIZES[idx];
-        const rowCls = idx===0?'champ':(idx===1?'runner':'');
-        const payCls = idx===0?'gold':(pay>0?'blue':'none');
-        html += `<div class="final-row ${rowCls}"><span class="final-place">${ordinal(idx+1)}</span><span class="final-name">${TEAM_NAMES[team]}</span><span class="final-pay ${payCls}">$${pay}</span></div>`;
-      });
-      html += '</div>';
-    }
-  } else {
-    html += '<div style="padding:1rem;color:var(--text3);font-size:12px;">Final standings & payouts appear here once Week 17 is complete.</div>';
-  }
-  html += '</div>';
-
-  el.innerHTML = html;
-}
-
-/* ── Commissioner admin panel ── */
-function toggleBracketAdmin() {
-  const body = document.getElementById('bracket-admin-body');
-  body.classList.toggle('open');
-  document.getElementById('bracket-admin-toggle-btn').textContent = 'Commissioner: Enter Scores ' + (body.classList.contains('open') ? '▴' : '▾');
-}
-
-function setBracketStatus(msg, type) {
-  const el = document.getElementById('bracket-admin-status');
-  el.textContent = msg;
-  el.className = 'admin-status' + (type ? ' ' + type : '');
-}
-
-function applyBracketSeeds() {
-  const raw = document.getElementById('bracket-admin-seeds').value.trim();
-  const list = raw.split(/[\s,]+/).map(s => s.toUpperCase()).filter(Boolean);
-  if (list.length !== 10 || !list.every(t => ALL_TEAMS.includes(t))) {
-    setBracketStatus('Seeds must be exactly 10 valid team abbreviations: ' + ALL_TEAMS.join(', '), 'err');
-    return;
-  }
-  seed13 = list;
-  rounds = { 14: null, 15: null, 16: null, 17: null };
-  renderBracket();
-  setBracketStatus('✓ Seeds set. Earlier round scores were cleared since seeding changed — re-enter them.', 'ok');
-}
-
-function applyBracketRoundScores() {
-  const week = parseInt(document.getElementById('bracket-admin-round').value);
-  const raw = document.getElementById('bracket-admin-scores').value.trim();
-  if (!raw) { setBracketStatus("Paste that week's scores first.", 'err'); return; }
-  const scores = {};
-  raw.split('\n').forEach(line => {
-    const parts = line.trim().split(/\s+/);
-    if (parts.length < 2) return;
-    const team = parts[0].toUpperCase();
-    const pts = parseFloat(parts[1]);
-    if (ALL_TEAMS.includes(team) && !isNaN(pts)) scores[team] = pts;
-  });
-  const missing = ALL_TEAMS.filter(t => scores[t] == null);
-  if (missing.length) {
-    setBracketStatus('Missing scores for: ' + missing.join(', ') + ' — all 10 teams need a score.', 'err');
-    return;
-  }
-  rounds[week] = scores;
-  renderBracket();
-  setBracketStatus(`✓ Week ${week} previewed. Remember to copy the data block when you're ready to save.`, 'ok');
-}
-
-function clearBracketRound() {
-  const week = parseInt(document.getElementById('bracket-admin-round').value);
-  rounds[week] = null;
-  renderBracket();
-  setBracketStatus(`Week ${week} cleared.`, 'ok');
-}
-
-function exportBracketData() {
-  const fmt = (obj) => obj ? '{ ' + Object.entries(obj).map(([k,v])=>`${k}:${v}`).join(', ') + ' }' : 'null';
-  const text = `let seed13 = [${seed13.map(t=>`'${t}'`).join(',')}];
-let rounds = {
-  14: ${fmt(rounds[14])},
-  15: ${fmt(rounds[15])},
-  16: ${fmt(rounds[16])},
-  17: ${fmt(rounds[17])}
-};`;
-  const ta = document.getElementById('bracket-admin-export');
-  ta.style.display = 'block';
-  ta.value = text;
-  ta.select();
-  try {
-    document.execCommand('copy');
-    setBracketStatus('✓ Copied — paste this over the SEASON DATA block in the file source.', 'ok');
-  } catch (e) {
-    setBracketStatus("Couldn't auto-copy — select the text above and copy manually.", 'err');
-  }
-}
-
-/* ══════════════════════════════════════════════
-   INIT
-══════════════════════════════════════════════ */
-renderStandings();
-renderWeekGrid();
-renderAdmin();
-renderBracket();
-renderEarnings();
-loadLiveData();
+/* ════════════════════════════════════════════
+   INIT — load from DB then show latest report
+════════════════════════════════════════════ */
+(async function init() {
+  showToast('Loading posts…', 8000);
+  await Promise.all([loadPostsFromDB(), loadStandings(db)]);
+  showWeek(0, document.querySelector('.week-tab'));
+})();
 </script>
 </body>
 </html>
