@@ -1670,8 +1670,9 @@ let newsItems = [];
 let newsCounter = 0;
 
 function allPosts() {
-  const reports = allReports().map(r => ({...r, type:'report', _sort: r.week * 10}));
-  const news = newsItems.map(n => ({...n, _sort: (new Date(n.dateISO).getTime() / 86400000) + 0.5}));
+  // Sort everything by its real publish time so the newest story (report or news) leads the page.
+  const reports = allReports().map(r => ({...r, type:'report', _sort: r.dateISO ? new Date(r.dateISO).getTime() : r.week}));
+  const news = newsItems.map(n => ({...n, _sort: new Date(n.dateISO).getTime()}));
   return [...reports, ...news].sort((a,b) => b._sort - a._sort);
 }
 
@@ -1821,7 +1822,7 @@ async function publishReport() {
   const problems = validateWeekFields(scoresRaw, playersRaw, poolRaw);
   if (problems.length && !confirm('The dashboard data has problems:\n\n• ' + problems.join('\n• ') + '\n\nPublish anyway? (Cancel to go back and fix.)')) return;
   const pool = parsePool(poolRaw);
-  const report = { week, author, headline, deck, body, spiff, pool, signoff };
+  const report = { week, author, headline, deck, body, spiff, pool, signoff, dateISO: new Date().toISOString() };
   storeWeekData(week, scoresRaw, playersRaw, poolRaw);
   userReports = userReports.filter(r=>r.week !== week);
   userReports.push(report);
@@ -2110,7 +2111,7 @@ async function loadPostsFromDB() {
       if (REPORTS.find(r => r.week === parseInt(row.week))) continue;
       if (userReports.find(r => r.week === parseInt(row.week))) continue;
       const pool = parsePool(row.pool);
-      const report = { week: parseInt(row.week), author: row.author, headline: row.headline, deck: row.deck, body: row.body, spiff: row.spiff, pool, signoff: row.signoff };
+      const report = { week: parseInt(row.week), author: row.author, headline: row.headline, deck: row.deck, body: row.body, spiff: row.spiff, pool, signoff: row.signoff, dateISO: row.created_at };
       userReports.push(report);
       // GAZETTE_SCHEDULE lives in memory only (not saved to Supabase), so it has to be
       // rebuilt from the saved raw scores text on every page load, same as at publish time.
